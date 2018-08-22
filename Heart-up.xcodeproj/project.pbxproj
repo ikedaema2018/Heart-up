@@ -12,6 +12,8 @@
 		C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D1212C3B97005A3D92 /* Main.storyboard */; };
 		C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D4212C3B98005A3D92 /* Assets.xcassets */; };
 		C86E32D8212C3B98005A3D92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D6212C3B98005A3D92 /* LaunchScreen.storyboard */; };
+		C86E32EF212D1B67005A3D92 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86E32EE212D1B67005A3D92 /* MapKit.framework */; };
+		C86E32F1212D1B73005A3D92 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86E32F0212D1B73005A3D92 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		C86E32D4212C3B98005A3D92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C86E32D7212C3B98005A3D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C86E32D9212C3B98005A3D92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C86E32EE212D1B67005A3D92 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		C86E32F0212D1B73005A3D92 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +33,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C86E32F1212D1B73005A3D92 /* CoreLocation.framework in Frameworks */,
+				C86E32EF212D1B67005A3D92 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +46,7 @@
 			children = (
 				C86E32CC212C3B97005A3D92 /* Heart-up */,
 				C86E32CB212C3B97005A3D92 /* Products */,
+				C86E32ED212D1B67005A3D92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +69,15 @@
 				C86E32D9212C3B98005A3D92 /* Info.plist */,
 			);
 			path = "Heart-up";
+			sourceTree = "<group>";
+		};
+		C86E32ED212D1B67005A3D92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C86E32F0212D1B73005A3D92 /* CoreLocation.framework */,
+				C86E32EE212D1B67005A3D92 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
