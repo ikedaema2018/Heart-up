@@ -34,15 +34,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="取得"/>
                                 <connections>
-                                    <action selector="getLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hij-kC-MKp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVS-OI-xFz">
-                                <rect key="frame" x="156" y="304" width="62" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ストップ"/>
-                                <connections>
-                                    <action selector="tapStopButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rIk-cf-IF7"/>
+                                    <action selector="locatePost:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cpc-J7-KW9"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="緯度" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcu-4C-ghG">
@@ -64,6 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="122.78860569715144"/>
         </scene>
     </scenes>
 </document>

@@ -16,40 +16,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var latLabel: UILabel!
     @IBOutlet weak var lngLabel: UILabel!
+    
+    var latitude: String!
+    var longitude: String!
     var locationManager : CLLocationManager?
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBAction func getLocation(_ sender: UIButton) {
-        if locationManager != nil { return }
-        locationManager = CLLocationManager()
-        locationManager!.delegate = self
-        locationManager!.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager!.startUpdatingLocation()
-        }
-        // tracking user location
-        mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
-        mapView.showsUserLocation = true
-        
-        
-        
-        
-    }
     
-    @IBAction func tapStopButton(_ sender: UIButton) {
-        guard let manager = locationManager else { return }
-        manager.stopUpdatingLocation()
-        manager.delegate = nil
-        locationManager = nil
-        latLabel.text = "latitude: "
-        lngLabel.text = "longitude: "
-        
-        // untracking user location
-        mapView.userTrackingMode = MKUserTrackingMode.none
-        mapView.showsUserLocation = false
-        mapView.removeAnnotations(mapView.annotations)
-    }
+    
+//    @IBAction func tapStopButton(_ sender: UIButton) {
+//        guard let manager = locationManager else { return }
+//        manager.stopUpdatingLocation()
+//        manager.delegate = nil
+//        locationManager = nil
+//        latLabel.text = "latitude: "
+//        lngLabel.text = "longitude: "
+//
+//        // untracking user location
+//        mapView.userTrackingMode = MKUserTrackingMode.none
+//        mapView.showsUserLocation = false
+//        mapView.removeAnnotations(mapView.annotations)
+//    }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
@@ -69,27 +56,44 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         let location:CLLocationCoordinate2D
             = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude)
-        let latitude = "".appendingFormat("%.4f", location.latitude)
-        let longitude = "".appendingFormat("%.4f", location.longitude)
+        latitude = "".appendingFormat("%.4f", location.latitude)
+        longitude = "".appendingFormat("%.4f", location.longitude)
         latLabel.text = "latitude: " + latitude
         lngLabel.text = "longitude: " + longitude
         
         // update annotation
-        mapView.removeAnnotations(mapView.annotations)
-        
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = newLocation.coordinate
-        mapView.addAnnotation(annotation)
-        mapView.selectAnnotation(annotation, animated: true)
+//        mapView.removeAnnotations(mapView.annotations)
+//
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = newLocation.coordinate
+//        mapView.addAnnotation(annotation)
+//        mapView.selectAnnotation(annotation, animated: true)
         
         // Showing annotation zooms the map automatically.
-        mapView.showAnnotations(mapView.annotations, animated: true)
+//        mapView.showAnnotations(mapView.annotations, animated: true)
         
     }
     
+    @IBAction func locatePost(_ sender: Any) {
+        if let latitude_p = latitude, let longitude_p = longitude {
+            print(latitude_p, longitude_p)
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if locationManager != nil { return }
+        locationManager = CLLocationManager()
+        locationManager!.delegate = self
+        locationManager!.requestWhenInUseAuthorization()
         
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager!.startUpdatingLocation()
+        }
+        // tracking user location
+        mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
+        mapView.showsUserLocation = true
     }
 
     override func didReceiveMemoryWarning() {
