@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-//test
 
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
@@ -76,9 +75,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBAction func locatePost(_ sender: Any) {
         if let latitude_p = latitude, let longitude_p = longitude {
-            print(latitude_p, longitude_p)
+            let locate = LocateInfo()
+            locate.ido = latitude_p
+            locate.keido = longitude_p
+            StockLocateInfos.postLocate(locate: locate)
+            print("testtest")
         }
     }
+    
+    @IBAction func test(_ sender: UIButton) {
+        
+    }
+    
     
     
     override func viewDidLoad() {
