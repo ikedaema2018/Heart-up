@@ -27,14 +27,14 @@ class StockLocateInfos: NSObject {
         
     }
     
-    class func getLocate(){
+    class func getLocate() -> JSON {
         let url = "http://localhost:3000/locate_infos"
         Alamofire.request(url, method: .get).responseJSON{response in
             guard let obj = response.result.value else {
                 return
             }
             let json = JSON(obj)
-            print(json["keido"])
+            return json
         }
     }
     

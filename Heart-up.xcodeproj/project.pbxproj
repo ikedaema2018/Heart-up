@@ -17,6 +17,7 @@
 		C86E32F1212D1B73005A3D92 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86E32F0212D1B73005A3D92 /* CoreLocation.framework */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
+		C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		C86E32F0212D1B73005A3D92 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
+		C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowLocateViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/ShowLocateViewController.swift"; sourceTree = "<absolute>"; };
 		FFF6B60923565050FDCFD900 /* Pods-Heart-up.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart-up.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Heart-up/Pods-Heart-up.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 				C8EB10CB212FD0D500B61D34 /* Models */,
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
 				C86E32CF212C3B97005A3D92 /* ViewController.swift */,
+				C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
 				C86E32D4212C3B98005A3D92 /* Assets.xcassets */,
 				C86E32D6212C3B98005A3D92 /* LaunchScreen.storyboard */,
@@ -243,6 +246,7 @@
 				C86E32D0212C3B97005A3D92 /* ViewController.swift in Sources */,
 				C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */,
 				C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */,
+				C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */,
 				C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
