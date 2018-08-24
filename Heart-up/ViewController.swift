@@ -84,7 +84,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     @IBAction func test(_ sender: UIButton) {
-        
+        StockLocateInfos.getLocate()
     }
     
     

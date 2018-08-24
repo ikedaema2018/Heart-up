@@ -7,4 +7,5 @@ target 'Heart-up' do
 
   # Pods for Heart-up
   pod 'Alamofire'
+  pod 'SwiftyJSON'
 end
