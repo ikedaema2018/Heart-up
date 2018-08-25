@@ -20,11 +20,13 @@ class ShowLocateViewController: UIViewController {
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
+                    print("不明なエラーが発生しました")
                 } else {
                     print("不明なエラーが発生しました")
                 }
                 return
             }
+            
             if let locate = locate {
                 if let ido_s = locate["ido"] as? String {
                     self.ido.text = ido_s
@@ -34,23 +36,6 @@ class ShowLocateViewController: UIViewController {
                 }
             }
         }
-        
-//        override func viewDidLoad() {
-//            super.viewDidLoad()
-//            // Do any additional setup after loading the view.
-//            let url = "http://localhost:3000/locate_infos"
-//            Alamofire.request(url, method: .get).responseJSON{response in
-//                guard let obj = response.result.value else {
-//                    return
-//                }
-//                let json = JSON(obj)
-//                ido_i = json["ido"].string!
-//                if let ido_s = json["ido"].string {
-//                    ido_i = ido_s
-//                }
-//            }
-//        }
-//    }
     }
 
     override func didReceiveMemoryWarning() {

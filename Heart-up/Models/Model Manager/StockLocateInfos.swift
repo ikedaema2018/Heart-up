@@ -28,7 +28,7 @@ class StockLocateInfos: NSObject {
     }
     
     class func getLocate(callback: @escaping ([String: Any]?, [String: Any]?) -> Void) {
-        let url = "http://localhost:3000/locate_infos"
+        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos"
         Alamofire.request(url, method: .get).responseJSON {response in
             
             let statusCode = response.response!.statusCode
