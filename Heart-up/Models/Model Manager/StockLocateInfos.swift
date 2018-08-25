@@ -27,15 +27,22 @@ class StockLocateInfos: NSObject {
         
     }
     
-    class func getLocate() -> JSON {
+    class func getLocate(callback: @escaping ([String: Any]?, [String: Any]?) -> Void) {
         let url = "http://localhost:3000/locate_infos"
-        Alamofire.request(url, method: .get).responseJSON{response in
-            guard let obj = response.result.value else {
-                return
+        Alamofire.request(url, method: .get).responseJSON {response in
+            
+            let statusCode = response.response!.statusCode
+            
+            // 失敗した場合.
+            if statusCode != 200 {
+                callback([ "message" : "サーバーでエラーが発生しました。"], nil)
             }
-            let json = JSON(obj)
-            return json
+            
+            if let obj = response.result.value as? [String: Any]? {
+                callback(nil, obj)
+            }
         }
+
     }
     
 }
