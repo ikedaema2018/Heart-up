@@ -24,7 +24,6 @@ class StockLocateInfos: NSObject {
         ]
         
         Alamofire.request(url, method: .post, parameters: params)
-        
     }
     
     class func getLocate(callback: @escaping ([String: Any]?, [String: Any]?) -> Void) {

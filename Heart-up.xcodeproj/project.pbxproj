@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		40F403D5A84A2B112A3E275B /* Pods_Heart_up.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824C26F179797FA7E617789D /* Pods_Heart_up.framework */; };
+		C8168D1621318122007084A1 /* MapModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D1521318122007084A1 /* MapModule.swift */; };
 		C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CD212C3B97005A3D92 /* AppDelegate.swift */; };
 		C86E32D0212C3B97005A3D92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CF212C3B97005A3D92 /* ViewController.swift */; };
 		C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D1212C3B97005A3D92 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		824C26F179797FA7E617789D /* Pods_Heart_up.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Heart_up.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B82C928BC37825E7E92F0E89 /* Pods-Heart-up.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart-up.release.xcconfig"; path = "Pods/Target Support Files/Pods-Heart-up/Pods-Heart-up.release.xcconfig"; sourceTree = "<group>"; };
+		C8168D1521318122007084A1 /* MapModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModule.swift; sourceTree = "<group>"; };
 		C86E32CA212C3B97005A3D92 /* Heart-up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart-up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86E32CD212C3B97005A3D92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C86E32CF212C3B97005A3D92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				C8EB10CB212FD0D500B61D34 /* Models */,
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
+				C8168D1521318122007084A1 /* MapModule.swift */,
 				C86E32CF212C3B97005A3D92 /* ViewController.swift */,
 				C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
@@ -243,6 +246,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8168D1621318122007084A1 /* MapModule.swift in Sources */,
 				C86E32D0212C3B97005A3D92 /* ViewController.swift in Sources */,
 				C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */,
 				C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */,

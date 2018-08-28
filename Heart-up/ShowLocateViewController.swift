@@ -6,11 +6,12 @@
 //
 
 import UIKit
+import MapKit
 
 class ShowLocateViewController: UIViewController {
     
-    @IBOutlet weak var ido: UILabel!
-    @IBOutlet weak var keido: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
+    
     
     
     override func viewDidLoad() {
@@ -27,12 +28,10 @@ class ShowLocateViewController: UIViewController {
                 return
             }
             
+            //ピンを立てる
             if let locate = locate {
-                if let ido_s = locate["ido"] as? String {
-                    self.ido.text = ido_s
-                }
-                if let keido_s = locate["keido"] as? String {
-                    self.keido.text = keido_s
+                if let ido_s = locate["ido"] as? String, let keido_s = locate["keido"] as? String {
+                    MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView)
                 }
             }
         }
