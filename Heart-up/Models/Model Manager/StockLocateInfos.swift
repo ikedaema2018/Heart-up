@@ -26,7 +26,7 @@ class StockLocateInfos: NSObject {
         Alamofire.request(url, method: .post, parameters: params)
     }
     
-    class func getLocate(callback: @escaping ([String: Any]?, [String: Any]?) -> Void) {
+    class func getLocate(callback: @escaping ([String: Any]?, JSON?) -> Void) {
         let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos"
         Alamofire.request(url, method: .get).responseJSON {response in
             
@@ -37,9 +37,16 @@ class StockLocateInfos: NSObject {
                 callback([ "message" : "サーバーでエラーが発生しました。"], nil)
             }
             
-            if let obj = response.result.value as? [String: Any]? {
-                callback(nil, obj)
+            
+            
+            guard let object = response.result.value else {
+                return
             }
+            
+            let obj = JSON(object)
+            
+            
+            callback(nil, obj)
         }
 
     }

@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 
+
 class ShowLocateViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
@@ -16,8 +17,10 @@ class ShowLocateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
-        StockLocateInfos.getLocate {error, locate in
+        StockLocateInfos.getLocate {error, locates in
+            
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
@@ -28,12 +31,21 @@ class ShowLocateViewController: UIViewController {
                 return
             }
             
-            //ピンを立てる
-            if let locate = locate {
-                if let ido_s = locate["ido"] as? String, let keido_s = locate["keido"] as? String {
+            
+            locates!.forEach { (_, locate) in
+                print("tesyt")
+                
+                if let ido_s = locate["ido"].string, let keido_s = locate["keido"].string {
                     MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView)
                 }
             }
+            
+            //ピンを立てる
+//            if let locates = locates {
+//                if let ido_s = locates["ido"] as? String, let keido_s = locates["keido"] as? String {
+//                    MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView)
+//                }
+//            }
         }
     }
 
