@@ -23,7 +23,16 @@ class StockLocateInfos: NSObject {
             ]
         ]
         
-        Alamofire.request(url, method: .post, parameters: params)
+        Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
+            switch response.result {
+            case .success:
+                print(type(of: response.result.value))
+                let success = response.result.value
+                print(success)
+            case .failure:
+                print("失敗")
+            }
+        }
     }
     
     class func getLocate(callback: @escaping ([String: Any]?, JSON?) -> Void) {

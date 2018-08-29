@@ -31,8 +31,13 @@ class ShowLocateViewController: UIViewController {
                 return
             }
             
+            guard let locates = locates else {
+                return
+            }
             
-            locates!.forEach { (_, locate) in
+            
+            //ピンを一覧で表示
+            locates.forEach { (_, locate) in
                 print("tesyt")
                 
                 if let ido_s = locate["ido"].string, let keido_s = locate["keido"].string {

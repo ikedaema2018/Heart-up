@@ -79,7 +79,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             locate.ido = latitude_p
             locate.keido = longitude_p
             StockLocateInfos.postLocate(locate: locate)
-            print("testtest")
         }
     }
     
