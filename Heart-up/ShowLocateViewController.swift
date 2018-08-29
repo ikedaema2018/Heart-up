@@ -69,6 +69,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 return annotationView
             } else {
                 let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView.annotation = annotation
                 annotationView.image = UIImage(named: "star")
                 return annotationView
             }

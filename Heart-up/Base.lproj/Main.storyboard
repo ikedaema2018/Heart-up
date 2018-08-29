@@ -45,9 +45,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qap-2U-NVz">
-                                <rect key="frame" x="172" y="491" width="46" height="30"/>
+                                <rect key="frame" x="164" y="491" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="テスト"/>
+                                <state key="normal" title="一覧表示"/>
                                 <connections>
                                     <segue destination="1zu-iP-IYj" kind="show" id="cav-BE-1LL"/>
                                 </connections>
