@@ -40,9 +40,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
             
             //ピンを一覧で表示
             locates.forEach { (_, locate) in
-                
-                if let ido_s = locate["ido"].string, let keido_s = locate["keido"].string {
-                    MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView)
+                if let ido_s = locate["ido"].string, let keido_s = locate["keido"].string, let id_i = locate["id"].int {
+                    MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView, id: id_i)
                 }
             }
             

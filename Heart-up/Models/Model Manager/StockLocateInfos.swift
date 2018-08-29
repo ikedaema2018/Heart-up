@@ -26,7 +26,6 @@ class StockLocateInfos: NSObject {
         Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
             switch response.result {
             case .success:
-                print(type(of: response.result.value))
                 let success = response.result.value
                 print(success)
             case .failure:
