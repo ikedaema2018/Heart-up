@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 
-class ShowLocateViewController: UIViewController {
+class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -17,6 +17,8 @@ class ShowLocateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        mapView.delegate = self
         
         // Do any additional setup after loading the view.
         StockLocateInfos.getLocate {error, locates in
@@ -38,7 +40,6 @@ class ShowLocateViewController: UIViewController {
             
             //ピンを一覧で表示
             locates.forEach { (_, locate) in
-                print("tesyt")
                 
                 if let ido_s = locate["ido"].string, let keido_s = locate["keido"].string {
                     MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView)
@@ -53,21 +54,26 @@ class ShowLocateViewController: UIViewController {
 //            }
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation === mapView.userLocation {
+            return nil
+        } else {
+            let identifier = "annotation"
+            if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotation") {
+                return annotationView
+            } else {
+                let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                annotationView.image = UIImage(named: "star")
+                return annotationView
+            }
+        }
     }
-    */
+    
 
 }
