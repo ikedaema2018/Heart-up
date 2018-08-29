@@ -76,5 +76,9 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let annotation = view.annotation!
+    }
+    
 
 }
