@@ -90,11 +90,27 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="rNy-YI-eZf" id="MzV-Ei-Wzt"/>
+                        <segue destination="xI9-3v-M6q" kind="presentation" identifier="toDetailShabonViewController" id="pEI-PR-io7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3X-zF-2Q7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1840.8" y="124.58770614692655"/>
+        </scene>
+        <!--Detail Shabon View Controller-->
+        <scene sceneID="eXu-eX-PNt">
+            <objects>
+                <viewController id="xI9-3v-M6q" customClass="detailShabonViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="it1-GJ-6Rs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="idb-OC-EYB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RvV-ha-3DT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1475" y="862"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Lm-Hb-5gv">
