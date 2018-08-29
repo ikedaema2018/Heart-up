@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapModule: NSObject ,MKMapViewDelegate  {
+class MapModule: NSObject  {
     
     class func setAnnotation(x: String,y: String, map: MKMapView?) ->Void {
         //StringをDouble型に変換

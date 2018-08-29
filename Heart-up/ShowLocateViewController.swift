@@ -64,14 +64,14 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         if annotation === mapView.userLocation {
             return nil
         } else {
-            let identifier = "annotation"
             if let annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "annotation") {
                 return annotationView
             } else {
-                let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                annotationView.annotation = annotation
-                annotationView.image = UIImage(named: "star")
-                return annotationView
+                let anno = MKAnnotationView(annotation: annotation, reuseIdentifier: "anno")
+                anno.annotation = annotation
+                anno.image = UIImage(named: "star")
+                anno.canShowCallout = true
+                return anno
             }
         }
     }
