@@ -76,9 +76,31 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let anno = view.annotation!.subtitle else {
+            return
+        }
+        
+        let anno_id = anno!
+        
+        
+        
+        
         //遷移
-        performSegue(withIdentifier: "toDetailShabonViewController", sender: nil)
+        performSegue(withIdentifier: "toDetailShabonViewController", sender: anno_id)
     }
+    
+    //ページ遷移で数値を
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailShabonViewController" {
+            if let vc = segue.destination as? detailShabonViewController {
+                if let id = sender as? String {
+                    vc.shabon_id = id
+                }
+            }
+        }
+    }
+    
+    
     
     
 
