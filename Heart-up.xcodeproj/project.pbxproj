@@ -18,7 +18,6 @@
 		C8168D782138EA78007084A1 /* UserResisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D772138EA78007084A1 /* UserResisterViewController.swift */; };
 		C8168D7A21395F56007084A1 /* ShabonPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D7921395F56007084A1 /* ShabonPostViewController.swift */; };
 		C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CD212C3B97005A3D92 /* AppDelegate.swift */; };
-		C86E32D0212C3B97005A3D92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CF212C3B97005A3D92 /* ViewController.swift */; };
 		C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D1212C3B97005A3D92 /* Main.storyboard */; };
 		C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D4212C3B98005A3D92 /* Assets.xcassets */; };
 		C86E32D8212C3B98005A3D92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D6212C3B98005A3D92 /* LaunchScreen.storyboard */; };
@@ -43,7 +42,6 @@
 		C8168D7921395F56007084A1 /* ShabonPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonPostViewController.swift; sourceTree = "<group>"; };
 		C86E32CA212C3B97005A3D92 /* Heart-up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart-up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86E32CD212C3B97005A3D92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C86E32CF212C3B97005A3D92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C86E32D2212C3B97005A3D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C86E32D4212C3B98005A3D92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C86E32D7212C3B98005A3D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
 				C8168D772138EA78007084A1 /* UserResisterViewController.swift */,
 				C8168D1521318122007084A1 /* MapModule.swift */,
-				C86E32CF212C3B97005A3D92 /* ViewController.swift */,
 				C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */,
 				C8168D6B2137BBB5007084A1 /* Login.storyboard */,
 				C8168D6F213813C4007084A1 /* Api.swift */,
@@ -274,7 +271,6 @@
 				C8168D782138EA78007084A1 /* UserResisterViewController.swift in Sources */,
 				C8168D70213813C4007084A1 /* Api.swift in Sources */,
 				C8168D1621318122007084A1 /* MapModule.swift in Sources */,
-				C86E32D0212C3B97005A3D92 /* ViewController.swift in Sources */,
 				C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */,
 				C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */,
 				C8168D762138DF05007084A1 /* UserRegister.swift in Sources */,

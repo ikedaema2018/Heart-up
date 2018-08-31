@@ -18,7 +18,22 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //UserDefaltsを初期化したい時
+//        let userDefaults = UserDefaults.standard
+//        userDefaults.removeObject(forKey: "auth_token")
+        
+        // APIトークンがない場合はログイン画面へ.
+        if UserDefaults.standard.string(forKey: "auth_token") == nil {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+        }
+        
         mapView.delegate = self
+        // tracking user location
+        mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
+        mapView.showsUserLocation = true
         
         // Do any additional setup after loading the view.
         StockLocateInfos.getLocate {error, locates in

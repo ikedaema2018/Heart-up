@@ -38,8 +38,10 @@ class UserResisterViewController: UIViewController {
                 if let message = error["message"] {
                     print(message)
                     print("不明なエラーが発生しました")
+                    self.errorLabel.text = "不明なエラーが発生しました"
                 } else {
                     print("謎のエラー発生！")
+                    self.errorLabel.text = "謎のエラー発生！"
                 }
                 return
             }
@@ -58,6 +60,7 @@ class UserResisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         errorLabel.isHidden = true
         userNameInput.delegate = self
         emailInput.delegate = self

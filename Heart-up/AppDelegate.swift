@@ -44,10 +44,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
-    /// ログインからタイムラインへストーリーボードを切り替えます.
+    /// ログインからメインへストーリーボードを切り替えます.
     func showMainStoryboard() {
         let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         UIApplication.shared.keyWindow?.rootViewController = mainVC
+    }
+    
+    //メインからログインストーリーボードに切り替え
+    func showLoginStoryboard() {
+        let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateInitialViewController()
+        UIApplication.shared.keyWindow?.rootViewController = loginVC
     }
 
 }

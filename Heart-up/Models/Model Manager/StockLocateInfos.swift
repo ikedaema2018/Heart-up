@@ -16,7 +16,6 @@ class StockLocateInfos: NSObject {
     class func postLocate(locate :LocateInfo){
 //        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos"
         let url = "http://localhost:3000/local_infos"
-        //UserDefaultsからauth_tokenを参照してなかったら弾く
         
 
         let params = [
@@ -38,7 +37,9 @@ class StockLocateInfos: NSObject {
     }
     
     class func getLocate(callback: @escaping ([String: Any]?, JSON?) -> Void) {
-        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos"
+//        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos"
+          let url = "http://localhost:3000/locate_infos"
+        
         Alamofire.request(url, method: .get).responseJSON {response in
             
             let statusCode = response.response!.statusCode
