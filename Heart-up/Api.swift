@@ -46,7 +46,6 @@ class ApiManager {
                     if let auth_token = data["auth_token"] as? String {
                         UserDefaults.standard.set(auth_token, forKey: "auth_token")
                     }
-                    print(data)
                 }
                 callback(nil)
         }
