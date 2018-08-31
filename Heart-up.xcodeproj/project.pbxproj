@@ -15,6 +15,7 @@
 		C8168D70213813C4007084A1 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D6F213813C4007084A1 /* Api.swift */; };
 		C8168D72213836EE007084A1 /* Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D71213836EE007084A1 /* Ext.swift */; };
 		C8168D762138DF05007084A1 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D752138DF05007084A1 /* UserRegister.swift */; };
+		C8168D782138EA78007084A1 /* UserResisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D772138EA78007084A1 /* UserResisterViewController.swift */; };
 		C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CD212C3B97005A3D92 /* AppDelegate.swift */; };
 		C86E32D0212C3B97005A3D92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CF212C3B97005A3D92 /* ViewController.swift */; };
 		C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D1212C3B97005A3D92 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		C8168D6F213813C4007084A1 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		C8168D71213836EE007084A1 /* Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext.swift; sourceTree = "<group>"; };
 		C8168D752138DF05007084A1 /* UserRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
+		C8168D772138EA78007084A1 /* UserResisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResisterViewController.swift; sourceTree = "<group>"; };
 		C86E32CA212C3B97005A3D92 /* Heart-up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart-up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86E32CD212C3B97005A3D92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C86E32CF212C3B97005A3D92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				C8EB10CB212FD0D500B61D34 /* Models */,
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
+				C8168D772138EA78007084A1 /* UserResisterViewController.swift */,
 				C8168D1521318122007084A1 /* MapModule.swift */,
 				C86E32CF212C3B97005A3D92 /* ViewController.swift */,
 				C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */,
@@ -265,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8168D782138EA78007084A1 /* UserResisterViewController.swift in Sources */,
 				C8168D70213813C4007084A1 /* Api.swift in Sources */,
 				C8168D1621318122007084A1 /* MapModule.swift in Sources */,
 				C86E32D0212C3B97005A3D92 /* ViewController.swift in Sources */,
