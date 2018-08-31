@@ -13,10 +13,9 @@ extension UIViewController {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
+            hide()
         })
         self.present(alert, animated: true)
-        hide()
-        print("2")
     }
     
     func showProgress() {
