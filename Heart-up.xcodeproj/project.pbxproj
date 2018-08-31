@@ -16,6 +16,7 @@
 		C8168D72213836EE007084A1 /* Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D71213836EE007084A1 /* Ext.swift */; };
 		C8168D762138DF05007084A1 /* UserRegister.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D752138DF05007084A1 /* UserRegister.swift */; };
 		C8168D782138EA78007084A1 /* UserResisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D772138EA78007084A1 /* UserResisterViewController.swift */; };
+		C8168D7A21395F56007084A1 /* ShabonPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D7921395F56007084A1 /* ShabonPostViewController.swift */; };
 		C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CD212C3B97005A3D92 /* AppDelegate.swift */; };
 		C86E32D0212C3B97005A3D92 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CF212C3B97005A3D92 /* ViewController.swift */; };
 		C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D1212C3B97005A3D92 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		C8168D71213836EE007084A1 /* Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ext.swift; sourceTree = "<group>"; };
 		C8168D752138DF05007084A1 /* UserRegister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegister.swift; sourceTree = "<group>"; };
 		C8168D772138EA78007084A1 /* UserResisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResisterViewController.swift; sourceTree = "<group>"; };
+		C8168D7921395F56007084A1 /* ShabonPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonPostViewController.swift; sourceTree = "<group>"; };
 		C86E32CA212C3B97005A3D92 /* Heart-up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart-up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86E32CD212C3B97005A3D92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C86E32CF212C3B97005A3D92 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				C8168D692136AC01007084A1 /* detailShabonViewController.swift */,
 				C86E32D6212C3B98005A3D92 /* LaunchScreen.storyboard */,
 				C8168D6D2137C99B007084A1 /* LoginViewController.swift */,
+				C8168D7921395F56007084A1 /* ShabonPostViewController.swift */,
 				C86E32D9212C3B98005A3D92 /* Info.plist */,
 			);
 			path = "Heart-up";
@@ -280,6 +283,7 @@
 				C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */,
 				C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */,
 				C8168D72213836EE007084A1 /* Ext.swift in Sources */,
+				C8168D7A21395F56007084A1 /* ShabonPostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

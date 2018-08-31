@@ -50,7 +50,6 @@ class UserResisterViewController: UIViewController {
             print("ユーザー登録成功！")
             self.showAlert(message: "ユーザー登録成功したよ！\nログインしてね", hide: { () -> Void in 
                     self.dismiss(animated: true, completion: nil)
-                print("1")
                 })
         })
     }

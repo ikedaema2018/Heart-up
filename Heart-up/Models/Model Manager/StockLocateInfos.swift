@@ -14,7 +14,10 @@ import SwiftyJSON
 
 class StockLocateInfos: NSObject {
     class func postLocate(locate :LocateInfo){
-        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos"
+//        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos"
+        let url = "http://localhost:3000/local_infos"
+        //UserDefaultsからauth_tokenを参照してなかったら弾く
+        
 
         let params = [
             "locate": [
