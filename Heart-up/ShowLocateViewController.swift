@@ -89,7 +89,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         guard let anno_subtitle = view.annotation!.subtitle!, let anno_title = view.annotation!.title! else {
             return
         }
-        anno["subtitle"] = anno_subtitle
+        anno["subTitle"] = anno_subtitle
         anno["title"] = anno_title
         
         //遷移
@@ -100,8 +100,13 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailShabonViewController" {
             if let vc = segue.destination as? detailShabonViewController {
-                if let id = sender as? String {
-                    vc.shabon_id = id
+                if let anno = sender as? [String: Any] {
+                    if let title = anno["title"] as? String {
+                        vc.title = title
+                    }
+                    if let subTitle = anno["subTitle"] as? String {
+                        vc.subTitle = subTitle
+                    }
                 }
             }
         }
