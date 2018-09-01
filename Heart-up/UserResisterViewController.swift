@@ -17,6 +17,7 @@ class UserResisterViewController: UIViewController {
     
     
     
+    
     @IBAction func signUp(_ sender: Any) {
         guard let user_name = userNameInput.text, let email = emailInput.text, let password = passwordInput.text else {
             errorLabel.isHidden = false
@@ -65,6 +66,12 @@ class UserResisterViewController: UIViewController {
         userNameInput.delegate = self
         emailInput.delegate = self
         passwordInput.delegate = self
+        
+        //placeholderを指定
+        userNameInput.placeholder = "ユーザーネーム"
+        emailInput.placeholder = "メールアドレス"
+        passwordInput.placeholder = "パスワード"
+        
         // Do any additional setup after loading the view.
     }
 

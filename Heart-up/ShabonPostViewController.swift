@@ -12,6 +12,14 @@ import CoreLocation
 class ShabonPostViewController: UIViewController {
      var locationManager : CLLocationManager?
     
+    @IBOutlet weak var nayamiInput: UITextField!
+    
+    @IBOutlet weak var submitButton: UIButton!
+    
+    //常に更新される緯度経度を定義
+    var latitude :String?
+    var longitude :String?
+    
     //モーダルを消す
     @IBAction func back(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -23,6 +31,8 @@ class ShabonPostViewController: UIViewController {
         if locationManager != nil { return }
         locationManager = CLLocationManager()
         locationManager!.delegate = self
+        nayamiInput.placeholder = "悩みを入力してね"
+        submitButton.layer.cornerRadius = 2.0
         locationManager!.requestWhenInUseAuthorization()
         
         if CLLocationManager.locationServicesEnabled() {
@@ -94,11 +104,10 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
         
         let location:CLLocationCoordinate2D
             = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude)
-        print(location.latitude)
-        print(location.longitude)
-        let latitude = "".appendingFormat("%.4f", location.latitude)
-        let longitude = "".appendingFormat("%.4f", location.longitude)
-        
+        latitude = "".appendingFormat("%.4f", location.latitude)
+        longitude = "".appendingFormat("%.4f", location.longitude)
+        print(latitude)
+        print(longitude)
         
         // update annotation
         //        mapView.removeAnnotations(mapView.annotations)

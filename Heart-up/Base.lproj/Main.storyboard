@@ -68,14 +68,41 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uL2-GB-PgW">
+                                <rect key="frame" x="20" y="338.5" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="xOd-rX-J6z"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTT-4q-fEy">
+                                <rect key="frame" x="283" y="428" width="45" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.15352660539999999" green="0.12869876929999999" blue="0.93640840049999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="送信">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uL2-GB-PgW" firstAttribute="leading" secondItem="h3b-6G-u5Y" secondAttribute="leading" constant="20" id="4V6-sG-fTd"/>
+                            <constraint firstItem="h3b-6G-u5Y" firstAttribute="trailing" secondItem="uL2-GB-PgW" secondAttribute="trailing" constant="20" id="APq-90-tZs"/>
+                            <constraint firstItem="uL2-GB-PgW" firstAttribute="centerY" secondItem="YGN-bl-FPH" secondAttribute="centerY" constant="30" id="BPH-Km-hfG"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="h3b-6G-u5Y"/>
                     </view>
+                    <connections>
+                        <outlet property="nayami_tyext" destination="uL2-GB-PgW" id="3Z5-g5-cMJ"/>
+                        <outlet property="submitButton" destination="ZTT-4q-fEy" id="LEb-Qn-SE9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rpS-Lx-Ifn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3614" y="125"/>
+            <point key="canvasLocation" x="3613.5999999999999" y="124.58770614692655"/>
         </scene>
         <!--Detail Shabon View Controller-->
         <scene sceneID="eXu-eX-PNt">
