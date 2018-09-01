@@ -15,10 +15,10 @@ import SwiftyJSON
 class StockLocateInfos: NSObject {
     class func postLocate(locate :LocateInfo, callback: @escaping ([String: Any]?) -> Void){
         
-        //UserDefaultのuserIdとauth_tokenを定義なかったら弾く
+        //UserDefaultのauth_tokenを定義なかったら弾く
         guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                appDelegate.showMainStoryboard()
+                appDelegate.showLoginStoryboard()
             }
             return
         }
@@ -50,14 +50,24 @@ class StockLocateInfos: NSObject {
                 
             case .failure(let error):
                 print(error)
-                callback(["message": "サーバーエラーが発生しました"])
+                callback(["message": "んんサーバーエラーが発生しました"])
             }
         }
     }
     
     class func getLocate(callback: @escaping ([String: Any]?, JSON?) -> Void) {
-//        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos"
-          let url = "http://localhost:3000/locate_infos"
+        
+        // APIトークンがない場合はログイン画面へ.
+        //UserDefaultのauth_tokenを定義なかったら弾く
+        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+        
+//        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos?auth_token=" + auth_token
+          let url = "http://localhost:3000/locate_infos?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
             
@@ -65,7 +75,7 @@ class StockLocateInfos: NSObject {
             
             // 失敗した場合.
             if statusCode != 200 {
-                callback([ "message" : "サーバーでエラーが発生しました。"], nil)
+                callback([ "message" : "サーバーでエラーが発生しました。StockLocateController"], nil)
             }
             
             

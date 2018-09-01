@@ -23,13 +23,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
         
-        // APIトークンがない場合はログイン画面へ.
-        if UserDefaults.standard.string(forKey: "auth_token") == nil {
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                appDelegate.showLoginStoryboard()
-            }
-        }
-        
         mapView.delegate = self
         // tracking user location
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
