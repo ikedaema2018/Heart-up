@@ -109,7 +109,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 guard let subTitle = anno["subTitle"] as? String else {
                     return
                 }
-                vc.title = title
+                vc.title_new = title
                 vc.subTitle = subTitle
             }
         }

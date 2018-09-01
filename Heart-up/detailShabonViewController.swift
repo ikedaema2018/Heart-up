@@ -10,20 +10,16 @@ import UIKit
 class detailShabonViewController: UIViewController {
     
     //idを定義
-//    var title: String?
+    var title_new: String?
     var subTitle: String?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     
     
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let titleText = title {
+        if let titleText = title_new {
             titleLabel.text = titleText
         }
 
