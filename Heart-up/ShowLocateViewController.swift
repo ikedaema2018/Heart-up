@@ -100,20 +100,24 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailShabonViewController" {
             if let vc = segue.destination as? detailShabonViewController {
-                if let anno = sender as? [String: Any] {
-                    if let title = anno["title"] as? String {
-                        vc.title = title
-                    }
-                    if let subTitle = anno["subTitle"] as? String {
-                        vc.subTitle = subTitle
-                    }
+                guard let anno = sender as? [String: Any] else {
+                    return
                 }
+                guard let title = anno["title"] as? String else {
+                    return
+                }
+                guard let subTitle = anno["subTitle"] as? String else {
+                    return
+                }
+                vc.title = title
+                vc.subTitle = subTitle
             }
         }
     }
+}
     
     
     
     
 
-}
+

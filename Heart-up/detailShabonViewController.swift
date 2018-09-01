@@ -23,10 +23,16 @@ class detailShabonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if title != nil {
-            
+        if let titleText = title {
+            titleLabel.text = titleText
         }
+//
+        if let subTitleText = subTitle {
+//            subTitleLabel.text = subTitleText
+//        }
+        
         // Do any additional setup after loading the view.
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,4 +51,5 @@ class detailShabonViewController: UIViewController {
     }
     */
 
+    
 }

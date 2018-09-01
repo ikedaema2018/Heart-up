@@ -132,7 +132,7 @@
                         <viewLayoutGuide key="safeArea" id="idb-OC-EYB"/>
                     </view>
                     <connections>
-                        <outlet property="subtitleLabel" destination="UYW-Be-ZjB" id="xhz-ca-LXT"/>
+                        <outlet property="subTitleLabel" destination="UYW-Be-ZjB" id="1sM-0z-oci"/>
                         <outlet property="titleLabel" destination="GHb-un-5hK" id="FHP-63-q1w"/>
                     </connections>
                 </viewController>
