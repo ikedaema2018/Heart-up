@@ -16,17 +16,31 @@ class ShabonPostViewController: UIViewController {
     @IBOutlet weak var nayamiInput: UITextField!
     
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var errorLabel: UILabel!
+    
     
     //常に更新される緯度経度を定義
     var latitude :String?
     var longitude :String?
     
-    //モーダルを消す
-    @IBAction func back(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func nayamiSubmit(_ sender: Any) {
+        //悩みが入力されていなかったら弾く
+        guard let nayamiText = nayamiInput.text else {
+            errorLabel.isHidden = false
+            errorLabel.text = "悩みを入力してね！"
+            return
+        }
+        
+        if nayamiText == "" {
+            errorLabel.isHidden = false
+            errorLabel.text = "悩みを入力してね！"
+            return
+        }
+        errorLabel.isHidden = true
+        print(nayamiText)
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if locationManager != nil { return }
@@ -35,6 +49,8 @@ class ShabonPostViewController: UIViewController {
         nayamiInput.placeholder = "悩みを入力してね"
         submitButton.layer.cornerRadius = 2.0
         locationManager!.requestWhenInUseAuthorization()
+        errorLabel.isHidden = true
+        nayamiInput.delegate = self
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager!.startUpdatingLocation()
@@ -110,6 +126,12 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
         print(latitude)
         print(longitude)
         
+        
+        
+        
+        
+        
+        
         // update annotation
         //        mapView.removeAnnotations(mapView.annotations)
         //
@@ -121,5 +143,12 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
         // Showing annotation zooms the map automatically.
         //        mapView.showAnnotations(mapView.annotations, animated: true)
         
+    }
+}
+
+extension ShabonPostViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

@@ -20,6 +20,7 @@ class StockLocateInfos: NSObject {
 
         let params = [
             "locate": [
+                "nayami": locate.nayami,
                 "ido": locate.ido,
                 "keido": locate.keido
             ]

@@ -9,6 +9,7 @@
 import UIKit
 
 class LocateInfo: NSObject {
+    var nayami: String = ""
     var ido: String = ""
     var keido: String = ""
 }
