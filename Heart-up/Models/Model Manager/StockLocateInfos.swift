@@ -73,6 +73,8 @@ class StockLocateInfos: NSObject {
             
             let statusCode = response.response!.statusCode
             
+            
+            
             // 失敗した場合.
             if statusCode != 200 {
                 callback([ "message" : "サーバーでエラーが発生しました。StockLocateController"], nil)
