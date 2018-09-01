@@ -13,9 +13,18 @@ import SwiftyJSON
 
 
 class StockLocateInfos: NSObject {
-    class func postLocate(locate :LocateInfo){
+    class func postLocate(locate :LocateInfo, callback: @escaping ([String: Any]?) -> Void){
+        
+        //UserDefaultのuserIdとauth_tokenを定義なかったら弾く
+        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showMainStoryboard()
+            }
+            return
+        }
+        
 //        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos"
-        let url = "http://localhost:3000/local_infos"
+        let url = "http://localhost:3000/locate_infos?auth_token=" + auth_token
         
 
         let params = [
@@ -29,10 +38,19 @@ class StockLocateInfos: NSObject {
         Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
             switch response.result {
             case .success:
-                let success = response.result.value
-                print(success)
-            case .failure:
-                print("失敗")
+                if response.response?.statusCode != 200 {
+                    if let result = response.result.value as? [String: Any] {
+                        callback(result)
+                    } else {
+                        callback([ "message" : "サーバーエラーが発生しました" ])
+                    }
+                    return
+                }
+                callback(nil)
+                
+            case .failure(let error):
+                print(error)
+                callback(["message": "サーバーエラーが発生しました"])
             }
         }
     }
