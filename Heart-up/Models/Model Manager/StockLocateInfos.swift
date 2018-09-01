@@ -23,9 +23,9 @@ class StockLocateInfos: NSObject {
             return
         }
         
-//        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos"
+//        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos?auth_token=" + auth_token
         let url = "http://localhost:3000/locate_infos?auth_token=" + auth_token
-        
+//
 
         let params = [
             "locate": [

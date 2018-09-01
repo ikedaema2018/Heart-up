@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 let apiRoot = "http://localhost:3000"
+//let apiRoot = "https://aqueous-temple-50173.herokuapp.com"
 
 class ApiManager {
     static let shared = ApiManager()
