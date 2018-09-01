@@ -30,14 +30,20 @@ class ShabonPostViewController: UIViewController {
             errorLabel.text = "悩みを入力してね！"
             return
         }
-        
         if nayamiText == "" {
             errorLabel.isHidden = false
             errorLabel.text = "悩みを入力してね！"
             return
         }
         errorLabel.isHidden = true
-        print(nayamiText)
+        
+        //緯度と経度をアンラップ
+        guard let ido = latitude, let keido = longitude else {
+            errorLabel.text = "緯度と経度が取得できないよ！"
+            return
+        }
+        
+        let nayamiLocate = LocateInfo(nayami: nayamiText, ido: ido, keido: keido)
     }
     
     
