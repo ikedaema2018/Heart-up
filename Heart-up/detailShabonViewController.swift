@@ -10,7 +10,7 @@ import UIKit
 class detailShabonViewController: UIViewController {
     
     //idを定義
-    var title: String?
+//    var title: String?
     var subTitle: String?
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,14 +26,14 @@ class detailShabonViewController: UIViewController {
         if let titleText = title {
             titleLabel.text = titleText
         }
-//
+
         if let subTitleText = subTitle {
-//            subTitleLabel.text = subTitleText
-//        }
+            subTitleLabel.text = subTitleText
+        }
         
         // Do any additional setup after loading the view.
-        }
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
