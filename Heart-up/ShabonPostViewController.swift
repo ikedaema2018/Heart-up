@@ -24,6 +24,14 @@ class ShabonPostViewController: UIViewController {
     var longitude :String?
     
     @IBAction func nayamiSubmit(_ sender: Any) {
+        //UserDefaultのuserIdとauth_tokenを定義
+        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showMainStoryboard()
+            }
+            return
+        }
+        
         //悩みが入力されていなかったら弾く
         guard let nayamiText = nayamiInput.text else {
             errorLabel.isHidden = false
@@ -42,6 +50,8 @@ class ShabonPostViewController: UIViewController {
             errorLabel.text = "緯度と経度が取得できないよ！"
             return
         }
+        
+        
         
         let nayamiLocate = LocateInfo(nayami: nayamiText, ido: ido, keido: keido)
     }
@@ -129,13 +139,6 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
             = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude)
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
-        print(latitude)
-        print(longitude)
-        
-        
-        
-        
-        
         
         
         // update annotation
