@@ -84,14 +84,16 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        guard let anno = view.annotation!.subtitle else {
+        var anno: [String: Any] = [:]
+        
+        guard let anno_subtitle = view.annotation!.subtitle!, let anno_title = view.annotation!.title! else {
             return
         }
-        
-        let anno_id = anno!
+        anno["subtitle"] = anno_subtitle
+        anno["title"] = anno_title
         
         //遷移
-        performSegue(withIdentifier: "toDetailShabonViewController", sender: anno_id)
+        performSegue(withIdentifier: "toDetailShabonViewController", sender: anno)
     }
     
     //ページ遷移で数値を
