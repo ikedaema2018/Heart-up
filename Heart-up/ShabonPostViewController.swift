@@ -12,6 +12,7 @@ import CoreLocation
 class ShabonPostViewController: UIViewController {
      var locationManager : CLLocationManager?
     
+    
     @IBOutlet weak var nayamiInput: UITextField!
     
     @IBOutlet weak var submitButton: UIButton!

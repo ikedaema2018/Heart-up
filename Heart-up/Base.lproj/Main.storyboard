@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eOz-S2-Qse">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dDi-hv-esG">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Heart up-->
+        <!--Show Locate View Controller-->
         <scene sceneID="kwr-G1-Bmu">
             <objects>
                 <viewController id="1zu-iP-IYj" customClass="ShowLocateViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,23 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rNy-YI-eZf">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </mapView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nie-lW-R67">
+                                <rect key="frame" x="-20" y="44" width="415" height="643"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rNy-YI-eZf">
+                                        <rect key="frame" x="20" y="20" width="375" height="603"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </mapView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="qLG-PL-zpr" firstAttribute="bottom" secondItem="rNy-YI-eZf" secondAttribute="bottom" id="8z6-gi-hof"/>
-                            <constraint firstItem="qLG-PL-zpr" firstAttribute="trailing" secondItem="rNy-YI-eZf" secondAttribute="trailing" id="OeE-wh-5jG"/>
-                            <constraint firstItem="rNy-YI-eZf" firstAttribute="top" secondItem="qLG-PL-zpr" secondAttribute="top" id="hSU-db-qTc"/>
-                            <constraint firstItem="rNy-YI-eZf" firstAttribute="leading" secondItem="qLG-PL-zpr" secondAttribute="leading" id="oj1-vW-xgK"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qLG-PL-zpr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Heart up" id="Uw4-a9-e8i">
-                        <barButtonItem key="rightBarButtonItem" title="post" id="Udy-PB-7iU">
+                    <navigationItem key="navigationItem" id="l4P-DE-O0Y">
+                        <barButtonItem key="rightBarButtonItem" title="post" id="5YZ-j3-9Nk">
                             <connections>
-                                <segue destination="LSX-1G-oj3" kind="presentation" id="6aB-yi-bkw"/>
+                                <segue destination="LSX-1G-oj3" kind="push" id="TM5-8b-uWD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -45,7 +47,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3X-zF-2Q7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="124.58770614692655"/>
+            <point key="canvasLocation" x="3719.1999999999998" y="124.58770614692655"/>
         </scene>
         <!--Shabon Post View Controller-->
         <scene sceneID="TgN-C3-gTL">
@@ -55,19 +57,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nuY-4a-H4x">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="悩みをシャボン玉に" id="zdR-ie-pfM">
-                                        <barButtonItem key="leftBarButtonItem" title="back" id="0b8-Xg-GWE">
-                                            <connections>
-                                                <action selector="back:" destination="LSX-1G-oj3" id="7j1-lF-aRk"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uL2-GB-PgW">
                                 <rect key="frame" x="20" y="338.5" width="335" height="50"/>
                                 <constraints>
@@ -95,14 +84,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h3b-6G-u5Y"/>
                     </view>
+                    <navigationItem key="navigationItem" id="TBZ-Pq-9mx"/>
                     <connections>
-                        <outlet property="nayami_tyext" destination="uL2-GB-PgW" id="3Z5-g5-cMJ"/>
+                        <outlet property="nayamiInput" destination="uL2-GB-PgW" id="8TE-oL-DgI"/>
                         <outlet property="submitButton" destination="ZTT-4q-fEy" id="LEb-Qn-SE9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rpS-Lx-Ifn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3613.5999999999999" y="124.58770614692655"/>
+            <point key="canvasLocation" x="4552.8000000000002" y="124.58770614692655"/>
         </scene>
         <!--Detail Shabon View Controller-->
         <scene sceneID="eXu-eX-PNt">
@@ -132,22 +122,22 @@
             <point key="canvasLocation" x="1474.4000000000001" y="861.3193403298352"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="1Is-0F-0Lp">
+        <scene sceneID="MBt-TA-m4x">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eOz-S2-Qse" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dDi-hv-esG" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="83c-aD-7Rp">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="DtJ-qt-lzV">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="1zu-iP-IYj" kind="relationship" relationship="rootViewController" id="9Ep-My-jTB"/>
+                        <segue destination="1zu-iP-IYj" kind="relationship" relationship="rootViewController" id="y3y-5e-81u"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="xuK-NE-VTk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dZe-Wn-g3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1840.8" y="124.58770614692655"/>
+            <point key="canvasLocation" x="2780" y="124.58770614692655"/>
         </scene>
     </scenes>
 </document>
