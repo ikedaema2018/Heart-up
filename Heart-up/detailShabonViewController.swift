@@ -16,6 +16,9 @@ class detailShabonViewController: UIViewController {
     @IBOutlet weak var nayamiLabel: UILabel!
     @IBOutlet weak var commentInput: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var commentsTable: UITableView!
+    var data: [String] = []
+    
     
     @IBAction func commentAction(_ sender: Any) {
         guard let anno_id = locateId else {
@@ -54,7 +57,6 @@ class detailShabonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         commentInput.delegate = self
         commentInput.placeholder = "この悩みにコメントする"
         errorLabel.isHidden = true
@@ -79,12 +81,21 @@ class detailShabonViewController: UIViewController {
                 return
             }
             
+            let nayami_comment_array = locate["nayami_comments"]
+            
+            for nayami in nayami_comment_array {
+                if let nayami_comment = nayami.1["nayami_comment"].string {
+                    self.data += [nayami_comment]
+                }
+            }
+            print(self.data)
+            
             self.whoNayami.text = locate["user"]["user_name"].string
             self.nayamiLabel.text = locate["nayami"].string
         })
-        
-        
-        
+        //TableView用
+        commentsTable.delegate = self
+        commentsTable.dataSource = self
         
         // Do any additional setup after loading the view.
         
@@ -114,4 +125,17 @@ extension detailShabonViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+}
+
+extension detailShabonViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myCell")
+        cell.textLabel?.text = data[indexPath.row]
+        return cell
+    }
+    
 }
