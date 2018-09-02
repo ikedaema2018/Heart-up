@@ -88,10 +88,10 @@ class detailShabonViewController: UIViewController {
                     self.data += [nayami_comment]
                 }
             }
-            print(self.data)
             
             self.whoNayami.text = locate["user"]["user_name"].string
             self.nayamiLabel.text = locate["nayami"].string
+            self.commentsTable.reloadData()
         })
         //TableView用
         commentsTable.delegate = self
