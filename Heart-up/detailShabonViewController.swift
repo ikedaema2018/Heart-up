@@ -11,6 +11,8 @@ class detailShabonViewController: UIViewController {
     
     //idを定義
     var locateId: String?
+    @IBOutlet weak var whoNayami: UILabel!
+    @IBOutlet weak var nayamiLabel: UILabel!
     
     
     
@@ -22,6 +24,7 @@ class detailShabonViewController: UIViewController {
         }
         
         StockLocateInfos.getDetailLocation(id: annoId, callback: {error, locate in
+            
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
@@ -32,13 +35,12 @@ class detailShabonViewController: UIViewController {
                 return
             }
             
-            guard locate != nil else {
+            guard let locate = locate else {
                 return
             }
             
-            
-            
-            
+            self.whoNayami.text = locate["user"]["user_name"].string
+            self.nayamiLabel.text = locate["nayami"].string
         })
         
         
