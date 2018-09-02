@@ -94,18 +94,17 @@ class StockLocateInfos: NSObject {
 
     }
     
-    class func getDetailLocation(id: String, callback: @escaping ([String: Any]?, JSON?) -> ([String]?)) -> [String]?{
+    class func getDetailLocation(id: String, callback: @escaping ([String: Any]?, JSON?) -> Void) {
         //auth_tokenがないときはリターン
         guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                 appDelegate.showLoginStoryboard()
             }
-            return []
+            return
         }
         //Alamofireで検索
         //        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos?auth_token=" + auth_token + "&id=" + id
         let url = "http://localhost:3000/locate_infos/" + id + "/?auth_token=" + auth_token
-        var data: [String]?
         Alamofire.request(url, method: .get).responseJSON {response in
             let statusCode = response.response!.statusCode
             
@@ -117,9 +116,8 @@ class StockLocateInfos: NSObject {
             let object = response.result.value
             
             let obj = JSON(object)
-            data = callback(nil, obj)
+            callback(nil, obj)
         }
-        return data
     }
     
 }
