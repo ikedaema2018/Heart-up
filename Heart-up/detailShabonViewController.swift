@@ -11,13 +11,53 @@ class detailShabonViewController: UIViewController {
     
     //idを定義
     var locateId: String?
+    
     @IBOutlet weak var whoNayami: UILabel!
     @IBOutlet weak var nayamiLabel: UILabel!
+    @IBOutlet weak var commentInput: UITextField!
+    @IBOutlet weak var errorLabel: UILabel!
+    
+    @IBAction func commentAction(_ sender: Any) {
+        guard let anno_id = locateId else {
+            return
+        }
+        guard let annoId = Int(anno_id) else {
+            return
+        }
+        
+        guard let comment = commentInput.text else {
+            errorLabel.isHidden = false
+            errorLabel.text = "コメントを入力してから送信してね"
+            return
+        }
+        if comment == "" {
+            errorLabel.isHidden = false
+            errorLabel.text = "コメントを入力してから送信してね"
+            return
+        }
+        
+        //ポストします
+        NayamiComment.nayamiCommentPost(locate_info_id: annoId, comment: comment, callback: { error in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    self.showAlert(message: message, hide: {})
+                } else {
+                    self.showAlert(message: "エラーが発生しました", hide: {})
+                }
+                return
+            }
+            self.showAlert(message: "投稿しました", hide: {})
+        })
+    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        commentInput.delegate = self
+        commentInput.placeholder = "この悩みにコメントする"
+        errorLabel.isHidden = true
         //ここにIDで検索する処理をかく
         guard let annoId = locateId else {
             return
@@ -67,5 +107,11 @@ class detailShabonViewController: UIViewController {
     }
     */
 
-    
+}
+
+extension detailShabonViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

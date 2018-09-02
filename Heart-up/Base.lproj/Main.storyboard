@@ -127,12 +127,45 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ida-nQ-dDu">
+                                <rect key="frame" x="20" y="308.5" width="335" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="z32-mb-zFg"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzm-R7-aUM">
+                                <rect key="frame" x="317" y="382" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="送信"/>
+                                <connections>
+                                    <action selector="commentAction:" destination="xI9-3v-M6q" eventType="touchUpInside" id="R0C-Z8-Z3T"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="エラーエラー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTM-3n-MeZ">
+                                <rect key="frame" x="20" y="281.5" width="335" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="QTM-3n-MeZ" firstAttribute="leading" secondItem="idb-OC-EYB" secondAttribute="leading" constant="20" id="3Ms-Fv-tUJ"/>
+                            <constraint firstItem="idb-OC-EYB" firstAttribute="trailing" secondItem="QTM-3n-MeZ" secondAttribute="trailing" constant="20" id="7Gv-zg-BA9"/>
+                            <constraint firstItem="ida-nQ-dDu" firstAttribute="leading" secondItem="idb-OC-EYB" secondAttribute="leading" constant="20" id="7RL-PH-MYE"/>
+                            <constraint firstItem="ida-nQ-dDu" firstAttribute="centerY" secondItem="it1-GJ-6Rs" secondAttribute="centerY" id="9fe-fY-Yva"/>
+                            <constraint firstItem="ida-nQ-dDu" firstAttribute="top" secondItem="QTM-3n-MeZ" secondAttribute="bottom" constant="10" id="PEW-12-URE"/>
+                            <constraint firstItem="idb-OC-EYB" firstAttribute="trailing" secondItem="ida-nQ-dDu" secondAttribute="trailing" constant="20" id="jGX-pt-Kij"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="idb-OC-EYB"/>
                     </view>
                     <navigationItem key="navigationItem" title="誰かの困りごと" id="w4m-g7-y1X"/>
                     <connections>
+                        <outlet property="commentInput" destination="ida-nQ-dDu" id="let-I0-cvm"/>
+                        <outlet property="errorLabel" destination="QTM-3n-MeZ" id="XbE-Mr-lLg"/>
                         <outlet property="nayamiLabel" destination="2XU-yV-LIp" id="LJe-O7-SYd"/>
                         <outlet property="whoNayami" destination="Ggo-oo-yQ1" id="7LD-Dd-6Rz"/>
                     </connections>
