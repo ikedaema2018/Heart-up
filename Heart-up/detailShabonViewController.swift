@@ -10,24 +10,42 @@ import UIKit
 class detailShabonViewController: UIViewController {
     
     //idを定義
-    var title_new: String?
-    var subTitle: String?
+    var locateId: String?
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subTitleLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let titleText = title_new {
-            titleLabel.text = titleText
-        }
-
-        if let subTitleText = subTitle {
-            subTitleLabel.text = subTitleText
+        //ここにIDで検索する処理をかく
+        guard let annoId = locateId else {
+            return
         }
         
+        StockLocateInfos.getDetailLocation(id: annoId, callback: {error, locate in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                } else {
+                    print("不明なエラーが発生しました")
+                }
+                return
+            }
+            
+            guard locate != nil else {
+                return
+            }
+            
+            
+            
+            
+        })
+        
+        
+        
+        
         // Do any additional setup after loading the view.
+        
     }
     
     

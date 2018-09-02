@@ -85,33 +85,28 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        var anno: [String: Any] = [:]
         
-        guard let anno_subtitle = view.annotation!.subtitle!, let anno_title = view.annotation!.title! else {
+        //subTitleの文字列の加工
+        guard let locate_id = view.annotation!.subtitle! else {
             return
         }
-        anno["subTitle"] = anno_subtitle
-        anno["title"] = anno_title
+        
+        let locate_id_str = String(locate_id[..<locate_id.index(locate_id.startIndex, offsetBy: 1)])
+        
         
         //遷移
-        performSegue(withIdentifier: "toDetailShabonViewController", sender: anno)
+        performSegue(withIdentifier: "toDetailShabonViewController", sender: locate_id_str)
     }
     
     //ページ遷移で数値を
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let locateId = sender as? String else {
+            return
+        }
+        
         if segue.identifier == "toDetailShabonViewController" {
             if let vc = segue.destination as? detailShabonViewController {
-                guard let anno = sender as? [String: Any] else {
-                    return
-                }
-                guard let title = anno["title"] as? String else {
-                    return
-                }
-                guard let subTitle = anno["subTitle"] as? String else {
-                    return
-                }
-                vc.title_new = title
-                vc.subTitle = subTitle
+                vc.locateId = locateId
             }
         }
     }

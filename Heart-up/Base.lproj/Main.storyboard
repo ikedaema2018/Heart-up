@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Show Locate View Controller-->
+        <!--Heart up-->
         <scene sceneID="kwr-G1-Bmu">
             <objects>
                 <viewController id="1zu-iP-IYj" customClass="ShowLocateViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +33,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="qLG-PL-zpr"/>
                     </view>
-                    <navigationItem key="navigationItem" id="l4P-DE-O0Y">
+                    <navigationItem key="navigationItem" title="Heart up" id="l4P-DE-O0Y">
                         <barButtonItem key="rightBarButtonItem" title="post" id="5YZ-j3-9Nk">
                             <connections>
                                 <segue destination="LSX-1G-oj3" kind="push" id="TM5-8b-uWD"/>
@@ -49,7 +49,7 @@
             </objects>
             <point key="canvasLocation" x="3719.1999999999998" y="124.58770614692655"/>
         </scene>
-        <!--Shabon Post View Controller-->
+        <!--あなたの不安は？-->
         <scene sceneID="TgN-C3-gTL">
             <objects>
                 <viewController id="LSX-1G-oj3" customClass="ShabonPostViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,7 +94,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h3b-6G-u5Y"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TBZ-Pq-9mx"/>
+                    <navigationItem key="navigationItem" title="あなたの不安は？" id="TBZ-Pq-9mx"/>
                     <connections>
                         <outlet property="errorLabel" destination="aNP-CW-wtf" id="md5-mY-76n"/>
                         <outlet property="nayamiInput" destination="uL2-GB-PgW" id="8TE-oL-DgI"/>
@@ -105,37 +105,17 @@
             </objects>
             <point key="canvasLocation" x="4552.8000000000002" y="124.58770614692655"/>
         </scene>
-        <!--Detail Shabon View Controller-->
+        <!--誰かの困りごと-->
         <scene sceneID="eXu-eX-PNt">
             <objects>
                 <viewController id="xI9-3v-M6q" customClass="detailShabonViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="it1-GJ-6Rs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GHb-un-5hK">
-                                <rect key="frame" x="16" y="137" width="343" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYW-Be-ZjB">
-                                <rect key="frame" x="16" y="204" width="343" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="idb-OC-EYB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="w4m-g7-y1X"/>
-                    <connections>
-                        <outlet property="subTitleLabel" destination="UYW-Be-ZjB" id="1sM-0z-oci"/>
-                        <outlet property="titleLabel" destination="GHb-un-5hK" id="FHP-63-q1w"/>
-                    </connections>
+                    <navigationItem key="navigationItem" title="誰かの困りごと" id="w4m-g7-y1X"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RvV-ha-3DT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
