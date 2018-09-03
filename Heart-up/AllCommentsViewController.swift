@@ -1,5 +1,5 @@
 //
-//  SendCommentViewController.swift
+//  AllCommentsViewController.swift
 //  Heart-up
 //
 //  Created by 前田啓 on 2018/09/03.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SendCommentViewController: UIViewController {
+class AllCommentsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

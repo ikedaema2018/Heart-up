@@ -112,19 +112,29 @@
                     <view key="view" contentMode="scaleToFill" id="xuy-Mc-fvE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MWU-qH-I2C">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="h4f-HZ-TUe"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="MyShabon" image="shabon" id="2ra-eg-w6Y"/>
+                    <connections>
+                        <outlet property="myShabonTable" destination="MWU-qH-I2C" id="eBI-eS-Tdz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsm-AQ-XEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="939"/>
+            <point key="canvasLocation" x="2780" y="938.68065967016503"/>
         </scene>
         <!--comment-->
         <scene sceneID="L1a-aZ-6mv">
             <objects>
-                <viewController id="jfO-mH-eiT" customClass="SendCommentViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="jfO-mH-eiT" customClass="AllCommentsViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cjG-Kt-Y2x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

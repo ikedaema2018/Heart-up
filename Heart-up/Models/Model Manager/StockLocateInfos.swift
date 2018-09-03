@@ -120,4 +120,31 @@ class StockLocateInfos: NSObject {
         }
     }
     
+    //myShabonで自分が投稿したシャボン玉一覧を出すためのもの
+    class func getMyShabon(callback: @escaping ([String: Any]?, JSON?) -> Void) {
+        //auth_tokenがないときはリターン
+        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+        //Alamofireで検索
+        //        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos?auth_token=" + auth_token + "&id=" + id
+        let url = "http://localhost:3000/locate_infos/find_my_shabon?auth_token=" + auth_token
+        Alamofire.request(url, method: .get).responseJSON {response in
+            let statusCode = response.response!.statusCode
+            
+            //失敗したとき
+            if statusCode != 200 {
+                callback(["message": "サーバーでエラーが発生しました"], nil)
+            }
+            
+            let object = response.result.value
+            
+            let obj = JSON(object)
+            callback(nil, obj)
+        }
+    }
+    
 }
