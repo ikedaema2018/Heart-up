@@ -136,7 +136,6 @@ extension detailShabonViewController: UITableViewDelegate, UITableViewDataSource
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myCell")
             cell.textLabel?.text = data[indexPath.row]
             return cell
-       
     }
     
 }
