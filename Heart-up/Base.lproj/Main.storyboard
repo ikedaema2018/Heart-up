@@ -78,11 +78,28 @@
                                     <action selector="nayamiSubmit:" destination="LSX-1G-oj3" eventType="touchUpInside" id="PDo-0W-cQS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="エラーエラー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNP-CW-wtf">
-                                <rect key="frame" x="20" y="283" width="335" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="エラーエラー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNP-CW-wtf">
+                                <rect key="frame" x="20" y="296.5" width="335" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="b1i-HP-VPi">
+                                <rect key="frame" x="16" y="217" width="343" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="赤"/>
+                                    <segment title="青"/>
+                                    <segment title="黄"/>
+                                </segments>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="悩みの色を選択してね" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ts-gB-c4z">
+                                <rect key="frame" x="20" y="188" width="174" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -91,6 +108,7 @@
                             <constraint firstItem="uL2-GB-PgW" firstAttribute="leading" secondItem="h3b-6G-u5Y" secondAttribute="leading" constant="20" id="4V6-sG-fTd"/>
                             <constraint firstItem="h3b-6G-u5Y" firstAttribute="trailing" secondItem="uL2-GB-PgW" secondAttribute="trailing" constant="20" id="APq-90-tZs"/>
                             <constraint firstItem="uL2-GB-PgW" firstAttribute="centerY" secondItem="YGN-bl-FPH" secondAttribute="centerY" constant="30" id="BPH-Km-hfG"/>
+                            <constraint firstItem="uL2-GB-PgW" firstAttribute="top" secondItem="aNP-CW-wtf" secondAttribute="bottom" constant="21.5" id="tYb-pk-6X1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h3b-6G-u5Y"/>
                     </view>
@@ -98,6 +116,7 @@
                     <connections>
                         <outlet property="errorLabel" destination="aNP-CW-wtf" id="md5-mY-76n"/>
                         <outlet property="nayamiInput" destination="uL2-GB-PgW" id="8TE-oL-DgI"/>
+                        <outlet property="selectedColor" destination="b1i-HP-VPi" id="N6a-KP-r6o"/>
                         <outlet property="submitButton" destination="ZTT-4q-fEy" id="LEb-Qn-SE9"/>
                     </connections>
                 </viewController>
@@ -123,9 +142,6 @@
                         <viewLayoutGuide key="safeArea" id="h4f-HZ-TUe"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="MyShabon" image="shabon" id="2ra-eg-w6Y"/>
-                    <connections>
-                        <outlet property="myShabonTable" destination="MWU-qH-I2C" id="eBI-eS-Tdz"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsm-AQ-XEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

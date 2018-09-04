@@ -12,17 +12,20 @@ class LocateInfo: NSObject {
     let nayami: String
     let ido: String
     let keido: String
+    let color: String
     
     func printName() {
         print(nayami)
         print(ido)
         print(keido)
+        print(color)
     }
     
-    init(nayami: String, ido: String, keido: String) {
+    init(nayami: String, ido: String, keido: String, color: String) {
         self.nayami = nayami
         self.ido = ido
         self.keido = keido
+        self.color = color
         super.init()
         printName()
     }

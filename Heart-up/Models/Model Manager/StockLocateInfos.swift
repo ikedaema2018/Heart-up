@@ -31,7 +31,8 @@ class StockLocateInfos: NSObject {
             "locate": [
                 "nayami": locate.nayami,
                 "ido": locate.ido,
-                "keido": locate.keido
+                "keido": locate.keido,
+                "color": locate.color
             ]
         ]
         

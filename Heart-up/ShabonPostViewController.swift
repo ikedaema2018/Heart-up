@@ -17,6 +17,7 @@ class ShabonPostViewController: UIViewController {
     
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var selectedColor: UISegmentedControl!
     
     
     //常に更新される緯度経度を定義
@@ -24,7 +25,16 @@ class ShabonPostViewController: UIViewController {
     var longitude :String?
     
     @IBAction func nayamiSubmit(_ sender: Any) {
+        //悩みを色を表示
+        let segmentIndex = selectedColor.selectedSegmentIndex
+        let shabonColor = selectedColor.titleForSegment(at: segmentIndex)
+        print(shabonColor)
         
+        guard let color = shabonColor else {
+            errorLabel.isHidden = false
+            errorLabel.text = "色を選択してね！"
+            return
+        }
         
         //悩みが入力されていなかったら弾く
         guard let nayamiText = nayamiInput.text else {
@@ -47,7 +57,7 @@ class ShabonPostViewController: UIViewController {
         
         
         
-        let nayamiLocate = LocateInfo(nayami: nayamiText, ido: ido, keido: keido)
+        let nayamiLocate = LocateInfo(nayami: nayamiText, ido: ido, keido: keido, color: color)
         StockLocateInfos.postLocate(locate: nayamiLocate) { error in
             if let error = error {
                 if let message = error["message"] as? String {
