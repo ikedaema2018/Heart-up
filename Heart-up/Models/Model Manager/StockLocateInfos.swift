@@ -89,7 +89,6 @@ class StockLocateInfos: NSObject {
             
             let obj = JSON(object)
             
-            
             callback(nil, obj)
         }
 

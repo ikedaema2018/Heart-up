@@ -12,9 +12,12 @@ import CoreLocation
 
 class MapModule: NSObject  {
     
-    class func setAnnotation(x: String,y: String, map: MKMapView?, id: Int, nayami: String, user_id: Int, user_name: String) ->Void {
+    class func setAnnotation(x: String,y: String, map: MKMapView?, id: Int, nayami: String, user_id: Int, user_name: String, color: String) ->Void {
         //StringをDouble型に変換
-        let annotation = MKPointAnnotation()
+        let annotation = CustomAnnotation()
+        //独自のクラスを使用
+        annotation.data = ["color": color as AnyObject]
+        print(annotation.data)
         annotation.coordinate = CLLocationCoordinate2DMake(Double(x)!,Double(y)!)
         annotation.title = nayami
 //        annotation.subtitle = "\(annotation.coordinate.latitude), \(annotation.coordinate.longitude)"

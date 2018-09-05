@@ -27,6 +27,7 @@
 		C894CFB9213CE6DE007957E2 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */; };
 		C894CFBD213CE787007957E2 /* MyShabonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFBC213CE787007957E2 /* MyShabonViewController.swift */; };
 		C894CFBF213CF4ED007957E2 /* AllCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */; };
+		C894CFC1213F496D007957E2 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFC0213F496D007957E2 /* Annotation.swift */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
 		C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */; };
@@ -56,6 +57,7 @@
 		C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		C894CFBC213CE787007957E2 /* MyShabonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonViewController.swift; sourceTree = "<group>"; };
 		C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsViewController.swift; sourceTree = "<group>"; };
+		C894CFC0213F496D007957E2 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
 		C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowLocateViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/ShowLocateViewController.swift"; sourceTree = "<absolute>"; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				C8EB10D0212FD12100B61D34 /* LocateInfo.swift */,
+				C894CFC0213F496D007957E2 /* Annotation.swift */,
 			);
 			path = "Model Object";
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8168D782138EA78007084A1 /* UserResisterViewController.swift in Sources */,
+				C894CFC1213F496D007957E2 /* Annotation.swift in Sources */,
 				C8168D70213813C4007084A1 /* Api.swift in Sources */,
 				C8168D1621318122007084A1 /* MapModule.swift in Sources */,
 				C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */,
