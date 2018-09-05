@@ -9,12 +9,15 @@
 import UIKit
 
 class MyShabonViewController: UIViewController {
-    var data: [String] = []
+    var post: [[String: Any]] = []
     
     @IBOutlet weak var myShabonTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        myShabonTable.register(UINib(nibName: "MyShabonCell", bundle: nil), forCellReuseIdentifier: "MyShabonCell")
+        
         
         myShabonTable.dataSource = self
         myShabonTable.delegate = self
@@ -68,7 +71,7 @@ extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myCell")
+        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "MyShabonCell") as! MyShabonCell
         cell.textLabel?.text = data[indexPath.row]
         return cell
     }
@@ -77,6 +80,7 @@ extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
+    
     //Mark: ヘッダーに設定するViewを設定する
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         
@@ -92,7 +96,6 @@ extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
         headerLabel.textColor = UIColor.white
         headerLabel.textAlignment = NSTextAlignment.center
         view.addSubview(headerLabel)
-        
         return view
     }
 }

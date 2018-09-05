@@ -78,7 +78,7 @@
                                     <action selector="nayamiSubmit:" destination="LSX-1G-oj3" eventType="touchUpInside" id="PDo-0W-cQS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="エラーエラー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNP-CW-wtf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="エラーエラー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNP-CW-wtf">
                                 <rect key="frame" x="20" y="296.5" width="335" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -108,6 +108,8 @@
                             <constraint firstItem="uL2-GB-PgW" firstAttribute="leading" secondItem="h3b-6G-u5Y" secondAttribute="leading" constant="20" id="4V6-sG-fTd"/>
                             <constraint firstItem="h3b-6G-u5Y" firstAttribute="trailing" secondItem="uL2-GB-PgW" secondAttribute="trailing" constant="20" id="APq-90-tZs"/>
                             <constraint firstItem="uL2-GB-PgW" firstAttribute="centerY" secondItem="YGN-bl-FPH" secondAttribute="centerY" constant="30" id="BPH-Km-hfG"/>
+                            <constraint firstItem="aNP-CW-wtf" firstAttribute="leading" secondItem="h3b-6G-u5Y" secondAttribute="leading" constant="20" id="U6Y-hx-5Fj"/>
+                            <constraint firstItem="h3b-6G-u5Y" firstAttribute="trailing" secondItem="aNP-CW-wtf" secondAttribute="trailing" constant="20" id="bCm-Md-hco"/>
                             <constraint firstItem="uL2-GB-PgW" firstAttribute="top" secondItem="aNP-CW-wtf" secondAttribute="bottom" constant="21.5" id="tYb-pk-6X1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h3b-6G-u5Y"/>
@@ -136,12 +138,25 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Kmn-Fa-orN">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Kmn-Fa-orN" id="tD6-IL-EW5">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="h4f-HZ-TUe"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="MyShabon" image="shabon" id="2ra-eg-w6Y"/>
+                    <connections>
+                        <outlet property="myShabonTable" destination="MWU-qH-I2C" id="cvH-e6-uYZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsm-AQ-XEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -266,6 +281,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Zen-qk-s39" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Owp-gY-VV0">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
