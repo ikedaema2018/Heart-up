@@ -17,7 +17,6 @@ class MapModule: NSObject  {
         let annotation = CustomAnnotation()
         //独自のクラスを使用
         annotation.data = ["color": color as AnyObject]
-        print(annotation.data)
         annotation.coordinate = CLLocationCoordinate2DMake(Double(x)!,Double(y)!)
         annotation.title = nayami
 //        annotation.subtitle = "\(annotation.coordinate.latitude), \(annotation.coordinate.longitude)"

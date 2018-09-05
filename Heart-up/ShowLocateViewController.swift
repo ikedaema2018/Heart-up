@@ -83,12 +83,18 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 // ( annotation as! CustomAnnotation )をしないと
                 // CustomAnnotationクラスで定義した変数が取れないので注意！
                 if let color = (( annotation as! CustomAnnotation ).data["color"]) {
-                    print(color)
-                    anno.image = UIImage(named: "star")
+                    let color_s = color as! String
+                    
+                    if color_s  == "黄" {
+                        anno.image = UIImage(named: "yellow")
+                    } else if color_s == "青" {
+                        anno.image = UIImage(named: "blue")
+                    } else if color_s == "赤" {
+                        anno.image = UIImage(named: "red")
+                    }
                 } else {
                     print("だめ")
                 }
-                
                 return anno
             }
         }
