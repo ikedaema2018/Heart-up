@@ -28,8 +28,8 @@
 		C894CFBD213CE787007957E2 /* MyShabonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFBC213CE787007957E2 /* MyShabonViewController.swift */; };
 		C894CFBF213CF4ED007957E2 /* AllCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */; };
 		C894CFC1213F496D007957E2 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFC0213F496D007957E2 /* Annotation.swift */; };
-		C894CFC6214014D7007957E2 /* MyShabonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFC5214014D7007957E2 /* MyShabonCell.swift */; };
-		C894CFCA21401812007957E2 /* MyShabonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C894CFC921401812007957E2 /* MyShabonCell.xib */; };
+		C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFCB2140D32B007957E2 /* MyShabonTableViewCell.swift */; };
+		C894CFCE2140D32B007957E2 /* MyShabonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C894CFCC2140D32B007957E2 /* MyShabonTableViewCell.xib */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
 		C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */; };
@@ -60,8 +60,8 @@
 		C894CFBC213CE787007957E2 /* MyShabonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonViewController.swift; sourceTree = "<group>"; };
 		C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsViewController.swift; sourceTree = "<group>"; };
 		C894CFC0213F496D007957E2 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
-		C894CFC5214014D7007957E2 /* MyShabonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonCell.swift; sourceTree = "<group>"; };
-		C894CFC921401812007957E2 /* MyShabonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonCell.xib; sourceTree = "<group>"; };
+		C894CFCB2140D32B007957E2 /* MyShabonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonTableViewCell.swift; sourceTree = "<group>"; };
+		C894CFCC2140D32B007957E2 /* MyShabonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonTableViewCell.xib; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
 		C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowLocateViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/ShowLocateViewController.swift"; sourceTree = "<absolute>"; };
@@ -115,13 +115,13 @@
 				C8EB10CB212FD0D500B61D34 /* Models */,
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
 				C8168D772138EA78007084A1 /* UserResisterViewController.swift */,
+				C894CFCB2140D32B007957E2 /* MyShabonTableViewCell.swift */,
+				C894CFCC2140D32B007957E2 /* MyShabonTableViewCell.xib */,
 				C8168D1521318122007084A1 /* MapModule.swift */,
 				C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */,
 				C8168D6B2137BBB5007084A1 /* Login.storyboard */,
 				C8168D6F213813C4007084A1 /* Api.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
-				C894CFC5214014D7007957E2 /* MyShabonCell.swift */,
-				C894CFC921401812007957E2 /* MyShabonCell.xib */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
@@ -234,9 +234,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C894CFCA21401812007957E2 /* MyShabonCell.xib in Resources */,
 				C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */,
 				C86E32D8212C3B98005A3D92 /* LaunchScreen.storyboard in Resources */,
+				C894CFCE2140D32B007957E2 /* MyShabonTableViewCell.xib in Resources */,
 				C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */,
 				C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */,
 			);
@@ -292,6 +292,7 @@
 			files = (
 				C8168D782138EA78007084A1 /* UserResisterViewController.swift in Sources */,
 				C894CFC1213F496D007957E2 /* Annotation.swift in Sources */,
+				C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */,
 				C8168D70213813C4007084A1 /* Api.swift in Sources */,
 				C8168D1621318122007084A1 /* MapModule.swift in Sources */,
 				C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */,
@@ -302,7 +303,6 @@
 				C8168D7E213BA079007084A1 /* NayamiComment.swift in Sources */,
 				C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */,
 				C894CFBF213CF4ED007957E2 /* AllCommentsViewController.swift in Sources */,
-				C894CFC6214014D7007957E2 /* MyShabonCell.swift in Sources */,
 				C894CFB9213CE6DE007957E2 /* MyPageViewController.swift in Sources */,
 				C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */,
 				C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */,

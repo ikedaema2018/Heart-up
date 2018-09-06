@@ -16,7 +16,9 @@ class MyShabonViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        myShabonTable.register(UINib(nibName: "MyShabonCell", bundle: nil), forCellReuseIdentifier: "MyShabonCell")
+        myShabonTable.register(UINib(nibName: "MyShabonTableViewCell", bundle: nil), forCellReuseIdentifier: "MyShabonCell")
+        
+        
         
         
         myShabonTable.dataSource = self
@@ -67,8 +69,8 @@ extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "MyShabonCell") as! MyShabonCell
-        cell.post = posts[indexPath.row]
+        let cell = myShabonTable.dequeueReusableCell(withIdentifier: "MyShabonCell", for: indexPath) as! MyShabonTableViewCell
+        cell.locate = posts[indexPath.row]
         return cell
     }
     
