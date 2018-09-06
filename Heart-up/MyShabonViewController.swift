@@ -60,7 +60,6 @@ class MyShabonViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
 
 extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
@@ -95,5 +94,13 @@ extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
         headerLabel.textAlignment = NSTextAlignment.center
         view.addSubview(headerLabel)
         return view
+    }
+    
+    //行がタップされた時
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //選択状態を非表示にする
+        myShabonTable.deselectRow(at: indexPath, animated: true)
+        let post = self.posts[indexPath.row]
+        print(post["id"]!)
     }
 }

@@ -33,6 +33,15 @@ class MyShabonTableViewCell: UITableViewCell {
             if let body = locate["nayami"] as? String {
                 self.myShabonTitle.text = body
             }
+            if let color = locate["color"] as? String {
+                if color == "青" {
+                    self.myShabonImage.image = UIImage(named: "blue")
+                } else if color == "黄" {
+                    self.myShabonImage.image = UIImage(named: "yellow")
+                } else if color == "赤" {
+                    self.myShabonImage.image = UIImage(named: "red")
+                }
+            }
             
         }
     }
