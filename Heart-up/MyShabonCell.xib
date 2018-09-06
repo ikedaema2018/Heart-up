@@ -47,6 +47,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="myShabonImage" destination="ln5-G1-eZi" id="u0n-px-yyl"/>
+                <outlet property="myShabonTitle" destination="6yn-Cx-GAD" id="HQ3-og-jOE"/>
+            </connections>
             <point key="canvasLocation" x="87" y="-242.5"/>
         </view>
     </objects>

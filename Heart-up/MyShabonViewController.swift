@@ -9,7 +9,7 @@
 import UIKit
 
 class MyShabonViewController: UIViewController {
-    var post: [[String: Any]] = []
+    var posts: [[String: Any]] = []
     
     @IBOutlet weak var myShabonTable: UITableView!
     
@@ -35,11 +35,7 @@ class MyShabonViewController: UIViewController {
                 print("位置情報をとってこれませんでした")
                 return
             }
-            for locate in locates {
-                if let my_shabon = locate.1["nayami"].string {
-                    self.data += [my_shabon]
-                }
-            }
+            self.posts = locates
             self.myShabonTable.reloadData()
         })
         
@@ -67,12 +63,12 @@ class MyShabonViewController: UIViewController {
 
 extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "MyShabonCell") as! MyShabonCell
-        cell.textLabel?.text = data[indexPath.row]
+        cell.post = posts[indexPath.row]
         return cell
     }
     

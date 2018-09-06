@@ -121,7 +121,7 @@ class StockLocateInfos: NSObject {
     }
     
     //myShabonで自分が投稿したシャボン玉一覧を出すためのもの
-    class func getMyShabon(callback: @escaping ([String: Any]?, JSON?) -> Void) {
+    class func getMyShabon(callback: @escaping ([String: Any]?, [[String: Any]]?) -> Void) {
         //auth_tokenがないときはリターン
         guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -140,10 +140,10 @@ class StockLocateInfos: NSObject {
                 callback(["message": "サーバーでエラーが発生しました"], nil)
             }
             
-            let object = response.result.value
+            if let object = response.result.value as? [[String: Any]] {
             
-            let obj = JSON(object)
-            callback(nil, obj)
+            callback(nil, object)
+            }
         }
     }
     
