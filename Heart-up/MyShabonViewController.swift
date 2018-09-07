@@ -73,34 +73,56 @@ extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    //行がタップされた時
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            //選択状態を非表示にする
+            myShabonTable.deselectRow(at: indexPath, animated: true)
+            let post = self.posts[indexPath.row]
+            let post1 = post["id"]
+//            print(post1)
+            // コメント一覧へ遷移する.
+            self.performSegue(withIdentifier: "myShabonDetailSegue", sender: post1)
+        }
+    
+    
+    
+    
+    
     // セクションヘッダーの高さ
-    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
-    }
+//    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 50
+//    }
     
     //Mark: ヘッダーに設定するViewを設定する
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
-        
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+    
         //ヘッダーにするビューを生成
-        let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50)
-        view.backgroundColor = UIColor.lightGray
-        
+//        let view = UIView()
+//        view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50)
+//        view.backgroundColor = UIColor.lightGray
+    
         //ヘッダーに追加するラベルを生成
-        let headerLabel = UILabel()
-        headerLabel.frame =  CGRect(x: 0, y: 5, width: self.view.frame.size.width, height: 50)
-        headerLabel.text = "あなたの飛ばしたシャボン玉一覧"
-        headerLabel.textColor = UIColor.white
-        headerLabel.textAlignment = NSTextAlignment.center
-        view.addSubview(headerLabel)
-        return view
+//        let headerLabel = UILabel()
+//        headerLabel.frame =  CGRect(x: 0, y: 5, width: self.view.frame.size.width, height: 50)
+//        headerLabel.text = "あなたの飛ばしたシャボン玉一覧"
+//        headerLabel.textColor = UIColor.white
+//        headerLabel.textAlignment = NSTextAlignment.center
+//        view.addSubview(headerLabel)
+//        return view
+//    }
+    
+    // Segueでの画面遷移時に呼び出される.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // コメント一覧への遷移の場合.
+        if segue.identifier == "myShabonDetailSegue" {
+            // 選択された投稿データをコメントViewControllerへ渡す.
+            if let id = sender as? Int {
+                print(id)
+                let vc = segue.destination as! MyShabonDetailViewController
+                vc.id = String(id)
+            }
+        }
     }
     
-    //行がタップされた時
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //選択状態を非表示にする
-        myShabonTable.deselectRow(at: indexPath, animated: true)
-        let post = self.posts[indexPath.row]
-        print(post["id"]!)
-    }
+
 }

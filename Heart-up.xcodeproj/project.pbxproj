@@ -30,6 +30,9 @@
 		C894CFC1213F496D007957E2 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFC0213F496D007957E2 /* Annotation.swift */; };
 		C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFCB2140D32B007957E2 /* MyShabonTableViewCell.swift */; };
 		C894CFCE2140D32B007957E2 /* MyShabonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C894CFCC2140D32B007957E2 /* MyShabonTableViewCell.xib */; };
+		C894CFD321415677007957E2 /* MyShabonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */; };
+		C894CFD621420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */; };
+		C894CFD721420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
 		C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */; };
@@ -62,6 +65,9 @@
 		C894CFC0213F496D007957E2 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		C894CFCB2140D32B007957E2 /* MyShabonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonTableViewCell.swift; sourceTree = "<group>"; };
 		C894CFCC2140D32B007957E2 /* MyShabonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonTableViewCell.xib; sourceTree = "<group>"; };
+		C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonDetailViewController.swift; sourceTree = "<group>"; };
+		C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
 		C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowLocateViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/ShowLocateViewController.swift"; sourceTree = "<absolute>"; };
@@ -123,6 +129,9 @@
 				C8168D6F213813C4007084A1 /* Api.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
+				C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */,
+				C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */,
+				C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */,
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
 				C894CFBC213CE787007957E2 /* MyShabonViewController.swift */,
@@ -238,6 +247,7 @@
 				C86E32D8212C3B98005A3D92 /* LaunchScreen.storyboard in Resources */,
 				C894CFCE2140D32B007957E2 /* MyShabonTableViewCell.xib in Resources */,
 				C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */,
+				C894CFD721420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib in Resources */,
 				C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +312,8 @@
 				C8168D6E2137C99B007084A1 /* LoginViewController.swift in Sources */,
 				C8168D7E213BA079007084A1 /* NayamiComment.swift in Sources */,
 				C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */,
+				C894CFD621420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift in Sources */,
+				C894CFD321415677007957E2 /* MyShabonDetailViewController.swift in Sources */,
 				C894CFBF213CF4ED007957E2 /* AllCommentsViewController.swift in Sources */,
 				C894CFB9213CE6DE007957E2 /* MyPageViewController.swift in Sources */,
 				C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */,
