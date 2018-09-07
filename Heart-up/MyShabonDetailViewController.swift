@@ -44,7 +44,16 @@ class MyShabonDetailViewController: UIViewController {
                 return
             }
             
+            
             self.locates = locate
+            // 画面全体に色を設定
+            if self.locates!["color"].string == "赤" {
+                self.view.backgroundColor = UIColor.red
+            } else if self.locates!["color"].string == "青" {
+                self.view.backgroundColor = UIColor.blue
+            } else if self.locates!["yellow"].string == "黄" {
+                self.view.backgroundColor = UIColor.yellow
+            }
             // UICollectionView を表示
             self.view.addSubview(MyShabonDetailCollection)
             // 画面を再描画する.
@@ -54,8 +63,6 @@ class MyShabonDetailViewController: UIViewController {
         MyShabonDetailCollection.dataSource = self
         MyShabonDetailCollection.delegate = self
         
-        // 画面全体を緑色に設定
-        self.view.backgroundColor = UIColor.green
         
         // アイテム表示領域を白色に設定
         MyShabonDetailCollection.backgroundColor = UIColor.white
