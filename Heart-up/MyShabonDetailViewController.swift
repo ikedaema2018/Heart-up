@@ -7,19 +7,26 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MyShabonDetailViewController: UIViewController {
     var id: String?
-    var models: [[String: String]] = [
-        ["mainTitle": "aaa", "subTitle": "bbb"],
-        ["mainTitle": "ccc", "subTitle": "ccc"]
-        ]
+    var locates: JSON?
     
-    @IBOutlet weak var MyShabonDetailCollection: UICollectionView!
+    // ステータスバーの高さ
+    let statusBarHeight = UIApplication.shared.statusBarFrame.height
+    
+    // セル再利用のための固有名
+    let cellId = "itemCell"
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 大きさとレイアウトを指定して UICollectionView を作成
+        let MyShabonDetailCollection = UICollectionView(
+            frame: CGRect(x: 0, y: statusBarHeight, width: self.view.frame.width, height: self.view.frame.size.height - statusBarHeight),
+            collectionViewLayout: UICollectionViewFlowLayout())
         
         guard let shabonId = id else {
             return
@@ -37,25 +44,26 @@ class MyShabonDetailViewController: UIViewController {
                 return
             }
             
-            guard let locate = locate else {
-                return
-            }
-            
-//            for comment in locate["nayami_comments"] {
-//                print(comment.1["nayami_comment"])
-//            }
-            print(locate)
+            self.locates = locate
+            // UICollectionView を表示
+            self.view.addSubview(MyShabonDetailCollection)
+            // 画面を再描画する.
+            MyShabonDetailCollection.reloadData()
         })
         
         MyShabonDetailCollection.dataSource = self
+        MyShabonDetailCollection.delegate = self
         
-        //collectionTableの設定
-        MyShabonDetailCollection.register(UINib(nibName: "MyShabonDetailCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MyShabonDetailCell")
+        // 画面全体を緑色に設定
+        self.view.backgroundColor = UIColor.green
         
-        // セルの大きさを設定
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: MyShabonDetailCollection.frame.width, height: 100)
-        MyShabonDetailCollection.collectionViewLayout = layout
+        // アイテム表示領域を白色に設定
+        MyShabonDetailCollection.backgroundColor = UIColor.white
+        
+        // セルの再利用のための設定
+        MyShabonDetailCollection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        
+        
         
         // Do any additional setup after loading the view.
     }
@@ -79,19 +87,67 @@ class MyShabonDetailViewController: UIViewController {
 
 }
 
-extension MyShabonDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MyShabonDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    // 表示するアイテムの数を設定（UICollectionViewDataSource が必要）
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return models.count
+        if let tmp = locates {
+            return tmp["nayami_comments"].count
+        }
+        return 24
     }
     
+    // アイテムの大きさを設定（UICollectionViewDelegateFlowLayout が必要）
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let size = self.view.frame.width / 4
+        
+        return CGSize(width: size, height: size)
+    }
+    
+    // アイテム表示領域全体の上下左右の余白を設定（UICollectionViewDelegateFlowLayout が必要）
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let inset =  (self.view.frame.width / 4) / 6
+        
+        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
+    
+    // アイテムの上下の余白の最小値を設定（UICollectionViewDelegateFlowLayout が必要）
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return (self.view.frame.width / 4) / 3
+    }
+    
+    // アイテムの表示内容（UICollectionViewDataSource が必要）
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyShabonDetailCell", for: indexPath)
-        if let cell = cell as? MyShabonDetailCollectionViewCell {
-            cell.setupCell(model: models[indexPath.row])
+        
+        // アイテムを作成
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        cell.backgroundColor = UIColor.lightGray
+        
+        // アイテムセルを再利用する際、前に追加していた要素（今回はラベル）を削除する
+        for subview in cell.contentView.subviews {
+            subview.removeFromSuperview()
         }
+        
+        if let tmp = locates {
+            // テキストラベルを設定して表示
+            let label = UILabel()
+            label.font = UIFont(name: "Arial", size: 12)
+            label.text = tmp["nayami_comments"][indexPath.row]["nayami_comment"].string
+            label.numberOfLines = 0
+            label.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 5, height: 0)
+            label.sizeToFit()
+            label.center = cell.contentView.center
+            cell.contentView.addSubview(label)
+            return cell
+        }
+        
         return cell
     }
     
-    
+    // アイテムタッチ時の処理（UICollectionViewDelegate が必要）
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
+    }
     
 }

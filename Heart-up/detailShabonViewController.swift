@@ -82,6 +82,7 @@ class detailShabonViewController: UIViewController {
                 return
             }
             
+            
             let nayami_comment_array = locate["nayami_comments"]
             
             for nayami in nayami_comment_array {

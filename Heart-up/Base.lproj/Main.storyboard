@@ -193,9 +193,6 @@
                         <viewLayoutGuide key="safeArea" id="oDL-OU-0CU"/>
                     </view>
                     <navigationItem key="navigationItem" id="EgO-MW-Fkd"/>
-                    <connections>
-                        <outlet property="MyShabonDetailCollection" destination="0vV-FP-J7W" id="GGh-pq-j6Q"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtW-W0-JhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,14 +10,13 @@ import UIKit
 
 class MyShabonDetailCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var title: UILabel!
-    @IBOutlet weak var subTitle: UILabel!
+
     
     func setupCell(model: [String: String]){
-        title.text = model["mainTitle"]
+//        title.text = model["mainTitle"]
         
         if let text = model["subTitle"] {
-            subTitle.text = text
+//            subTitle.text = text
         }
         self.backgroundColor = .lightGray
     }

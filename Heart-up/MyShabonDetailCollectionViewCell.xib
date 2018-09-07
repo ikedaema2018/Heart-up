@@ -37,10 +37,6 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="269" height="81"/>
-            <connections>
-                <outlet property="subTitle" destination="W90-EV-WQJ" id="BS3-wa-ZCt"/>
-                <outlet property="title" destination="rqc-YA-MWX" id="zn9-Wz-utw"/>
-            </connections>
             <point key="canvasLocation" x="128.5" y="130.5"/>
         </collectionViewCell>
     </objects>
