@@ -218,11 +218,28 @@
                     <navigationItem key="navigationItem" id="TB7-yC-SjZ"/>
                     <connections>
                         <outlet property="allCommentShabonTable" destination="ZRw-DB-aBr" id="JxA-Yx-bKv"/>
+                        <segue destination="RkL-a1-i5u" kind="push" identifier="AllCommentCollectionSegue" id="RSG-ql-dUL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXU-ge-Us0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4653.6000000000004" y="1706.8965517241381"/>
+        </scene>
+        <!--All Comments Collection View Controller-->
+        <scene sceneID="5Yl-Be-Pyq">
+            <objects>
+                <viewController id="RkL-a1-i5u" customClass="AllCommentsCollectionViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v6a-IW-Z94">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8HR-sg-u52"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="L0l-Zm-SPs"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4mh-Xd-b3o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4654" y="2463"/>
         </scene>
         <!--誰かの困りごと-->
         <scene sceneID="eXu-eX-PNt">

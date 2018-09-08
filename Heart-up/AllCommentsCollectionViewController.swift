@@ -1,15 +1,16 @@
 //
-//  MyShabonDetailViewController.swift
+//  AllCommentsCollectionViewController.swift
 //  Heart-up
 //
-//  Created by 前田啓 on 2018/09/06.
+//  Created by 前田啓 on 2018/09/08.
 //  Copyright © 2018年 kei maeda. All rights reserved.
 //
 
 import UIKit
 import SwiftyJSON
 
-class MyShabonDetailViewController: UIViewController {
+class AllCommentsCollectionViewController: UIViewController {
+    
     var id: String?
     var locates: JSON?
     
@@ -19,12 +20,11 @@ class MyShabonDetailViewController: UIViewController {
     // セル再利用のための固有名
     let cellId = "itemCell"
 
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // 大きさとレイアウトを指定して UICollectionView を作成
-        let MyShabonDetailCollection = UICollectionView(
+        let AllCommentsDetailCollection = UICollectionView(
             frame: CGRect(x: 0, y: statusBarHeight, width: self.view.frame.width, height: self.view.frame.size.height - statusBarHeight),
             collectionViewLayout: UICollectionViewFlowLayout())
         
@@ -44,7 +44,6 @@ class MyShabonDetailViewController: UIViewController {
                 return
             }
             
-            
             self.locates = locate
             // 画面全体に色を設定
             if self.locates!["color"].string == "赤" {
@@ -55,23 +54,20 @@ class MyShabonDetailViewController: UIViewController {
                 self.view.backgroundColor = UIColor.yellow
             }
             // UICollectionView を表示
-            self.view.addSubview(MyShabonDetailCollection)
+            self.view.addSubview(AllCommentsDetailCollection)
+            
             // 画面を再描画する.
-            MyShabonDetailCollection.reloadData()
+            AllCommentsDetailCollection.reloadData()
         })
         
-        MyShabonDetailCollection.dataSource = self
-        MyShabonDetailCollection.delegate = self
-        
+        AllCommentsDetailCollection.dataSource = self
+        AllCommentsDetailCollection.delegate = self
         
         // アイテム表示領域を白色に設定
-        MyShabonDetailCollection.backgroundColor = UIColor.white
+        AllCommentsDetailCollection.backgroundColor = UIColor.white
         
         // セルの再利用のための設定
-        MyShabonDetailCollection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        
-        
-        
+        AllCommentsDetailCollection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         // Do any additional setup after loading the view.
     }
 
@@ -90,11 +86,11 @@ class MyShabonDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
 
 }
 
-extension MyShabonDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+
+extension AllCommentsCollectionViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     // 表示するアイテムの数を設定（UICollectionViewDataSource が必要）
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let tmp = locates {
@@ -124,8 +120,8 @@ extension MyShabonDetailViewController: UICollectionViewDelegate, UICollectionVi
         return (self.view.frame.width / 4) / 3
     }
     
+    // アイテムの表示内容（UICollectionViewDataSource が必要）
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         // アイテムを作成
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         cell.backgroundColor = UIColor.lightGray
@@ -134,8 +130,8 @@ extension MyShabonDetailViewController: UICollectionViewDelegate, UICollectionVi
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
         }
-        
         if let tmp = locates {
+            print("d")
             // テキストラベルを設定して表示
             let label = UILabel()
             label.font = UIFont(name: "Arial", size: 12)

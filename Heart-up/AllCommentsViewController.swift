@@ -74,28 +74,27 @@ extension AllCommentsViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     //行がタップされた時
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        //選択状態を非表示にする
-//        allCommentShabonTable.deselectRow(at: indexPath, animated: true)
-//        let post = self.posts[indexPath.row]
-//        let post1 = post["id"]
-//        //            print(post1)
-//        // コメント一覧へ遷移する.
-//        self.performSegue(withIdentifier: "myShabonDetailSegue", sender: post1)
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //選択状態を非表示にする
+        allCommentShabonTable.deselectRow(at: indexPath, animated: true)
+        let post = self.posts[indexPath.row]
+        let post1 = post["id"]
+        //            print(post1)
+        // コメント一覧へ遷移する.
+        self.performSegue(withIdentifier: "AllCommentCollectionSegue", sender: post1)
+    }
     
     // Segueでの画面遷移時に呼び出される.
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        // コメント一覧への遷移の場合.
-//        if segue.identifier == "myShabonDetailSegue" {
-//            // 選択された投稿データをコメントViewControllerへ渡す.
-//            if let id = sender as? Int {
-//                print(id)
-//                let vc = segue.destination as! MyShabonDetailViewController
-//                vc.id = String(id)
-//            }
-//        }
-//    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // コメント一覧への遷移の場合.
+        if segue.identifier == "AllCommentCollectionSegue" {
+            // 選択された投稿データをコメントViewControllerへ渡す.
+            if let id = sender as? Int {
+                let vc = segue.destination as! AllCommentsCollectionViewController
+                vc.id = String(id)
+            }
+        }
+    }
     
     
 }
