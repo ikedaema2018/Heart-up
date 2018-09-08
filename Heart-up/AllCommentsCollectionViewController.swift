@@ -131,7 +131,6 @@ extension AllCommentsCollectionViewController: UICollectionViewDelegate, UIColle
             subview.removeFromSuperview()
         }
         if let tmp = locates {
-            print("d")
             // テキストラベルを設定して表示
             let label = UILabel()
             label.font = UIFont(name: "Arial", size: 12)
