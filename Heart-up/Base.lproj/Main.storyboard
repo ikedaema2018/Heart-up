@@ -221,36 +221,10 @@
                     <view key="view" contentMode="scaleToFill" id="it1-GJ-6Rs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="悩みのタイトル" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ggo-oo-yQ1">
-                                <rect key="frame" x="16" y="64" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h1r-pQ-CZe">
-                                <rect key="frame" x="0.0" y="93" width="375" height="525"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="525" id="pYx-k1-f3u"/>
-                                </constraints>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="idb-OC-EYB" firstAttribute="bottom" secondItem="h1r-pQ-CZe" secondAttribute="bottom" id="4Zu-2J-3ch"/>
-                            <constraint firstItem="idb-OC-EYB" firstAttribute="trailing" secondItem="h1r-pQ-CZe" secondAttribute="trailing" id="B87-dF-ThX"/>
-                            <constraint firstItem="h1r-pQ-CZe" firstAttribute="top" secondItem="Ggo-oo-yQ1" secondAttribute="bottom" constant="8" symbolic="YES" id="Ul4-UV-dFu"/>
-                            <constraint firstItem="h1r-pQ-CZe" firstAttribute="leading" secondItem="idb-OC-EYB" secondAttribute="leading" id="gIt-NC-Yfh"/>
-                            <constraint firstItem="h1r-pQ-CZe" firstAttribute="centerX" secondItem="Ggo-oo-yQ1" secondAttribute="centerX" id="gwt-Gr-WTE"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="idb-OC-EYB"/>
                     </view>
                     <navigationItem key="navigationItem" title="誰かの困りごと" id="w4m-g7-y1X"/>
-                    <connections>
-                        <outlet property="commentsTable" destination="h1r-pQ-CZe" id="eJ6-fe-r0r"/>
-                        <outlet property="nayamiLabel" destination="Ggo-oo-yQ1" id="Vee-lB-OaG"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RvV-ha-3DT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

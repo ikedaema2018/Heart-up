@@ -97,6 +97,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		C81E84FF21436A4C006EDA5C /* Trash */ = {
+			isa = PBXGroup;
+			children = (
+				C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */,
+				C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */,
+			);
+			path = Trash;
+			sourceTree = "<group>";
+		};
 		C86E32C1212C3B97005A3D92 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +127,7 @@
 		C86E32CC212C3B97005A3D92 /* Heart-up */ = {
 			isa = PBXGroup;
 			children = (
+				C81E84FF21436A4C006EDA5C /* Trash */,
 				C8EB10CB212FD0D500B61D34 /* Models */,
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
 				C8168D772138EA78007084A1 /* UserResisterViewController.swift */,
@@ -129,8 +139,6 @@
 				C8168D6F213813C4007084A1 /* Api.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
-				C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */,
-				C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */,
 				C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */,
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,

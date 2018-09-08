@@ -6,15 +6,20 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class detailShabonViewController: UIViewController {
     
     //idを定義
     var locateId: String?
+    var locates: JSON?
+    
+    // ステータスバーの高さ
+    let statusBarHeight = UIApplication.shared.statusBarFrame.height
+    
+    // セル再利用のための固有名
+    let cellId = "itemCell"
 
-    @IBOutlet weak var nayamiLabel: UILabel!
-    @IBOutlet weak var commentsTable: UITableView!
-    var data: [String] = []
     
     //ナビバーの＋ボタンがクリックされた
     @objc func onTapAddComment() {
@@ -52,8 +57,12 @@ class detailShabonViewController: UIViewController {
                             return
                         }
                         self.showAlert(message: "投稿しました", hide: {})
+                        // 大きさとレイアウトを指定して UICollectionView を作成
+                        let MyShabonDetailCollection = UICollectionView(
+                            frame: CGRect(x: 0, y: self.statusBarHeight, width: self.view.frame.width, height: self.view.frame.size.height - self.statusBarHeight),
+                            collectionViewLayout: UICollectionViewFlowLayout())
                         // コメントデータの再読み込み.
-                        self.fetchData()
+                self.fetchData(collection: MyShabonDetailCollection)
                     })
         }
         alertController.addAction(confirmAction)
@@ -67,60 +76,26 @@ class detailShabonViewController: UIViewController {
     }
     
     
-//    @IBAction func commentAction(_ sender: Any) {
-//
-//        guard let anno_id = locateId else {
-//            return
-//        }
-//        guard let annoId = Int(anno_id) else {
-//            return
-//        }
-    
-//        guard let comment = commentInput.text else {
-//            errorLabel.isHidden = false
-//            errorLabel.text = "コメントを入力してから送信してね"
-//            return
-//        }
-//        if comment == "" {
-//            errorLabel.isHidden = false
-//            errorLabel.text = "コメントを入力してから送信してね"
-//            return
-//        }
-    
-        //ポストします
-//        NayamiComment.nayamiCommentPost(locate_info_id: annoId, comment: comment, callback: { error in
-//            if let error = error {
-//                if let message = error["message"] as? String {
-//                    self.showAlert(message: message, hide: {})
-//                } else {
-//                    self.showAlert(message: "エラーが発生しました", hide: {})
-//                }
-//                return
-//            }
-//            self.showAlert(message: "投稿しました", hide: {})
-//        })
-//    }
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // 大きさとレイアウトを指定して UICollectionView を作成
+        let MyShabonDetailCollection = UICollectionView(
+            frame: CGRect(x: 0, y: statusBarHeight, width: self.view.frame.width, height: self.view.frame.size.height - statusBarHeight),
+            collectionViewLayout: UICollectionViewFlowLayout())
+        
+        fetchData(collection: MyShabonDetailCollection)
+        
         // ナビゲーション右上に「+」ボタンを追加.
         // タップしたら onTapAddComment メソッドを呼び出す.
         let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(detailShabonViewController.onTapAddComment
             ))
         self.navigationItem.setRightBarButton(navItem, animated: true)
-        
-//        commentInput.delegate = self
-//        commentInput.placeholder = "この悩みにコメントする"
-//        errorLabel.isHidden = true
-        
-        self.fetchData()
-        //TableView用
-        commentsTable.delegate = self
-        commentsTable.dataSource = self
-        
+
         // Do any additional setup after loading the view.a
         
     }
@@ -144,35 +119,79 @@ class detailShabonViewController: UIViewController {
 
 }
 
-extension detailShabonViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
-
-extension detailShabonViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return data.count
+extension detailShabonViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    // 表示するアイテムの数を設定（UICollectionViewDataSource が必要）
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let tmp = locates {
+            return tmp["nayami_comments"].count
+        }
+        return 24
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "myCell")
-            cell.textLabel?.text = data[indexPath.row]
+    // アイテムの大きさを設定（UICollectionViewDelegateFlowLayout が必要）
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let size = self.view.frame.width / 4
+        
+        return CGSize(width: size, height: size)
+    }
+    
+    // アイテム表示領域全体の上下左右の余白を設定（UICollectionViewDelegateFlowLayout が必要）
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        let inset =  (self.view.frame.width / 4) / 6
+        
+        return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
+    }
+    
+    // アイテムの上下の余白の最小値を設定（UICollectionViewDelegateFlowLayout が必要）
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return (self.view.frame.width / 4) / 3
+    }
+    
+    // アイテムの表示内容（UICollectionViewDataSource が必要）
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        // アイテムを作成
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        cell.backgroundColor = UIColor.lightGray
+        
+        // アイテムセルを再利用する際、前に追加していた要素（今回はラベル）を削除する
+        for subview in cell.contentView.subviews {
+            subview.removeFromSuperview()
+        }
+        
+        if let tmp = locates {
+            // テキストラベルを設定して表示
+            let label = UILabel()
+            label.font = UIFont(name: "Arial", size: 12)
+            label.text = tmp["nayami_comments"][indexPath.row]["nayami_comment"].string
+            label.numberOfLines = 0
+            label.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 5, height: 0)
+            label.sizeToFit()
+            label.center = cell.contentView.center
+            cell.contentView.addSubview(label)
             return cell
+        }
+        
+        return cell
+    }
+    
+    // アイテムタッチ時の処理（UICollectionViewDelegate が必要）
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath.row)
     }
     
 }
 
 extension detailShabonViewController {
-    // APIからコメント一覧を取得する.
-    func fetchData() {
-        //ここにIDで検索する処理をかく
-        guard let annoId = locateId else {
+    func fetchData(collection: UICollectionView){
+        
+        guard let shabonId = locateId else {
             return
         }
         
-        StockLocateInfos.getDetailLocation(id: annoId, callback: {error, locate in
+        StockLocateInfos.getDetailLocation(id: shabonId, callback: {error, locate in
             
             if let error = error {
                 if let message = error["message"] as? String {
@@ -184,20 +203,28 @@ extension detailShabonViewController {
                 return
             }
             
-            guard let locate = locate else {
-                return
+            
+            self.locates = locate
+            // 画面全体に色を設定
+            if self.locates!["color"].string == "赤" {
+                self.view.backgroundColor = UIColor.red
+            } else if self.locates!["color"].string == "青" {
+                self.view.backgroundColor = UIColor.blue
+            } else if self.locates!["yellow"].string == "黄" {
+                self.view.backgroundColor = UIColor.yellow
             }
-            
-            
-            let nayami_comment_array = locate["nayami_comments"]
-            
-            for nayami in nayami_comment_array {
-                if let nayami_comment = nayami.1["nayami_comment"].string {
-                    self.data += [nayami_comment]
-                }
-            }
-            self.nayamiLabel.text = locate["nayami"].string
-            self.commentsTable.reloadData()
+            // UICollectionView を表示
+            self.view.addSubview(collection)
+            // 画面を再描画する.
+            collection.reloadData()
         })
+        // アイテム表示領域を白色に設定
+        collection.backgroundColor = UIColor.white
+        
+        // セルの再利用のための設定
+        collection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        
+        collection.dataSource = self
+        collection.delegate = self
     }
 }
