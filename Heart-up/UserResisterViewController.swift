@@ -16,7 +16,7 @@ class UserResisterViewController: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var agePicker: UIPickerView!
-    var age: Int?
+    var age: String = ""
     
     var ageList: [Int] = []
     
@@ -29,20 +29,21 @@ class UserResisterViewController: UIViewController {
     
     
     @IBAction func signUp(_ sender: Any) {
-        print(genderArray[genderSegment.selectedSegmentIndex])
-        guard let user_name = userNameInput.text, let email = emailInput.text, let password = passwordInput.text else {
+        guard let user_name = userNameInput.text, let email = emailInput.text, let password = passwordInput.text, let self_introduce = selfIntroduce.text else {
             errorLabel.isHidden = false
-            errorLabel.text = "ユーザーネームとメールアドレスとパスワードは必ず入力してください"
+            errorLabel.text = "ユーザーネームとメールアドレスとパスワードと自己紹介は必ず入力してください"
             return
         }
         
-        if user_name.isEmpty || email.isEmpty || password.isEmpty {
+        if user_name.isEmpty || email.isEmpty || password.isEmpty || age.isEmpty || self_introduce.isEmpty {
             errorLabel.isHidden = false
-            errorLabel.text = "ユーザーネームとメールアドレスとパスワードは必ず入力してください"
+            errorLabel.text = "ユーザーネームとメールアドレスとパスワードと自己紹介は必ず入力してください"
             return
         }
         
-        let user: [String: String] = ["email": email, "user_name": user_name, "password": password]
+        let user: [String: String] = ["email": email, "user_name": user_name, "password": password, "age": age, "gender": genderArray[genderSegment.selectedSegmentIndex], "self_introduce": self_introduce]
+        
+        print(user)
         
         //ユーザー情報をポスト
         UserRegister.postLocate(user: user, callback: { data, error in
@@ -62,7 +63,7 @@ class UserResisterViewController: UIViewController {
             }
             print(data)
             print("ユーザー登録成功！")
-            self.showAlert(message: "ユーザー登録成功したよ！\nログインしてね", hide: { () -> Void in 
+            self.showAlert(message: "ユーザー登録成功したよ！\nログインしてね", hide: { () -> Void in
                     self.dismiss(animated: true, completion: nil)
                 })
         })
@@ -145,7 +146,7 @@ extension UserResisterViewController: UIPickerViewDataSource, UIPickerViewDelega
     
     //選択された時
     func pickerView(_ pickerview: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        let age = ageList[row]
+        age = String(ageList[row])
     }
 
 }
@@ -165,7 +166,6 @@ extension UserResisterViewController: UITextViewDelegate {
         if (text == "\n") {
             //あなたのテキストフィールド
             textView.resignFirstResponder()
-            print(selfIntroduce.text)
             return false
         }
         return true
