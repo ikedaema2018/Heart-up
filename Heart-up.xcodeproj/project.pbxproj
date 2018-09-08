@@ -18,6 +18,8 @@
 		C8168D782138EA78007084A1 /* UserResisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D772138EA78007084A1 /* UserResisterViewController.swift */; };
 		C8168D7A21395F56007084A1 /* ShabonPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D7921395F56007084A1 /* ShabonPostViewController.swift */; };
 		C8168D7E213BA079007084A1 /* NayamiComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D7D213BA079007084A1 /* NayamiComment.swift */; };
+		C81E850321438026006EDA5C /* AllCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */; };
+		C81E850421438026006EDA5C /* AllCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */; };
 		C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CD212C3B97005A3D92 /* AppDelegate.swift */; };
 		C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D1212C3B97005A3D92 /* Main.storyboard */; };
 		C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D4212C3B98005A3D92 /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 		C8168D772138EA78007084A1 /* UserResisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserResisterViewController.swift; sourceTree = "<group>"; };
 		C8168D7921395F56007084A1 /* ShabonPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonPostViewController.swift; sourceTree = "<group>"; };
 		C8168D7D213BA079007084A1 /* NayamiComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NayamiComment.swift; sourceTree = "<group>"; };
+		C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsTableViewCell.swift; sourceTree = "<group>"; };
+		C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllCommentsTableViewCell.xib; sourceTree = "<group>"; };
 		C86E32CA212C3B97005A3D92 /* Heart-up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart-up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86E32CD212C3B97005A3D92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C86E32D2212C3B97005A3D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +110,24 @@
 			path = Trash;
 			sourceTree = "<group>";
 		};
+		C81E850021437F3C006EDA5C /* MyShabonTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				C894CFCB2140D32B007957E2 /* MyShabonTableViewCell.swift */,
+				C894CFCC2140D32B007957E2 /* MyShabonTableViewCell.xib */,
+			);
+			path = MyShabonTableViewCell;
+			sourceTree = "<group>";
+		};
+		C81E8505214382F4006EDA5C /* AllCommentsTableCell */ = {
+			isa = PBXGroup;
+			children = (
+				C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */,
+				C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */,
+			);
+			path = AllCommentsTableCell;
+			sourceTree = "<group>";
+		};
 		C86E32C1212C3B97005A3D92 = {
 			isa = PBXGroup;
 			children = (
@@ -129,18 +151,18 @@
 			children = (
 				C81E84FF21436A4C006EDA5C /* Trash */,
 				C8EB10CB212FD0D500B61D34 /* Models */,
+				C81E850021437F3C006EDA5C /* MyShabonTableViewCell */,
+				C81E8505214382F4006EDA5C /* AllCommentsTableCell */,
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
 				C8168D772138EA78007084A1 /* UserResisterViewController.swift */,
-				C894CFCB2140D32B007957E2 /* MyShabonTableViewCell.swift */,
-				C894CFCC2140D32B007957E2 /* MyShabonTableViewCell.xib */,
 				C8168D1521318122007084A1 /* MapModule.swift */,
 				C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */,
 				C8168D6B2137BBB5007084A1 /* Login.storyboard */,
 				C8168D6F213813C4007084A1 /* Api.swift */,
+				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
 				C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */,
-				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
 				C894CFBC213CE787007957E2 /* MyShabonViewController.swift */,
 				C86E32D4212C3B98005A3D92 /* Assets.xcassets */,
@@ -252,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */,
+				C81E850421438026006EDA5C /* AllCommentsTableViewCell.xib in Resources */,
 				C86E32D8212C3B98005A3D92 /* LaunchScreen.storyboard in Resources */,
 				C894CFCE2140D32B007957E2 /* MyShabonTableViewCell.xib in Resources */,
 				C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */,
@@ -319,6 +342,7 @@
 				C894CFBD213CE787007957E2 /* MyShabonViewController.swift in Sources */,
 				C8168D6E2137C99B007084A1 /* LoginViewController.swift in Sources */,
 				C8168D7E213BA079007084A1 /* NayamiComment.swift in Sources */,
+				C81E850321438026006EDA5C /* AllCommentsTableViewCell.swift in Sources */,
 				C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */,
 				C894CFD621420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift in Sources */,
 				C894CFD321415677007957E2 /* MyShabonDetailViewController.swift in Sources */,

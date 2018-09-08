@@ -198,21 +198,31 @@
             </objects>
             <point key="canvasLocation" x="3724" y="1694.3028485757122"/>
         </scene>
-        <!--comment-->
+        <!--All Comments View Controller-->
         <scene sceneID="L1a-aZ-6mv">
             <objects>
                 <viewController id="jfO-mH-eiT" customClass="AllCommentsViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cjG-Kt-Y2x">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZRw-DB-aBr">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4AL-wH-I1A"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="comment" image="comment" id="6SR-8C-ame"/>
+                    <navigationItem key="navigationItem" id="TB7-yC-SjZ"/>
+                    <connections>
+                        <outlet property="allCommentShabonTable" destination="ZRw-DB-aBr" id="JxA-Yx-bKv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXU-ge-Us0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4653.6000000000004" y="928.78560719640188"/>
+            <point key="canvasLocation" x="4653.6000000000004" y="1706.8965517241381"/>
         </scene>
         <!--誰かの困りごと-->
         <scene sceneID="eXu-eX-PNt">
@@ -228,7 +238,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RvV-ha-3DT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5596" y="1023.2383808095952"/>
+            <point key="canvasLocation" x="6535.1999999999998" y="1023.2383808095952"/>
         </scene>
         <!--map-->
         <scene sceneID="MBt-TA-m4x">
@@ -262,7 +272,7 @@
                     <connections>
                         <segue destination="dDi-hv-esG" kind="relationship" relationship="viewControllers" id="Xba-Il-suU"/>
                         <segue destination="Dh7-05-enF" kind="relationship" relationship="viewControllers" id="7rP-Kj-ei7"/>
-                        <segue destination="jfO-mH-eiT" kind="relationship" relationship="viewControllers" id="5kh-oU-hgA"/>
+                        <segue destination="dy1-QW-XVO" kind="relationship" relationship="viewControllers" id="5kh-oU-hgA"/>
                         <segue destination="NHf-Ic-d9i" kind="relationship" relationship="viewControllers" id="7c4-Tg-leh"/>
                     </connections>
                 </tabBarController>
@@ -304,6 +314,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12D-6y-Int" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2780" y="938.68065967016503"/>
+        </scene>
+        <!--comment-->
+        <scene sceneID="ZNw-va-aJJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dy1-QW-XVO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="comment" image="comment" id="6SR-8C-ame"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="RAR-yX-dI3">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jfO-mH-eiT" kind="relationship" relationship="rootViewController" id="bbI-WG-yj9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OjT-h2-nSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4653.6000000000004" y="928.78560719640188"/>
         </scene>
     </scenes>
     <resources>
