@@ -12,10 +12,21 @@ class MyPageViewController: UIViewController {
     
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var mailAddress: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var selfIntroduceView: UITextView!
+    @IBOutlet weak var profileImage: UIImageView!
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profileImage.image = UIImage(named: "noel")
+        
+        selfIntroduceView.layer.borderWidth = 1.0
+        selfIntroduceView.isEditable = false
+    
         StockLocateInfos.getMyProfile(){ error, result in
             if let error = error {
                 if let message = error["message"] as? String {
@@ -30,8 +41,15 @@ class MyPageViewController: UIViewController {
             guard let user = result else {
                 return
             }
+            print(user)
             self.userName.text = user["user_name"].string
             self.mailAddress.text = user["email"].string
+            if let age = user["age"].int {
+                self.ageLabel.text = String(age)
+            }
+            self.genderLabel.text = user["gender"].string
+            self.selfIntroduceView.text = user["self_introduce"].string
+            
         }
         
         // Do any additional setup after loading the view.
