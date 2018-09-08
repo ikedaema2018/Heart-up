@@ -183,11 +183,11 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="p9k-vL-hO6">
-                                                <rect key="frame" x="188" y="579" width="121" height="28"/>
+                                                <rect key="frame" x="188" y="579" width="121" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <segments>
-                                                    <segment title="First"/>
-                                                    <segment title="Second"/>
+                                                    <segment title="男"/>
+                                                    <segment title="女"/>
                                                 </segments>
                                             </segmentedControl>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="性別" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQu-Kd-Hfi">
@@ -227,6 +227,7 @@
                         <outlet property="agePicker" destination="Ga6-OC-FK3" id="UGn-1e-t49"/>
                         <outlet property="emailInput" destination="LLX-a8-Qs8" id="xIk-u3-zun"/>
                         <outlet property="errorLabel" destination="ZRX-fy-O4p" id="Nbo-yC-qzm"/>
+                        <outlet property="genderSegment" destination="p9k-vL-hO6" id="E4G-jW-Vbj"/>
                         <outlet property="passwordInput" destination="s9U-tu-Fnk" id="A94-ga-dqH"/>
                         <outlet property="userNameInput" destination="N7p-XI-Usf" id="ocA-rr-Xsg"/>
                     </connections>

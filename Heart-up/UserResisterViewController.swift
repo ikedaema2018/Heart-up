@@ -20,12 +20,12 @@ class UserResisterViewController: UIViewController {
     
     var ageList: [Int] = []
     
-    @IBOutlet weak var genderSegment: UIView!
+    let genderArray: [String] = ["男","女"]
     
-    
-    
+    @IBOutlet weak var genderSegment: UISegmentedControl!
     
     @IBAction func signUp(_ sender: Any) {
+        print(genderArray[genderSegment.selectedSegmentIndex])
         guard let user_name = userNameInput.text, let email = emailInput.text, let password = passwordInput.text else {
             errorLabel.isHidden = false
             errorLabel.text = "ユーザーネームとメールアドレスとパスワードは必ず入力してください"
