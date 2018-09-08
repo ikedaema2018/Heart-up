@@ -24,6 +24,10 @@ class UserResisterViewController: UIViewController {
     
     @IBOutlet weak var genderSegment: UISegmentedControl!
     
+    
+    @IBOutlet weak var selfIntroduce: UITextView!
+    
+    
     @IBAction func signUp(_ sender: Any) {
         print(genderArray[genderSegment.selectedSegmentIndex])
         guard let user_name = userNameInput.text, let email = emailInput.text, let password = passwordInput.text else {
@@ -84,6 +88,9 @@ class UserResisterViewController: UIViewController {
         agePicker.delegate = self
         agePicker.dataSource = self
         
+        selfIntroduce.delegate = self
+        selfIntroduce.layer.borderWidth = 1.0
+        
         
         //placeholderを指定
         userNameInput.placeholder = "ユーザーネーム"
@@ -141,4 +148,26 @@ extension UserResisterViewController: UIPickerViewDataSource, UIPickerViewDelega
         let age = ageList[row]
     }
 
+}
+
+extension UserResisterViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.layer.borderColor = UIColor.red.cgColor
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        textView.layer.borderColor = UIColor.black.cgColor
+    }
+    
+    // hides text views
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if (text == "\n") {
+            //あなたのテキストフィールド
+            textView.resignFirstResponder()
+            print(selfIntroduce.text)
+            return false
+        }
+        return true
+    }
 }
