@@ -11,89 +11,112 @@ class detailShabonViewController: UIViewController {
     
     //idを定義
     var locateId: String?
-    
-    @IBOutlet weak var whoNayami: UILabel!
+
     @IBOutlet weak var nayamiLabel: UILabel!
-    @IBOutlet weak var commentInput: UITextField!
-    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var commentsTable: UITableView!
     var data: [String] = []
     
-    
-    @IBAction func commentAction(_ sender: Any) {
+    //ナビバーの＋ボタンがクリックされた
+    @objc func onTapAddComment() {
+        // アラートの作成.
+        let alertController = UIAlertController(title: "", message: "コメントを入力してください。", preferredStyle: .alert)
         
-        guard let anno_id = locateId else {
-            return
-        }
-        guard let annoId = Int(anno_id) else {
-            return
-        }
-        
-        guard let comment = commentInput.text else {
-            errorLabel.isHidden = false
-            errorLabel.text = "コメントを入力してから送信してね"
-            return
-        }
-        if comment == "" {
-            errorLabel.isHidden = false
-            errorLabel.text = "コメントを入力してから送信してね"
-            return
+        // 入力フィールドを追加.
+        alertController.addTextField { (textField) in
+            textField.placeholder = "コメント"
         }
         
-        //ポストします
-        NayamiComment.nayamiCommentPost(locate_info_id: annoId, comment: comment, callback: { error in
-            if let error = error {
-                if let message = error["message"] as? String {
-                    self.showAlert(message: message, hide: {})
-                } else {
-                    self.showAlert(message: "エラーが発生しました", hide: {})
-                }
+        // 「投稿する」ボタンを設置.
+        let confirmAction = UIAlertAction(title: "投稿する", style: .default) { (_) in
+            // タップされたら、入力内容を取得する.
+            guard let comment = alertController.textFields?[0].text else {
                 return
             }
-            self.showAlert(message: "投稿しました", hide: {})
-        })
+            
+            if comment == "" {
+                self.showAlert(message: "コメントを入力してね", hide: {})
+                return
+            }
+            
+            guard let anno_id = Int(self.locateId!) else {
+                return
+            }
+            //ポストします
+            NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, callback: { error in
+                        if let error = error {
+                            if let message = error["message"] as? String {
+                                self.showAlert(message: message, hide: {})
+                            } else {
+                                self.showAlert(message: "エラーが発生しました", hide: {})
+                            }
+                            return
+                        }
+                        self.showAlert(message: "投稿しました", hide: {})
+                        // コメントデータの再読み込み.
+                        self.fetchData()
+                    })
+        }
+        alertController.addAction(confirmAction)
+        
+        // 「キャンセル」ボタンを設置.
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (_) in }
+        alertController.addAction(cancelAction)
+        
+        // アラートを表示する.
+        self.present(alertController, animated: true, completion: nil)
     }
+    
+    
+//    @IBAction func commentAction(_ sender: Any) {
+//
+//        guard let anno_id = locateId else {
+//            return
+//        }
+//        guard let annoId = Int(anno_id) else {
+//            return
+//        }
+    
+//        guard let comment = commentInput.text else {
+//            errorLabel.isHidden = false
+//            errorLabel.text = "コメントを入力してから送信してね"
+//            return
+//        }
+//        if comment == "" {
+//            errorLabel.isHidden = false
+//            errorLabel.text = "コメントを入力してから送信してね"
+//            return
+//        }
+    
+        //ポストします
+//        NayamiComment.nayamiCommentPost(locate_info_id: annoId, comment: comment, callback: { error in
+//            if let error = error {
+//                if let message = error["message"] as? String {
+//                    self.showAlert(message: message, hide: {})
+//                } else {
+//                    self.showAlert(message: "エラーが発生しました", hide: {})
+//                }
+//                return
+//            }
+//            self.showAlert(message: "投稿しました", hide: {})
+//        })
+//    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        commentInput.delegate = self
-        commentInput.placeholder = "この悩みにコメントする"
-        errorLabel.isHidden = true
-        //ここにIDで検索する処理をかく
-        guard let annoId = locateId else {
-            return
-        }
         
-        StockLocateInfos.getDetailLocation(id: annoId, callback: {error, locate in
-            
-            if let error = error {
-                if let message = error["message"] as? String {
-                    print(message)
-                    print("不明なエラーが発生しました")
-                } else {
-                    print("不明なエラーが発生しました")
-                }
-                return
-            }
-            
-            guard let locate = locate else {
-                return
-            }
-            
-            
-            let nayami_comment_array = locate["nayami_comments"]
-            
-            for nayami in nayami_comment_array {
-                if let nayami_comment = nayami.1["nayami_comment"].string {
-                    self.data += [nayami_comment]
-                }
-            }
-            self.whoNayami.text = locate["user"]["user_name"].string
-            self.nayamiLabel.text = locate["nayami"].string
-            self.commentsTable.reloadData()
-        })
+        // ナビゲーション右上に「+」ボタンを追加.
+        // タップしたら onTapAddComment メソッドを呼び出す.
+        let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(detailShabonViewController.onTapAddComment
+            ))
+        self.navigationItem.setRightBarButton(navItem, animated: true)
+        
+//        commentInput.delegate = self
+//        commentInput.placeholder = "この悩みにコメントする"
+//        errorLabel.isHidden = true
+        
+        self.fetchData()
         //TableView用
         commentsTable.delegate = self
         commentsTable.dataSource = self
@@ -139,4 +162,42 @@ extension detailShabonViewController: UITableViewDelegate, UITableViewDataSource
             return cell
     }
     
+}
+
+extension detailShabonViewController {
+    // APIからコメント一覧を取得する.
+    func fetchData() {
+        //ここにIDで検索する処理をかく
+        guard let annoId = locateId else {
+            return
+        }
+        
+        StockLocateInfos.getDetailLocation(id: annoId, callback: {error, locate in
+            
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                } else {
+                    print("不明なエラーが発生しました")
+                }
+                return
+            }
+            
+            guard let locate = locate else {
+                return
+            }
+            
+            
+            let nayami_comment_array = locate["nayami_comments"]
+            
+            for nayami in nayami_comment_array {
+                if let nayami_comment = nayami.1["nayami_comment"].string {
+                    self.data += [nayami_comment]
+                }
+            }
+            self.nayamiLabel.text = locate["nayami"].string
+            self.commentsTable.reloadData()
+        })
+    }
 }
