@@ -160,7 +160,6 @@
 				C8168D1521318122007084A1 /* MapModule.swift */,
 				C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */,
 				C8168D6B2137BBB5007084A1 /* Login.storyboard */,
-				C8168D6F213813C4007084A1 /* Api.swift */,
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
@@ -200,6 +199,7 @@
 		C8EB10CC212FD0D500B61D34 /* Model Manager */ = {
 			isa = PBXGroup;
 			children = (
+				C8168D6F213813C4007084A1 /* Api.swift */,
 				C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */,
 				C8168D752138DF05007084A1 /* UserRegister.swift */,
 				C8168D7D213BA079007084A1 /* NayamiComment.swift */,

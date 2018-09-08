@@ -147,4 +147,39 @@ class StockLocateInfos: NSObject {
         }
     }
     
+    //自分の情報をGET
+    class func getMyProfile(callback: @escaping ([String: Any]?, JSON?) -> Void){
+        //auth_tokenがないときはリターン
+        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+        
+        //user_idがないときはリターン
+        guard let userId = UserDefaults.standard.string(forKey: "user_id") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+        
+        //Alamofireで検索
+        //        let url = "https://aqueous-temple-50173.herokuapp.com/users/"+ String(userId) +"?auth_token=" + auth_token
+        let url = "http://localhost:3000/users/" + userId + "?auth_token=" + auth_token
+        Alamofire.request(url, method: .get).responseJSON {response in
+            let statusCode = response.response!.statusCode
+            
+            //失敗したとき
+            if statusCode != 200 {
+                callback(["message": "サーバーでエラーが発生しました"], nil)
+            }
+            
+            
+            let obj = JSON(response.result.value)
+            callback(nil, obj)
+        }
+    }
+    
 }

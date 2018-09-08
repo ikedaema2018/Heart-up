@@ -161,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsm-AQ-XEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3719.1999999999998" y="938.68065967016503"/>
+            <point key="canvasLocation" x="3719" y="1738"/>
         </scene>
         <!--My Shabon Detail View Controller-->
         <scene sceneID="8j9-6K-Bsa">
@@ -196,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtW-W0-JhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3724" y="1694.3028485757122"/>
+            <point key="canvasLocation" x="3718" y="2633"/>
         </scene>
         <!--All Comments View Controller-->
         <scene sceneID="L1a-aZ-6mv">
@@ -223,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXU-ge-Us0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4653.6000000000004" y="1706.8965517241381"/>
+            <point key="canvasLocation" x="4657" y="1737"/>
         </scene>
         <!--All Comments Collection View Controller-->
         <scene sceneID="5Yl-Be-Pyq">
@@ -239,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4mh-Xd-b3o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4654" y="2463"/>
+            <point key="canvasLocation" x="4658" y="2633"/>
         </scene>
         <!--誰かの困りごと-->
         <scene sceneID="eXu-eX-PNt">
@@ -255,7 +255,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RvV-ha-3DT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6535.1999999999998" y="1023.2383808095952"/>
+            <point key="canvasLocation" x="5492" y="885"/>
         </scene>
         <!--map-->
         <scene sceneID="MBt-TA-m4x">
@@ -290,28 +290,48 @@
                         <segue destination="dDi-hv-esG" kind="relationship" relationship="viewControllers" id="Xba-Il-suU"/>
                         <segue destination="Dh7-05-enF" kind="relationship" relationship="viewControllers" id="7rP-Kj-ei7"/>
                         <segue destination="dy1-QW-XVO" kind="relationship" relationship="viewControllers" id="5kh-oU-hgA"/>
-                        <segue destination="NHf-Ic-d9i" kind="relationship" relationship="viewControllers" id="7c4-Tg-leh"/>
+                        <segue destination="vU4-oF-NhY" kind="relationship" relationship="viewControllers" id="7c4-Tg-leh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rfi-I8-Tpw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2780" y="124.58770614692655"/>
         </scene>
-        <!--MyPage-->
+        <!--My Page View Controller-->
         <scene sceneID="eSh-6W-G8o">
             <objects>
                 <viewController id="NHf-Ic-d9i" customClass="MyPageViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LdQ-yN-bf7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="名前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWa-rt-YyE">
+                                <rect key="frame" x="166" y="88" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="メールアドレス" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dy3-ha-Zwk">
+                                <rect key="frame" x="122" y="199" width="122" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="f7y-zp-fmA"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="MyPage" image="myPage" selectedImage="myPage" id="ZBz-nH-rR5"/>
+                    <navigationItem key="navigationItem" id="n1l-K1-7yL"/>
+                    <connections>
+                        <outlet property="mailAddress" destination="dy3-ha-Zwk" id="ARZ-WO-ne5"/>
+                        <outlet property="userName" destination="MWa-rt-YyE" id="mFb-tD-oS2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fyd-5Q-Ok3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1806" y="921"/>
+            <point key="canvasLocation" x="1805.5999999999999" y="1738.3808095952024"/>
         </scene>
         <!--MyShabon-->
         <scene sceneID="LHj-Ms-vYo">
@@ -330,7 +350,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12D-6y-Int" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2780" y="938.68065967016503"/>
+            <point key="canvasLocation" x="3719.1999999999998" y="938.68065967016503"/>
         </scene>
         <!--comment-->
         <scene sceneID="ZNw-va-aJJ">
@@ -349,7 +369,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OjT-h2-nSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4653.6000000000004" y="928.78560719640188"/>
+            <point key="canvasLocation" x="4658" y="921"/>
+        </scene>
+        <!--MyPage-->
+        <scene sceneID="FYe-cr-suu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vU4-oF-NhY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="MyPage" image="myPage" selectedImage="myPage" id="ZBz-nH-rR5"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VwN-gr-rGO">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NHf-Ic-d9i" kind="relationship" relationship="rootViewController" id="5wp-T9-wFQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m5s-t7-cqr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1805.5999999999999" y="920.68965517241384"/>
         </scene>
     </scenes>
     <resources>

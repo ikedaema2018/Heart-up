@@ -58,6 +58,8 @@ class AllCommentsCollectionViewController: UIViewController {
             
             // 画面を再描画する.
             AllCommentsDetailCollection.reloadData()
+            
+            self.title = self.locates!["nayami"].string
         })
         
         AllCommentsDetailCollection.dataSource = self

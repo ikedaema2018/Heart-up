@@ -15,8 +15,10 @@ class UserResisterViewController: UIViewController {
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBOutlet weak var agePicker: UIPickerView!
+    var age: Int?
     
-    
+    var ageList: [String] = ["1","2","3","4"]
     
     @IBAction func signUp(_ sender: Any) {
         guard let user_name = userNameInput.text, let email = emailInput.text, let password = passwordInput.text else {
@@ -67,6 +69,10 @@ class UserResisterViewController: UIViewController {
         emailInput.delegate = self
         passwordInput.delegate = self
         
+        agePicker.delegate = self
+        agePicker.dataSource = self
+        
+        
         //placeholderを指定
         userNameInput.placeholder = "ユーザーネーム"
         emailInput.placeholder = "メールアドレス"
@@ -98,4 +104,30 @@ extension UserResisterViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+}
+
+extension UserResisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+
+
+    //Picerviewの列の数は1とする
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    //PickerViewに表示する配列の要素数を設定する
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return ageList.count
+    }
+    
+    //表示する文字列を指定する
+    func pickerView(_ pickerview: UIPickerView, titleForRow row: Int, forComponent component: Int)-> String? {
+        return ageList[row]
+    }
+    
+    //ラベル表示
+    func pickerView(_ pickerview: UIPickerView, didSelectRow row: Int, inComponent component: Int){
+        let age = ageList[row]
+        print(age)
+    }
+
 }

@@ -20,8 +20,10 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         
         
         //UserDefaltsを初期化したい時
-//        let userDefaults = UserDefaults.standard
-//        userDefaults.removeObject(forKey: "auth_token")
+        let userDefaults = UserDefaults.standard
+        userDefaults.removeObject(forKey: "auth_token")
+        userDefaults.removeObject(forKey: "user_id")
+        
         
         mapView.delegate = self
         // tracking user location

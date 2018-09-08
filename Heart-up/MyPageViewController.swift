@@ -9,10 +9,31 @@
 import UIKit
 
 class MyPageViewController: UIViewController {
+    
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var mailAddress: UILabel!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        StockLocateInfos.getMyProfile(){ error, result in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                } else {
+                    print("不明なエラーが発生しました")
+                }
+                return
+            }
+            
+            guard let user = result else {
+                return
+            }
+            self.userName.text = user["user_name"].string
+            self.mailAddress.text = user["email"].string
+        }
+        
         // Do any additional setup after loading the view.
     }
 
