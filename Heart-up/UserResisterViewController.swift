@@ -18,7 +18,12 @@ class UserResisterViewController: UIViewController {
     @IBOutlet weak var agePicker: UIPickerView!
     var age: Int?
     
-    var ageList: [String] = ["1","2","3","4"]
+    var ageList: [Int] = []
+    
+    @IBOutlet weak var genderSegment: UIView!
+    
+    
+    
     
     @IBAction func signUp(_ sender: Any) {
         guard let user_name = userNameInput.text, let email = emailInput.text, let password = passwordInput.text else {
@@ -59,10 +64,17 @@ class UserResisterViewController: UIViewController {
         })
     }
     
+
+    
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for i in 10...100 {
+            ageList += [i]
+        }
         
         errorLabel.isHidden = true
         userNameInput.delegate = self
@@ -121,13 +133,12 @@ extension UserResisterViewController: UIPickerViewDataSource, UIPickerViewDelega
     
     //表示する文字列を指定する
     func pickerView(_ pickerview: UIPickerView, titleForRow row: Int, forComponent component: Int)-> String? {
-        return ageList[row]
+        return "\(String(ageList[row]))歳"
     }
     
-    //ラベル表示
+    //選択された時
     func pickerView(_ pickerview: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         let age = ageList[row]
-        print(age)
     }
 
 }
