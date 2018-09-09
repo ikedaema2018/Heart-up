@@ -53,13 +53,8 @@ class MyPageViewController: UIViewController {
             //画像が投稿されていたら
             if user["profile_image"]["image_path"] != nil {
                 let image_path = user["profile_image"]["image_path"].string
-                ProfileImage.imageDetail(imagePath: image_path!){ result in
-                    if result == nil {
-                        self.showAlert(message: "エラーが発生しました。", hide: {})
-                    } else {
-                        print(result)
-                    }
-                }
+                let url = "http://localhost:3000/profile_image/" + image_path!
+                self.profileImage.downloadedFrom(link: url)
             }
         }
         

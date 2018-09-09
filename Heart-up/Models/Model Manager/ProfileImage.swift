@@ -64,30 +64,30 @@ class ProfileImage: NSObject {
         }
     }
     
-    class func imageDetail(imagePath: String, callback2: @escaping (Any?) -> Void) {
-        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                appDelegate.showLoginStoryboard()
-            }
-            return
-        }
-        let url = "http://localhost:3000/profile_images/" + imagePath + "?auth_token=" + auth_token
-        Alamofire.request(url, method: .get).response {response in
-            
-            let statusCode = response.response!.statusCode
-            
-            // 失敗した場合.
-            if statusCode != 200 {
-                callback2(nil)
-            }
-            
-            print(response)
-            
-            
-            
-            callback2(response)
-        }
-    }
+//    class func imageDetail(imagePath: String, callback2: @escaping (Any?) -> Void) {
+//        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+//            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//                appDelegate.showLoginStoryboard()
+//            }
+//            return
+//        }
+//        let url = "http://localhost:3000/profile_images/" + imagePath + "?auth_token=" + auth_token
+//        Alamofire.request(url, method: .get).response {response in
+//
+//            let statusCode = response.response!.statusCode
+//
+//            // 失敗した場合.
+//            if statusCode != 200 {
+//                callback2(nil)
+//            }
+//            
+//            print(response)
+//
+//
+//
+//            callback2(response)
+//        }
+//    }
     
     
     
