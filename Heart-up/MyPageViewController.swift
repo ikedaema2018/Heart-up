@@ -50,6 +50,17 @@ class MyPageViewController: UIViewController {
             self.genderLabel.text = user["gender"].string
             self.selfIntroduceView.text = user["self_introduce"].string
             
+            //画像が投稿されていたら
+            if user["profile_image"]["image_path"] != nil {
+                let image_path = user["profile_image"]["image_path"].string
+                ProfileImage.imageDetail(imagePath: image_path!){ result in
+                    if result == nil {
+                        self.showAlert(message: "エラーが発生しました。", hide: {})
+                    } else {
+                        print(result)
+                    }
+                }
+            }
         }
         
         // Do any additional setup after loading the view.
