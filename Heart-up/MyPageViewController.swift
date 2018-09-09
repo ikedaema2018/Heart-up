@@ -27,36 +27,7 @@ class MyPageViewController: UIViewController {
         selfIntroduceView.layer.borderWidth = 1.0
         selfIntroduceView.isEditable = false
     
-        StockLocateInfos.getMyProfile(){ error, result in
-            if let error = error {
-                if let message = error["message"] as? String {
-                    print(message)
-                    print("不明なエラーが発生しました")
-                } else {
-                    print("不明なエラーが発生しました")
-                }
-                return
-            }
-            
-            guard let user = result else {
-                return
-            }
-            print(user)
-            self.userName.text = user["user_name"].string
-            self.mailAddress.text = user["email"].string
-            if let age = user["age"].int {
-                self.ageLabel.text = String(age)
-            }
-            self.genderLabel.text = user["gender"].string
-            self.selfIntroduceView.text = user["self_introduce"].string
-            
-            //画像が投稿されていたら
-            if user["profile_image"]["image_path"] != nil {
-                let image_path = user["profile_image"]["image_path"].string
-                let url = "http://localhost:3000/profile_image/" + image_path!
-                self.profileImage.downloadedFrom(link: url)
-            }
-        }
+        fetchData()
         
         // Do any additional setup after loading the view.
     }
@@ -76,5 +47,47 @@ class MyPageViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Do any additional setup after loading the view.
+        fetchData()
+    }
 
+}
+
+extension MyPageViewController {
+    func fetchData(){
+        StockLocateInfos.getMyProfile(){ error, result in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                } else {
+                    print("不明なエラーが発生しました")
+                }
+                return
+            }
+    
+            guard let user = result else {
+                return
+            }
+            
+
+            self.userName.text = user["user_name"].string
+            self.mailAddress.text = user["email"].string
+            if let age = user["age"].int {
+                self.ageLabel.text = String(age)
+            }
+            self.genderLabel.text = user["gender"].string
+            self.selfIntroduceView.text = user["self_introduce"].string
+    
+            //画像が投稿されていたら
+            if user["profile_image"] != nil {
+                let image_path = user["profile_image"].string
+                let url = "http://localhost:3000/profile_image/" + image_path!
+                self.profileImage.downloadedFrom(link: url)
+            }
+        }
+    }
 }

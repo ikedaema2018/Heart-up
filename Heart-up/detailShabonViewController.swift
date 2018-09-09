@@ -205,6 +205,10 @@ extension detailShabonViewController {
             
             
             self.locates = locate
+            
+            //タイトルを設定
+            self.title = self.locates!["nayami"].string
+            
             // 画面全体に色を設定
             if self.locates!["color"].string == "赤" {
                 self.view.backgroundColor = UIColor.red

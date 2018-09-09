@@ -39,6 +39,7 @@ class ApiManager {
                 
                 //成功した場合
                 if let data = response.result.value as? [String: Any] {
+                    print(data)
                     
                     //ユーザーIDを保存
                     if let userId = data["id"] as? Int {

@@ -198,7 +198,7 @@
             </objects>
             <point key="canvasLocation" x="3718" y="2633"/>
         </scene>
-        <!--All Comments View Controller-->
+        <!--コメント履歴-->
         <scene sceneID="L1a-aZ-6mv">
             <objects>
                 <viewController id="jfO-mH-eiT" customClass="AllCommentsViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
@@ -215,7 +215,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="4AL-wH-I1A"/>
                     </view>
-                    <navigationItem key="navigationItem" id="TB7-yC-SjZ"/>
+                    <navigationItem key="navigationItem" title="コメント履歴" id="TB7-yC-SjZ"/>
                     <connections>
                         <outlet property="allCommentShabonTable" destination="ZRw-DB-aBr" id="JxA-Yx-bKv"/>
                         <segue destination="RkL-a1-i5u" kind="push" identifier="AllCommentCollectionSegue" id="RSG-ql-dUL"/>
@@ -297,7 +297,7 @@
             </objects>
             <point key="canvasLocation" x="2780" y="124.58770614692655"/>
         </scene>
-        <!--My Page View Controller-->
+        <!--マイページ-->
         <scene sceneID="eSh-6W-G8o">
             <objects>
                 <viewController id="NHf-Ic-d9i" customClass="MyPageViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
@@ -386,7 +386,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="f7y-zp-fmA"/>
                     </view>
-                    <navigationItem key="navigationItem" id="n1l-K1-7yL"/>
+                    <navigationItem key="navigationItem" title="マイページ" id="n1l-K1-7yL"/>
                     <connections>
                         <outlet property="ageLabel" destination="Nwb-tc-Kry" id="Sxh-LO-Cav"/>
                         <outlet property="genderLabel" destination="wDC-OS-2eZ" id="RnZ-Rh-BAr"/>
