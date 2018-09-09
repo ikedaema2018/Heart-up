@@ -103,6 +103,9 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view.
+        
+        //一旦ピン削除
+        removeAllAnnotations()
         fetchData()
     }
 }
@@ -140,6 +143,13 @@ extension ShowLocateViewController {
             //                }
             //            }
         }
+    }
+    
+    func removeAllAnnotations() {
+        let annotations = mapView.annotations.filter {
+            $0 !== self.mapView.userLocation
+        }
+        mapView.removeAnnotations(annotations)
     }
 }
     
