@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 extension UIViewController {
     func showAlert(message: String, hide: @escaping () -> Void) {
@@ -15,6 +16,47 @@ extension UIViewController {
             alert.dismiss(animated: true, completion: nil)
             hide()
         })
+        
+    }
+    
+    func shabon_Alert(message: JSON, callback: @escaping () -> Void) {
+        let alert = UIAlertController(title: "あなたのシャボン玉が破裂しました", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "見に行く", style: .default) { action in
+            alert.dismiss(animated: true, completion: nil)
+            // APIで投稿.
+            ShabonAlert.fixAlert(id: message["id"].int!) { errorInfo in
+            
+                // エラー処理.
+                if let errorInfo = errorInfo {
+                    if let message = errorInfo["message"] as? String {
+                        self.showAlert(message: message, hide: {})
+                    } else {
+                        self.showAlert(message: "エラーが発生しました。", hide: {})
+                    }
+                    return
+                }
+                callback()
+            }
+        })
+        // 「キャンセル」ボタンを設置.
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { action in
+            // APIで投稿.
+            ShabonAlert.fixAlert(id: message["id"].int!) { errorInfo in
+                
+                // エラー処理.
+                if let errorInfo = errorInfo {
+                    if let message = errorInfo["message"] as? String {
+                        self.showAlert(message: message, hide: {})
+                    } else {
+                        self.showAlert(message: "エラーが発生しました。", hide: {})
+                    }
+                    return
+                }
+                callback()
+            }
+        }
+        alert.addAction(cancelAction)
+        
         self.present(alert, animated: true)
     }
     

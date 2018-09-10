@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
 
 
 class ShowLocateViewController: UIViewController, MKMapViewDelegate {
@@ -29,7 +30,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
         mapView.showsUserLocation = true
         
-        fetchData()
         
         // Do any additional setup after loading the view.
         
@@ -108,6 +108,32 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         removeAllAnnotations()
         fetchData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Do any additional setup after loading the view.
+        
+        //shabon_alert テーブルから検索する処理
+        ShabonAlert.select_user_alert(callback: { error, alert in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                } else {
+                    print("不明なエラーが発生しました")
+                }
+                return
+            }
+            
+            if !(alert?.isEmpty)! {
+                let tmp_alert = alert![0]
+                self.shabon_Alert(message: tmp_alert, callback: { () in
+                    self.viewDidAppear(animated)
+                })
+            }
+        })
+    }
+    
 }
 
 extension ShowLocateViewController {
@@ -127,8 +153,7 @@ extension ShowLocateViewController {
             guard let locates = locates else {
                 return
             }
-            
-            
+           
             //ピンを一覧で表示
             locates.forEach { (_, locate) in
                 if let ido_s = locate["ido"].string, let keido_s = locate["keido"].string, let id_i = locate["id"].int, let nayami = locate["nayami"].string, let user_id = locate["user_id"].int, let color = locate["color"].string, let user_name = locate["user"]["user_name"].string {
@@ -144,6 +169,17 @@ extension ShowLocateViewController {
         }
         mapView.removeAnnotations(annotations)
     }
+    
+//    func alert_shabon(alert: JSON, num: Int){
+//        print(alert[num])
+//        let aaa = num + 1
+//        //alert
+//        if aaa >= alert.count {
+//            //updateの処理
+//            return
+//        }
+//        alert_shabon(alert: alert, num: aaa)
+//    }
 }
     
     
