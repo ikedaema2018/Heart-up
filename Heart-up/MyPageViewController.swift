@@ -17,15 +17,23 @@ class MyPageViewController: UIViewController {
     @IBOutlet weak var selfIntroduceView: UITextView!
     @IBOutlet weak var profileImage: UIImageView!
     
+    @IBAction func saveButton(_ sender: Any) {
+        print(selfIntroduceView.text)
+    }
+    
+    
+    
+    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selfIntroduceView.delegate = self
         profileImage.image = UIImage(named: "noel")
         
         selfIntroduceView.layer.borderWidth = 1.0
-        selfIntroduceView.isEditable = false
+//        selfIntroduceView.isEditable = false
     
         fetchData()
         
@@ -89,5 +97,18 @@ extension MyPageViewController {
                 self.profileImage.downloadedFrom(link: url)
             }
         }
+    }
+}
+
+extension MyPageViewController: UITextViewDelegate {
+    // hides text views
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if (text == "\n") {
+            //あなたのテキストフィールド
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }

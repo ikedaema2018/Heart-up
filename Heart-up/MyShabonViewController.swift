@@ -9,7 +9,14 @@
 import UIKit
 
 class MyShabonViewController: UIViewController {
+    var live_posts: [[String: Any]] = []
+    var dead_posts: [[String: Any]] = []
     var posts: [[String: Any]] = []
+    
+    // Sectionのタイトル
+    let sectionTitle: NSArray = [
+        "飛行中のシャボン玉",
+        "弾けたシャボン玉"]
     
     @IBOutlet weak var myShabonTable: UITableView!
     
@@ -17,9 +24,6 @@ class MyShabonViewController: UIViewController {
         super.viewDidLoad()
         
         myShabonTable.register(UINib(nibName: "MyShabonTableViewCell", bundle: nil), forCellReuseIdentifier: "MyShabonCell")
-        
-        
-        
         
         myShabonTable.dataSource = self
         myShabonTable.delegate = self
@@ -37,7 +41,15 @@ class MyShabonViewController: UIViewController {
                 print("位置情報をとってこれませんでした")
                 return
             }
-            self.posts = locates
+            locates.forEach { locate in
+                if locate["life_flag"] as! Int == 1 {
+                    self.dead_posts.append(locate)
+                } else {
+                    self.live_posts.append(locate)
+                }
+            }
+            
+//            self.posts = locates
             self.myShabonTable.reloadData()
         })
         
@@ -63,13 +75,35 @@ class MyShabonViewController: UIViewController {
 }
 
 extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    // セクション数を返却する.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionTitle.count
+    }
+    
+    // Sectioのタイトル
+    func tableView(_ tableView: UITableView,
+                   titleForHeaderInSection section: Int) -> String? {
+        return sectionTitle[section] as? String
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        if section == 0 {
+            return live_posts.count
+        } else if section == 1 {
+            return dead_posts.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myShabonTable.dequeueReusableCell(withIdentifier: "MyShabonCell", for: indexPath) as! MyShabonTableViewCell
-        cell.locate = posts[indexPath.row]
+        if indexPath.section == 0 {
+            cell.locate = live_posts[indexPath.row]
+        } else {
+            cell.locate = dead_posts[indexPath.row]
+        }
         return cell
     }
     
@@ -77,11 +111,17 @@ extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             //選択状態を非表示にする
             myShabonTable.deselectRow(at: indexPath, animated: true)
-            let post = self.posts[indexPath.row]
-            let post1 = post["id"]
-//            print(post1)
+            let locate_id: Any?
+            if indexPath.section == 0 {
+                let post = self.live_posts[indexPath.row]
+                locate_id = post["id"]
+            } else if indexPath.section == 1 {
+                let post = self.dead_posts[indexPath.row]
+                locate_id = post["id"]
+            } else { locate_id = 0 }
+            
             // コメント一覧へ遷移する.
-            self.performSegue(withIdentifier: "myShabonDetailSegue", sender: post1)
+            self.performSegue(withIdentifier: "myShabonDetailSegue", sender: locate_id)
         }
     
     
@@ -117,7 +157,6 @@ extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
         if segue.identifier == "myShabonDetailSegue" {
             // 選択された投稿データをコメントViewControllerへ渡す.
             if let id = sender as? Int {
-                print(id)
                 let vc = segue.destination as! MyShabonDetailViewController
                 vc.id = String(id)
             }
