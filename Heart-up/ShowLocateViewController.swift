@@ -135,13 +135,6 @@ extension ShowLocateViewController {
                     MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView, id: id_i, nayami: nayami, user_id: user_id, user_name: user_name, color: color)
                 }
             }
-            
-            //ピンを立てる
-            //            if let locates = locates {
-            //                if let ido_s = locates["ido"] as? String, let keido_s = locates["keido"] as? String {
-            //                    MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView)
-            //                }
-            //            }
         }
     }
     
