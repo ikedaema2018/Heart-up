@@ -19,6 +19,27 @@ class MyPageViewController: UIViewController {
     
     @IBAction func saveButton(_ sender: Any) {
         print(selfIntroduceView.text)
+        UserRegister.updateIntroduce(intro: selfIntroduceView.text, callback: { error in
+            if let error = error {
+                if let message = error["message"] {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                    self.showAlert(message: "自己紹介の変更ができなかったよ！", hide: { () -> Void in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                } else {
+                    print("謎のエラー発生！")
+                    self.showAlert(message: "自己紹介の変更ができなかったよ！", hide: { () -> Void in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                }
+                return
+            }
+            
+            self.showAlert(message: "自己紹介の変更に成功したよ！", hide: { () -> Void in
+                self.dismiss(animated: true, completion: nil)
+            })
+        })
     }
     
     
