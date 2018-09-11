@@ -16,7 +16,7 @@ extension UIViewController {
             alert.dismiss(animated: true, completion: nil)
             hide()
         })
-        
+        self.present(alert, animated: true)
     }
     
     func shabon_Alert(message: JSON, callback: @escaping () -> Void) {

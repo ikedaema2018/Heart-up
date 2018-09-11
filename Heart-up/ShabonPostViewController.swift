@@ -67,6 +67,7 @@ class ShabonPostViewController: UIViewController {
                 }
                 return
             }
+            print("adadada")
             self.showAlert(message: "投稿しました", hide: {})
         }
     }
