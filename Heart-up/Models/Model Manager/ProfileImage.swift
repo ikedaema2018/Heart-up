@@ -11,6 +11,7 @@ import UIKit
 import SwiftyJSON
 
 class ProfileImage: NSObject {
+    
     class func postImage(image: UIImage, callback: @escaping ([String: Any]?) -> Void) {
         // APIトークンがない場合はエラー.
         guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
@@ -25,10 +26,12 @@ class ProfileImage: NSObject {
         // ここでは multipart/form-data 形式でAPIを実行する.
         let headers : HTTPHeaders = [ "Content-type" : "multipart/form-data" ]
         
+        let fileName = randomString(length: 10) + ".png" // 10桁のランダムな英数字を生成
+        
         // multipart/form-data でAlamofireを実行.
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             // 送信データを詰める.
-            multipartFormData.append(UIImageJPEGRepresentation(image, 0.8)!, withName: "file", fileName: "image.png", mimeType: "image/png")
+            multipartFormData.append(UIImageJPEGRepresentation(image, 0.8)!, withName: "file", fileName: fileName, mimeType: "image/png")
             print(multipartFormData)
             
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { result in
@@ -64,33 +67,22 @@ class ProfileImage: NSObject {
         }
     }
     
-//    class func imageDetail(imagePath: String, callback2: @escaping (Any?) -> Void) {
-//        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
-//            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-//                appDelegate.showLoginStoryboard()
-//            }
-//            return
-//        }
-//        let url = "http://localhost:3000/profile_images/" + imagePath + "?auth_token=" + auth_token
-//        Alamofire.request(url, method: .get).response {response in
-//
-//            let statusCode = response.response!.statusCode
-//
-//            // 失敗した場合.
-//            if statusCode != 200 {
-//                callback2(nil)
-//            }
-//            
-//            print(response)
-//
-//
-//
-//            callback2(response)
-//        }
-//    }
-    
-    
-    
-    
+    //ランダムな文字列
+    class func randomString(length: Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let len = UInt32(letters.length)
+        
+        var randomString = ""
+        
+        for _ in 0 ..< length {
+            let rand = arc4random_uniform(len)
+            var nextChar = letters.character(at: Int(rand))
+            randomString += NSString(characters: &nextChar, length: 1) as String
+        }
+        
+        return randomString
+    }
     
 }
+
