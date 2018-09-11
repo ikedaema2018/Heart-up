@@ -70,8 +70,6 @@ class MyShabonDetailViewController: UIViewController {
         // セルの再利用のための設定
         MyShabonDetailCollection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         
-        
-        
         // Do any additional setup after loading the view.
     }
 

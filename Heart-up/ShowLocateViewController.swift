@@ -75,6 +75,10 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
+        if view.annotation is MKUserLocation {
+            return
+        }
+        
         guard let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] else {
             return
         }

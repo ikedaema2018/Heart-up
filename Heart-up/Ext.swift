@@ -20,6 +20,23 @@ extension UIViewController {
     }
     
     func shabon_Alert(message: JSON, callback: @escaping (String?) -> Void) {
+        //ロケート情報を定義
+        var locate: JSON?
+        //locateIdで緯度経度を取得してくる
+        StockLocateInfos.getDetailLocation(id: String(message["id"].int!)) { error, tmp_locate in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                } else {
+                    print("不明なエラーが発生しました")
+                }
+                return
+            }
+            locate = tmp_locate
+        }
+        
+        print(locate)
         let alert = UIAlertController(title: "あなたのシャボン玉が破裂しました", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "見に行く", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
