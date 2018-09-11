@@ -55,7 +55,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 //annoのクラス名を・・・意味不明だから省略
                 // ( annotation as! CustomAnnotation )をしないと
                 // CustomAnnotationクラスで定義した変数が取れないので注意！
-                if let color = (( annotation as! CustomAnnotation ).data["color"]) {
+                if let color = (( annotation as! CustomAnnotation ).color["color"]) {
                     let color_s = color as! String
                     
                     if color_s  == "黄" {
@@ -75,16 +75,18 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        //subTitleの文字列の加工
-        guard let locate_id = view.annotation!.subtitle! else {
+        guard let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] else {
             return
         }
+        print(type(of: locateId))
         
-        let locate_id_str = String(locate_id[..<locate_id.index(locate_id.startIndex, offsetBy: 1)])
+        print(locateId)
+        
+        let locate_id = locateId as! Int
         
         
         //遷移
-        performSegue(withIdentifier: "toDetailShabonViewController", sender: locate_id_str)
+        performSegue(withIdentifier: "toDetailShabonViewController", sender: String(locate_id))
     }
     
     //ページ遷移で数値を
