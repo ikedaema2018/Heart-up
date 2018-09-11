@@ -19,7 +19,7 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
-    func shabon_Alert(message: JSON, callback: @escaping () -> Void) {
+    func shabon_Alert(message: JSON, callback: @escaping (String?) -> Void) {
         let alert = UIAlertController(title: "あなたのシャボン玉が破裂しました", message: "", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "見に行く", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
@@ -35,7 +35,11 @@ extension UIViewController {
                     }
                     return
                 }
-                callback()
+                
+                guard let locateId = message["locate_info_id"].int else {
+                    return
+                }
+                callback(String(locateId))
             }
         })
         // 「キャンセル」ボタンを設置.
@@ -52,7 +56,7 @@ extension UIViewController {
                     }
                     return
                 }
-                callback()
+                callback(nil)
             }
         }
         alert.addAction(cancelAction)

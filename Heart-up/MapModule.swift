@@ -11,7 +11,6 @@ import MapKit
 import CoreLocation
 
 class MapModule: NSObject  {
-    
     class func setAnnotation(x: String,y: String, map: MKMapView?, id: Int, nayami: String, user_id: Int, user_name: String, color: String) ->Void {
         //StringをDouble型に変換
         let annotation = CustomAnnotation()

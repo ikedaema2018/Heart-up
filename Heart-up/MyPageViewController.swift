@@ -79,7 +79,9 @@ class MyPageViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Do any additional setup after loading the view.
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillShowNotification(_:)), name: .UIKeyboardWillShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillHideNotification(_:)), name: .UIKeyboardWillHide, object: nil)
         fetchData()
     }
 
@@ -127,42 +129,36 @@ extension MyPageViewController: UITextViewDelegate {
         
         if (text == "\n") {
             //あなたのテキストフィールド
-            textView.resignFirstResponder()
+            selfIntroduceView.resignFirstResponder()
             return false
         }
         return true
     }
     
     // キーボードが現れた時に、画面全体をずらす。
-    @objc func keyboardWillShow(notification: Notification?) {
-        
-        let rect = (notification?.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue
-        let duration: TimeInterval? = notification?.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
-        UIView.animate(withDuration: duration!, animations: { () in
-            let transform = CGAffineTransform(translationX: 0, y: -(rect?.size.height)!)
-            self.view.transform = transform
+    @objc private func handleKeyboardWillShowNotification(_ notification: Notification) {
+        let userInfo = notification.userInfo //この中にキーボードの情報がある
+        let keyboardSize = (userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardY = self.view.frame.size.height - keyboardSize.height //画面全体の高さ - キーボードの高さ = キーボードが被らない高さ
+        let editingTextFieldY: CGFloat = (self.selfIntroduceView?.frame.origin.y)!
+        if editingTextFieldY > keyboardY - 60 {
+            UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+                self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextFieldY - (keyboardY - 130)), width: self.view.bounds.width, height: self.view.bounds.height)
+            }, completion: nil)
             
-        })
+        }
     }
     
     // キーボードが消えたときに、画面を戻す
-    @objc func keyboardWillHide(notification: Notification?) {
-        
-        let duration: TimeInterval? = notification?.userInfo?[UIKeyboardAnimationCurveUserInfoKey] as? Double
-        UIView.animate(withDuration: duration!, animations: { () in
-            
-            self.view.transform = CGAffineTransform.identity
-        })
+    @objc private func handleKeyboardWillHideNotification(_ notification: Notification) {
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+            self.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+        }, completion: nil)
     }
 }
 
 extension MyPageViewController {
-    // Notificationを設定
-    func configureObserver() {
-        let notification = NotificationCenter.default
-        notification.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        notification.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
+    
     
     // Notificationを削除
     func removeObserver() {

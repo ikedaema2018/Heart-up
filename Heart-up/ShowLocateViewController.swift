@@ -129,8 +129,13 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
             
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
-                self.shabon_Alert(message: tmp_alert, callback: { () in
-                    self.viewDidAppear(animated)
+                self.shabon_Alert(message: tmp_alert, callback: { locateId in
+                    if let locateId = locateId {
+                        //遷移
+                        self.performSegue(withIdentifier: "toDetailShabonViewController", sender: locateId)
+                    }else{
+                        self.viewDidAppear(animated)
+                    }
                 })
             }
         })
