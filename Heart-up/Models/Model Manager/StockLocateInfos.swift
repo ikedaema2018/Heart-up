@@ -104,7 +104,7 @@ class StockLocateInfos: NSObject {
         }
         //Alamofireで検索
         //        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos?auth_token=" + auth_token + "&id=" + id
-        let url = "http://localhost:3000/locate_infos/" + id + "/?auth_token=" + auth_token
+        let url = "http://localhost:3000/locate_infos/" + id + "?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
             let statusCode = response.response!.statusCode
             

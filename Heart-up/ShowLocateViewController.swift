@@ -75,6 +75,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
+        //クリックした時、ユーザーだったらリターン
         if view.annotation is MKUserLocation {
             return
         }

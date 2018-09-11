@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import CoreLocation
 
 extension UIViewController {
     func showAlert(message: String, hide: @escaping () -> Void) {
@@ -23,7 +24,7 @@ extension UIViewController {
         //ロケート情報を定義
         var locate: JSON?
         //locateIdで緯度経度を取得してくる
-        StockLocateInfos.getDetailLocation(id: String(message["id"].int!)) { error, tmp_locate in
+        StockLocateInfos.getDetailLocation(id: String(message["locate_info"]["id"].int!)) { error, tmp_locate in
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
@@ -34,51 +35,66 @@ extension UIViewController {
                 return
             }
             locate = tmp_locate
-        }
-        
-        print(locate)
-        let alert = UIAlertController(title: "あなたのシャボン玉が破裂しました", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "見に行く", style: .default) { action in
-            alert.dismiss(animated: true, completion: nil)
-            // APIで投稿.
-            ShabonAlert.fixAlert(id: message["id"].int!) { errorInfo in
+            guard let longitude = locate!["keido"].string, let latitude = locate!["ido"].string else {
+                return
+            }
+            //リバースジオロケートで緯度経度
+            let geocoder = CLGeocoder()
+            let location = CLLocation(latitude: Double(latitude)!, longitude: Double(longitude)!)
+            var place = ""
+            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                if let placemarks = placemarks {
+                    if let pm = placemarks.first {
+                        place += pm.administrativeArea ?? ""
+                        place += pm.locality ?? ""
+                    }
+                }
+                let alert = UIAlertController(title: "あなたのシャボン玉が\(place)で破裂しました", message: "", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "見に行く", style: .default) { action in
+                    alert.dismiss(animated: true, completion: nil)
+                    // APIで投稿.
+                    ShabonAlert.fixAlert(id: message["id"].int!) { errorInfo in
+                        
+                        // エラー処理.
+                        if let errorInfo = errorInfo {
+                            if let message = errorInfo["message"] as? String {
+                                self.showAlert(message: message, hide: {})
+                            } else {
+                                self.showAlert(message: "エラーが発生しました。", hide: {})
+                            }
+                            return
+                        }
+                        
+                        guard let locateId = message["locate_info_id"].int else {
+                            return
+                        }
+                        callback(String(locateId))
+                    }
+                })
+                // 「キャンセル」ボタンを設置.
+                let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { action in
+                    // APIで投稿.
+                    ShabonAlert.fixAlert(id: message["id"].int!) { errorInfo in
+                        
+                        // エラー処理.
+                        if let errorInfo = errorInfo {
+                            if let message = errorInfo["message"] as? String {
+                                self.showAlert(message: message, hide: {})
+                            } else {
+                                self.showAlert(message: "エラーが発生しました。", hide: {})
+                            }
+                            return
+                        }
+                        callback(nil)
+                    }
+                }
+                alert.addAction(cancelAction)
+                
+                self.present(alert, animated: true)
+            }
             
-                // エラー処理.
-                if let errorInfo = errorInfo {
-                    if let message = errorInfo["message"] as? String {
-                        self.showAlert(message: message, hide: {})
-                    } else {
-                        self.showAlert(message: "エラーが発生しました。", hide: {})
-                    }
-                    return
-                }
-                
-                guard let locateId = message["locate_info_id"].int else {
-                    return
-                }
-                callback(String(locateId))
-            }
-        })
-        // 「キャンセル」ボタンを設置.
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { action in
-            // APIで投稿.
-            ShabonAlert.fixAlert(id: message["id"].int!) { errorInfo in
-                
-                // エラー処理.
-                if let errorInfo = errorInfo {
-                    if let message = errorInfo["message"] as? String {
-                        self.showAlert(message: message, hide: {})
-                    } else {
-                        self.showAlert(message: "エラーが発生しました。", hide: {})
-                    }
-                    return
-                }
-                callback(nil)
-            }
+            
         }
-        alert.addAction(cancelAction)
-        
-        self.present(alert, animated: true)
     }
     
     func showProgress() {
