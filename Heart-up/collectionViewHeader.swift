@@ -14,7 +14,7 @@ class topHeader:UICollectionReusableView{
     
     func setUpViews(){
         
-        backgroundColor = .green
+        backgroundColor = .yellow
         
         addSubview(titleLabel)
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
@@ -24,10 +24,11 @@ class topHeader:UICollectionReusableView{
         
     }
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "CodeNinja"
-        label.font = .systemFont(ofSize: 20)
+    var titleLabel: UILabel = {
+        var label = UILabel()
+        label.text = ""
+        label.font = .systemFont(ofSize: 16)
+        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

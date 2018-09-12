@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import CoreLocation
 
 class MyShabonDetailViewController: UICollectionViewController {
     var id: String?
@@ -54,8 +55,25 @@ class MyShabonDetailViewController: UICollectionViewController {
                 self.view.backgroundColor = UIColor.yellow
             }
             
-            // 画面を再描画する.
-            self.collectionView?.reloadData()
+            print("test")
+            
+            guard let longitude = locate!["keido"].string, let latitude = locate!["ido"].string else {
+                return
+            }
+            //リバースジオロケートで緯度経度
+            let geocoder = CLGeocoder()
+            let location = CLLocation(latitude: Double(latitude)!, longitude: Double(longitude)!)
+
+            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                if let placemarks = placemarks {
+                    if let pm = placemarks.first {
+                        self.place += pm.administrativeArea ?? ""
+                        self.place += pm.locality ?? ""
+                    }
+                }
+                // 画面を再描画する.
+                self.collectionView?.reloadData()
+            }
         })
 
         // アイテム表示領域を白色に設定
@@ -136,9 +154,11 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
             label.text = tmp["nayami_comments"][indexPath.row]["nayami_comment"].string
             label.numberOfLines = 0
             label.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 5, height: 0)
+            
             label.sizeToFit()
             label.center = cell.contentView.center
             cell.contentView.addSubview(label)
+
             return cell
         }
         
@@ -155,13 +175,16 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
         //headerを定義する
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! topHeader
         
+        //headerのLabelのテキストを指定
+        header.titleLabel.text = "\(place)で破裂しました"
+        
         return header
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         //headerサイズ
-        return CGSize(width: view.frame.width, height: 100)
+        return CGSize(width: view.frame.width, height: 50)
     }
     
     
