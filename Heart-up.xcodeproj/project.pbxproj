@@ -31,6 +31,7 @@
 		C86E32EF212D1B67005A3D92 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86E32EE212D1B67005A3D92 /* MapKit.framework */; };
 		C86E32F1212D1B73005A3D92 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C86E32F0212D1B73005A3D92 /* CoreLocation.framework */; };
 		C86FE3632147A2DD00526196 /* ExplosionShabonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86FE3622147A2DD00526196 /* ExplosionShabonDetailViewController.swift */; };
+		C86FE3652148B94100526196 /* collectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86FE3642148B94100526196 /* collectionViewHeader.swift */; };
 		C894CFB9213CE6DE007957E2 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */; };
 		C894CFBD213CE787007957E2 /* MyShabonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFBC213CE787007957E2 /* MyShabonViewController.swift */; };
 		C894CFBF213CF4ED007957E2 /* AllCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */; };
@@ -73,6 +74,7 @@
 		C86E32EE212D1B67005A3D92 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C86E32F0212D1B73005A3D92 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C86FE3622147A2DD00526196 /* ExplosionShabonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ExplosionShabonDetailViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/AllCommentsTableCell/ExplosionShabonDetailViewController.swift"; sourceTree = "<absolute>"; };
+		C86FE3642148B94100526196 /* collectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = collectionViewHeader.swift; sourceTree = "<group>"; };
 		C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		C894CFBC213CE787007957E2 /* MyShabonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonViewController.swift; sourceTree = "<group>"; };
 		C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
+				C86FE3642148B94100526196 /* collectionViewHeader.swift */,
 				C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */,
 				C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
@@ -358,6 +361,7 @@
 				C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */,
 				C8168D762138DF05007084A1 /* UserRegister.swift in Sources */,
 				C894CFBD213CE787007957E2 /* MyShabonViewController.swift in Sources */,
+				C86FE3652148B94100526196 /* collectionViewHeader.swift in Sources */,
 				C8168D6E2137C99B007084A1 /* LoginViewController.swift in Sources */,
 				C8168D7E213BA079007084A1 /* NayamiComment.swift in Sources */,
 				C81E850321438026006EDA5C /* AllCommentsTableViewCell.swift in Sources */,
