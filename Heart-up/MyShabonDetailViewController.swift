@@ -9,9 +9,12 @@
 import UIKit
 import SwiftyJSON
 
-class MyShabonDetailViewController: UIViewController {
+class MyShabonDetailViewController: UICollectionViewController {
     var id: String?
     var locates: JSON?
+    //逆ジオロケのため
+    var place = ""
+    let headerId = "headerId"
     
     // ステータスバーの高さ
     let statusBarHeight = UIApplication.shared.statusBarFrame.height
@@ -22,11 +25,7 @@ class MyShabonDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // 大きさとレイアウトを指定して UICollectionView を作成
-        let MyShabonDetailCollection = UICollectionView(
-            frame: CGRect(x: 0, y: statusBarHeight, width: self.view.frame.width, height: self.view.frame.size.height - statusBarHeight),
-            collectionViewLayout: UICollectionViewFlowLayout())
+        collectionView?.register(topHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
         guard let shabonId = id else {
             return
@@ -54,21 +53,16 @@ class MyShabonDetailViewController: UIViewController {
             } else if self.locates!["color"].string == "黄" {
                 self.view.backgroundColor = UIColor.yellow
             }
-            // UICollectionView を表示
-            self.view.addSubview(MyShabonDetailCollection)
+            
             // 画面を再描画する.
-            MyShabonDetailCollection.reloadData()
+            self.collectionView?.reloadData()
         })
-        
-        MyShabonDetailCollection.dataSource = self
-        MyShabonDetailCollection.delegate = self
-        
-        
+
         // アイテム表示領域を白色に設定
-        MyShabonDetailCollection.backgroundColor = UIColor.white
+        collectionView?.backgroundColor = UIColor.white
         
         // セルの再利用のための設定
-        MyShabonDetailCollection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         
         
         
@@ -94,9 +88,9 @@ class MyShabonDetailViewController: UIViewController {
 
 }
 
-extension MyShabonDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
     // 表示するアイテムの数を設定（UICollectionViewDataSource が必要）
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let tmp = locates {
             return tmp["nayami_comments"].count
         }
@@ -124,7 +118,7 @@ extension MyShabonDetailViewController: UICollectionViewDelegate, UICollectionVi
         return (self.view.frame.width / 4) / 3
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // アイテムを作成
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
@@ -152,8 +146,23 @@ extension MyShabonDetailViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     // アイテムタッチ時の処理（UICollectionViewDelegate が必要）
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        //headerを定義する
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! topHeader
+        
+        return header
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        //headerサイズ
+        return CGSize(width: view.frame.width, height: 100)
+    }
+    
     
 }
