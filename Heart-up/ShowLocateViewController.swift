@@ -13,6 +13,10 @@ import CoreLocation
 
 class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
+    //常に更新される緯度経度を定義
+    var latitude :String?
+    var longitude :String?
+    
     @IBOutlet weak var mapView: MKMapView!
     var locationManager : CLLocationManager?
     
@@ -30,7 +34,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         }
         
         locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager!.distanceFilter = 100
+        locationManager!.distanceFilter = 1000
         
         //UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard
@@ -133,6 +137,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         super.viewDidAppear(animated)
         // Do any additional setup after loading the view.
         
+        
         //shabon_alert テーブルから検索する処理
         ShabonAlert.select_user_alert(callback: { error, alert in
             if let error = error {
@@ -226,10 +231,12 @@ extension ShowLocateViewController: CLLocationManagerDelegate {
         
         let location:CLLocationCoordinate2D
             = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude)
-        var latitude = "".appendingFormat("%.4f", location.latitude)
-        var longitude = "".appendingFormat("%.4f", location.longitude)
         
-        print(latitude, longitude)
+        latitude = "".appendingFormat("%.4f", location.latitude)
+        longitude = "".appendingFormat("%.4f", location.longitude)
+        
+        //自分の緯度、経度をupdate
+        user_locate_update(ido: latitude!, keido: longitude!)
         
         // update annotation
         //        mapView.removeAnnotations(mapView.annotations)
@@ -242,6 +249,18 @@ extension ShowLocateViewController: CLLocationManagerDelegate {
         // Showing annotation zooms the map automatically.
         //        mapView.showAnnotations(mapView.annotations, animated: true)
         
+    }
+}
+
+extension ShowLocateViewController {
+    func user_locate_update(ido: String, keido: String) -> Void {
+        UserLocate.userLocateUpdate(ido: ido, keido: keido, callback: { response in
+            if let error = response {
+                let error_message = error["message"] as! String
+                self.showAlert(message: error_message, hide: {})
+            }
+            print("更新！")
+        })
     }
 }
     

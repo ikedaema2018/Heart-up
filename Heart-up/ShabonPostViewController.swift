@@ -28,7 +28,6 @@ class ShabonPostViewController: UIViewController {
         //悩みを色を表示
         let segmentIndex = selectedColor.selectedSegmentIndex
         let shabonColor = selectedColor.titleForSegment(at: segmentIndex)
-        print(shabonColor)
         
         guard let color = shabonColor else {
             errorLabel.isHidden = false
@@ -89,7 +88,7 @@ class ShabonPostViewController: UIViewController {
         }
         
         locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager!.distanceFilter = 100
+        locationManager!.distanceFilter = 1000
 
         // Do any additional setup after loading the view.
     }
@@ -159,7 +158,6 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
         
-        print(latitude, longitude)
         
         // update annotation
         //        mapView.removeAnnotations(mapView.annotations)
