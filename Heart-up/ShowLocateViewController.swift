@@ -8,16 +8,26 @@
 import UIKit
 import MapKit
 import SwiftyJSON
+import CoreLocation
 
 
 class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    var locationManager : CLLocationManager?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if locationManager != nil { return }
+        locationManager = CLLocationManager()
+        locationManager!.delegate = self
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager!.startUpdatingLocation()
+        }
         
         //UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard
@@ -193,7 +203,44 @@ extension ShowLocateViewController {
 //        alert_shabon(alert: alert, num: aaa)
 //    }
 }
+
+extension ShowLocateViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .restricted, .denied:
+            break
+        case .authorizedAlways, .authorizedWhenInUse:
+            break
+        }
+    }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let newLocation = locations.last else {
+            return
+        }
+        
+        let location:CLLocationCoordinate2D
+            = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude)
+        var latitude = "".appendingFormat("%.4f", location.latitude)
+        var longitude = "".appendingFormat("%.4f", location.longitude)
+        
+        print(latitude, longitude)
+        
+        // update annotation
+        //        mapView.removeAnnotations(mapView.annotations)
+        //
+        //        let annotation = MKPointAnnotation()
+        //        annotation.coordinate = newLocation.coordinate
+        //        mapView.addAnnotation(annotation)
+        //        mapView.selectAnnotation(annotation, animated: true)
+        
+        // Showing annotation zooms the map automatically.
+        //        mapView.showAnnotations(mapView.annotations, animated: true)
+        
+    }
+}
     
     
 

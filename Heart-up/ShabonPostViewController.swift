@@ -156,6 +156,7 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
         
+        print(latitude, longitude)
         
         // update annotation
         //        mapView.removeAnnotations(mapView.annotations)
