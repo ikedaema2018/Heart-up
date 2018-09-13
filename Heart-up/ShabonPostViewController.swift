@@ -87,6 +87,9 @@ class ShabonPostViewController: UIViewController {
         if CLLocationManager.locationServicesEnabled() {
             locationManager!.startUpdatingLocation()
         }
+        
+        locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager!.distanceFilter = 100
 
         // Do any additional setup after loading the view.
     }

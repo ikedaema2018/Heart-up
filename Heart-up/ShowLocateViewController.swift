@@ -29,6 +29,9 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
             locationManager!.startUpdatingLocation()
         }
         
+        locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager!.distanceFilter = 100
+        
         //UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
