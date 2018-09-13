@@ -170,7 +170,6 @@
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
 				C86FE3622147A2DD00526196 /* ExplosionShabonDetailViewController.swift */,
 				C8168D772138EA78007084A1 /* UserResisterViewController.swift */,
-				C8168D1521318122007084A1 /* MapModule.swift */,
 				C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */,
 				C8168D6B2137BBB5007084A1 /* Login.storyboard */,
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
@@ -221,6 +220,7 @@
 				C81E850A2144B32F006EDA5C /* ProfileImage.swift */,
 				C81E850E21464A63006EDA5C /* ShabonAlert.swift */,
 				C86FE366214A311F00526196 /* UserLocate.swift */,
+				C8168D1521318122007084A1 /* MapModule.swift */,
 			);
 			path = "Model Manager";
 			sourceTree = "<group>";

@@ -23,8 +23,12 @@ extension UIViewController {
     func shabon_Alert(message: JSON, callback: @escaping (String?) -> Void) {
         //ロケート情報を定義
         var locate: JSON?
+        
+        guard let id = message["locate_info"]["id"].int else {
+            return
+        }
         //locateIdで緯度経度を取得してくる
-        StockLocateInfos.getDetailLocation(id: String(message["locate_info"]["id"].int!)) { error, tmp_locate in
+        StockLocateInfos.getDetailLocation(id: String(id)) { error, tmp_locate in
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
