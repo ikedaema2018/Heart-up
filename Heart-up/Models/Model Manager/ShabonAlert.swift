@@ -68,4 +68,55 @@ class ShabonAlert: NSObject {
             callback(nil)
         }
     }
+    
+    class func closeAlert(callback: @escaping ([String: Any]?, JSON?) -> Void) {
+        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+        //                let url = "https://aqueous-temple-50173.herokuapp.com/shabon_alerts/show?auth_token=" + auth_token
+        let url = "http://localhost:3000/closer_alerts?auth_token=" + auth_token
+        
+        Alamofire.request(url, method: .get).responseJSON {response in
+            let statusCode = response.response!.statusCode
+            
+            // 失敗した場合.
+            if statusCode != 200 {
+                callback([ "message" : "サーバーでエラーが発生しました。 closeAlert"], nil)
+            }
+            
+            if statusCode == 201 {
+                return
+            }
+            
+            guard let object = response.result.value else {
+                return
+            }
+            let obj = JSON(object)
+            callback(nil, obj)
+        }
+    }
+    
+    class func fixClose(id: Int, _ callback: @escaping ([String: Any]?) -> Void ) {
+        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+
+        //                let url = "https://aqueous-temple-50173.herokuapp.com/shabon_alerts/" + String(id) + "?auth_token=" + auth_token
+        let url = "http://localhost:3000/closer_alerts/" + String(id) + "?auth_token=" + auth_token
+        
+        Alamofire.request(url, method: .get).responseJSON {response in
+            let statusCode = response.response!.statusCode
+            // 失敗した場合.
+            if statusCode != 200 {
+                callback([ "message" : "サーバーでエラーが発生しました。"])
+            }
+            callback(nil)
+        }
+    }
 }

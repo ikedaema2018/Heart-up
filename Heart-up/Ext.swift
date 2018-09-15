@@ -20,6 +20,8 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
+    
+    
     func shabon_Alert(message: JSON, callback: @escaping (String?) -> Void) {
         //ロケート情報を定義
         var locate: JSON?
@@ -96,9 +98,53 @@ extension UIViewController {
                 
                 self.present(alert, animated: true)
             }
-            
-            
         }
+    }
+    
+    func closeAlert(message: JSON, callback: @escaping (String?) -> Void) {
+        print(message)
+        let alert = UIAlertController(title: "", message: "\(message["user"]["user_name"].string!)さんのシャボン玉が来ました！", preferredStyle: .alert)
+        let showAction = UIAlertAction(title: "見に行く", style: .default) { action in
+            alert.dismiss(animated: true, completion: nil)
+            // APIで投稿.
+            ShabonAlert.fixClose(id: message["id"].int!) { errorInfo in
+                
+                // エラー処理.
+                if let errorInfo = errorInfo {
+                    if let message = errorInfo["message"] as? String {
+                        self.showAlert(message: message, hide: {})
+                    } else {
+                        self.showAlert(message: "エラーが発生しました。", hide: {})
+                    }
+                    return
+                }
+                
+                guard let locateId = message["locate_info_id"].int else {
+                    return
+                }
+                callback(String(locateId))
+            }
+        }
+        // 「キャンセル」ボタンを設置.
+        let cancelAction = UIAlertAction(title: "スルー", style: .cancel) { action in
+            // APIで投稿.
+            ShabonAlert.fixClose(id: message["id"].int!) { errorInfo in
+                
+                // エラー処理.
+                if let errorInfo = errorInfo {
+                    if let message = errorInfo["message"] as? String {
+                        self.showAlert(message: message, hide: {})
+                    } else {
+                        self.showAlert(message: "エラーが発生しました。", hide: {})
+                    }
+                    return
+                }
+                callback(nil)
+            }
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(showAction)
+        self.present(alert, animated: true)
     }
     
     func showProgress() {
