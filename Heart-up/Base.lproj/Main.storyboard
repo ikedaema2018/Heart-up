@@ -44,6 +44,7 @@
                         <outlet property="mapView" destination="rNy-YI-eZf" id="MzV-Ei-Wzt"/>
                         <segue destination="xI9-3v-M6q" kind="push" identifier="toDetailShabonViewController" id="pEI-PR-io7"/>
                         <segue destination="lsu-ud-JbQ" kind="push" id="jDd-wY-fbe"/>
+                        <segue destination="wDW-WR-CXr" kind="push" identifier="toCloserDetailSegue" id="fhs-XF-lhJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3X-zF-2Q7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -260,6 +261,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eqQ-LX-kd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6288" y="882"/>
+        </scene>
+        <!--Closer Detail Collection View Controller-->
+        <scene sceneID="MkM-zd-cvf">
+            <objects>
+                <viewController id="wDW-WR-CXr" customClass="CloserDetailCollectionViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fGa-mb-xG4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="xFN-oN-toO"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="o3d-xA-v7H"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="knA-6q-8v9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7114" y="889"/>
         </scene>
         <!--map-->
         <scene sceneID="MBt-TA-m4x">
