@@ -55,14 +55,14 @@ class MyShabonDetailViewController: UICollectionViewController {
                 self.view.backgroundColor = UIColor.yellow
             }
             
-            print("test")
+            print(locate!["life_flag"])
             
-            guard let longitude = locate!["keido"].string, let latitude = locate!["ido"].string else {
+            guard let longitude = locate!["keido"].int, let latitude = locate!["ido"].int else {
                 return
             }
             //リバースジオロケートで緯度経度
             let geocoder = CLGeocoder()
-            let location = CLLocation(latitude: Double(latitude)!, longitude: Double(longitude)!)
+            let location = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
 
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
                 if let placemarks = placemarks {
@@ -112,7 +112,7 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
         if let tmp = locates {
             return tmp["nayami_comments"].count
         }
-        return 24
+        return 0
     }
     
     // アイテムの大きさを設定（UICollectionViewDelegateFlowLayout が必要）

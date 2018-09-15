@@ -100,9 +100,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         guard let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] else {
             return
         }
-        print(type(of: locateId))
-        
-        print(locateId)
+
         
         let locate_id = locateId as! Int
         
@@ -183,6 +181,7 @@ extension ShowLocateViewController {
             guard let locates = locates else {
                 return
             }
+
            
             //ピンを一覧で表示
             locates.forEach { (_, locate) in

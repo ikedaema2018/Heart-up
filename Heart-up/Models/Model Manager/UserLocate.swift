@@ -17,8 +17,8 @@ class UserLocate: NSObject {
             }
             return
         }
-        //        let url = "https://aqueous-temple-50173.herokuapp.com/user_locates/update?auth_token=" + auth_token
-        let url = "http://localhost:3000/user_locates/update?auth_token=" + auth_token
+                let url = "https://aqueous-temple-50173.herokuapp.com/user_locates/update?auth_token=" + auth_token
+//        let url = "http://localhost:3000/user_locates/update?auth_token=" + auth_token
         let params = [
             "user_locate": [
                 "ido": ido,

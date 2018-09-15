@@ -23,7 +23,6 @@ extension UIViewController {
     func shabon_Alert(message: JSON, callback: @escaping (String?) -> Void) {
         //ロケート情報を定義
         var locate: JSON?
-        
         guard let id = message["locate_info"]["id"].int else {
             return
         }
@@ -38,13 +37,14 @@ extension UIViewController {
                 }
                 return
             }
+            
             locate = tmp_locate
-            guard let longitude = locate!["keido"].string, let latitude = locate!["ido"].string else {
+            guard let longitude = locate!["keido"].int, let latitude = locate!["ido"].int else {
                 return
             }
             //リバースジオロケートで緯度経度
             let geocoder = CLGeocoder()
-            let location = CLLocation(latitude: Double(latitude)!, longitude: Double(longitude)!)
+            let location = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
             var place = ""
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
                 if let placemarks = placemarks {
