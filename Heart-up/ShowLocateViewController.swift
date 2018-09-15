@@ -40,7 +40,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
 //        userDefaults.removeObject(forKey: "user_id")
-        
+//
         
         mapView.delegate = self
         // tracking user location
@@ -137,29 +137,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         
         
         //shabon_alert テーブルから検索する処理
-        ShabonAlert.select_user_alert(callback: { error, alert in
-            if let error = error {
-                if let message = error["message"] as? String {
-                    print(message)
-                    print("不明なエラーが発生しました")
-                } else {
-                    print("不明なエラーが発生しました")
-                }
-                return
-            }
-            
-            if !(alert?.isEmpty)! {
-                let tmp_alert = alert![0]
-                self.shabon_Alert(message: tmp_alert, callback: { locateId in
-                    if let locateId = locateId {
-                        //遷移
-                        self.performSegue(withIdentifier: "toDetailShabonViewController", sender: locateId)
-                    }else{
-                        self.viewDidAppear(animated)
-                    }
-                })
-            }
-        })
+        select_user_alert()
     }
     
 }
@@ -261,6 +239,33 @@ extension ShowLocateViewController {
             print("更新！")
         })
     }
+    func select_user_alert() {
+        ShabonAlert.select_user_alert(callback: { error, alert in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                } else {
+                    print("不明なエラーが発生しました")
+                }
+                return
+            }
+            
+            if !(alert?.isEmpty)! {
+                print("1")
+                let tmp_alert = alert![0]
+                self.shabon_Alert(message: tmp_alert, callback: { locateId in
+                    if let locateId = locateId {
+                        //遷移
+                        self.performSegue(withIdentifier: "toDetailShabonViewController", sender: locateId)
+                    }else{
+                        self.viewDidAppear(true)
+                    }
+                })
+            }
+        })
+    }
+    
 }
     
     

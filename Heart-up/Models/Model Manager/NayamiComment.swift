@@ -18,8 +18,8 @@ class NayamiComment: NSObject {
             }
             return
         }
-                let url = "https://aqueous-temple-50173.herokuapp.com/nayami_comments?auth_token=" + auth_token
-//        let url = "http://localhost:3000/nayami_comments?auth_token=" + auth_token
+//                let url = "https://aqueous-temple-50173.herokuapp.com/nayami_comments?auth_token=" + auth_token
+        let url = "http://localhost:3000/nayami_comments?auth_token=" + auth_token
          let params = [
             "nayami_comment": [
                 "locate_info_id": locate_info_id,
