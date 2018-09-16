@@ -24,9 +24,9 @@ class UserResisterViewController: UIViewController {
     let genderArray: [String] = ["男","女"]
     
     @IBOutlet weak var genderSegment: UISegmentedControl!
-    
-    
     @IBOutlet weak var selfIntroduce: UITextView!
+    var keyBoardFlag: Bool = false
+    
     
     
     @IBAction func signUp(_ sender: Any) {
@@ -48,6 +48,10 @@ class UserResisterViewController: UIViewController {
         
         //ユーザー情報をポスト
         UserRegister.postLocate(user: user, callback: { data, error in
+            print("---------------------------------------")
+            print(data)
+            print("---------------------------------------")
+            print(error)
             if let error = error {
                 if let message = error["message"] {
                     print(message)
@@ -62,7 +66,6 @@ class UserResisterViewController: UIViewController {
             guard let data = data else {
                 return
             }
-            print(data)
             print("ユーザー登録成功！")
             self.showAlert(message: "ユーザー登録成功したよ！\nログインしてね", hide: { () -> Void in
                     self.dismiss(animated: true, completion: nil)
@@ -138,6 +141,9 @@ extension UserResisterViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        keyBoardFlag = true
+    }
 }
 
 extension UserResisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
@@ -193,10 +199,10 @@ extension UserResisterViewController: UITextViewDelegate {
                 
                 let convertedKeyboardFrame = scrollView.convert(keyboardFrame, from: nil)
                 // 現在選択中のTextFieldの下部Y座標とキーボードの高さから、スクロール量を決定
-                print(self.selfIntroduce!.frame.maxY)
-                print(convertedKeyboardFrame.minY)
                 let offsetY: CGFloat = self.selfIntroduce!.frame.maxY - convertedKeyboardFrame.minY
-                if offsetY < 0 { return }
+                print(offsetY)
+                print(keyBoardFlag)
+                if offsetY < 0 || keyBoardFlag { return }
                 updateScrollViewSize(moveSize: offsetY + 300, duration: animationDuration)
             }
         }
@@ -223,6 +229,7 @@ extension UserResisterViewController: UITextViewDelegate {
     // キーボードが閉じられた時に呼ばれる
     @objc func keyboardWillBeHidden(notification: NSNotification) {
         restoreScrollViewSize()
+        keyBoardFlag = false
     }
 }
 
@@ -235,4 +242,6 @@ extension UserResisterViewController {
         let notification = NotificationCenter.default
         notification.removeObserver(self)
     }
+    
+    
 }
