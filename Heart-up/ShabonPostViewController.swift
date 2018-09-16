@@ -10,16 +10,13 @@ import UIKit
 import CoreLocation
 
 class ShabonPostViewController: UIViewController {
-     var locationManager : CLLocationManager?
+    var locationManager : CLLocationManager?
     var animator: UIViewPropertyAnimator!
     
-    
     @IBOutlet weak var nayamiInput: UITextField!
-    
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var selectedColor: UISegmentedControl!
-
     @IBOutlet weak var shabonImage: UIImageView!
     @IBOutlet weak var shabonText: UILabel!
     
@@ -82,6 +79,10 @@ class ShabonPostViewController: UIViewController {
         }
     }
     
+    @objc func shabonImageSwiped(_ sender: UISwipeGestureRecognizer) {
+        print("aaa")
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +92,11 @@ class ShabonPostViewController: UIViewController {
             self.shabonImage.alpha = 0.0
             self.shabonText.alpha = 0.0
         }
+        
+        let upShabon: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(ShabonPostViewController.shabonImageSwiped(_:)))
+        upShabon.direction = UISwipeGestureRecognizerDirection.up
+        shabonImage.addGestureRecognizer(upShabon)
+        
         
         if locationManager != nil { return }
         locationManager = CLLocationManager()
