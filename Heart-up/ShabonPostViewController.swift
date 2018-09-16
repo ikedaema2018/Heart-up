@@ -11,6 +11,7 @@ import CoreLocation
 
 class ShabonPostViewController: UIViewController {
      var locationManager : CLLocationManager?
+    var animator: UIViewPropertyAnimator!
     
     
     @IBOutlet weak var nayamiInput: UITextField!
@@ -18,6 +19,14 @@ class ShabonPostViewController: UIViewController {
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var selectedColor: UISegmentedControl!
+
+    @IBOutlet weak var shabonImage: UIImageView!
+    
+    
+    
+    @IBAction func tmp_button(_ sender: Any) {
+        animator.startAnimation()
+    }
     
     
     //常に更新される緯度経度を定義
@@ -66,7 +75,8 @@ class ShabonPostViewController: UIViewController {
                 }
                 return
             }
-            print("adadada")
+            //シャボン玉を飛ばすアニメーション
+            
             self.showAlert(message: "投稿しました", hide: {})
         }
     }
@@ -74,6 +84,11 @@ class ShabonPostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        animator = UIViewPropertyAnimator(duration:1.2,curve: .easeInOut){
+            self.shabonImage.center.y -= 400//これでクマの画像は下に
+            self.shabonImage.alpha = 0.0
+        }
+        
         if locationManager != nil { return }
         locationManager = CLLocationManager()
         locationManager!.delegate = self
@@ -83,6 +98,8 @@ class ShabonPostViewController: UIViewController {
         errorLabel.isHidden = true
         nayamiInput.delegate = self
         
+        shabonImage.image = UIImage(named: "redShabon")
+    
         if CLLocationManager.locationServicesEnabled() {
             locationManager!.startUpdatingLocation()
         }

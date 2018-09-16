@@ -59,17 +59,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uL2-GB-PgW">
-                                <rect key="frame" x="20" y="338.5" width="335" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="xOd-rX-J6z"/>
-                                </constraints>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uL2-GB-PgW">
+                                <rect key="frame" x="20" y="472" width="335" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTT-4q-fEy">
-                                <rect key="frame" x="283" y="428" width="45" height="39"/>
+                                <rect key="frame" x="314" y="530" width="45" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.15352660539999999" green="0.12869876929999999" blue="0.93640840049999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -80,14 +78,15 @@
                                     <action selector="nayamiSubmit:" destination="LSX-1G-oj3" eventType="touchUpInside" id="PDo-0W-cQS"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="エラーエラー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNP-CW-wtf">
-                                <rect key="frame" x="20" y="296.5" width="335" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="エラーエラー" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNP-CW-wtf">
+                                <rect key="frame" x="20" y="586" width="335" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="b1i-HP-VPi">
-                                <rect key="frame" x="16" y="217" width="343" height="29"/>
+                                <rect key="frame" x="20" y="419" width="343" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <segments>
@@ -97,23 +96,27 @@
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="悩みの色を選択してね" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ts-gB-c4z">
-                                <rect key="frame" x="20" y="188" width="174" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="悩みの色を選択してね!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ts-gB-c4z">
+                                <rect key="frame" x="16" y="371" width="179" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHN-jn-XiM">
+                                <rect key="frame" x="333" y="337" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="仮"/>
+                                <connections>
+                                    <action selector="tmp_button:" destination="LSX-1G-oj3" eventType="touchUpInside" id="jN4-nz-bX6"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Uf-rj-7QN">
+                                <rect key="frame" x="55" y="78" width="264" height="251"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="uL2-GB-PgW" firstAttribute="leading" secondItem="h3b-6G-u5Y" secondAttribute="leading" constant="20" id="4V6-sG-fTd"/>
-                            <constraint firstItem="h3b-6G-u5Y" firstAttribute="trailing" secondItem="uL2-GB-PgW" secondAttribute="trailing" constant="20" id="APq-90-tZs"/>
-                            <constraint firstItem="uL2-GB-PgW" firstAttribute="centerY" secondItem="YGN-bl-FPH" secondAttribute="centerY" constant="30" id="BPH-Km-hfG"/>
-                            <constraint firstItem="aNP-CW-wtf" firstAttribute="leading" secondItem="h3b-6G-u5Y" secondAttribute="leading" constant="20" id="U6Y-hx-5Fj"/>
-                            <constraint firstItem="h3b-6G-u5Y" firstAttribute="trailing" secondItem="aNP-CW-wtf" secondAttribute="trailing" constant="20" id="bCm-Md-hco"/>
-                            <constraint firstItem="uL2-GB-PgW" firstAttribute="top" secondItem="aNP-CW-wtf" secondAttribute="bottom" constant="21.5" id="tYb-pk-6X1"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="h3b-6G-u5Y"/>
                     </view>
                     <navigationItem key="navigationItem" title="あなたの不安は？" id="TBZ-Pq-9mx"/>
@@ -121,6 +124,7 @@
                         <outlet property="errorLabel" destination="aNP-CW-wtf" id="md5-mY-76n"/>
                         <outlet property="nayamiInput" destination="uL2-GB-PgW" id="8TE-oL-DgI"/>
                         <outlet property="selectedColor" destination="b1i-HP-VPi" id="N6a-KP-r6o"/>
+                        <outlet property="shabonImage" destination="3Uf-rj-7QN" id="csz-iL-jgc"/>
                         <outlet property="submitButton" destination="ZTT-4q-fEy" id="LEb-Qn-SE9"/>
                     </connections>
                 </viewController>
