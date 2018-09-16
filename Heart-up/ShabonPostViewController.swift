@@ -39,6 +39,20 @@ class ShabonPostViewController: UIViewController {
         postNayami()
     }
     
+    @IBAction func shabonColorSegment(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            shabonImage.image = UIImage(named: "redShabon")
+        case 1:
+            shabonImage.image = UIImage(named: "blueShabon")
+        case 2:
+            shabonImage.image = UIImage(named: "yellowShabon")
+        default:
+            print("エラー")
+        }
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,42 +93,6 @@ class ShabonPostViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //    @IBAction func locatePost(_ sender: Any) {
-    //        if let latitude_p = latitude, let longitude_p = longitude {
-    //            let locate = LocateInfo()
-    //            locate.ido = latitude_p
-    //            locate.keido = longitude_p
-    //            StockLocateInfos.postLocate(locate: locate)
-    //        }
-    //    }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    //    @IBAction func tapStopButton(_ sender: UIButton) {
-    //        guard let manager = locationManager else { return }
-    //        manager.stopUpdatingLocation()
-    //        manager.delegate = nil
-    //        locationManager = nil
-    //        latLabel.text = "latitude: "
-    //        lngLabel.text = "longitude: "
-    //
-    //        // untracking user location
-    //        mapView.userTrackingMode = MKUserTrackingMode.none
-    //        mapView.showsUserLocation = false
-    //        mapView.removeAnnotations(mapView.annotations)
-    //    }
 
 }
 
