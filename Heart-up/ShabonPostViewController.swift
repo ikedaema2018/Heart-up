@@ -196,6 +196,7 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
 extension ShabonPostViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        shabonText.text = nayamiInput.text
         return true
     }
 }
