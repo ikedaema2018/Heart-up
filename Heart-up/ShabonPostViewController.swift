@@ -21,6 +21,7 @@ class ShabonPostViewController: UIViewController {
     @IBOutlet weak var selectedColor: UISegmentedControl!
 
     @IBOutlet weak var shabonImage: UIImageView!
+    @IBOutlet weak var shabonText: UILabel!
     
     
     
@@ -86,7 +87,9 @@ class ShabonPostViewController: UIViewController {
         super.viewDidLoad()
         animator = UIViewPropertyAnimator(duration:1.2,curve: .easeInOut){
             self.shabonImage.center.y -= 400//これでクマの画像は下に
+            self.shabonText.center.y -= 400
             self.shabonImage.alpha = 0.0
+            self.shabonText.alpha = 0.0
         }
         
         if locationManager != nil { return }
