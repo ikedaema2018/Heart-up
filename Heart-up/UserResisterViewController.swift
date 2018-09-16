@@ -26,7 +26,7 @@ class UserResisterViewController: UIViewController {
     @IBOutlet weak var genderSegment: UISegmentedControl!
     @IBOutlet weak var selfIntroduce: UITextView!
     var keyBoardFlag: Bool = false
-    
+
     
     
     @IBAction func signUp(_ sender: Any) {
@@ -48,17 +48,18 @@ class UserResisterViewController: UIViewController {
         
         //ユーザー情報をポスト
         UserRegister.postLocate(user: user, callback: { data, error in
-            print("---------------------------------------")
-            print(data)
-            print("---------------------------------------")
-            print(error)
+
             if let error = error {
-                if let message = error["message"] {
-                    print(message)
-                    print("不明なエラーが発生しました")
-                    self.errorLabel.text = "不明なエラーが発生しました"
+                if let message = error["message"] as! [String: [String]]? {
+                    var errorMessage: String = ""
+                    for (key, value) in message {
+                        errorMessage.append("\(key):の入力欄に\(value[0])というミスがあります！\n")
+                    }
+                    self.errorLabel.isHidden = false
+                    self.errorLabel.text! = errorMessage
                 } else {
                     print("謎のエラー発生！")
+                    self.errorLabel.isHidden = false
                     self.errorLabel.text = "謎のエラー発生！"
                 }
                 return
@@ -200,8 +201,6 @@ extension UserResisterViewController: UITextViewDelegate {
                 let convertedKeyboardFrame = scrollView.convert(keyboardFrame, from: nil)
                 // 現在選択中のTextFieldの下部Y座標とキーボードの高さから、スクロール量を決定
                 let offsetY: CGFloat = self.selfIntroduce!.frame.maxY - convertedKeyboardFrame.minY
-                print(offsetY)
-                print(keyBoardFlag)
                 if offsetY < 0 || keyBoardFlag { return }
                 updateScrollViewSize(moveSize: offsetY + 300, duration: animationDuration)
             }

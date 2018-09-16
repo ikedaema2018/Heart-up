@@ -26,24 +26,22 @@ class UserRegister: NSObject {
                 "self_introduce": user["self_introduce"]!
             ]
         ]
-        print(type(of: params["user"]))
         
         Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
             switch response.result {
             case .success:
-                if let success = response.result.value as? [String: Any] {
-                    print(success)
-                    callback(success, nil)
-                } else {
-                    print("何かがおかしい")
+                if response.response?.statusCode != 200 && response.response?.statusCode != 201 {
+                    if let result = response.result.value as! [String: Any]? {
+                        callback(nil, result)
+                    } else {
+                        callback(nil, [ "message" : "サーバーエラーが発生しました" ])
+                    }
+                    return
                 }
-            case .failure:
-                if let error = response.result.error as? [String: Any] {
-                    print(response.result.error)
-                    callback(nil, error)
-                } else {
-                    print("何かがおかしいE")
-                }
+                callback(response.result.value as? [String: Any], nil)
+                
+            case .failure(let error):
+                callback(nil, ["message": "サーバーエラーが発生しました"])
             }
         }
     }
