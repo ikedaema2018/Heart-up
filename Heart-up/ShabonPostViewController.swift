@@ -32,55 +32,11 @@ class ShabonPostViewController: UIViewController {
     var longitude :String?
     
     @IBAction func nayamiSubmit(_ sender: Any) {
-        //悩みを色を表示
-        let segmentIndex = selectedColor.selectedSegmentIndex
-        let shabonColor = selectedColor.titleForSegment(at: segmentIndex)
-        
-        guard let color = shabonColor else {
-            errorLabel.isHidden = false
-            errorLabel.text = "色を選択してね！"
-            return
-        }
-        
-        //悩みが入力されていなかったら弾く
-        guard let nayamiText = nayamiInput.text else {
-            errorLabel.isHidden = false
-            errorLabel.text = "悩みを入力してね！"
-            return
-        }
-        if nayamiText == "" {
-            errorLabel.isHidden = false
-            errorLabel.text = "悩みを入力してね！"
-            return
-        }
-        errorLabel.isHidden = true
-        
-        //緯度と経度をアンラップ
-        guard let ido = latitude, let keido = longitude else {
-            errorLabel.text = "緯度と経度が取得できないよ！"
-            return
-        }
-        
-        
-        
-        let nayamiLocate = LocateInfo(nayami: nayamiText, ido: ido, keido: keido, color: color)
-        StockLocateInfos.postLocate(locate: nayamiLocate) { error in
-            if let error = error {
-                if let message = error["message"] as? String {
-                    self.showAlert(message: message, hide: {})
-                } else {
-                    self.showAlert(message: "エラーが発生しました", hide: {})
-                }
-                return
-            }
-            //シャボン玉を飛ばすアニメーション
-            
-            self.showAlert(message: "投稿しました", hide: {})
-        }
+        postNayami()
     }
     
     @objc func shabonImageSwiped(_ sender: UISwipeGestureRecognizer) {
-        print("aaa")
+        postNayami()
     }
     
     
@@ -93,9 +49,9 @@ class ShabonPostViewController: UIViewController {
             self.shabonText.alpha = 0.0
         }
         
-        let upShabon: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(ShabonPostViewController.shabonImageSwiped(_:)))
-        upShabon.direction = UISwipeGestureRecognizerDirection.up
-        shabonImage.addGestureRecognizer(upShabon)
+        let upShabon = UISwipeGestureRecognizer(target: self, action: #selector(ShabonPostViewController.shabonImageSwiped(_:)))
+        upShabon.direction = .up
+        view.addGestureRecognizer(upShabon)
         
         
         if locationManager != nil { return }
@@ -204,5 +160,58 @@ extension ShabonPostViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         shabonText.text = nayamiInput.text
         return true
+    }
+}
+
+extension ShabonPostViewController {
+    func postNayami(){
+        //悩みを色を表示
+        let segmentIndex = selectedColor.selectedSegmentIndex
+        let shabonColor = selectedColor.titleForSegment(at: segmentIndex)
+        
+        guard let color = shabonColor else {
+            errorLabel.isHidden = false
+            errorLabel.text = "色を選択してね！"
+            return
+        }
+        
+        //悩みが入力されていなかったら弾く
+        guard let nayamiText = nayamiInput.text else {
+            errorLabel.isHidden = false
+            errorLabel.text = "悩みを入力してね！"
+            return
+        }
+        if nayamiText == "" {
+            errorLabel.isHidden = false
+            errorLabel.text = "悩みを入力してね！"
+            return
+        }
+        errorLabel.isHidden = true
+        
+        //緯度と経度をアンラップ
+        guard let ido = latitude, let keido = longitude else {
+            errorLabel.text = "緯度と経度が取得できないよ！"
+            return
+        }
+        
+        
+        
+        let nayamiLocate = LocateInfo(nayami: nayamiText, ido: ido, keido: keido, color: color)
+        StockLocateInfos.postLocate(locate: nayamiLocate) { error in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    self.showAlert(message: message, hide: {})
+                } else {
+                    self.showAlert(message: "エラーが発生しました", hide: {})
+                }
+                return
+            }
+            //シャボン玉を飛ばすアニメーション
+            self.animator.startAnimation()
+            //OKを押したらshowLocateへページ遷移
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2) {
+                self.showAlert(message: "投稿しました", hide: {})
+            }
+        }
     }
 }

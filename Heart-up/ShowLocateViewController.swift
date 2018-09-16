@@ -240,7 +240,6 @@ extension ShowLocateViewController {
                 let error_message = error["message"] as! String
                 self.showAlert(message: error_message, hide: {})
             }
-            print("更新！")
         })
     }
     func select_user_alert() {
