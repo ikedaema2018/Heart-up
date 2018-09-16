@@ -143,7 +143,7 @@ extension MyPageViewController: UITextViewDelegate {
         let editingTextFieldY: CGFloat = (self.selfIntroduceView?.frame.origin.y)!
         if editingTextFieldY > keyboardY - 60 {
             UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
-                self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextFieldY - (keyboardY - 130)), width: self.view.bounds.width, height: self.view.bounds.height)
+                self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextFieldY - (keyboardY - 60)), width: self.view.bounds.width, height: self.view.bounds.height)
             }, completion: nil)
             
         }

@@ -14,6 +14,7 @@ class UserResisterViewController: UIViewController {
     @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var agePicker: UIPickerView!
     var age: String = ""
@@ -106,17 +107,30 @@ class UserResisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // キーボードイベントの監視開始
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillBeShown(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillBeHidden(notification:)),
+                                               name: NSNotification.Name.UIKeyboardWillHide,
+                                               object: nil)
     }
-    */
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // キーボードイベントの監視解除
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.UIKeyboardWillShow,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.UIKeyboardWillHide,
+                                                  object: nil)
+    }
 }
 
 extension UserResisterViewController: UITextFieldDelegate {
@@ -152,6 +166,17 @@ extension UserResisterViewController: UIPickerViewDataSource, UIPickerViewDelega
 }
 
 extension UserResisterViewController: UITextViewDelegate {
+    // hides text views
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if (text == "\n") {
+            //あなたのテキストフィールド
+            selfIntroduce.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         textView.layer.borderColor = UIColor.red.cgColor
     }
@@ -160,14 +185,54 @@ extension UserResisterViewController: UITextViewDelegate {
         textView.layer.borderColor = UIColor.black.cgColor
     }
     
-    // hides text views
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        if (text == "\n") {
-            //あなたのテキストフィールド
-            textView.resignFirstResponder()
-            return false
+    // キーボードが表示された時に呼ばれる
+    @objc func keyboardWillBeShown(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue, let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue {
+                restoreScrollViewSize()
+                
+                let convertedKeyboardFrame = scrollView.convert(keyboardFrame, from: nil)
+                // 現在選択中のTextFieldの下部Y座標とキーボードの高さから、スクロール量を決定
+                print(self.selfIntroduce!.frame.maxY)
+                print(convertedKeyboardFrame.minY)
+                let offsetY: CGFloat = self.selfIntroduce!.frame.maxY - convertedKeyboardFrame.minY
+                if offsetY < 0 { return }
+                updateScrollViewSize(moveSize: offsetY + 300, duration: animationDuration)
+            }
         }
-        return true
+    }
+    // moveSize分Y方向にスクロールさせる
+    func updateScrollViewSize(moveSize: CGFloat, duration: TimeInterval) {
+        UIView.beginAnimations("ResizeForKeyboard", context: nil)
+        UIView.setAnimationDuration(duration)
+        
+        let contentInsets = UIEdgeInsetsMake(0, 0, moveSize, 0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        self.scrollView.contentOffset = CGPoint(x: 0, y: moveSize)
+        
+        UIView.commitAnimations()
+    }
+    
+    func restoreScrollViewSize() {
+        // キーボードが閉じられた時に、スクロールした分を戻す
+        self.scrollView.contentInset = UIEdgeInsets.zero
+        self.scrollView.scrollIndicatorInsets = UIEdgeInsets.zero
+    }
+    
+    // キーボードが閉じられた時に呼ばれる
+    @objc func keyboardWillBeHidden(notification: NSNotification) {
+        restoreScrollViewSize()
+    }
+}
+
+extension UserResisterViewController {
+    
+    
+    // Notificationを削除
+    func removeObserver() {
+        
+        let notification = NotificationCenter.default
+        notification.removeObserver(self)
     }
 }
