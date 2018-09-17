@@ -209,10 +209,22 @@ extension ShowLocateViewController {
                         MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView, id: id_i, nayami: nayami, user_id: user_id, user_name: user_name, color: color)
                     }
                 }
+                
+                guard let userId = UserDefaults.standard.string(forKey: "user_id") else {
+                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                        appDelegate.showLoginStoryboard()
+                    }
+                    return
+                }
                 //userのピンを一覧で表示
                 users.forEach { (i, user) in
+                    print(user)
                     if let ido = user["ido"].double, let keido = user["keido"].double, let userImage = user["user"]["profile_image"].string, let user_id = user["user_id"].int, let userName = user["user"]["user_name"].string {
-                        MapModule.setUserAnnotation(x: ido, y: keido, map: self.mapView, userId: user_id, userName: userName, userImage: userImage)
+                        if user_id == Int(userId) {
+                            return
+                        } else {
+                            MapModule.setUserAnnotation(x: ido, y: keido, map: self.mapView, userId: user_id, userName: userName, userImage: userImage)
+                        }
                     }
                 }
             }
