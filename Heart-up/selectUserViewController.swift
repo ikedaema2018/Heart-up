@@ -9,10 +9,11 @@
 import UIKit
 
 class selectUserViewController: UIViewController {
+    var userId: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("test")
+        print(userId)
         // Do any additional setup after loading the view.
     }
 

@@ -95,31 +95,42 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         if view.annotation is MKUserLocation {
             return
         }
+        if view.annotation is CustomAnnotation {
+            if let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] {
+                let locate_id = locateId as! Int
+                //遷移
+                performSegue(withIdentifier: "toDetailShabonViewController", sender: String(locate_id))
+            }
+        }
         
-        if let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] {
-            let locate_id = locateId as! Int
-            //遷移
-            performSegue(withIdentifier: "toDetailShabonViewController", sender: String(locate_id))
-        } else if let userId = (view.annotation as! UserAnnotation).userId["userId"] {
-            let userId = userId as! Int
-            //遷移
-            performSegue(withIdentifier: "toSelectUserSegue", sender: String(userId))
+        if view.annotation is UserAnnotation {
+            if let userId = (view.annotation as! UserAnnotation).userId["userId"] {
+                let userId = userId as! Int
+                //遷移
+                performSegue(withIdentifier: "toSelectUserSegue", sender: String(userId))
+            }
         }
     }
     
     //ページ遷移で数値を
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let locateId = sender as? String else {
+        guard let id = sender as? String else {
             return
         }
         
+        
+        
         if segue.identifier == "toDetailShabonViewController" {
             if let vc = segue.destination as? detailShabonViewController {
-                vc.locateId = locateId
+                vc.locateId = id
             }
         } else if segue.identifier == "toCloserDetailSegue" {
             if let vc = segue.destination as? CloserDetailCollectionViewController {
-                vc.locateId = locateId
+                vc.locateId = id
+            }
+        } else if segue.identifier == "toSelectUserSegue" {
+            if let vc = segue.destination as? selectUserViewController {
+                vc.userId = id
             }
         }
     }
