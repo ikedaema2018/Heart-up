@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class UserLocate: NSObject {
     class func userLocateUpdate(ido: String, keido: String, callback: @escaping ([String: Any]?) -> Void) {
@@ -44,5 +45,32 @@ class UserLocate: NSObject {
                 callback(["message": "サーバーエラーが発生しました"])
             }
         }
+    }
+    class func currentUser(callback: @escaping ([String: Any]?, JSON?) -> Void){
+        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+        //                let url = "https://aqueous-temple-50173.herokuapp.com/users/current_user?auth_token=" + auth_token
+        let url = "http://localhost:3000/users/one_hour_ago_user?auth_token=" + auth_token
+        Alamofire.request(url, method: .get).responseJSON {response in
+            
+            
+            let statusCode = response.response!.statusCode
+            // 失敗した場合.
+            if statusCode != 200 {
+                callback([ "message" : "サーバーでエラーが発生しました。StockLocateController"], nil)
+            }
+            guard let object = response.result.value else {
+                return
+            }
+            
+            let obj = JSON(object)
+            
+            callback(nil, obj)
+        }
+
     }
 }
