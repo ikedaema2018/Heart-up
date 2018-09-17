@@ -71,9 +71,9 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 //annoのクラス名を・・・意味不明だから省略
                 // ( annotation as! CustomAnnotation )をしないと
                 // CustomAnnotationクラスで定義した変数が取れないので注意！
-                if let color = (( annotation as! CustomAnnotation ).color["color"]) {
-                    let color_s = color as! String
-                    
+                //userかshabonかチェック
+                if let shabon = annotation as? CustomAnnotation {
+                    let color_s = shabon.color["color"] as! String
                     if color_s  == "黄" {
                         anno.image = UIImage(named: "yellow")
                     } else if color_s == "青" {
@@ -82,7 +82,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                         anno.image = UIImage(named: "red")
                     }
                 } else {
-                    print("だめ")
+                    anno.image = UIImage(named: "japan")
                 }
                 return anno
             }
@@ -96,16 +96,15 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
             return
         }
         
-        guard let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] else {
-            return
+        if let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] {
+            let locate_id = locateId as! Int
+            //遷移
+            performSegue(withIdentifier: "toDetailShabonViewController", sender: String(locate_id))
+        } else if let userId = (view.annotation as! UserAnnotation).userId["userId"] {
+            let userId = userId as! Int
+            //遷移
+            performSegue(withIdentifier: "toSelectUserSegue", sender: String(userId))
         }
-
-        
-        let locate_id = locateId as! Int
-        
-        
-        //遷移
-        performSegue(withIdentifier: "toDetailShabonViewController", sender: String(locate_id))
     }
     
     //ページ遷移で数値を
@@ -168,7 +167,6 @@ extension ShowLocateViewController {
             }
             //ここで１時間前までにアップデートしたユーザーを引っ張ってくる処理を書く
             UserLocate.currentUser {error, users in
-                print("2")
                 
                 if let error = error {
                     if let message = error["message"] as? String {
@@ -183,11 +181,16 @@ extension ShowLocateViewController {
                 guard let users = users else {
                     return
                 }
-                print(users)
                 //ピンを一覧で表示
                 locates.forEach { (_, locate) in
                     if let ido_s = locate["ido"].double, let keido_s = locate["keido"].double, let id_i = locate["id"].int, let nayami = locate["nayami"].string, let user_id = locate["user_id"].int, let color = locate["color"].string, let user_name = locate["user"]["user_name"].string {
                         MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView, id: id_i, nayami: nayami, user_id: user_id, user_name: user_name, color: color)
+                    }
+                }
+                //userのピンを一覧で表示
+                users.forEach { (i, user) in
+                    if let ido = user["ido"].double, let keido = user["keido"].double, let userImage = user["user"]["profile_image"].string, let user_id = user["user_id"].int, let userName = user["user"]["user_name"].string {
+                        MapModule.setUserAnnotation(x: ido, y: keido, map: self.mapView, userId: user_id, userName: userName, userImage: userImage)
                     }
                 }
             }

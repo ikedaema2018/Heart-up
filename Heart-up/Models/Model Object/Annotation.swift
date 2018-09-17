@@ -10,7 +10,11 @@ import UIKit
 import MapKit
 
 class CustomAnnotation: MKPointAnnotation {
-    
     var color: Dictionary<String, AnyObject>!
     var locateId: [String: AnyObject]!
+}
+
+class UserAnnotation : MKPointAnnotation {
+    var userImage: Dictionary<String, AnyObject>!
+    var userId: [String: AnyObject]!
 }

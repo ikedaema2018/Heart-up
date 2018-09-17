@@ -23,4 +23,15 @@ class MapModule: NSObject  {
         annotation.subtitle = "\(String(id))番目の悩みの投稿者は\(user_name)さんです"
         map!.addAnnotation(annotation)
     }
+    
+    class func setUserAnnotation(x: Double,y: Double, map: MKMapView?, userId: Int, userName: String, userImage: String) ->Void {
+        //StringをDouble型に変換
+        let annotation = UserAnnotation()
+        //独自のクラスを使用
+        annotation.userImage = ["userImage": userImage as AnyObject]
+        annotation.userId = ["userId": userId as AnyObject]
+        annotation.coordinate = CLLocationCoordinate2DMake(x,y)
+        annotation.title = userName
+        map!.addAnnotation(annotation)
+    }
 }
