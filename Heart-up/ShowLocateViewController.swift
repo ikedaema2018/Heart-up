@@ -79,9 +79,10 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                     }
                     let url = URL( string: "http://localhost:3000/profile_image/" + userImage)
                     let data = try? Data(contentsOf: url!)
-                    anno.image = UIImage(data: data!)
+                    let theImage = UIImage(data: data!)
+                    let scaledImage = theImage?.resize(image: theImage!, width: 30)
                     //anno.imageにUIImageを設定する
-//                    anno.image = theImage
+                    anno.image = scaledImage
                     return anno
                 }
                 if let shabon = annotation as? CustomAnnotation {
