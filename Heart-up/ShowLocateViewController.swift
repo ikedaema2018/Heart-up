@@ -73,9 +73,13 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 // CustomAnnotationクラスで定義した変数が取れないので注意！
                 //userかshabonかチェック
                 if let user = annotation as? UserAnnotation {
-                    let userImage = user.userImage["userImage"] as! String
-                    let url = "http://localhost:3000/profile_image/" + userImage
-                    let theImage: UIImage
+                    guard let userImage = user.userImage["userImage"] as! String? else {
+                        anno.image = UIImage(named: "japan")
+                        return anno
+                    }
+                    let url = URL( string: "http://localhost:3000/profile_image/" + userImage)
+                    let data = try? Data(contentsOf: url!)
+                    anno.image = UIImage(data: data!)
                     //anno.imageにUIImageを設定する
 //                    anno.image = theImage
                     return anno
