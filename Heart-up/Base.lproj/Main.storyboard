@@ -312,10 +312,10 @@
             </objects>
             <point key="canvasLocation" x="7066" y="885"/>
         </scene>
-        <!--View Controller-->
+        <!--Select User View Controller-->
         <scene sceneID="XCY-gB-ejq">
             <objects>
-                <viewController id="R6z-YI-9wq" sceneMemberID="viewController">
+                <viewController id="R6z-YI-9wq" customClass="selectUserViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="v9m-9x-HAM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -381,10 +381,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bBc-qP-oAu">
-                                <rect key="frame" x="77" y="456" width="240" height="128"/>
+                                <rect key="frame" x="67" y="469" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -393,6 +392,14 @@
                         <viewLayoutGuide key="safeArea" id="qmq-pF-IIO"/>
                     </view>
                     <navigationItem key="navigationItem" id="ZdP-dc-FB4"/>
+                    <connections>
+                        <outlet property="age" destination="2hc-Wu-Fkd" id="44I-Dg-YuU"/>
+                        <outlet property="email" destination="uHA-Y5-mXr" id="a70-Dg-Rbo"/>
+                        <outlet property="gender" destination="g0H-kL-cFb" id="lBC-Ow-Zk0"/>
+                        <outlet property="profileImage" destination="8fm-pS-W6N" id="Ldv-bL-COd"/>
+                        <outlet property="selfIntroduce" destination="bBc-qP-oAu" id="G49-d3-voQ"/>
+                        <outlet property="userName" destination="Aw4-Ho-4Ej" id="Ggo-L2-AUn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NSg-Eq-KxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
