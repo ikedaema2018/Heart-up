@@ -72,6 +72,14 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 // ( annotation as! CustomAnnotation )をしないと
                 // CustomAnnotationクラスで定義した変数が取れないので注意！
                 //userかshabonかチェック
+                if let user = annotation as? UserAnnotation {
+                    let userImage = user.userImage["userImage"] as! String
+                    let url = "http://localhost:3000/profile_image/" + userImage
+                    let theImage: UIImage
+                    //anno.imageにUIImageを設定する
+//                    anno.image = theImage
+                    return anno
+                }
                 if let shabon = annotation as? CustomAnnotation {
                     let color_s = shabon.color["color"] as! String
                     if color_s  == "黄" {
@@ -81,8 +89,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                     } else if color_s == "赤" {
                         anno.image = UIImage(named: "red")
                     }
-                } else {
-                    anno.image = UIImage(named: "japan")
                 }
                 return anno
             }
@@ -330,7 +336,26 @@ extension ShowLocateViewController {
     }
     
 }
+
+extension UIImage {
     
+    func scaledImage(withSize size: CGSize) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, 0.0)
+        defer { UIGraphicsEndImageContext() }
+        draw(in: CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height))
+        return UIGraphicsGetImageFromCurrentImageContext()!
+    }
+    
+    func scaleImageToFitSize(size: CGSize) -> UIImage {
+        let aspect = self.size.width / self.size.height
+        if size.width / aspect <= size.height {
+            return scaledImage(withSize: CGSize(width: size.width, height: size.width / aspect))
+        } else {
+            return scaledImage(withSize: CGSize(width: size.height * aspect, height: size.height))
+        }
+    }
+    
+}
     
 
 
