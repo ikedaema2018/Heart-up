@@ -22,10 +22,6 @@ class ShabonPostViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    
-    
-    
-    
     //常に更新される緯度経度を定義
     var latitude :String?
     var longitude :String?
@@ -252,7 +248,10 @@ extension ShabonPostViewController {
             self.animator.startAnimation()
             //OKを押したらshowLocateへページ遷移
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.2) {
-                self.showAlert(message: "投稿しました", hide: {})
+                self.showAlert(message: "投稿しました", hide: {() -> Void in
+                self.navigationController?.popViewController(animated: true)
+                    
+                })
             }
         }
     }
