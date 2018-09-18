@@ -154,7 +154,20 @@ extension detailShabonViewController: UICollectionViewDelegate, UICollectionView
         
         // アイテムを作成
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = UIColor.lightGray
+        
+        switch indexPath[1] % 4 {
+        case 0:
+            cell.backgroundColor = UIColor.yellow
+        case 1:
+            cell.backgroundColor = UIColor.magenta
+        case 2:
+            cell.backgroundColor = UIColor.orange
+        case 3:
+            cell.backgroundColor = UIColor.purple
+        default:
+            print("collectionのセルの色極めでイレギュラー")
+        }
+        
         
         // アイテムセルを再利用する際、前に追加していた要素（今回はラベル）を削除する
         for subview in cell.contentView.subviews {
