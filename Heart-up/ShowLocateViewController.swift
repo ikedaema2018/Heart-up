@@ -170,7 +170,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
 extension ShowLocateViewController {
     func fetchData(){
         StockLocateInfos.getLocate {error, locates in
-            print("1")
             
             if let error = error {
                 if let message = error["message"] as? String {
@@ -218,7 +217,6 @@ extension ShowLocateViewController {
                 }
                 //userのピンを一覧で表示
                 users.forEach { (i, user) in
-                    print(user)
                     if let ido = user["ido"].double, let keido = user["keido"].double, let userImage = user["user"]["profile_image"].string, let user_id = user["user_id"].int, let userName = user["user"]["user_name"].string {
                         if user_id == Int(userId) {
                             return
@@ -341,7 +339,6 @@ extension ShowLocateViewController {
                 let tmp_alert = alert![0]
                 self.closeAlert(message: tmp_alert, callback: { locateId in
                     if let locateId = locateId {
-                        print(locateId)
                         //遷移
                         self.performSegue(withIdentifier: "toCloserDetailSegue", sender: locateId)
                     }else{

@@ -164,16 +164,32 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
         //headerを定義する
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! topHeader
         
-        //headerのLabelのテキストを指定
-        header.titleLabel.text = "\(place)で破裂しました"
         
+        if let tmp = locates {
+            let color = tmp["color"].string
+            switch color {
+            case "赤":
+                let red = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.3710669949)
+                header.changeColor(color: red)
+            case "黄":
+                let yellow = #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 0.5050567209)
+                header.changeColor(color: yellow)
+            case "青":
+                let blue = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 0.3356967038)
+                header.changeColor(color: blue)
+            default:
+                print("headerのlocatesにcolorがないよ！")
+            }
+        }
+        //headerのLabelのテキストを指定
+//        header.titleLabel.text = "\(place)で破裂しました"
         return header
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         //headerサイズ
-        return CGSize(width: view.frame.width, height: 50)
+        return CGSize(width: view.frame.width, height: 100)
     }
     
     
