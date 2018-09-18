@@ -148,7 +148,7 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
         
         if let cell = cell as? MyShabonCollectionViewCell {
             if let tmp = locates {
-                cell.setupCell(comment: tmp["nayami_comments"][indexPath.row])
+                cell.setupCell(comment: tmp["nayami_comments"][indexPath.row], color: tmp["color"].string!)
             }
         }
         return cell
