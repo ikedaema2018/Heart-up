@@ -45,7 +45,6 @@ class MyShabonDetailViewController: UICollectionViewController {
                 return
             }
             
-            
             self.locates = locate
             // 画面全体に色を設定
             if self.locates!["color"].string == "赤" {

@@ -18,7 +18,7 @@ class MyShabonCollectionViewCell: UICollectionViewCell {
     
     func setupCell(comment: JSON?) {
         if let comment = comment {
-            userName.text = String(comment["user_id"].int!)
+            userName.text = comment["user"]["user_name"].string!
             nayamiComment.text = comment["nayami_comment"].string!
         }
         self.backgroundColor = UIColor.lightGray
