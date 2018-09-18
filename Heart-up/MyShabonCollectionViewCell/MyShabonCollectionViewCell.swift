@@ -18,9 +18,6 @@ class MyShabonCollectionViewCell: UICollectionViewCell {
     
     func setupCell(comment: JSON?) {
         if let comment = comment {
-            print("---------------------------------")
-            print(comment["user_id"].int!)
-            print(comment["nayami_comment"].string!)
             userName.text = String(comment["user_id"].int!)
             nayamiComment.text = comment["nayami_comment"].string!
         }
