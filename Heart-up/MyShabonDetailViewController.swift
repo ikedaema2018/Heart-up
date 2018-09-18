@@ -16,6 +16,7 @@ class MyShabonDetailViewController: UICollectionViewController {
     //逆ジオロケのため
     var place = ""
     let headerId = "headerId"
+    let footerId = "footerId"
     
     // ステータスバーの高さ
     let statusBarHeight = UIApplication.shared.statusBarFrame.height
@@ -27,6 +28,7 @@ class MyShabonDetailViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.register(topHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(bottomFooter.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerId)
         collectionView?.register(UINib(nibName: "MyShabonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MyShabonCollectionViewCell")
         
         guard let shabonId = id else {
@@ -159,37 +161,73 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
         print(indexPath.row)
     }
     
+    //ここからヘッダー
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        //headerを定義する
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! topHeader
-        
-        
-        if let tmp = locates {
-            let color = tmp["color"].string
-            switch color {
-            case "赤":
-                let red = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.3710669949)
-                header.changeColor(color: red)
-            case "黄":
-                let yellow = #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 0.5050567209)
-                header.changeColor(color: yellow)
-            case "青":
-                let blue = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 0.3356967038)
-                header.changeColor(color: blue)
-            default:
-                print("headerのlocatesにcolorがないよ！")
+        if kind == UICollectionElementKindSectionHeader{
+            //headerを定義する
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! topHeader
+            
+            
+            if let tmp = locates {
+                let color = tmp["color"].string
+                switch color {
+                case "赤":
+                    let red = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.3710669949)
+                    header.changeColor(color: red)
+                case "黄":
+                    let yellow = #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 0.5050567209)
+                    header.changeColor(color: yellow)
+                case "青":
+                    let blue = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 0.3356967038)
+                    header.changeColor(color: blue)
+                default:
+                    print("headerのlocatesにcolorがないよ！")
+                }
+                //headerテキストへpushする
+                header.titleLabel.text = "\(tmp["user"]["user_name"].string!)さんの悩み:\n" + tmp["nayami"].string!
             }
+            return header
+            
+        }else{
+            //footerを定義
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerId, for: indexPath) as! bottomFooter
+            if let tmp = locates {
+                let color = tmp["color"].string
+                switch color {
+                case "赤":
+                    let red = #colorLiteral(red: 1, green: 0.1857388616, blue: 0.5733950138, alpha: 0.6808379709)
+                    footer.changeColor(color: red)
+                case "黄":
+                    let yellow = #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 0.8276166524)
+                    footer.changeColor(color: yellow)
+                case "青":
+                    let blue = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 0.6197559932)
+                    footer.changeColor(color: blue)
+                default:
+                    print("footerのlocatesにcolorがないよ！")
+                }
+                
+                if tmp["life_flag"].bool! == false {
+                    footer.titleLabel.text = "このシャボン玉は今\(place)にいます"
+                }else{
+                    footer.titleLabel.text = "\(place)で破裂しました"
+                }
+            }
+            return footer
         }
-        //headerのLabelのテキストを指定
-//        header.titleLabel.text = "\(place)で破裂しました"
-        return header
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         //headerサイズ
         return CGSize(width: view.frame.width, height: 100)
+    }
+    
+//footer
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        //footerサイズ
+        return CGSize(width: view.frame.width, height: 50)
     }
     
     

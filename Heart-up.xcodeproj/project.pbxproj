@@ -21,6 +21,7 @@
 		C81BA8B7214F9B200094AC00 /* selectUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81BA8B6214F9B200094AC00 /* selectUserViewController.swift */; };
 		C81BA8BA2150B3B70094AC00 /* MyShabonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81BA8B82150B3B70094AC00 /* MyShabonCollectionViewCell.swift */; };
 		C81BA8BB2150B3B80094AC00 /* MyShabonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81BA8B92150B3B70094AC00 /* MyShabonCollectionViewCell.xib */; };
+		C81BA8BE215149C70094AC00 /* CollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81BA8BD215149C70094AC00 /* CollectionViewFooter.swift */; };
 		C81E850321438026006EDA5C /* AllCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */; };
 		C81E850421438026006EDA5C /* AllCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */; };
 		C81E850721439144006EDA5C /* AllCommentsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */; };
@@ -67,6 +68,7 @@
 		C81BA8B6214F9B200094AC00 /* selectUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = selectUserViewController.swift; sourceTree = "<group>"; };
 		C81BA8B82150B3B70094AC00 /* MyShabonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonCollectionViewCell.swift; sourceTree = "<group>"; };
 		C81BA8B92150B3B70094AC00 /* MyShabonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonCollectionViewCell.xib; sourceTree = "<group>"; };
+		C81BA8BD215149C70094AC00 /* CollectionViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooter.swift; sourceTree = "<group>"; };
 		C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsTableViewCell.swift; sourceTree = "<group>"; };
 		C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllCommentsTableViewCell.xib; sourceTree = "<group>"; };
 		C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,15 @@
 			path = MyShabonCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		C81BA8BF21514A250094AC00 /* CollectionViewClass */ = {
+			isa = PBXGroup;
+			children = (
+				C81BA8BD215149C70094AC00 /* CollectionViewFooter.swift */,
+				C86FE3642148B94100526196 /* collectionViewHeader.swift */,
+			);
+			path = CollectionViewClass;
+			sourceTree = "<group>";
+		};
 		C81E84FF21436A4C006EDA5C /* Trash */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,7 +205,7 @@
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
-				C86FE3642148B94100526196 /* collectionViewHeader.swift */,
+				C81BA8BF21514A250094AC00 /* CollectionViewClass */,
 				C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */,
 				C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
@@ -384,6 +395,7 @@
 				C86FE3632147A2DD00526196 /* ExplosionShabonDetailViewController.swift in Sources */,
 				C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */,
 				C86FE367214A311F00526196 /* UserLocate.swift in Sources */,
+				C81BA8BE215149C70094AC00 /* CollectionViewFooter.swift in Sources */,
 				C8168D762138DF05007084A1 /* UserRegister.swift in Sources */,
 				C894CFBD213CE787007957E2 /* MyShabonViewController.swift in Sources */,
 				C86FE3652148B94100526196 /* collectionViewHeader.swift in Sources */,

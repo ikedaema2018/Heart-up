@@ -1,7 +1,14 @@
+//
+//  CollectionViewFooter.swift
+//  Heart-up
+//
+//  Created by 前田啓 on 2018/09/18.
+//  Copyright © 2018年 kei maeda. All rights reserved.
+//
+
 import UIKit
 
-class topHeader:UICollectionReusableView{
-    
+class bottomFooter: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -22,6 +29,7 @@ class topHeader:UICollectionReusableView{
         titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0).isActive = true
         titleLabel.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
         titleLabel.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 1).isActive = true
+        titleLabel.sizeToFit()
     }
     
     func changeColor(color: UIColor){
@@ -34,7 +42,6 @@ class topHeader:UICollectionReusableView{
         label.font = .systemFont(ofSize: 16)
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 3
         return label
     }()
 }
