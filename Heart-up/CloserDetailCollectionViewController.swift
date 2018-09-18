@@ -116,7 +116,7 @@ extension CloserDetailCollectionViewController: UICollectionViewDelegate, UIColl
         if let tmp = locates {
             return tmp["nayami_comments"].count
         }
-        return 24
+        return 0
     }
     
     // アイテムの大きさを設定（UICollectionViewDelegateFlowLayout が必要）
