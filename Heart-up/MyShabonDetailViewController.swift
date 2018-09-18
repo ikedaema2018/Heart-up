@@ -27,6 +27,7 @@ class MyShabonDetailViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.register(topHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView?.register(UINib(nibName: "MyShabonCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MyShabonCollectionViewCell")
         
         guard let shabonId = id else {
             return
@@ -55,7 +56,6 @@ class MyShabonDetailViewController: UICollectionViewController {
                 self.view.backgroundColor = UIColor.yellow
             }
             
-            print(locate!["life_flag"])
             
             guard let longitude = locate!["keido"].int, let latitude = locate!["ido"].int else {
                 return
@@ -139,29 +139,18 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // アイテムを作成
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        cell.backgroundColor = UIColor.lightGray
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyShabonCollectionViewCell", for: indexPath)
         
         // アイテムセルを再利用する際、前に追加していた要素（今回はラベル）を削除する
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
         }
         
-        if let tmp = locates {
-            // テキストラベルを設定して表示
-            let label = UILabel()
-            label.font = UIFont(name: "Arial", size: 12)
-            label.text = tmp["nayami_comments"][indexPath.row]["nayami_comment"].string
-            label.numberOfLines = 0
-            label.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 5, height: 0)
-            
-            label.sizeToFit()
-            label.center = cell.contentView.center
-            cell.contentView.addSubview(label)
-
-            return cell
+        if let cell = cell as? MyShabonCollectionViewCell {
+            if let tmp = locates {
+                cell.setupCell(comment: tmp["nayami_comments"][indexPath.row])
+            }
         }
-        
         return cell
     }
     
