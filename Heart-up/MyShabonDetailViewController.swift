@@ -158,7 +158,9 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
     
     // アイテムタッチ時の処理（UICollectionViewDelegate が必要）
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        //これがコメントした人のユーザーID
+        print(String(locates!["nayami_comments"][indexPath.row]["user_id"].int!))
+        self.performSegue(withIdentifier: "toUserInfoSegue", sender: nil)
     }
     
     //ここからヘッダー

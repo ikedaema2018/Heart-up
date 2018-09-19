@@ -22,6 +22,7 @@
 		C81BA8BA2150B3B70094AC00 /* MyShabonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81BA8B82150B3B70094AC00 /* MyShabonCollectionViewCell.swift */; };
 		C81BA8BB2150B3B80094AC00 /* MyShabonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81BA8B92150B3B70094AC00 /* MyShabonCollectionViewCell.xib */; };
 		C81BA8BE215149C70094AC00 /* CollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81BA8BD215149C70094AC00 /* CollectionViewFooter.swift */; };
+		C81BA8C12151E0A40094AC00 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */; };
 		C81E850321438026006EDA5C /* AllCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */; };
 		C81E850421438026006EDA5C /* AllCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */; };
 		C81E850721439144006EDA5C /* AllCommentsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */; };
@@ -69,6 +70,7 @@
 		C81BA8B82150B3B70094AC00 /* MyShabonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonCollectionViewCell.swift; sourceTree = "<group>"; };
 		C81BA8B92150B3B70094AC00 /* MyShabonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonCollectionViewCell.xib; sourceTree = "<group>"; };
 		C81BA8BD215149C70094AC00 /* CollectionViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooter.swift; sourceTree = "<group>"; };
+		C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsTableViewCell.swift; sourceTree = "<group>"; };
 		C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllCommentsTableViewCell.xib; sourceTree = "<group>"; };
 		C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
+				C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */,
 				C81BA8BF21514A250094AC00 /* CollectionViewClass */,
 				C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */,
 				C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */,
@@ -400,6 +403,7 @@
 				C894CFBD213CE787007957E2 /* MyShabonViewController.swift in Sources */,
 				C86FE3652148B94100526196 /* collectionViewHeader.swift in Sources */,
 				C8168D6E2137C99B007084A1 /* LoginViewController.swift in Sources */,
+				C81BA8C12151E0A40094AC00 /* UserInfoViewController.swift in Sources */,
 				C8168D7E213BA079007084A1 /* NayamiComment.swift in Sources */,
 				C81E850321438026006EDA5C /* AllCommentsTableViewCell.swift in Sources */,
 				C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */,
