@@ -25,6 +25,10 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="71r-Mu-W3I">
+                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </view>
             <constraints>
@@ -37,6 +41,7 @@
             <size key="customSize" width="149" height="141"/>
             <connections>
                 <outlet property="nayamiComment" destination="Vfm-LX-pQX" id="iRR-kN-ZFH"/>
+                <outlet property="touka_star" destination="71r-Mu-W3I" id="bcA-v8-NAB"/>
             </connections>
             <point key="canvasLocation" x="14.5" y="36.5"/>
         </collectionViewCell>

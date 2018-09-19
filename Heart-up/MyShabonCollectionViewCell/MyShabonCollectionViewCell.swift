@@ -12,13 +12,23 @@ import SwiftyJSON
 class MyShabonCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nayamiComment: UILabel!
+    @IBOutlet weak var touka_star: UIImageView!
     
     
     func setupCell(comment: JSON?, color: String) {
+        guard let user_id = UserDefaults.standard.string(forKey: "user_id") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
         
         if let comment = comment {
             nayamiComment.text = comment["nayami_comment"].string!
-           
+            //もし自分のコメントならtrueに
+            if user_id == String(comment["user_id"].int!) {
+                touka_star.image = UIImage(named: "sin_touka_star")
+            }
         }
         let redColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 0.5827803938)
         let blueColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 0.5)

@@ -46,6 +46,10 @@ class detailShabonViewController: UIViewController {
             guard let anno_id = Int(self.locateId!) else {
                 return
             }
+            //もしnayami_commentが9個以上だったらキャンセル
+            if self.locates!["nayami_comments"].count >= 9 {
+                return
+            }
             //ポストします
             NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, callback: { error in
                         if let error = error {
@@ -89,12 +93,6 @@ class detailShabonViewController: UIViewController {
             collectionViewLayout: UICollectionViewFlowLayout())
         
         fetchData(collection: MyShabonDetailCollection)
-        
-        // ナビゲーション右上に「+」ボタンを追加.
-        // タップしたら onTapAddComment メソッドを呼び出す.
-        let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(detailShabonViewController.onTapAddComment
-            ))
-        self.navigationItem.setRightBarButton(navItem, animated: true)
 
         // Do any additional setup after loading the view.a
         
@@ -234,6 +232,12 @@ extension detailShabonViewController {
             self.view.addSubview(collection)
             // 画面を再描画する.
             collection.reloadData()
+            
+            // ナビゲーション右上に「+」ボタンを追加.
+            // タップしたら onTapAddComment メソッドを呼び出す.
+            //もしそうコメント数が9個以上だったら表示しない
+            
+//            if self.locates!["nayami_comments"].count < 9 {
         })
         // アイテム表示領域を白色に設定
         collection.backgroundColor = UIColor.white
@@ -243,5 +247,9 @@ extension detailShabonViewController {
         
         collection.dataSource = self
         collection.delegate = self
+        
+        let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(detailShabonViewController.onTapAddComment
+            ))
+        self.navigationItem.setRightBarButton(navItem, animated: true)
     }
 }
