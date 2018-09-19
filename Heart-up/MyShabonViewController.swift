@@ -28,33 +28,39 @@ class MyShabonViewController: UIViewController {
         myShabonTable.dataSource = self
         myShabonTable.delegate = self
         
-        // 自分の投稿したシャボン玉を呼び出す処理
-        StockLocateInfos.getMyShabon(callback:{ error, locates in
-            if let error = error {
-                if let message = error["message"] {
-                    print(message)
-                }
-                print("不明なエラーが発生しました")
-                return
-            }
-            guard let locates = locates else {
-                print("位置情報をとってこれませんでした")
-                return
-            }
-            locates.forEach { locate in
-                if locate["life_flag"] as! Int == 1 {
-                    self.dead_posts.append(locate)
-                } else {
-                    self.live_posts.append(locate)
-                }
-            }
-            
-//            self.posts = locates
-            self.myShabonTable.reloadData()
-        })
+//        // 自分の投稿したシャボン玉を呼び出す処理
+//        StockLocateInfos.getMyShabon(callback:{ error, locates in
+//            if let error = error {
+//                if let message = error["message"] {
+//                    print(message)
+//                }
+//                print("不明なエラーが発生しました")
+//                return
+//            }
+//            guard let locates = locates else {
+//                print("位置情報をとってこれませんでした")
+//                return
+//            }
+//            locates.forEach { locate in
+//                if locate["life_flag"] as! Int == 1 {
+//                    self.dead_posts.append(locate)
+//                } else {
+//                    self.live_posts.append(locate)
+//                }
+//            }
+//
+////            self.posts = locates
+//            self.myShabonTable.reloadData()
+//        })
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Do any additional setup after loading the view.
+        fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -162,6 +168,37 @@ extension MyShabonViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
     }
-    
+}
 
+extension MyShabonViewController {
+    func fetchData(){
+        // 自分の投稿したシャボン玉を呼び出す処理
+        StockLocateInfos.getMyShabon(callback:{ error, locates in
+            if let error = error {
+                if let message = error["message"] {
+                    print(message)
+                }
+                print("不明なエラーが発生しました")
+                return
+            }
+            guard let locates = locates else {
+                print("位置情報をとってこれませんでした")
+                return
+            }
+            //初期化
+            self.live_posts = []
+            self.dead_posts = []
+            
+            locates.forEach { locate in
+                if locate["life_flag"] as! Int == 1 {
+                    self.dead_posts.append(locate)
+                } else {
+                    self.live_posts.append(locate)
+                }
+            }
+            
+            //            self.posts = locates
+            self.myShabonTable.reloadData()
+        })
+    }
 }

@@ -22,26 +22,12 @@ class AllCommentsViewController: UIViewController {
         
         allCommentShabonTable.dataSource = self
         allCommentShabonTable.delegate = self
-        
-        // 自分の投稿したシャボン玉を呼び出す処理
-        StockLocateInfos.getMyShabon(callback:{ error, locates in
-            if let error = error {
-                if let message = error["message"] {
-                    print(message)
-                }
-                print("不明なエラーが発生しました")
-                return
-            }
-            guard let locates = locates else {
-                print("位置情報をとってこれませんでした")
-                return
-            }
-            
-            self.posts = locates
-            self.allCommentShabonTable.reloadData()
-        })
-
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,7 +81,27 @@ extension AllCommentsViewController: UITableViewDelegate, UITableViewDataSource 
             }
         }
     }
-    
-    
+}
+
+extension AllCommentsViewController {
+    func fetchData(){
+        // 自分の投稿したシャボン玉を呼び出す処理
+        StockLocateInfos.getMyShabon(callback:{ error, locates in
+            if let error = error {
+                if let message = error["message"] {
+                    print(message)
+                }
+                print("不明なエラーが発生しました")
+                return
+            }
+            guard let locates = locates else {
+                print("位置情報をとってこれませんでした")
+                return
+            }
+            
+            self.posts = locates
+            self.allCommentShabonTable.reloadData()
+        })
+    }
 }
 
