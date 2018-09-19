@@ -114,7 +114,7 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
     // アイテムの大きさを設定（UICollectionViewDelegateFlowLayout が必要）
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = self.view.frame.width / 4
+        let size = self.view.frame.width / 3.5
         
         return CGSize(width: size, height: size)
     }
@@ -122,7 +122,7 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
     // アイテム表示領域全体の上下左右の余白を設定（UICollectionViewDelegateFlowLayout が必要）
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        let inset =  (self.view.frame.width / 4) / 6
+        let inset =  (self.view.frame.width / 4) / 9
         
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }

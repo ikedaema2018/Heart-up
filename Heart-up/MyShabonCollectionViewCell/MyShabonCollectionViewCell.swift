@@ -25,6 +25,8 @@ class MyShabonCollectionViewCell: UICollectionViewCell {
         
         if let comment = comment {
             nayamiComment.text = comment["nayami_comment"].string!
+            //テキストサイズ調整
+            nayamiComment.adjustsFontSizeToFitWidth = true
             //もし自分のコメントならtrueに
             if user_id == String(comment["user_id"].int!) {
                 touka_star.image = UIImage(named: "sin_touka_star")
