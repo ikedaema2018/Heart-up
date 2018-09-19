@@ -36,6 +36,12 @@ class UserResisterViewController: UIViewController {
             return
         }
         
+        if user_name.count >= 10 {
+            errorLabel.isHidden = false
+            errorLabel.text = "ユーザーネームは10文字以内でお願いします"
+            return
+        }
+        
         if user_name.isEmpty || email.isEmpty || password.isEmpty || age.isEmpty || self_introduce.isEmpty {
             errorLabel.isHidden = false
             errorLabel.text = "ユーザーネームとメールアドレスとパスワードと自己紹介は必ず入力してください"
