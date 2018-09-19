@@ -224,6 +224,12 @@ extension ShabonPostViewController {
             errorLabel.text = "悩みを入力してね！"
             return
         }
+        //nayamiTextの長さが２０文字以上だったら弾く
+        if nayamiText.count >= 20 {
+            errorLabel.isHidden = false
+            errorLabel.text = "悩みは20文字以内にしてね！"
+            return
+        }
         errorLabel.isHidden = true
         
         //緯度と経度をアンラップ
