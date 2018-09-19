@@ -28,6 +28,10 @@ class UserInfoViewController: UIViewController {
         profileImage.image = UIImage(named: "noel")
         selfIntroduce.layer.borderWidth = 1.0
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         fetchData()
     }
 
