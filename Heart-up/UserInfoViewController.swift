@@ -9,6 +9,7 @@
 import UIKit
 
 class UserInfoViewController: UIViewController {
+    var userId: String?
     
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -17,14 +18,17 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var gender: UILabel!
     @IBOutlet weak var selfIntroduce: UITextView!
     
+    @IBAction func tapView(_ sender: UITapGestureRecognizer) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         profileImage.image = UIImage(named: "noel")
         selfIntroduce.layer.borderWidth = 1.0
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-
-        // Do any additional setup after loading the view.
+        fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,5 +46,39 @@ class UserInfoViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+}
 
+extension UserInfoViewController {
+    func fetchData(){
+        StockLocateInfos.getSelectUser(userId: userId!){ error, result in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                } else {
+                    print("不明なエラーが発生しました")
+                }
+                return
+            }
+            
+            guard let user = result else {
+                return
+            }
+            print(user)
+            
+            self.userName.text = user["user_name"].string
+            if let age = user["age"].int {
+                self.age.text = "\(String(age))歳"
+            }
+            self.gender.text = user["gender"].string
+            self.selfIntroduce.text = user["self_introduce"].string
+            
+            //画像が投稿されていたら
+            if user["profile_image"] != nil {
+                let image_path = user["profile_image"].string
+                let url = "http://localhost:3000/profile_image/" + image_path!
+                self.profileImage.downloadedFrom(link: url)
+            }
+        }
+    }
 }

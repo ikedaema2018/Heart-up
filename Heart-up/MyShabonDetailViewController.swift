@@ -82,9 +82,6 @@ class MyShabonDetailViewController: UICollectionViewController {
         
         // セルの再利用のための設定
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        
-        
-        
         // Do any additional setup after loading the view.
     }
 
@@ -103,8 +100,6 @@ class MyShabonDetailViewController: UICollectionViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    
-
 }
 
 extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
@@ -159,17 +154,15 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
     // アイテムタッチ時の処理（UICollectionViewDelegate が必要）
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //これがコメントした人のユーザーID
-        print(String(locates!["nayami_comments"][indexPath.row]["user_id"].int!))
-        self.performSegue(withIdentifier: "toUserInfoSegue", sender: nil)
+        let userId = String(locates!["nayami_comments"][indexPath.row]["user_id"].int!)
+        self.performSegue(withIdentifier: "toUserInfoSegue", sender: userId)
     }
     
     //ここからヘッダー
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
         if kind == UICollectionElementKindSectionHeader{
             //headerを定義する
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath) as! topHeader
-            
             
             if let tmp = locates {
                 let color = tmp["color"].string
@@ -218,7 +211,6 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
             }
             return footer
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -226,11 +218,28 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: view.frame.width, height: 100)
     }
     
-//footer
+    //footer
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         //footerサイズ
         return CGSize(width: view.frame.width, height: 50)
     }
-    
-    
 }
+
+extension MyShabonDetailViewController
+{
+    //ページ遷移で数値を
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = sender as? String else {
+            return
+        }
+        
+        if segue.identifier == "toUserInfoSegue" {
+            if let vc = segue.destination as? UserInfoViewController {
+                vc.userId = id
+            }
+        }
+    }
+}
+
+
+
