@@ -13,9 +13,12 @@ class MyShabonCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var nayamiComment: UILabel!
     
+    
     func setupCell(comment: JSON?, color: String) {
+        
         if let comment = comment {
             nayamiComment.text = comment["nayami_comment"].string!
+           
         }
         let redColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 0.5827803938)
         let blueColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 0.5)

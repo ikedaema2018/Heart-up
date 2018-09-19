@@ -64,12 +64,23 @@ extension UserInfoViewController {
             guard let user = result else {
                 return
             }
-            print(user)
             
-            self.userName.text = user["user_name"].string
+            guard let user_id = UserDefaults.standard.string(forKey: "user_id") else {
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.showLoginStoryboard()
+                }
+                return
+            }
+            
+            if self.userId! == user_id {
+                self.userName.text = "わたし"
+            }else{
+                self.userName.text = user["user_name"].string
+            }
             if let age = user["age"].int {
                 self.age.text = "\(String(age))歳"
             }
+            
             self.gender.text = user["gender"].string
             self.selfIntroduce.text = user["self_introduce"].string
             
