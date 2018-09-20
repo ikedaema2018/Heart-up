@@ -12,8 +12,14 @@ import UIKit
 class AllCommentsViewController: UIViewController {
     
     @IBOutlet weak var allCommentShabonTable: UITableView!
+    var live_posts: [[String: Any]] = []
+    var dead_posts: [[String: Any]] = []
     var posts: [[String: Any]] = []
     
+    // Sectionのタイトル
+    let sectionTitle: NSArray = [
+        "飛行中のシャボン玉",
+        "弾けたシャボン玉"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,13 +44,34 @@ class AllCommentsViewController: UIViewController {
 }
 
 extension AllCommentsViewController: UITableViewDelegate, UITableViewDataSource {
+    // セクション数を返却する.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sectionTitle.count
+    }
+    
+    // Sectioのタイトル
+    func tableView(_ tableView: UITableView,
+                   titleForHeaderInSection section: Int) -> String? {
+        return sectionTitle[section] as? String
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        if section == 0 {
+            return live_posts.count
+        } else if section == 1 {
+            return dead_posts.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = allCommentShabonTable.dequeueReusableCell(withIdentifier: "AllCommentCustomCell", for: indexPath) as! AllCommentsTableViewCell
-        cell.locate = posts[indexPath.row]
+        if indexPath.section == 0 {
+            cell.locate = live_posts[indexPath.row]
+        } else {
+            cell.locate = dead_posts[indexPath.row]
+        }
         return cell
     }
     
@@ -52,10 +79,16 @@ extension AllCommentsViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //選択状態を非表示にする
         allCommentShabonTable.deselectRow(at: indexPath, animated: true)
-        let post = self.posts[indexPath.row]
-        let post1 = post["locate_info_id"]
+        let locate_info_id: Any?
+        if indexPath.section == 0 {
+            let post = self.live_posts[indexPath.row]
+            locate_info_id = post["locate_info_id"]
+        } else if indexPath.section == 1 {
+            let post = self.dead_posts[indexPath.row]
+            locate_info_id = post["locate_info_id"]
+        } else { locate_info_id = 0 }
         // コメント一覧へ遷移する.
-        self.performSegue(withIdentifier: "AllCommentCollectionSegue", sender: post1)
+        self.performSegue(withIdentifier: "AllCommentCollectionSegue", sender: locate_info_id)
     }
     
     // Segueでの画面遷移時に呼び出される.
@@ -88,7 +121,20 @@ extension AllCommentsViewController {
                 return
             }
             
-            self.posts = locates
+            //初期化
+            self.live_posts = []
+            self.dead_posts = []
+            
+            locates.forEach { locate in
+                if let locateInfo = locate["locate_info"] as! [String: Any]? {
+                    print(locateInfo)
+                    if locateInfo["life_flag"] as! Int == 1 {
+                        self.dead_posts.append(locate)
+                    } else {
+                        self.live_posts.append(locate)
+                    }
+                }
+            }
             self.allCommentShabonTable.reloadData()
         })
     }

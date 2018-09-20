@@ -45,7 +45,6 @@ class MyShabonTableViewCell: UITableViewCell {
                     self.myShabonImage.image = UIImage(named: "red")
                 }
             }
-            
         }
     }
 
