@@ -97,4 +97,28 @@ class NayamiComment: NSObject {
             }
         }
     }
+    
+    //locate_idにrailsでpostしてnayami_commentsをtrueにする
+    class func fixYondaFlag(id: String, callback: @escaping ([String: Any]?) -> Void){
+        //auth_tokenがないときはリターン
+        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+        let url = "http://localhost:3000/nayami_comments/fix_yonda_flag/" + id + "?auth_token=" + auth_token
+        Alamofire.request(url, method: .get).responseJSON {response in
+            
+            let statusCode = response.response!.statusCode
+            
+            //失敗したとき
+            if statusCode != 200 {
+                callback(["message": "サーバーでエラーが発生しました"])
+            }
+                callback(nil)
+        }
+    }
+    
+    
 }

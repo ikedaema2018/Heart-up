@@ -30,7 +30,6 @@
 		C81E850B2144B32F006EDA5C /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850A2144B32F006EDA5C /* ProfileImage.swift */; };
 		C81E850F21464A63006EDA5C /* ShabonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850E21464A63006EDA5C /* ShabonAlert.swift */; };
 		C82CC491214D75E200F40AE7 /* CloserDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */; };
-		C84DE63F2153A3C500406A64 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84DE63E2153A3C500406A64 /* MainTabBarViewController.swift */; };
 		C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CD212C3B97005A3D92 /* AppDelegate.swift */; };
 		C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D1212C3B97005A3D92 /* Main.storyboard */; };
 		C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D4212C3B98005A3D92 /* Assets.xcassets */; };
@@ -79,7 +78,6 @@
 		C81E850A2144B32F006EDA5C /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		C81E850E21464A63006EDA5C /* ShabonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonAlert.swift; sourceTree = "<group>"; };
 		C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloserDetailCollectionViewController.swift; sourceTree = "<group>"; };
-		C84DE63E2153A3C500406A64 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		C86E32CA212C3B97005A3D92 /* Heart-up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart-up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86E32CD212C3B97005A3D92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C86E32D2212C3B97005A3D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -210,7 +208,6 @@
 				C8168D71213836EE007084A1 /* Ext.swift */,
 				C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
-				C84DE63E2153A3C500406A64 /* MainTabBarViewController.swift */,
 				C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
 				C81BA8BF21514A250094AC00 /* CollectionViewClass */,
@@ -393,7 +390,6 @@
 				C8168D782138EA78007084A1 /* UserResisterViewController.swift in Sources */,
 				C81E850B2144B32F006EDA5C /* ProfileImage.swift in Sources */,
 				C894CFC1213F496D007957E2 /* Annotation.swift in Sources */,
-				C84DE63F2153A3C500406A64 /* MainTabBarViewController.swift in Sources */,
 				C81E850721439144006EDA5C /* AllCommentsCollectionViewController.swift in Sources */,
 				C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */,
 				C8168D70213813C4007084A1 /* Api.swift in Sources */,

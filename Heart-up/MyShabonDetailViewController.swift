@@ -83,6 +83,20 @@ class MyShabonDetailViewController: UICollectionViewController {
         // セルの再利用のための設定
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         // Do any additional setup after loading the view.
+        
+        
+        //locate_idにrailsでpostしてnayami_commentsをtrueにする
+        NayamiComment.fixYondaFlag(id: shabonId, callback: { error in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    self.showAlert(message: message, hide: {})
+                } else {
+                    self.showAlert(message: "エラーが発生しました", hide: {})
+                }
+                return
+            }
+        })
+        
     }
 
     override func didReceiveMemoryWarning() {

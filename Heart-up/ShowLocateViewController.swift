@@ -364,6 +364,8 @@ extension ShowLocateViewController {
             if let yondenaiComments = result {
                 if yondenaiComments.count > 0 {
                     self.tabBarController?.tabBar.items![1].badgeValue = String(yondenaiComments.count)
+                } else {
+                    self.tabBarController?.tabBar.items![1].badgeValue = nil
                 }
             }
         })
