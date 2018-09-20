@@ -12,6 +12,8 @@ class MyShabonTableViewCell: UITableViewCell {
     @IBOutlet weak var myShabonImage: UIImageView!
     
     @IBOutlet weak var myShabonTitle: UILabel!
+    @IBOutlet weak var myShabonCount: UIImageView!
+    
     
     // 投稿データ.
     var locate: [String: Any]? {
@@ -23,11 +25,12 @@ class MyShabonTableViewCell: UITableViewCell {
             guard let locate = locate else {
                 return
             }
+            let nayami_comment = locate["nayami_comments"] as! [[String: Any]]
+            //悩みコメントの数のイメージを設定
+            myShabonCount.image = UIImage(named: "number" + String(nayami_comment.count))
             
             // 画像表示は一旦初期化.
             self.myShabonImage.image = UIImage(named: "japan")
-            
-            
             
             // 投稿本文の表示.
             if let body = locate["nayami"] as? String {
