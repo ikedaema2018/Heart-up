@@ -163,6 +163,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         //shabon_alert テーブルから検索する処理
         select_user_alert()
         closer_alert()
+        nayamiBadging()
     }
     
 }
@@ -345,6 +346,23 @@ extension ShowLocateViewController {
                         self.viewDidAppear(true)
                     }
                 })
+            }
+        })
+    }
+    
+    func nayamiBadging(){
+        NayamiComment.myShabonNayamiFind(callback: { error, result in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                } else {
+                    print("不明なエラーが発生しました")
+                }
+                return
+            }
+            if let yondenaiComments = result {
+                print(yondenaiComments.count)
             }
         })
     }
