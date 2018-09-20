@@ -34,6 +34,10 @@
                         <rect key="frame" x="339" y="4" width="33" height="36"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zmV-yK-txN">
+                        <rect key="frame" x="0.0" y="4" width="56" height="36"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -41,6 +45,7 @@
                 <outlet property="myShabonCount" destination="yye-SA-F0j" id="fFV-cb-bG2"/>
                 <outlet property="myShabonImage" destination="KAy-Od-jOG" id="fna-gW-8ja"/>
                 <outlet property="myShabonTitle" destination="kjh-gU-48R" id="6aU-Zc-xzh"/>
+                <outlet property="newNayami" destination="zmV-yK-txN" id="mCl-5C-qRN"/>
             </connections>
             <point key="canvasLocation" x="150" y="60"/>
         </tableViewCell>

@@ -13,6 +13,7 @@ class MyShabonTableViewCell: UITableViewCell {
     
     @IBOutlet weak var myShabonTitle: UILabel!
     @IBOutlet weak var myShabonCount: UIImageView!
+    @IBOutlet weak var newNayami: UIImageView!
     
     
     // 投稿データ.
@@ -25,7 +26,21 @@ class MyShabonTableViewCell: UITableViewCell {
             guard let locate = locate else {
                 return
             }
+            
             let nayami_comment = locate["nayami_comments"] as! [[String: Any]]
+            
+            //まだ見てないコメントがある時にnew_flag
+            let bool = locate["life_flag"] as! Bool
+            if bool == false {
+                let yonda = nayami_comment.filter { $0["yonda_flag"] as! Bool == false }
+                if yonda.count > 0 {
+                    newNayami.image = UIImage(named: "new")
+                }else{
+                    newNayami.image = nil
+                }
+            }
+            
+            
             //悩みコメントの数のイメージを設定
             myShabonCount.image = UIImage(named: "number" + String(nayami_comment.count))
             
