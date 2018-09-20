@@ -53,7 +53,6 @@ extension AllCommentsViewController: UITableViewDelegate, UITableViewDataSource 
         //選択状態を非表示にする
         allCommentShabonTable.deselectRow(at: indexPath, animated: true)
         let post = self.posts[indexPath.row]
-        print(post)
         let post1 = post["locate_info_id"]
         // コメント一覧へ遷移する.
         self.performSegue(withIdentifier: "AllCommentCollectionSegue", sender: post1)
@@ -83,10 +82,12 @@ extension AllCommentsViewController {
                 print("不明なエラーが発生しました")
                 return
             }
+            
             guard let locates = locates else {
                 print("位置情報をとってこれませんでした")
                 return
             }
+            
             self.posts = locates
             self.allCommentShabonTable.reloadData()
         })
