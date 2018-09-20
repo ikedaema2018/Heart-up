@@ -46,4 +46,30 @@ class NayamiComment: NSObject {
             }
         }
     }
+    
+    //myShabonでPostしたシャボン玉一覧を出すためのもの
+    class func getPostShabon(callback: @escaping ([String: Any]?, [[String: Any]]?) -> Void) {
+        //auth_tokenがないときはリターン
+        guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+        
+        let url = "http://localhost:3000/nayami_comments/my_post/?auth_token=" + auth_token
+        Alamofire.request(url, method: .get).responseJSON {response in
+            
+            let statusCode = response.response!.statusCode
+            
+            //失敗したとき
+            if statusCode != 200 {
+                callback(["message": "サーバーでエラーが発生しました"], nil)
+            }
+            
+            if let object = response.result.value as? [[String: Any]] {
+                callback(nil, object)
+            }
+        }
+    }
 }

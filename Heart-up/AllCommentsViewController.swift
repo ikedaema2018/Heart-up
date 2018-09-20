@@ -34,17 +34,6 @@ class AllCommentsViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
@@ -64,8 +53,8 @@ extension AllCommentsViewController: UITableViewDelegate, UITableViewDataSource 
         //選択状態を非表示にする
         allCommentShabonTable.deselectRow(at: indexPath, animated: true)
         let post = self.posts[indexPath.row]
-        let post1 = post["id"]
-        //            print(post1)
+        print(post)
+        let post1 = post["locate_info_id"]
         // コメント一覧へ遷移する.
         self.performSegue(withIdentifier: "AllCommentCollectionSegue", sender: post1)
     }
@@ -86,7 +75,7 @@ extension AllCommentsViewController: UITableViewDelegate, UITableViewDataSource 
 extension AllCommentsViewController {
     func fetchData(){
         // 自分の投稿したシャボン玉を呼び出す処理
-        StockLocateInfos.getMyShabon(callback:{ error, locates in
+        NayamiComment.getPostShabon(callback:{ error, locates in
             if let error = error {
                 if let message = error["message"] {
                     print(message)
@@ -98,7 +87,6 @@ extension AllCommentsViewController {
                 print("位置情報をとってこれませんでした")
                 return
             }
-            
             self.posts = locates
             self.allCommentShabonTable.reloadData()
         })

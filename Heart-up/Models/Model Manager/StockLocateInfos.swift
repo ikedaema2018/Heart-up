@@ -129,11 +129,10 @@ class StockLocateInfos: NSObject {
             }
             return
         }
-        //Alamofireで検索
-//                let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos/find_my_shabon?auth_token=" + auth_token
         
         let url = "http://localhost:3000/locate_infos/find_my_shabon?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
+            
             let statusCode = response.response!.statusCode
             
             //失敗したとき
@@ -142,7 +141,6 @@ class StockLocateInfos: NSObject {
             }
             
             if let object = response.result.value as? [[String: Any]] {
-            
             callback(nil, object)
             }
         }
