@@ -24,7 +24,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         if locationManager != nil { return }
         locationManager = CLLocationManager()
         locationManager!.delegate = self
@@ -362,7 +362,9 @@ extension ShowLocateViewController {
                 return
             }
             if let yondenaiComments = result {
-                print(yondenaiComments.count)
+                if yondenaiComments.count > 0 {
+                    self.tabBarController?.tabBar.items![1].badgeValue = String(yondenaiComments.count)
+                }
             }
         })
     }
