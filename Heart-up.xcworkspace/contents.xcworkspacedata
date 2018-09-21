@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../Desktop/GoogleService-Info.plist">
+   </FileRef>
+   <FileRef
       location = "group:/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/CloserDetailCollectionViewController.swift">
    </FileRef>
    <FileRef
