@@ -31,6 +31,7 @@
 		C81E850F21464A63006EDA5C /* ShabonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850E21464A63006EDA5C /* ShabonAlert.swift */; };
 		C82CC491214D75E200F40AE7 /* CloserDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */; };
 		C84DE64121548B9600406A64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C84DE64021548B9500406A64 /* GoogleService-Info.plist */; };
+		C84DE643215505EF00406A64 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84DE642215505EF00406A64 /* NetworkExtension.framework */; };
 		C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CD212C3B97005A3D92 /* AppDelegate.swift */; };
 		C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D1212C3B97005A3D92 /* Main.storyboard */; };
 		C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D4212C3B98005A3D92 /* Assets.xcassets */; };
@@ -80,6 +81,8 @@
 		C81E850E21464A63006EDA5C /* ShabonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonAlert.swift; sourceTree = "<group>"; };
 		C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloserDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		C84DE64021548B9500406A64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C84DE642215505EF00406A64 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		C84DE644215505EF00406A64 /* Heart-up.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Heart-up.entitlements"; sourceTree = "<group>"; };
 		C86E32CA212C3B97005A3D92 /* Heart-up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart-up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86E32CD212C3B97005A3D92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C86E32D2212C3B97005A3D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -112,6 +115,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C86E32F1212D1B73005A3D92 /* CoreLocation.framework in Frameworks */,
+				C84DE643215505EF00406A64 /* NetworkExtension.framework in Frameworks */,
 				C86E32EF212D1B67005A3D92 /* MapKit.framework in Frameworks */,
 				40F403D5A84A2B112A3E275B /* Pods_Heart_up.framework in Frameworks */,
 			);
@@ -195,6 +199,7 @@
 		C86E32CC212C3B97005A3D92 /* Heart-up */ = {
 			isa = PBXGroup;
 			children = (
+				C84DE644215505EF00406A64 /* Heart-up.entitlements */,
 				C81E84FF21436A4C006EDA5C /* Trash */,
 				C8EB10CB212FD0D500B61D34 /* Models */,
 				C81E850021437F3C006EDA5C /* MyShabonTableViewCell */,
@@ -231,6 +236,7 @@
 		C86E32ED212D1B67005A3D92 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C84DE642215505EF00406A64 /* NetworkExtension.framework */,
 				C86E32F0212D1B73005A3D92 /* CoreLocation.framework */,
 				C86E32EE212D1B67005A3D92 /* MapKit.framework */,
 				824C26F179797FA7E617789D /* Pods_Heart_up.framework */,
@@ -305,6 +311,14 @@
 				TargetAttributes = {
 					C86E32C9212C3B97005A3D92 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -574,6 +588,7 @@
 			baseConfigurationReference = FFF6B60923565050FDCFD900 /* Pods-Heart-up.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Heart-up/Heart-up.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 27LU9Z8P5L;
 				INFOPLIST_FILE = "Heart-up/Info.plist";
@@ -593,6 +608,7 @@
 			baseConfigurationReference = B82C928BC37825E7E92F0E89 /* Pods-Heart-up.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Heart-up/Heart-up.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 27LU9Z8P5L;
 				INFOPLIST_FILE = "Heart-up/Info.plist";
