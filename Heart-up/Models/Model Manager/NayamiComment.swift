@@ -18,8 +18,8 @@ class NayamiComment: NSObject {
             }
             return
         }
-//                let url = "https://aqueous-temple-50173.herokuapp.com/nayami_comments?auth_token=" + auth_token
-        let url = "http://localhost:3000/nayami_comments?auth_token=" + auth_token
+                let url = "https://aqueous-temple-50173.herokuapp.com/nayami_comments?auth_token=" + auth_token
+//        let url = "http://localhost:3000/nayami_comments?auth_token=" + auth_token
          let params = [
             "nayami_comment": [
                 "locate_info_id": locate_info_id,
@@ -56,8 +56,8 @@ class NayamiComment: NSObject {
             }
             return
         }
-        
-        let url = "http://localhost:3000/nayami_comments/my_post/?auth_token=" + auth_token
+        let url = "https://aqueous-temple-50173.herokuapp.com/nayami_comments/my_post/?auth_token=" + auth_token
+//        let url = "http://localhost:3000/nayami_comments/my_post/?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
             
             let statusCode = response.response!.statusCode
@@ -82,7 +82,8 @@ class NayamiComment: NSObject {
             }
             return
         }
-        let url = "http://localhost:3000/nayami_comments/my_shabon_nayami_find/?auth_token=" + auth_token
+        let url = "https://aqueous-temple-50173.herokuapp.com/nayami_comments/my_shabon_nayami_find/?auth_token=" + auth_token
+//        let url = "http://localhost:3000/nayami_comments/my_shabon_nayami_find/?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
             
             let statusCode = response.response!.statusCode
@@ -107,7 +108,8 @@ class NayamiComment: NSObject {
             }
             return
         }
-        let url = "http://localhost:3000/nayami_comments/fix_yonda_flag/" + id + "?auth_token=" + auth_token
+        let url = "https://aqueous-temple-50173.herokuapp.com/nayami_comments/fix_yonda_flag/" + id + "?auth_token=" + auth_token
+//        let url = "http://localhost:3000/nayami_comments/fix_yonda_flag/" + id + "?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
             
             let statusCode = response.response!.statusCode

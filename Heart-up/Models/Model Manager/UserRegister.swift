@@ -13,8 +13,8 @@ import SwiftyJSON
 class UserRegister: NSObject {
     class func postLocate(user: [String: String], callback: @escaping ([String: Any]?, [String: Any]?) -> Void){
         
-//        let url = "https://aqueous-temple-50173.herokuapp.com/users"
-        let url = "http://localhost:3000/users"
+        let url = "https://aqueous-temple-50173.herokuapp.com/users"
+//        let url = "http://localhost:3000/users"
         
         let params = [
             "user": [
@@ -58,8 +58,8 @@ class UserRegister: NSObject {
         let params = [
             "self_introduce": intro
         ]
-//                let url = "https://aqueous-temple-50173.herokuapp.com/users/intro_update?auth_token=" + auth_token
-        let url = "http://localhost:3000/users/intro_update?auth_token=" + auth_token
+                let url = "https://aqueous-temple-50173.herokuapp.com/users/intro_update?auth_token=" + auth_token
+//        let url = "http://localhost:3000/users/intro_update?auth_token=" + auth_token
         
         Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
             switch response.result {

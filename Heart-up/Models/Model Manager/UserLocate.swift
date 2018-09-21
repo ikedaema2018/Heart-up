@@ -18,8 +18,8 @@ class UserLocate: NSObject {
             }
             return
         }
-//                let url = "https://aqueous-temple-50173.herokuapp.com/user_locates/update?auth_token=" + auth_token
-        let url = "http://localhost:3000/user_locates/update?auth_token=" + auth_token
+                let url = "https://aqueous-temple-50173.herokuapp.com/user_locates/update?auth_token=" + auth_token
+//        let url = "http://localhost:3000/user_locates/update?auth_token=" + auth_token
         let params = [
             "user_locate": [
                 "ido": ido,
@@ -53,8 +53,8 @@ class UserLocate: NSObject {
             }
             return
         }
-        //                let url = "https://aqueous-temple-50173.herokuapp.com/users/current_user?auth_token=" + auth_token
-        let url = "http://localhost:3000/users/one_hour_ago_user?auth_token=" + auth_token
+                        let url = "https://aqueous-temple-50173.herokuapp.com/users/current_user?auth_token=" + auth_token
+//        let url = "http://localhost:3000/users/one_hour_ago_user?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
             
             
