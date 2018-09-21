@@ -30,6 +30,7 @@
 		C81E850B2144B32F006EDA5C /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850A2144B32F006EDA5C /* ProfileImage.swift */; };
 		C81E850F21464A63006EDA5C /* ShabonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850E21464A63006EDA5C /* ShabonAlert.swift */; };
 		C82CC491214D75E200F40AE7 /* CloserDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */; };
+		C84DE64121548B9600406A64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C84DE64021548B9500406A64 /* GoogleService-Info.plist */; };
 		C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86E32CD212C3B97005A3D92 /* AppDelegate.swift */; };
 		C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D1212C3B97005A3D92 /* Main.storyboard */; };
 		C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C86E32D4212C3B98005A3D92 /* Assets.xcassets */; };
@@ -78,6 +79,7 @@
 		C81E850A2144B32F006EDA5C /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		C81E850E21464A63006EDA5C /* ShabonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonAlert.swift; sourceTree = "<group>"; };
 		C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloserDetailCollectionViewController.swift; sourceTree = "<group>"; };
+		C84DE64021548B9500406A64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C86E32CA212C3B97005A3D92 /* Heart-up.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heart-up.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C86E32CD212C3B97005A3D92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C86E32D2212C3B97005A3D92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				C8168D6B2137BBB5007084A1 /* Login.storyboard */,
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
+				C84DE64021548B9500406A64 /* GoogleService-Info.plist */,
 				C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
 				C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */,
@@ -330,6 +333,7 @@
 			files = (
 				C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */,
 				C81E850421438026006EDA5C /* AllCommentsTableViewCell.xib in Resources */,
+				C84DE64121548B9600406A64 /* GoogleService-Info.plist in Resources */,
 				C86E32D8212C3B98005A3D92 /* LaunchScreen.storyboard in Resources */,
 				C894CFCE2140D32B007957E2 /* MyShabonTableViewCell.xib in Resources */,
 				C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */,
@@ -350,12 +354,18 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Heart-up/Pods-Heart-up-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
