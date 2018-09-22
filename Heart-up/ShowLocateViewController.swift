@@ -36,7 +36,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager!.distanceFilter = 1000
         
-        //UserDefaltsを初期化したい時
+//        UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
 //        userDefaults.removeObject(forKey: "user_id")
@@ -338,6 +338,7 @@ extension ShowLocateViewController {
             }
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
+                print(tmp_alert)
                 self.closeAlert(message: tmp_alert, callback: { locateId in
                     if let locateId = locateId {
                         //遷移

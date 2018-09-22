@@ -23,8 +23,8 @@ class StockLocateInfos: NSObject {
             return
         }
         
-//        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos?auth_token=" + auth_token
-        let url = "http://localhost:3000/locate_infos?auth_token=" + auth_token
+        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos?auth_token=" + auth_token
+//        let url = "http://localhost:3000/locate_infos?auth_token=" + auth_token
 
 
         let params = [
@@ -130,7 +130,7 @@ class StockLocateInfos: NSObject {
             return
         }
         
-        let url = "https://aqueous-temple-50173.herokuapp.com/find_my_shabon?auth_token=" + auth_token
+        let url = "https://aqueous-temple-50173.herokuapp.com/locate_infos/find_my_shabon?auth_token=" + auth_token
 //        let url = "http://localhost:3000/locate_infos/find_my_shabon?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
             
@@ -138,7 +138,7 @@ class StockLocateInfos: NSObject {
             
             //失敗したとき
             if statusCode != 200 {
-                callback(["message": "サーバーでエラーが発生しました"], nil)
+                callback(["message": "サーバーでエラーが発生しました getMyShabon"], nil)
             }
             
             if let object = response.result.value as? [[String: Any]] {

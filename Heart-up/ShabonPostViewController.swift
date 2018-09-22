@@ -138,6 +138,8 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
             = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude)
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
+        print("---------------------------")
+        print(latitude)
         
         
         // update annotation
@@ -203,6 +205,7 @@ extension ShabonPostViewController: UITextFieldDelegate {
 
 extension ShabonPostViewController {
     func postNayami(){
+        print("朝が綺麗")
         //悩みを色を表示
         let segmentIndex = selectedColor.selectedSegmentIndex
         let shabonColor = selectedColor.titleForSegment(at: segmentIndex)
@@ -234,9 +237,11 @@ extension ShabonPostViewController {
         
         //緯度と経度をアンラップ
         guard let ido = latitude, let keido = longitude else {
+            errorLabel.isHidden = false
             errorLabel.text = "緯度と経度が取得できないよ！"
             return
         }
+        print("朝が綺麗2")
         
         
         
