@@ -36,6 +36,7 @@ class ShabonAlert: NSObject {
             guard let object = response.result.value else {
                 return
             }
+            
             let obj = JSON(object)
             callback(nil, obj)
         }
@@ -107,7 +108,7 @@ class ShabonAlert: NSObject {
             return
         }
 
-                        let url = "https://aqueous-temple-50173.herokuapp.com/shabon_alerts/" + String(id) + "?auth_token=" + auth_token
+                        let url = "https://aqueous-temple-50173.herokuapp.com/closer_alerts/" + String(id) + "?auth_token=" + auth_token
 //        let url = "http://localhost:3000/closer_alerts/" + String(id) + "?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in

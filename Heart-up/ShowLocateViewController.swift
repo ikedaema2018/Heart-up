@@ -319,6 +319,8 @@ extension ShowLocateViewController {
             
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
+                print("---------------------------------")
+                print(tmp_alert)
                 self.shabon_Alert(message: tmp_alert, callback: { locateId in
                     if let locateId = locateId {
                         //遷移
@@ -341,6 +343,8 @@ extension ShowLocateViewController {
                 }
                 return
             }
+            print(alert)
+            print(alert?.isEmpty)
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
                 self.closeAlert(message: tmp_alert, callback: { locateId in
