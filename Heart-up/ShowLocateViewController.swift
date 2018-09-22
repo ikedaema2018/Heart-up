@@ -81,7 +81,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                         anno.image = UIImage(named: "japan")
                         return anno
                     }
-                    let url = URL( string: "http://localhost:3000/profile_image/" + userImage)
+//                    let url = URL( string: "http://localhost:3000/profile_image/" + userImage)
+                    let url = URL( string: "https://aqueous-temple-50173.herokuapp.com/profile_image/" + userImage)
                     let data = try? Data(contentsOf: url!)
                     let theImage = UIImage(data: data!)
                     let scaledImage = theImage?.resize(image: theImage!, width: 30)

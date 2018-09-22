@@ -113,7 +113,9 @@ extension MyPageViewController {
             //画像が投稿されていたら
             if user["profile_image"] != nil {
                 let image_path = user["profile_image"].string
-                let url = "http://localhost:3000/profile_image/" + image_path!
+                let url = "https://aqueous-temple-50173.herokuapp.com/profile_image/" + image_path!
+//                let url = "http://localhost:3000/profile_image/" + image_path!
+
                 self.profileImage.downloadedFrom(link: url)
             }
         }
