@@ -53,7 +53,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
     
     // [START refresh_token]
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        print("Firebase registration token: \(fcmToken)")
+//        print("Firebase registration token: \(fcmToken)")
+        
+        //userIdがあったらfcmTokenと一緒にポストする
+        if let userId = UserDefaults.standard.string(forKey: "user_id"){
+            PushToken.postToken(userId: userId, fcmToken: fcmToken, callback: { error in
+                if let error = error as! [String: Any]? {
+                    print(error)
+                    print("fcm_tokenのpost失敗!")
+                }else{
+                    print("fcm_tokenのpost成功!")
+                }
+            })
+        }
         
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
