@@ -75,8 +75,9 @@ class ShabonPostViewController: UIViewController {
         shabonImage.image = UIImage(named: "redShabon")
     
         if CLLocationManager.locationServicesEnabled() {
-            locationManager!.startUpdatingLocation()
+                locationManager!.startUpdatingLocation()
         }
+        
         
         locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager!.distanceFilter = 1000
@@ -138,8 +139,6 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
             = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude)
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
-        print("---------------------------")
-        print(latitude)
         
         
         // update annotation

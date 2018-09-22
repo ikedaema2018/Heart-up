@@ -29,6 +29,10 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         locationManager = CLLocationManager()
         locationManager!.delegate = self
         
+        if #available(iOS 9.0, *) {
+            locationManager?.allowsBackgroundLocationUpdates = true
+        }
+        
         if CLLocationManager.locationServicesEnabled() {
             locationManager!.startUpdatingLocation()
         }
@@ -338,7 +342,6 @@ extension ShowLocateViewController {
             }
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
-                print(tmp_alert)
                 self.closeAlert(message: tmp_alert, callback: { locateId in
                     if let locateId = locateId {
                         //遷移
