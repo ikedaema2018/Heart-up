@@ -29,10 +29,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         locationManager = CLLocationManager()
         locationManager!.delegate = self
         
-        if #available(iOS 9.0, *) {
-            locationManager?.allowsBackgroundLocationUpdates = true
-        }
-        
         if CLLocationManager.locationServicesEnabled() {
             locationManager!.startUpdatingLocation()
         }
@@ -40,12 +36,11 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager!.distanceFilter = 1000
         
-//        UserDefaltsを初期化したい時
+        //UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
 //        userDefaults.removeObject(forKey: "user_id")
-        
-//
+//        
         mapView.delegate = self
         // tracking user location
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
@@ -82,8 +77,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                         anno.image = UIImage(named: "japan")
                         return anno
                     }
-//                    let url = URL( string: "http://localhost:3000/profile_image/" + userImage)
-                    let url = URL( string: "https://aqueous-temple-50173.herokuapp.com/profile_image/" + userImage)
+                    let url = URL( string: "http://localhost:3000/profile_image/" + userImage)
                     let data = try? Data(contentsOf: url!)
                     let theImage = UIImage(data: data!)
                     let scaledImage = theImage?.resize(image: theImage!, width: 30)
@@ -148,7 +142,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         } else if segue.identifier == "toSelectUserSegue" {
             if let vc = segue.destination as? selectUserViewController {
                 vc.userId = id
-            }
+            }    
         }
     }
     
@@ -342,8 +336,6 @@ extension ShowLocateViewController {
                 }
                 return
             }
-            print(alert)
-            print(alert?.isEmpty)
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
                 self.closeAlert(message: tmp_alert, callback: { locateId in

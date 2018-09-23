@@ -35,7 +35,7 @@ class MyShabonDetailViewController: UICollectionViewController {
             return
         }
         
-        StockLocateInfos.getMyShabonDetailLocation(id: shabonId, callback: {error, locate in
+        StockLocateInfos.getDetailLocation(id: shabonId, callback: {error, locate in
             
             if let error = error {
                 if let message = error["message"] as? String {

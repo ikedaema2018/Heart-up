@@ -43,7 +43,6 @@
                     <connections>
                         <outlet property="mapView" destination="rNy-YI-eZf" id="MzV-Ei-Wzt"/>
                         <segue destination="xI9-3v-M6q" kind="push" identifier="toDetailShabonViewController" id="pEI-PR-io7"/>
-                        <segue destination="lsu-ud-JbQ" kind="push" id="jDd-wY-fbe"/>
                         <segue destination="wDW-WR-CXr" kind="push" identifier="toCloserDetailSegue" id="fhs-XF-lhJ"/>
                         <segue destination="R6z-YI-9wq" kind="push" identifier="toSelectUserSegue" id="211-cK-41G"/>
                     </connections>
@@ -372,22 +371,6 @@
             </objects>
             <point key="canvasLocation" x="5492" y="885"/>
         </scene>
-        <!--Explosion Shabon Detail View Controller-->
-        <scene sceneID="DGz-Ni-cAt">
-            <objects>
-                <viewController id="lsu-ud-JbQ" customClass="ExplosionShabonDetailViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iZo-YQ-sfa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="5pQ-bQ-Pef"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="sAk-ec-zbd"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eqQ-LX-kd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6288" y="882"/>
-        </scene>
         <!--Closer Detail Collection View Controller-->
         <scene sceneID="MkM-zd-cvf">
             <objects>
@@ -402,7 +385,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="knA-6q-8v9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7066" y="885"/>
+            <point key="canvasLocation" x="6370" y="885"/>
         </scene>
         <!--Select User View Controller-->
         <scene sceneID="XCY-gB-ejq">
@@ -495,7 +478,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NSg-Eq-KxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7903" y="881"/>
+            <point key="canvasLocation" x="7242" y="885"/>
         </scene>
         <!--map-->
         <scene sceneID="MBt-TA-m4x">
