@@ -44,7 +44,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
 //        userDefaults.removeObject(forKey: "user_id")
-//        
+        
+//
         mapView.delegate = self
         // tracking user location
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
@@ -319,8 +320,6 @@ extension ShowLocateViewController {
             
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
-                print("---------------------------------")
-                print(tmp_alert)
                 self.shabon_Alert(message: tmp_alert, callback: { locateId in
                     if let locateId = locateId {
                         //遷移

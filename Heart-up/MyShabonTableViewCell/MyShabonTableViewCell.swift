@@ -31,7 +31,6 @@ class MyShabonTableViewCell: UITableViewCell {
             
             //まだ見てないコメントがある時にnew_flag
             let bool = locate["life_flag"] as! Bool
-            print(bool)
             if bool == false {
                 let yonda = nayami_comment.filter { $0["yonda_flag"] as! Bool == false }
                 if yonda.count > 0 {

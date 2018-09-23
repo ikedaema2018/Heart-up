@@ -102,7 +102,9 @@ extension UIViewController {
     }
     
     func closeAlert(message: JSON, callback: @escaping (String?) -> Void) {
-        let alert = UIAlertController(title: "", message: "\(message["user"]["user_name"].string!)さんのシャボン玉が来ました！", preferredStyle: .alert)
+        
+        print(message)
+        let alert = UIAlertController(title: "", message: "\(message["locate_info"]["user"]["user_name"].string!)さんのシャボン玉が来ました！", preferredStyle: .alert)
         let showAction = UIAlertAction(title: "見に行く", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
             // APIで投稿.
