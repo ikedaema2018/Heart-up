@@ -35,6 +35,13 @@ class MyShabonTableViewCell: UITableViewCell {
                 let yonda = nayami_comment.filter { $0["yonda_flag"] as! Bool == false }
                 if yonda.count > 0 {
                     newNayami.image = UIImage(named: "new")
+                }
+            }else{
+                print(locate["splash_yonda_check"] as! [String: Any])
+                let yonda = locate["splash_yonda_check"] as! [String: Any]
+                let yonda_flag = yonda["yonda_flag"] as! Bool
+                if !yonda_flag {
+                    newNayami.image = UIImage(named: "new")
                 }else{
                     newNayami.image = nil
                 }
