@@ -35,7 +35,7 @@ class MyShabonDetailViewController: UICollectionViewController {
             return
         }
         
-        StockLocateInfos.getDetailLocation(id: shabonId, callback: {error, locate in
+        StockLocateInfos.getMyShabonDetailLocation(id: shabonId, callback: {error, locate in
             
             if let error = error {
                 if let message = error["message"] as? String {
@@ -48,6 +48,7 @@ class MyShabonDetailViewController: UICollectionViewController {
             }
             
             self.locates = locate
+
             // 画面全体に色を設定
             if self.locates!["color"].string == "赤" {
                 self.view.backgroundColor = UIColor.red
@@ -84,18 +85,6 @@ class MyShabonDetailViewController: UICollectionViewController {
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
         // Do any additional setup after loading the view.
         
-        
-        //locate_idにrailsでpostしてnayami_commentsをtrueにする
-        NayamiComment.fixYondaFlag(id: shabonId, callback: { error in
-            if let error = error {
-                if let message = error["message"] as? String {
-                    self.showAlert(message: message, hide: {})
-                } else {
-                    self.showAlert(message: "エラーが発生しました", hide: {})
-                }
-                return
-            }
-        })
         
     }
 
