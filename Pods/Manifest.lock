@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.7.3)
+  - AWSCore (2.6.26)
+  - AWSS3 (2.6.26):
+    - AWSCore (= 2.6.26)
   - Firebase/Core (5.6.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.1.1)
@@ -59,6 +62,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AWSS3
   - Firebase/Core
   - Firebase/Messaging
   - SwiftyJSON
@@ -66,6 +70,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - AWSCore
+    - AWSS3
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -79,6 +85,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AWSCore: 0177bb7e5616d967277b398e7a05ed7a228e6158
+  AWSS3: 4d857a223704bd956e91a659aec17ba1896ee0a9
   Firebase: 75ea9e232eefa158c1049028030b8f661a2ccb62
   FirebaseAnalytics: 993577e91157feb40945abedd6ab346d8a4b6ac8
   FirebaseCore: cb9ee75e0894def766167c95a4d5a14b1c138269
@@ -90,6 +98,6 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 7ced9c2219dcd6553893ca1e1b7048f69530be98
+PODFILE CHECKSUM: 8a9342c9d7597c24460a5d3d30e8677b541ec515
 
 COCOAPODS: 1.5.3

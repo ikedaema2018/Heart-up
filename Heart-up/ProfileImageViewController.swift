@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSCore
 
 class ProfileImageViewController: UIViewController {
     
@@ -163,4 +164,9 @@ extension ProfileImageViewController: UIImagePickerControllerDelegate {
         
         return newImage!
     }
+//    fileprivate func configureService() {
+//        let credentialsProvider = AWSStaticCredentialsProvider(accessKey: "your access key", secretKey: "your secret key")
+//        let serviceConfiguration = AWSServiceConfiguration(region: AWSRegionType.apNortheast1, credentialsProvider: credentialsProvider)
+//        AWSServiceManager.default().defaultServiceConfiguration = serviceConfiguration
+//    }
 }
