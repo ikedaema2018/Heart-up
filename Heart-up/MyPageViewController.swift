@@ -113,7 +113,7 @@ extension MyPageViewController {
             //画像が投稿されていたら
             if user["profile_image"] != nil {
                 let image_path = user["profile_image"].string
-                let url = image_path!
+                let url = "http://s3-ap-northeast-1.amazonaws.com/heartup/images/" + image_path!
 //                let url = "http://localhost:3000/profile_image/" + image_path!
 
                 self.profileImage.downloadedFrom(link: url)

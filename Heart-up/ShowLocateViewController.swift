@@ -77,7 +77,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                         anno.image = UIImage(named: "japan")
                         return anno
                     }
-                    let url = URL( string: "http://localhost:3000/profile_image/" + userImage)
+                    let url = URL( string: "http://s3-ap-northeast-1.amazonaws.com/heartup/images/" + userImage)
                     let data = try? Data(contentsOf: url!)
                     let theImage = UIImage(data: data!)
                     let scaledImage = theImage?.resize(image: theImage!, width: 30)
@@ -118,6 +118,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
             if let userId = (view.annotation as! UserAnnotation).userId["userId"] {
                 let userId = userId as! Int
                 //遷移
+                print("--------------------------------------")
+                print(userId)
                 performSegue(withIdentifier: "toSelectUserSegue", sender: String(userId))
             }
         }
