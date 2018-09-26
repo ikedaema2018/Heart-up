@@ -188,7 +188,9 @@ extension detailShabonViewController: UICollectionViewDelegate, UICollectionView
     
     // アイテムタッチ時の処理（UICollectionViewDelegate が必要）
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        //これがコメントした人のユーザーID
+        let userId = String(locates!["nayami_comments"][indexPath.row]["user_id"].int!)
+        self.performSegue(withIdentifier: "toUserInfoSegue", sender: userId)
     }
     
     //ここからヘッダー
@@ -291,6 +293,22 @@ extension detailShabonViewController {
             } else if self.locates!["yellow"].string == "黄" {
                 self.view.backgroundColor = UIColor.yellow
             }
+            
+            guard let longitude = locate!["keido"].int, let latitude = locate!["ido"].int else {
+                return
+            }
+            
+            //リバースジオロケートで緯度経度
+            let geocoder = CLGeocoder()
+            let location = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
+            
+            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                if let placemarks = placemarks {
+                    if let pm = placemarks.first {
+                        self.place += pm.administrativeArea ?? ""
+                        self.place += pm.locality ?? ""
+                    }
+                }
             // UICollectionView を表示
             self.view.addSubview(collection)
             // 画面を再描画する.
@@ -298,9 +316,13 @@ extension detailShabonViewController {
             
             // ナビゲーション右上に「+」ボタンを追加.
             // タップしたら onTapAddComment メソッドを呼び出す.
-            //もしそうコメント数が9個以上だったら表示しない
-            
-//            if self.locates!["nayami_comments"].count < 9 {
+                let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(detailShabonViewController.onTapAddComment
+                    ))
+                //もしそうコメント数が9個以上だったら表示しない
+                if self.locates!["nayami_comments"].count < 9 {
+                    self.navigationItem.setRightBarButton(navItem, animated: true)
+                }
+            }
         })
         // アイテム表示領域を白色に設定
         collection.backgroundColor = UIColor.white
@@ -314,8 +336,21 @@ extension detailShabonViewController {
         collection.dataSource = self
         collection.delegate = self
         
-        let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(detailShabonViewController.onTapAddComment
-            ))
-        self.navigationItem.setRightBarButton(navItem, animated: true)
+    }
+}
+
+extension detailShabonViewController
+{
+    //ページ遷移で数値を
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = sender as? String else {
+            return
+        }
+        
+        if segue.identifier == "toUserInfoSegue" {
+            if let vc = segue.destination as? UserInfoViewController {
+                vc.userId = id
+            }
+        }
     }
 }
