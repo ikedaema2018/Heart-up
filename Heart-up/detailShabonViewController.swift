@@ -156,39 +156,32 @@ extension detailShabonViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // アイテムを作成
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyShabonCollectionViewCell", for: indexPath)
         
-        switch indexPath[1] % 4 {
-        case 0:
-            cell.backgroundColor = UIColor.yellow
-        case 1:
-            cell.backgroundColor = UIColor.magenta
-        case 2:
-            cell.backgroundColor = UIColor.orange
-        case 3:
-            cell.backgroundColor = UIColor.purple
-        default:
-            print("collectionのセルの色極めでイレギュラー")
+        if let cell = cell as? MyShabonCollectionViewCell {
+            if let tmp = locates {
+                cell.setupCell(comment: tmp["nayami_comments"][indexPath.row], color: tmp["color"].string!)
+            }
         }
         
         
         // アイテムセルを再利用する際、前に追加していた要素（今回はラベル）を削除する
-        for subview in cell.contentView.subviews {
-            subview.removeFromSuperview()
-        }
+//        for subview in cell.contentView.subviews {
+//            subview.removeFromSuperview()
+//        }
         
-        if let tmp = locates {
+//        if let tmp = locates {
             // テキストラベルを設定して表示
-            let label = UILabel()
-            label.font = UIFont(name: "Arial", size: 12)
-            label.text = tmp["nayami_comments"][indexPath.row]["nayami_comment"].string
-            label.numberOfLines = 0
-            label.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 5, height: 0)
-            label.sizeToFit()
-            label.center = cell.contentView.center
-            cell.contentView.addSubview(label)
-            return cell
-        }
+//            let label = UILabel()
+//            label.font = UIFont(name: "Arial", size: 12)
+//            label.text = tmp["nayami_comments"][indexPath.row]["nayami_comment"].string
+//            label.numberOfLines = 0
+//            label.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 5, height: 0)
+//            label.sizeToFit()
+//            label.center = cell.contentView.center
+//            cell.contentView.addSubview(label)
+//            return cell
+//        }
         
         return cell
     }
