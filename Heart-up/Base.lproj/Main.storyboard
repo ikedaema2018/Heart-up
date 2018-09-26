@@ -366,10 +366,13 @@
                         <viewLayoutGuide key="safeArea" id="idb-OC-EYB"/>
                     </view>
                     <navigationItem key="navigationItem" title="誰かの困りごと" id="w4m-g7-y1X"/>
+                    <connections>
+                        <segue destination="NEz-75-Qtu" kind="presentation" identifier="toUserInfoSegue" id="e7Y-8P-Vh0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RvV-ha-3DT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5492" y="885"/>
+            <point key="canvasLocation" x="5492" y="939"/>
         </scene>
         <!--Closer Detail Collection View Controller-->
         <scene sceneID="MkM-zd-cvf">
@@ -751,4 +754,7 @@
         <image name="myPage" width="30" height="30"/>
         <image name="shabon" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="e7Y-8P-Vh0"/>
+    </inferredMetricsTieBreakers>
 </document>
