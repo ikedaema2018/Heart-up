@@ -73,10 +73,11 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 // CustomAnnotationクラスで定義した変数が取れないので注意！
                 //userかshabonかチェック
                 if let user = annotation as? UserAnnotation {
-                    guard let userImage = user.userImage["userImage"] as! String? else {
-                        anno.image = UIImage(named: "japan")
+                    guard let userImage = user.userImage!["userImage"] as? String else {
+                        anno.image = UIImage(named: "myPage")
                         return anno
                     }
+                    print(userImage)
                     let url = URL( string: "http://s3-ap-northeast-1.amazonaws.com/heartup/images/" + userImage)
                     let data = try? Data(contentsOf: url!)
                     let theImage = UIImage(data: data!)
@@ -118,8 +119,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
             if let userId = (view.annotation as! UserAnnotation).userId["userId"] {
                 let userId = userId as! Int
                 //遷移
-                print("--------------------------------------")
-                print(userId)
                 performSegue(withIdentifier: "toSelectUserSegue", sender: String(userId))
             }
         }
@@ -205,6 +204,7 @@ extension ShowLocateViewController {
                 guard let users = users else {
                     return
                 }
+                
                 //ピンを一覧で表示
                 locates.forEach { (_, locate) in
                     if let ido_s = locate["ido"].double, let keido_s = locate["keido"].double, let id_i = locate["id"].int, let nayami = locate["nayami"].string, let user_id = locate["user_id"].int, let color = locate["color"].string, let user_name = locate["user"]["user_name"].string {
@@ -220,10 +220,11 @@ extension ShowLocateViewController {
                 }
                 //userのピンを一覧で表示
                 users.forEach { (i, user) in
-                    if let ido = user["ido"].double, let keido = user["keido"].double, let userImage = user["user"]["profile_image"].string, let user_id = user["user_id"].int, let userName = user["user"]["user_name"].string {
+                    if let ido = user["ido"].double, let keido = user["keido"].double, let user_id = user["user_id"].int, let userName = user["user"]["user_name"].string {
                         if user_id == Int(userId) {
                             return
                         } else {
+                            let userImage: String? = user["user"]["profile_image"].string
                             MapModule.setUserAnnotation(x: ido, y: keido, map: self.mapView, userId: user_id, userName: userName, userImage: userImage)
                         }
                     }

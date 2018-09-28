@@ -24,7 +24,7 @@ class MapModule: NSObject  {
         map!.addAnnotation(annotation)
     }
     
-    class func setUserAnnotation(x: Double,y: Double, map: MKMapView?, userId: Int, userName: String, userImage: String) ->Void {
+    class func setUserAnnotation(x: Double,y: Double, map: MKMapView?, userId: Int, userName: String, userImage: String?) ->Void {
         //StringをDouble型に変換
         let annotation = UserAnnotation()
         //独自のクラスを使用
