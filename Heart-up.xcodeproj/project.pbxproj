@@ -161,6 +161,7 @@
 				C8168D692136AC01007084A1 /* detailShabonViewController.swift */,
 				C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */,
 				C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */,
+				C81BA8B6214F9B200094AC00 /* selectUserViewController.swift */,
 			);
 			path = Trash;
 			sourceTree = "<group>";
@@ -211,16 +212,15 @@
 				C81E8505214382F4006EDA5C /* AllCommentsTableCell */,
 				C81BA8BC2150B4410094AC00 /* MyShabonCollectionViewCell */,
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
+				C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */,
 				C86FE3622147A2DD00526196 /* ExplosionShabonDetailViewController.swift */,
 				C8168D772138EA78007084A1 /* UserResisterViewController.swift */,
 				C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */,
-				C81BA8B6214F9B200094AC00 /* selectUserViewController.swift */,
 				C8168D6B2137BBB5007084A1 /* Login.storyboard */,
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
 				C84DE6452155468800406A64 /* GoogleService-Info.plist */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
-				C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
 				C81BA8BF21514A250094AC00 /* CollectionViewClass */,
 				C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */,

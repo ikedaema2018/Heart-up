@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import CoreLocation
 
 class UserInfoViewController: UIViewController {
     var userId: String?
+    var place = ""
     
     @IBOutlet weak var profileImage: UIImageView!
     
@@ -17,6 +19,9 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var age: UILabel!
     @IBOutlet weak var gender: UILabel!
     @IBOutlet weak var selfIntroduce: UITextView!
+    @IBOutlet weak var locateLabel: UILabel!
+    
+    
     
     @IBAction func tapView(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true, completion: nil)
@@ -90,9 +95,27 @@ extension UserInfoViewController {
             
             //画像が投稿されていたら
             if user["profile_image"] != nil {
-                let image_path = user["profile_image"].string
+                let image_path =
+                    user["profile_image"].string
                 let url = "http://s3-ap-northeast-1.amazonaws.com/heartup/images/" + image_path!
                 self.profileImage.downloadedFrom(link: url)
+            }
+            //リバースジオロケートで緯度経度
+            let geocoder = CLGeocoder()
+            let location = CLLocation(latitude: user["user_locate"]["ido"].double!, longitude: user["user_locate"]["keido"].double!)
+            geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                if let placemarks = placemarks {
+                    if let pm = placemarks.first {
+                        //placeを初期化
+                        self.place = ""
+                        self.place += pm.administrativeArea ?? ""
+                        self.place += pm.locality ?? ""
+                        self.place += pm.subLocality ?? ""
+                        self.locateLabel.text = self.place
+                        self.locateLabel.font = UIFont.systemFont(ofSize: 14)
+                    }
+                }
+                
             }
         }
     }

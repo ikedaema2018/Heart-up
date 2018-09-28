@@ -225,6 +225,7 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
                 }else{
                     footer.titleLabel.text = "\(place)で破裂しました"
                 }
+                footer.titleLabel.font = UIFont.systemFont(ofSize: 14)
             }
             return footer
         }
@@ -306,6 +307,7 @@ extension MyShabonDetailViewController
                         self.place = ""
                         self.place += pm.administrativeArea ?? ""
                         self.place += pm.locality ?? ""
+                        self.place += pm.subLocality ?? ""
                     }
                 }
                 // 画面を再描画する.

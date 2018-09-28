@@ -137,7 +137,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 vc.id = id
             }
         }else if segue.identifier == "toSelectUserSegue" {
-            if let vc = segue.destination as? selectUserViewController {
+            if let vc = segue.destination as? UserInfoViewController {
                 vc.userId = id
             }    
         }
