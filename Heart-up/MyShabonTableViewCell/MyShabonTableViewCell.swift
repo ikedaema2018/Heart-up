@@ -27,6 +27,7 @@ class MyShabonTableViewCell: UITableViewCell {
                 return
             }
             
+            
             let nayami_comment = locate["nayami_comments"] as! [[String: Any]]
             
             //まだ見てないコメントがある時にnew_flag
