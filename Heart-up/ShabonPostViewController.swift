@@ -75,7 +75,7 @@ class ShabonPostViewController: UIViewController {
         shabonImage.image = UIImage(named: "redShabon")
     
         if CLLocationManager.locationServicesEnabled() {
-                locationManager!.startUpdatingLocation()
+            locationManager!.startUpdatingLocation()
         }
         
         
@@ -162,7 +162,6 @@ extension ShabonPostViewController: UITextFieldDelegate {
         return true
     }
     // キーボードが表示された時に呼ばれる
-    // キーボードが表示された時に呼ばれる
     @objc func keyboardWillBeShown(notification: NSNotification) {
         if let userInfo = notification.userInfo {
             if let keyboardFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue, let animationDuration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as AnyObject).doubleValue {
@@ -226,10 +225,10 @@ extension ShabonPostViewController {
             errorLabel.text = "悩みを入力してね！"
             return
         }
-        //nayamiTextの長さが２０文字以上だったら弾く
-        if nayamiText.count >= 20 {
+        //nayamiTextの長さが3０文字以上だったら弾く
+        if nayamiText.count >= 30 {
             errorLabel.isHidden = false
-            errorLabel.text = "悩みは20文字以内にしてね！"
+            errorLabel.text = "悩みは30文字以内にしてね！"
             return
         }
         errorLabel.isHidden = true

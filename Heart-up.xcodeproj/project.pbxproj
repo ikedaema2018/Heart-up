@@ -156,6 +156,9 @@
 		C81E84FF21436A4C006EDA5C /* Trash */ = {
 			isa = PBXGroup;
 			children = (
+				C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */,
+				C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */,
+				C8168D692136AC01007084A1 /* detailShabonViewController.swift */,
 				C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */,
 				C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */,
 			);
@@ -216,7 +219,6 @@
 				C894CFBE213CF4ED007957E2 /* AllCommentsViewController.swift */,
 				C8168D71213836EE007084A1 /* Ext.swift */,
 				C84DE6452155468800406A64 /* GoogleService-Info.plist */,
-				C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
 				C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
@@ -225,12 +227,10 @@
 				C894CFBC213CE787007957E2 /* MyShabonViewController.swift */,
 				C86E32D4212C3B98005A3D92 /* Assets.xcassets */,
 				C81E850821445E4C006EDA5C /* ProfileImageViewController.swift */,
-				C8168D692136AC01007084A1 /* detailShabonViewController.swift */,
 				C86E32D6212C3B98005A3D92 /* LaunchScreen.storyboard */,
 				C8168D6D2137C99B007084A1 /* LoginViewController.swift */,
 				C8168D7921395F56007084A1 /* ShabonPostViewController.swift */,
 				C86E32D9212C3B98005A3D92 /* Info.plist */,
-				C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */,
 			);
 			path = "Heart-up";
 			sourceTree = "<group>";
