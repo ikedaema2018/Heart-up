@@ -111,7 +111,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
             if let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] {
                 let locate_id = locateId as! Int
                 //遷移
-                performSegue(withIdentifier: "toDetailShabonViewController", sender: String(locate_id))
+                performSegue(withIdentifier: "detailViewControllerSegue", sender: String(locate_id))
             }
         }
         
@@ -132,9 +132,9 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         
         
         
-        if segue.identifier == "toDetailShabonViewController" {
-            if let vc = segue.destination as? detailShabonViewController {
-                vc.locateId = id
+        if segue.identifier == "detailViewControllerSegue" {
+            if let vc = segue.destination as? MyShabonDetailViewController {
+                vc.id = id
             }
         } else if segue.identifier == "toCloserDetailSegue" {
             if let vc = segue.destination as? CloserDetailCollectionViewController {
