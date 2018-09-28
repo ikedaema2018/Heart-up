@@ -134,7 +134,7 @@ extension detailShabonViewController: UICollectionViewDelegate, UICollectionView
     // アイテムの大きさを設定（UICollectionViewDelegateFlowLayout が必要）
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let size = self.view.frame.width / 4
+        let size = self.view.frame.width / 3.5
         
         return CGSize(width: size, height: size)
     }
@@ -142,7 +142,7 @@ extension detailShabonViewController: UICollectionViewDelegate, UICollectionView
     // アイテム表示領域全体の上下左右の余白を設定（UICollectionViewDelegateFlowLayout が必要）
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        let inset =  (self.view.frame.width / 4) / 6
+        let inset =  (self.view.frame.width / 4) / 9
         
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
@@ -182,7 +182,9 @@ extension detailShabonViewController: UICollectionViewDelegate, UICollectionView
     
     // アイテムタッチ時の処理（UICollectionViewDelegate が必要）
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.row)
+        //これがコメントした人のユーザーID
+        let userId = String(locates!["nayami_comments"][indexPath.row]["user_id"].int!)
+        self.performSegue(withIdentifier: "toUserInfoSegue", sender: userId)
     }
     
     //ここからヘッダー
@@ -324,5 +326,21 @@ extension detailShabonViewController {
         let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(detailShabonViewController.onTapAddComment
             ))
         self.navigationItem.setRightBarButton(navItem, animated: true)
+    }
+}
+
+extension detailShabonViewController
+{
+    //ページ遷移で数値を
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = sender as? String else {
+            return
+        }
+        
+        if segue.identifier == "toUserInfoSegue" {
+            if let vc = segue.destination as? UserInfoViewController {
+                vc.userId = id
+            }
+        }
     }
 }
