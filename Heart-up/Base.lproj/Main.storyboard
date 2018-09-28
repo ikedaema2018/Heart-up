@@ -333,6 +333,7 @@
                     <connections>
                         <outlet property="allCommentShabonTable" destination="ZRw-DB-aBr" id="JxA-Yx-bKv"/>
                         <segue destination="RkL-a1-i5u" kind="push" identifier="AllCommentCollectionSegue" id="RSG-ql-dUL"/>
+                        <segue destination="9Ng-XU-Eez" kind="push" identifier="allCommentDetailSegue" id="cO4-bI-Zld"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXU-ge-Us0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -756,5 +757,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="e7Y-8P-Vh0"/>
+        <segue reference="cO4-bI-Zld"/>
     </inferredMetricsTieBreakers>
 </document>
