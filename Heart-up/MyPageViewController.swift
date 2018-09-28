@@ -51,7 +51,7 @@ class MyPageViewController: UIViewController {
         super.viewDidLoad()
         
         selfIntroduceView.delegate = self
-        profileImage.image = UIImage(named: "noel")
+        profileImage.image = UIImage(named: "myPage")
         
         selfIntroduceView.layer.borderWidth = 1.0
 //        selfIntroduceView.isEditable = false
