@@ -294,15 +294,16 @@ extension MyShabonDetailViewController
                 return
             }
             
-            //placeを初期化
-            self.place = ""
             //リバースジオロケートで緯度経度
             let geocoder = CLGeocoder()
             let location = CLLocation(latitude: latitude, longitude: longitude)
             
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
                 if let placemarks = placemarks {
+                    
                     if let pm = placemarks.first {
+                        //placeを初期化
+                        self.place = ""
                         self.place += pm.administrativeArea ?? ""
                         self.place += pm.locality ?? ""
                     }
@@ -324,16 +325,12 @@ extension MyShabonDetailViewController
                 let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MyShabonDetailViewController.onTapAddComment))
                 self.navigationItem.setRightBarButton(navItem, animated: true)
             }
-
         })
-        
         // アイテム表示領域を白色に設定
         collectionView?.backgroundColor = UIColor.white
         
         // セルの再利用のための設定
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
-        // Do any additional setup after loading the view.
-        
     }
 }
 

@@ -203,7 +203,6 @@ extension ShabonPostViewController: UITextFieldDelegate {
 
 extension ShabonPostViewController {
     func postNayami(){
-        print("朝が綺麗")
         //悩みを色を表示
         let segmentIndex = selectedColor.selectedSegmentIndex
         let shabonColor = selectedColor.titleForSegment(at: segmentIndex)
@@ -239,9 +238,6 @@ extension ShabonPostViewController {
             errorLabel.text = "緯度と経度が取得できないよ！"
             return
         }
-        print("朝が綺麗2")
-        
-        
         
         let nayamiLocate = LocateInfo(nayami: nayamiText, ido: ido, keido: keido, color: color)
         StockLocateInfos.postLocate(locate: nayamiLocate) { error in
