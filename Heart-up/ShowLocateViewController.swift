@@ -136,11 +136,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
             if let vc = segue.destination as? MyShabonDetailViewController {
                 vc.id = id
             }
-        } else if segue.identifier == "toCloserDetailSegue" {
-            if let vc = segue.destination as? CloserDetailCollectionViewController {
-                vc.locateId = id
-            }
-        } else if segue.identifier == "toSelectUserSegue" {
+        }else if segue.identifier == "toSelectUserSegue" {
             if let vc = segue.destination as? selectUserViewController {
                 vc.userId = id
             }    
@@ -320,7 +316,7 @@ extension ShowLocateViewController {
                 self.shabon_Alert(message: tmp_alert, callback: { locateId in
                     if let locateId = locateId {
                         //遷移
-                        self.performSegue(withIdentifier: "toDetailShabonViewController", sender: locateId)
+                        self.performSegue(withIdentifier: "detailViewControllerSegue", sender: locateId)
                     }else{
                         self.viewDidAppear(true)
                     }
@@ -344,7 +340,7 @@ extension ShowLocateViewController {
                 self.closeAlert(message: tmp_alert, callback: { locateId in
                     if let locateId = locateId {
                         //遷移
-                        self.performSegue(withIdentifier: "toCloserDetailSegue", sender: locateId)
+                        self.performSegue(withIdentifier: "detailViewControllerSegue", sender: locateId)
                     }else{
                         self.viewDidAppear(true)
                     }
