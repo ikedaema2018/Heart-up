@@ -16,6 +16,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     //常に更新される緯度経度を定義
     var latitude :String?
     var longitude :String?
+    var zoomLevel :Int?
+    var locate_infos: JSON?
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager : CLLocationManager?
@@ -69,16 +71,22 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 
                 anno.canShowCallout = false
                 
+                //ズームレベルを定義
+                zoomLevel = mapView.currentZoomLevel
+                
                 //userかshabonかチェック
                 if let user = annotation as? UserAnnotation {
                     guard let userImage = user.userImage!["userImage"] as? String else {
-                        anno.image = UIImage(named: "myPage")
+                        var myPage = UIImage(named: "myPage")
+                        myPage = myPage?.resize(image: myPage!, width: Double(zoomLevel!))
+                        
+                        anno.image = myPage
                         return anno
                     }
                     let url = URL( string: "http://s3-ap-northeast-1.amazonaws.com/heartup/images/" + userImage)
                     let data = try? Data(contentsOf: url!)
                     let theImage = UIImage(data: data!)
-                    let scaledImage = theImage?.resize(image: theImage!, width: 30)
+                    let scaledImage = theImage?.resize(image: theImage!, width: Double(zoomLevel!))
                     //anno.imageにUIImageを設定する
                     anno.image = scaledImage
                     return anno
@@ -86,11 +94,17 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 if let shabon = annotation as? CustomAnnotation {
                     let color_s = shabon.color["color"] as! String
                     if color_s  == "黄" {
-                        anno.image = UIImage(named: "yellow")
+                        var color = UIImage(named: "yellow")
+                        color = color?.resize(image: color!, width: Double(zoomLevel!))
+                        anno.image = color
                     } else if color_s == "青" {
-                        anno.image = UIImage(named: "blue")
+                        var color = UIImage(named: "blee")
+                        color = color?.resize(image: color!, width: Double(zoomLevel!))
+                        anno.image = color
                     } else if color_s == "赤" {
-                        anno.image = UIImage(named: "red")
+                        var color = UIImage(named: "red")
+                        color = color?.resize(image: color!, width: Double(zoomLevel!))
+                        anno.image = color
                     }
                 }
                 return anno
@@ -124,7 +138,12 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     // 表示領域が変化した後に呼ばれる
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print(mapView.currentZoomLevel)
+        if zoomLevel != nil {
+            if abs(mapView.currentZoomLevel - zoomLevel!) >= 1 {
+                zoomLevel = mapView.currentZoomLevel
+                
+            }
+        }
     }
     
     
