@@ -75,7 +75,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                         anno.image = UIImage(named: "myPage")
                         return anno
                     }
-                    print(userImage)
                     let url = URL( string: "http://s3-ap-northeast-1.amazonaws.com/heartup/images/" + userImage)
                     let data = try? Data(contentsOf: url!)
                     let theImage = UIImage(data: data!)
@@ -137,6 +136,11 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         // 表示領域が変化した後に呼ばれる
+        print("---------regionDidChange---------")
+        let longitudeMaxInPixel: Double = mapView.region.center.longitude + mapView.region.span.longitudeDelta / 2.0
+        let longitudeMinInPixel: Double = mapView.region.center.longitude - mapView.region.span.longitudeDelta / 2.0
+        print(longitudeMaxInPixel)
+        print(longitudeMinInPixel)
     }
     
     
