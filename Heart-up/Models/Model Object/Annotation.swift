@@ -14,7 +14,9 @@ class CustomAnnotation: MKPointAnnotation {
     var locateId: [String: AnyObject]!
 }
 
-class UserAnnotation : MKPointAnnotation {
+class UserAnnotation: MKPointAnnotation {
     var userImage: Dictionary<String, AnyObject>?
     var userId: [String: AnyObject]!
 }
+
+

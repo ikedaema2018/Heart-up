@@ -37,8 +37,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         locationManager!.distanceFilter = 1000
         
         print("--------viewDidLoad--------")
-        print(latitude)
-        print(longitude)
+        
         //UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
@@ -106,6 +105,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         if view.annotation is MKUserLocation {
             return
         }
+        
         if view.annotation is CustomAnnotation {
             if let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] {
                 let locate_id = locateId as! Int
@@ -172,8 +172,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         super.viewDidAppear(animated)
         // Do any additional setup after loading the view.
         print("--------viewDidAppear--------")
-        print(latitude)
-        print(longitude)
         
         //shabon_alert テーブルから検索する処理
         select_user_alert()
@@ -281,8 +279,6 @@ extension ShowLocateViewController: CLLocationManagerDelegate {
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
         print("-------------locationManager--------------")
-        print(latitude)
-        print(longitude)
         
         //自分の緯度、経度をupdate
         user_locate_update(ido: latitude!, keido: longitude!)
