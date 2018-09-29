@@ -122,12 +122,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        // 表示領域が変化する直前に呼ばれる
-    }
-    
+    // 表示領域が変化した後に呼ばれる
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        // 表示領域が変化した後に呼ばれる
         print(mapView.currentZoomLevel)
     }
     
