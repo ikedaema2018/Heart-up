@@ -65,8 +65,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
                 if let error = error as! [String: Any]? {
                     print(error)
                     print("fcm_tokenのpost失敗!")
-                }else{
-                    print("fcm_tokenのpost成功!")
                 }
             })
         }

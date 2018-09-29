@@ -17,7 +17,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     var latitude :String?
     var longitude :String?
     var zoomLevel :Int?
-    var locate_infos: JSON?
+    var locates: JSON?
+    var users: JSON?
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager : CLLocationManager?
@@ -73,12 +74,14 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 
                 //ズームレベルを定義
                 zoomLevel = mapView.currentZoomLevel
+                let zoomSize: Double = Double((zoomLevel! / 3) * (zoomLevel! / 3))
                 
+                print("ユーザー画像をセット")
                 //userかshabonかチェック
                 if let user = annotation as? UserAnnotation {
                     guard let userImage = user.userImage!["userImage"] as? String else {
                         var myPage = UIImage(named: "myPage")
-                        myPage = myPage?.resize(image: myPage!, width: Double(zoomLevel!))
+                        myPage = myPage?.resize(image: myPage!, width: zoomSize)
                         
                         anno.image = myPage
                         return anno
@@ -86,24 +89,25 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                     let url = URL( string: "http://s3-ap-northeast-1.amazonaws.com/heartup/images/" + userImage)
                     let data = try? Data(contentsOf: url!)
                     let theImage = UIImage(data: data!)
-                    let scaledImage = theImage?.resize(image: theImage!, width: Double(zoomLevel!))
+                    let scaledImage = theImage?.resize(image: theImage!, width: zoomSize)
                     //anno.imageにUIImageを設定する
                     anno.image = scaledImage
                     return anno
                 }
+                print("シャボンをセット")
                 if let shabon = annotation as? CustomAnnotation {
                     let color_s = shabon.color["color"] as! String
                     if color_s  == "黄" {
                         var color = UIImage(named: "yellow")
-                        color = color?.resize(image: color!, width: Double(zoomLevel!))
+                        color = color?.resize(image: color!, width: zoomSize)
                         anno.image = color
                     } else if color_s == "青" {
                         var color = UIImage(named: "blee")
-                        color = color?.resize(image: color!, width: Double(zoomLevel!))
+                        color = color?.resize(image: color!, width: zoomSize)
                         anno.image = color
                     } else if color_s == "赤" {
                         var color = UIImage(named: "red")
-                        color = color?.resize(image: color!, width: Double(zoomLevel!))
+                        color = color?.resize(image: color!, width: zoomSize)
                         anno.image = color
                     }
                 }
@@ -139,9 +143,10 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     // 表示領域が変化した後に呼ばれる
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         if zoomLevel != nil {
-            if abs(mapView.currentZoomLevel - zoomLevel!) >= 1 {
-                zoomLevel = mapView.currentZoomLevel
-                
+            print(mapView.currentZoomLevel)
+            if mapView.currentZoomLevel != zoomLevel! {
+                print("倍率が変わったよ")
+                setAnno(locates, users)
             }
         }
     }
@@ -169,9 +174,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view.
-        
-        //一旦ピン削除
-        removeAllAnnotations()
+        print("--------viewWillAppear--------")
         fetchData()
     }
     
@@ -204,9 +207,9 @@ extension ShowLocateViewController {
                 return
             }
             
-            guard let locates = locates else {
-                return
-            }
+            //かなり無茶苦茶な処理だけど地図の倍率が変わった時に使うため
+            self.locates = locates
+            
             //ここで１時間前までにアップデートしたユーザーを引っ張ってくる処理を書く
             UserLocate.currentUser {error, users in
                 
@@ -220,33 +223,42 @@ extension ShowLocateViewController {
                     return
                 }
                 
-                guard let users = users else {
-                    return
-                }
+                //かなり無茶苦茶な処理だけど地図の倍率が変わった時に使うため
+                self.users = users
                 
-                //ピンを一覧で表示
-                locates.forEach { (_, locate) in
-                    if let ido_s = locate["ido"].double, let keido_s = locate["keido"].double, let id_i = locate["id"].int, let nayami = locate["nayami"].string, let user_id = locate["user_id"].int, let color = locate["color"].string, let user_name = locate["user"]["user_name"].string {
-                        MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView, id: id_i, nayami: nayami, user_id: user_id, user_name: user_name, color: color)
-                    }
-                }
-                
-                guard let userId = UserDefaults.standard.string(forKey: "user_id") else {
-                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                        appDelegate.showLoginStoryboard()
-                    }
+                //アノテーションをセット
+                self.setAnno(self.locates, self.users)
+            }
+        }
+    }
+    
+    func setAnno(_ locates: JSON?,_ users: JSON?){
+        guard let locates = locates, let users = users else {
+            return
+        }
+        //一旦ピン削除
+        removeAllAnnotations()
+        //ピンを一覧で表示
+        locates.forEach { (_, locate) in
+            if let ido_s = locate["ido"].double, let keido_s = locate["keido"].double, let id_i = locate["id"].int, let nayami = locate["nayami"].string, let user_id = locate["user_id"].int, let color = locate["color"].string, let user_name = locate["user"]["user_name"].string {
+                MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView, id: id_i, nayami: nayami, user_id: user_id, user_name: user_name, color: color)
+            }
+        }
+        
+        guard let userId = UserDefaults.standard.string(forKey: "user_id") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+        //userのピンを一覧で表示
+        users.forEach { (i, user) in
+            if let ido = user["ido"].double, let keido = user["keido"].double, let user_id = user["user_id"].int, let userName = user["user"]["user_name"].string {
+                if user_id == Int(userId) {
                     return
-                }
-                //userのピンを一覧で表示
-                users.forEach { (i, user) in
-                    if let ido = user["ido"].double, let keido = user["keido"].double, let user_id = user["user_id"].int, let userName = user["user"]["user_name"].string {
-                        if user_id == Int(userId) {
-                            return
-                        } else {
-                            let userImage: String? = user["user"]["profile_image"].string
-                            MapModule.setUserAnnotation(x: ido, y: keido, map: self.mapView, userId: user_id, userName: userName, userImage: userImage)
-                        }
-                    }
+                } else {
+                    let userImage: String? = user["user"]["profile_image"].string
+                    MapModule.setUserAnnotation(x: ido, y: keido, map: self.mapView, userId: user_id, userName: userName, userImage: userImage)
                 }
             }
         }
