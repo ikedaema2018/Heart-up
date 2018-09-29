@@ -66,7 +66,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 let anno = MKAnnotationView(annotation: annotation, reuseIdentifier: "anno")
                 anno.annotation = annotation
                 
-                anno.canShowCallout = true
+                anno.canShowCallout = false
                 
                 //annoのクラス名を・・・意味不明だから省略
                 // ( annotation as! CustomAnnotation )をしないと
