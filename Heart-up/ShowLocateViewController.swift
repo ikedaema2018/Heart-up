@@ -124,23 +124,11 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         // 表示領域が変化する直前に呼ばれる
-        // 緯度・軽度を設定
-//        let location:CLLocationCoordinate2D
-//            = CLLocationCoordinate2DMake(Double(latitude!)!, Double(longitude!)!)
-        // 縮尺を設定
-//        var region:MKCoordinateRegion = mapView.region
-//        region.center = location
-//        print(region.span.latitudeDelta)
-//        print(region.span.longitudeDelta)
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         // 表示領域が変化した後に呼ばれる
-        print("---------regionDidChange---------")
-        let longitudeMaxInPixel: Double = mapView.region.center.longitude + mapView.region.span.longitudeDelta / 2.0
-        let longitudeMinInPixel: Double = mapView.region.center.longitude - mapView.region.span.longitudeDelta / 2.0
-        print(longitudeMaxInPixel)
-        print(longitudeMinInPixel)
+        print(mapView.currentZoomLevel)
     }
     
     
