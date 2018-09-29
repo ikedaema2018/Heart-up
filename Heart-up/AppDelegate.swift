@@ -14,11 +14,8 @@ import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUserNotificationCenterDelegate {
-//ab
     var window: UIWindow?
     
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         //ログイン判定
         //復帰に関係なくバッジが0じゃなければ0にする
@@ -26,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate, UNUser
             application.applicationIconBadgeNumber = 0
         }
 
-        
         // Override point for customization after application launch.
         let token = Messaging.messaging().fcmToken
         print("FCM token: \(token ?? "")")

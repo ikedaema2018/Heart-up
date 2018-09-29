@@ -76,7 +76,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 zoomLevel = mapView.currentZoomLevel
                 let zoomSize: Double = Double((zoomLevel! / 3) * (zoomLevel! / 3))
                 
-                print("ユーザー画像をセット")
                 //userかshabonかチェック
                 if let user = annotation as? UserAnnotation {
                     guard let userImage = user.userImage!["userImage"] as? String else {
@@ -94,20 +93,21 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                     anno.image = scaledImage
                     return anno
                 }
-                print("シャボンをセット")
                 if let shabon = annotation as? CustomAnnotation {
+                    let nayamiCount = Double(shabon.nayamiCount)
+                    
                     let color_s = shabon.color["color"] as! String
                     if color_s  == "黄" {
                         var color = UIImage(named: "yellow")
-                        color = color?.resize(image: color!, width: zoomSize)
+                        color = color?.resize(image: color!, width: zoomSize + nayamiCount)
                         anno.image = color
                     } else if color_s == "青" {
                         var color = UIImage(named: "blee")
-                        color = color?.resize(image: color!, width: zoomSize)
+                        color = color?.resize(image: color!, width: zoomSize + nayamiCount)
                         anno.image = color
                     } else if color_s == "赤" {
                         var color = UIImage(named: "red")
-                        color = color?.resize(image: color!, width: zoomSize)
+                        color = color?.resize(image: color!, width: zoomSize + nayamiCount)
                         anno.image = color
                     }
                 }
@@ -143,9 +143,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     // 表示領域が変化した後に呼ばれる
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         if zoomLevel != nil {
-            print(mapView.currentZoomLevel)
             if mapView.currentZoomLevel != zoomLevel! {
-                print("倍率が変わったよ")
                 setAnno(locates, users)
             }
         }
@@ -241,7 +239,7 @@ extension ShowLocateViewController {
         //ピンを一覧で表示
         locates.forEach { (_, locate) in
             if let ido_s = locate["ido"].double, let keido_s = locate["keido"].double, let id_i = locate["id"].int, let nayami = locate["nayami"].string, let user_id = locate["user_id"].int, let color = locate["color"].string, let user_name = locate["user"]["user_name"].string {
-                MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView, id: id_i, nayami: nayami, user_id: user_id, user_name: user_name, color: color)
+                MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView, id: id_i, nayami: nayami, user_id: user_id, user_name: user_name, color: color, nayamiCount: locate["nayami_comments"].count)
             }
         }
         

@@ -12,6 +12,7 @@ import MapKit
 class CustomAnnotation: MKPointAnnotation {
     var color: Dictionary<String, AnyObject>!
     var locateId: [String: AnyObject]!
+    var nayamiCount: Int!
 }
 
 class UserAnnotation: MKPointAnnotation {
