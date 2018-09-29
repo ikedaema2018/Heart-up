@@ -36,6 +36,9 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager!.distanceFilter = 1000
         
+        print("--------viewDidLoad--------")
+        print(latitude)
+        print(longitude)
         //UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
@@ -45,7 +48,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         // tracking user location
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
         mapView.showsUserLocation = true
-        
         
         // Do any additional setup after loading the view.
         
@@ -68,9 +70,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                 
                 anno.canShowCallout = false
                 
-                //annoのクラス名を・・・意味不明だから省略
-                // ( annotation as! CustomAnnotation )をしないと
-                // CustomAnnotationクラスで定義した変数が取れないので注意！
                 //userかshabonかチェック
                 if let user = annotation as? UserAnnotation {
                     guard let userImage = user.userImage!["userImage"] as? String else {
@@ -124,6 +123,23 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
+        // 表示領域が変化する直前に呼ばれる
+        // 緯度・軽度を設定
+//        let location:CLLocationCoordinate2D
+//            = CLLocationCoordinate2DMake(Double(latitude!)!, Double(longitude!)!)
+        // 縮尺を設定
+//        var region:MKCoordinateRegion = mapView.region
+//        region.center = location
+//        print(region.span.latitudeDelta)
+//        print(region.span.longitudeDelta)
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        // 表示領域が変化した後に呼ばれる
+    }
+    
+    
     //ページ遷移で数値を
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let id = sender as? String else {
@@ -155,7 +171,9 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // Do any additional setup after loading the view.
-        
+        print("--------viewDidAppear--------")
+        print(latitude)
+        print(longitude)
         
         //shabon_alert テーブルから検索する処理
         select_user_alert()
@@ -237,17 +255,7 @@ extension ShowLocateViewController {
         }
         mapView.removeAnnotations(annotations)
     }
-    
-//    func alert_shabon(alert: JSON, num: Int){
-//        print(alert[num])
-//        let aaa = num + 1
-//        //alert
-//        if aaa >= alert.count {
-//            //updateの処理
-//            return
-//        }
-//        alert_shabon(alert: alert, num: aaa)
-//    }
+
 }
 
 extension ShowLocateViewController: CLLocationManagerDelegate {
@@ -272,20 +280,12 @@ extension ShowLocateViewController: CLLocationManagerDelegate {
         
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
+        print("-------------locationManager--------------")
+        print(latitude)
+        print(longitude)
         
         //自分の緯度、経度をupdate
         user_locate_update(ido: latitude!, keido: longitude!)
-        
-        // update annotation
-        //        mapView.removeAnnotations(mapView.annotations)
-        //
-        //        let annotation = MKPointAnnotation()
-        //        annotation.coordinate = newLocation.coordinate
-        //        mapView.addAnnotation(annotation)
-        //        mapView.selectAnnotation(annotation, animated: true)
-        
-        // Showing annotation zooms the map automatically.
-        //        mapView.showAnnotations(mapView.annotations, animated: true)
         
     }
 }
