@@ -12,6 +12,7 @@ import CoreLocation
 class ShabonPostViewController: UIViewController {
     var locationManager : CLLocationManager?
     var animator: UIViewPropertyAnimator!
+    var postFlag: Bool = false
     
     @IBOutlet weak var nayamiInput: UITextField!
     @IBOutlet weak var submitButton: UIButton!
@@ -203,6 +204,9 @@ extension ShabonPostViewController: UITextFieldDelegate {
 
 extension ShabonPostViewController {
     func postNayami(){
+        //この関数が実行されたらpostFlagをtrueに変更,trueの間はこの関数は再度実行されない
+        if postFlag { return }
+        postFlag = true
         //悩みを色を表示
         let segmentIndex = selectedColor.selectedSegmentIndex
         let shabonColor = selectedColor.titleForSegment(at: segmentIndex)
