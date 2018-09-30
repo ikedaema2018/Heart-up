@@ -10,7 +10,6 @@ import UIKit
 
 class MyShabonTableViewCell: UITableViewCell {
     @IBOutlet weak var myShabonImage: UIImageView!
-    
     @IBOutlet weak var myShabonTitle: UILabel!
     @IBOutlet weak var myShabonCount: UIImageView!
     @IBOutlet weak var newNayami: UIImageView!

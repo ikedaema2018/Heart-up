@@ -13,13 +13,29 @@ private let reuseIdentifier = "Cell"
 
 class MyShabonListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     var posts: [[String: Any]] = []
+    var live_posts: [[String: Any]] = []
+    var dead_posts: [[String: Any]] = []
+    
+    
+    
+    // Sectionのタイトル
+    let sectionTitle: NSArray = [
+        "飛行中のシャボン玉",
+        "弾けたシャボン玉"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        fetchData()
+        // ヘッダーnib登録
+        let nib:UINib = UINib(nibName: "MyShabonListReusableView", bundle: nil)
+        collectionView?.register(nib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "MyShabonListReusableView")
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Do any additional setup after loading the view.
+        fetchData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,11 +56,35 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        print(sectionTitle.count)
+        return sectionTitle.count
     }
+    
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return posts.count
+        if section == 0 {
+            print(live_posts.count)
+            return live_posts.count
+        } else if section == 1 {
+            print(dead_posts.count)
+            return dead_posts.count
+        } else {
+            return 0
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        print("--------------cccccc----------")
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "MyShabonListReusableView", for: indexPath) as? MyShabonListReusableView else {
+            fatalError("Could not find proper header")
+        }
+        
+        if kind == UICollectionElementKindSectionHeader {
+            header.sectionHeader.text = "section \(indexPath.section)"
+            return header
+        }
+        
+        return UICollectionReusableView()
     }
     
     // アイテムの大きさを設定（UICollectionViewDelegateFlowLayout が必要）
@@ -57,19 +97,23 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
     // アイテム表示領域全体の上下左右の余白を設定（UICollectionViewDelegateFlowLayout が必要）
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        let inset =  (self.view.frame.width / 4) / 9
+        let inset =  (self.view.frame.width / 4) / 18
         return UIEdgeInsets(top: inset, left: inset, bottom: inset, right: inset)
     }
     
     // アイテムの上下の余白の最小値を設定（UICollectionViewDelegateFlowLayout が必要）
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return (self.view.frame.width / 4) / 3
+        return (self.view.frame.width / 4) / 18
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyShabonListCell", for: indexPath)
         if let cell = cell as? MyShabonListCell {
-            cell.setupCell(comment: posts[indexPath.row])
+            if indexPath.section == 0 {
+                cell.setupCell(comment: live_posts[indexPath.row])
+            } else if indexPath.section == 1 {
+                cell.setupCell(comment: dead_posts[indexPath.row])
+            }
         }
         return cell
     }
@@ -78,6 +122,7 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
 
 extension MyShabonListCollectionViewController {
     func fetchData(){
+        
         collectionView?.register(UINib(nibName: "MyShabonListCell", bundle: nil), forCellWithReuseIdentifier: "MyShabonListCell")
         // 自分の投稿したシャボン玉を呼び出す処理
         StockLocateInfos.getMyShabon(callback:{ error, locates in
@@ -92,7 +137,17 @@ extension MyShabonListCollectionViewController {
                 print("位置情報をとってこれませんでした")
                 return
             }
-            self.posts = locates
+            //初期化
+            self.live_posts = []
+            self.dead_posts = []
+            
+            locates.forEach { locate in
+                if locate["life_flag"] as! Int == 1 {
+                    self.dead_posts.append(locate)
+                } else {
+                    self.live_posts.append(locate)
+                }
+            }
             self.collectionView?.reloadData()
         })
         // セルの再利用のための設定

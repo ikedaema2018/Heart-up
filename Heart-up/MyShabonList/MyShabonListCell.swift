@@ -14,7 +14,9 @@ class MyShabonListCell: UICollectionViewCell {
     
     func setupCell(comment: [String: Any]) {
         shabonTitle.text = comment["nayami"] as! String
-        shabonTitle.sizeToFit()
+        shabonTitle.adjustsFontSizeToFitWidth = true
+        self.layer.cornerRadius = self.frame.width / 2
+        shabonTitle.layer.masksToBounds = true
         
         let color = comment["color"] as! String
         let red = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.4161761558)

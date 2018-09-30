@@ -27,6 +27,8 @@
 		C81C73F2216099E500D4C2E1 /* MyShabonListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C73F1216099E500D4C2E1 /* MyShabonListCollectionViewController.swift */; };
 		C81C73F62160AF0400D4C2E1 /* MyShabonListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C73F42160AF0400D4C2E1 /* MyShabonListCell.swift */; };
 		C81C73F72160AF0400D4C2E1 /* MyShabonListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81C73F52160AF0400D4C2E1 /* MyShabonListCell.xib */; };
+		C81C73FC21613C8200D4C2E1 /* MyShabonListReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C73FA21613C8200D4C2E1 /* MyShabonListReusableView.swift */; };
+		C81C73FD21613C8200D4C2E1 /* MyShabonListReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81C73FB21613C8200D4C2E1 /* MyShabonListReusableView.xib */; };
 		C81E850321438026006EDA5C /* AllCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */; };
 		C81E850421438026006EDA5C /* AllCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */; };
 		C81E850721439144006EDA5C /* AllCommentsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */; };
@@ -82,6 +84,8 @@
 		C81C73F1216099E500D4C2E1 /* MyShabonListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonListCollectionViewController.swift; sourceTree = "<group>"; };
 		C81C73F42160AF0400D4C2E1 /* MyShabonListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonListCell.swift; sourceTree = "<group>"; };
 		C81C73F52160AF0400D4C2E1 /* MyShabonListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonListCell.xib; sourceTree = "<group>"; };
+		C81C73FA21613C8200D4C2E1 /* MyShabonListReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonListReusableView.swift; sourceTree = "<group>"; };
+		C81C73FB21613C8200D4C2E1 /* MyShabonListReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonListReusableView.xib; sourceTree = "<group>"; };
 		C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsTableViewCell.swift; sourceTree = "<group>"; };
 		C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllCommentsTableViewCell.xib; sourceTree = "<group>"; };
 		C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 				C81C73F1216099E500D4C2E1 /* MyShabonListCollectionViewController.swift */,
 				C81C73F42160AF0400D4C2E1 /* MyShabonListCell.swift */,
 				C81C73F52160AF0400D4C2E1 /* MyShabonListCell.xib */,
+				C81C73FA21613C8200D4C2E1 /* MyShabonListReusableView.swift */,
+				C81C73FB21613C8200D4C2E1 /* MyShabonListReusableView.xib */,
 			);
 			path = MyShabonList;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				C86E32D8212C3B98005A3D92 /* LaunchScreen.storyboard in Resources */,
 				C894CFCE2140D32B007957E2 /* MyShabonTableViewCell.xib in Resources */,
 				C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */,
+				C81C73FD21613C8200D4C2E1 /* MyShabonListReusableView.xib in Resources */,
 				C894CFD721420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib in Resources */,
 				C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */,
 				C81BA8BB2150B3B80094AC00 /* MyShabonCollectionViewCell.xib in Resources */,
@@ -454,6 +461,7 @@
 				C8168D1621318122007084A1 /* MapModule.swift in Sources */,
 				C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */,
 				C86FE3632147A2DD00526196 /* ExplosionShabonDetailViewController.swift in Sources */,
+				C81C73FC21613C8200D4C2E1 /* MyShabonListReusableView.swift in Sources */,
 				C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */,
 				C86FE367214A311F00526196 /* UserLocate.swift in Sources */,
 				C81BA8BE215149C70094AC00 /* CollectionViewFooter.swift in Sources */,

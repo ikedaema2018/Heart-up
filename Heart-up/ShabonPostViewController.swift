@@ -214,6 +214,7 @@ extension ShabonPostViewController {
         guard let color = shabonColor else {
             errorLabel.isHidden = false
             errorLabel.text = "色を選択してね！"
+            postFlag = false
             return
         }
         
@@ -221,25 +222,28 @@ extension ShabonPostViewController {
         guard let nayamiText = nayamiInput.text else {
             errorLabel.isHidden = false
             errorLabel.text = "悩みを入力してね！"
+            postFlag = false
             return
         }
         if nayamiText == "" {
             errorLabel.isHidden = false
             errorLabel.text = "悩みを入力してね！"
+            postFlag = false
             return
         }
         //nayamiTextの長さが3０文字以上だったら弾く
         if nayamiText.count >= 30 {
             errorLabel.isHidden = false
             errorLabel.text = "悩みは30文字以内にしてね！"
+            postFlag = false
             return
         }
-        errorLabel.isHidden = true
         
         //緯度と経度をアンラップ
         guard let ido = latitude, let keido = longitude else {
             errorLabel.isHidden = false
             errorLabel.text = "緯度と経度が取得できないよ！"
+            postFlag = false
             return
         }
         
