@@ -24,6 +24,7 @@
 		C81BA8BE215149C70094AC00 /* CollectionViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81BA8BD215149C70094AC00 /* CollectionViewFooter.swift */; };
 		C81BA8C12151E0A40094AC00 /* UserInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */; };
 		C81C73EE215F572B00D4C2E1 /* MKMapView+ZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C73ED215F572B00D4C2E1 /* MKMapView+ZoomLevel.swift */; };
+		C81C73F2216099E500D4C2E1 /* MyShabonListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81C73F1216099E500D4C2E1 /* MyShabonListCollectionViewController.swift */; };
 		C81E850321438026006EDA5C /* AllCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */; };
 		C81E850421438026006EDA5C /* AllCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */; };
 		C81E850721439144006EDA5C /* AllCommentsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */; };
@@ -76,6 +77,7 @@
 		C81BA8BD215149C70094AC00 /* CollectionViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewFooter.swift; sourceTree = "<group>"; };
 		C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoViewController.swift; sourceTree = "<group>"; };
 		C81C73ED215F572B00D4C2E1 /* MKMapView+ZoomLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MKMapView+ZoomLevel.swift"; sourceTree = "<group>"; };
+		C81C73F1216099E500D4C2E1 /* MyShabonListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonListCollectionViewController.swift; sourceTree = "<group>"; };
 		C81E850121438026006EDA5C /* AllCommentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsTableViewCell.swift; sourceTree = "<group>"; };
 		C81E850221438026006EDA5C /* AllCommentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllCommentsTableViewCell.xib; sourceTree = "<group>"; };
 		C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCommentsCollectionViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +157,14 @@
 			path = CollectionViewClass;
 			sourceTree = "<group>";
 		};
+		C81C73F321609A8700D4C2E1 /* MyShabonList */ = {
+			isa = PBXGroup;
+			children = (
+				C81C73F1216099E500D4C2E1 /* MyShabonListCollectionViewController.swift */,
+			);
+			path = MyShabonList;
+			sourceTree = "<group>";
+		};
 		C81E84FF21436A4C006EDA5C /* Trash */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,6 +220,7 @@
 				C84DE644215505EF00406A64 /* Heart-up.entitlements */,
 				C81E84FF21436A4C006EDA5C /* Trash */,
 				C8EB10CB212FD0D500B61D34 /* Models */,
+				C81C73F321609A8700D4C2E1 /* MyShabonList */,
 				C81E850021437F3C006EDA5C /* MyShabonTableViewCell */,
 				C81E8505214382F4006EDA5C /* AllCommentsTableCell */,
 				C81BA8BC2150B4410094AC00 /* MyShabonCollectionViewCell */,
@@ -429,6 +440,7 @@
 				C894CFC1213F496D007957E2 /* Annotation.swift in Sources */,
 				C87CBF052155E79A007D6F0C /* PushToken.swift in Sources */,
 				C81E850721439144006EDA5C /* AllCommentsCollectionViewController.swift in Sources */,
+				C81C73F2216099E500D4C2E1 /* MyShabonListCollectionViewController.swift in Sources */,
 				C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */,
 				C8168D70213813C4007084A1 /* Api.swift in Sources */,
 				C8168D1621318122007084A1 /* MapModule.swift in Sources */,

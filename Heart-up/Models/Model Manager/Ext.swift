@@ -41,12 +41,12 @@ extension UIViewController {
             }
             
             locate = tmp_locate
-            guard let longitude = locate!["keido"].int, let latitude = locate!["ido"].int else {
+            guard let longitude = locate!["keido"].double, let latitude = locate!["ido"].double else {
                 return
             }
             //リバースジオロケートで緯度経度
             let geocoder = CLGeocoder()
-            let location = CLLocation(latitude: Double(latitude), longitude: Double(longitude))
+            let location = CLLocation(latitude: latitude, longitude: longitude)
             var place = ""
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
                 if let placemarks = placemarks {

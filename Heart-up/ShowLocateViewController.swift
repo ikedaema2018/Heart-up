@@ -174,6 +174,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view.
         print("--------viewWillAppear--------")
         fetchData()
+        //画面をロードするたびに現在地をセンターに
+        mapView.setCenter(mapView.userLocation.coordinate, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
