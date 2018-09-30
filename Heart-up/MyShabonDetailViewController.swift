@@ -154,12 +154,6 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
         // アイテムを作成
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MyShabonCollectionViewCell", for: indexPath)
         
-        // アイテムセルを再利用する際、前に追加していた要素（今回はラベル）を削除する
-        //ナニコレー
-//        for subview in cell.contentView.subviews {
-//            subview.removeFromSuperview()
-//        }
-        
         if let cell = cell as? MyShabonCollectionViewCell {
             if let tmp = locates {
                 cell.setupCell(comment: tmp["nayami_comments"][indexPath.row], color: tmp["color"].string!)

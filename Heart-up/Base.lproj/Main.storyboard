@@ -195,7 +195,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsm-AQ-XEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3385" y="1897"/>
+            <point key="canvasLocation" x="3505" y="1962"/>
         </scene>
         <!--My Shabon Detail View Controller-->
         <scene sceneID="8j9-6K-Bsa">
@@ -240,17 +240,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2xR-4L-LHf">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="90" height="90"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gk3-Ld-kwo">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gk3-Ld-kwo" customClass="MyShabonListCell" customModule="Heart_up" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
                             </collectionViewCell>
@@ -264,7 +264,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3L-xS-vhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2622" y="1814"/>
+            <point key="canvasLocation" x="2621.5999999999999" y="1813.9430284857572"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="9Dn-29-8ex">
@@ -802,7 +802,7 @@
         <image name="shabon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ubo-jr-8fC"/>
-        <segue reference="v7M-zm-1PM"/>
+        <segue reference="E37-BI-QzO"/>
+        <segue reference="cO4-bI-Zld"/>
     </inferredMetricsTieBreakers>
 </document>
