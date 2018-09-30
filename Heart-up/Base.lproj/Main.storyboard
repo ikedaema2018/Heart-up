@@ -266,7 +266,7 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="my shabon" id="hSW-mE-3qZ"/>
                     <connections>
-                        <segue destination="9Ng-XU-Eez" kind="push" id="XD8-mn-N8Z"/>
+                        <segue destination="9Ng-XU-Eez" kind="push" identifier="toDetailSegue" id="XD8-mn-N8Z"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3L-xS-vhN" userLabel="First Responder" sceneMemberID="firstResponder"/>

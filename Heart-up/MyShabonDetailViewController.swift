@@ -93,8 +93,6 @@ class MyShabonDetailViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
