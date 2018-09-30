@@ -80,7 +80,7 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
         }
         
         if kind == UICollectionElementKindSectionHeader {
-            header.sectionHeader.text = "section \(indexPath.section)"
+            header.sectionHeader.text = sectionTitle[indexPath.section] as? String
             return header
         }
         
