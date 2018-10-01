@@ -10,4 +10,5 @@ target 'Heart-up' do
   pod 'SwiftyJSON'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+pod 'AWSCore'
 end
