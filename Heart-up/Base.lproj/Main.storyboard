@@ -228,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtW-W0-JhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3583" y="1814"/>
+            <point key="canvasLocation" x="3593" y="1126"/>
         </scene>
         <!--my shabon-->
         <scene sceneID="RFb-cL-BfW">
@@ -265,12 +265,38 @@
                     </collectionView>
                     <navigationItem key="navigationItem" title="my shabon" id="hSW-mE-3qZ"/>
                     <connections>
-                        <segue destination="9Ng-XU-Eez" kind="push" identifier="toDetailSegue" id="XD8-mn-N8Z"/>
+                        <segue destination="JOa-xY-I4q" kind="push" identifier="toShabonContents" id="UIR-Rk-hcD"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3L-xS-vhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2621.5999999999999" y="1813.9430284857572"/>
+        </scene>
+        <!--Shabon Contents View Controller-->
+        <scene sceneID="Vyr-xM-XWL">
+            <objects>
+                <viewController id="JOa-xY-I4q" customClass="ShabonContentsViewController" customModule="Heart_up" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u1P-uZ-E7N">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rnz-y3-WV7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5cY-Lw-Fdq"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fft-dA-KWv"/>
+                    <connections>
+                        <outlet property="contentsTable" destination="rnz-y3-WV7" id="nP3-dQ-tlO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7qF-c7-6Tt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3496.8000000000002" y="1993.8530734632686"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="9Dn-29-8ex">
@@ -808,7 +834,7 @@
         <image name="shabon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ubo-jr-8fC"/>
-        <segue reference="HIM-L7-JbM"/>
+        <segue reference="E37-BI-QzO"/>
+        <segue reference="cO4-bI-Zld"/>
     </inferredMetricsTieBreakers>
 </document>

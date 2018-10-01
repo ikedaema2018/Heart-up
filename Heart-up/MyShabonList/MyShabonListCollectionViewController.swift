@@ -118,18 +118,18 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
     // アイテムタッチ時の処理（UICollectionViewDelegate が必要）
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            self.performSegue(withIdentifier: "toDetailSegue", sender: live_posts[indexPath.row]["id"])
+            self.performSegue(withIdentifier: "toShabonContents", sender: live_posts[indexPath.row]["id"])
         } else if indexPath.section == 1 {
-            self.performSegue(withIdentifier: "toDetailSegue", sender: dead_posts[indexPath.row]["id"])
+            self.performSegue(withIdentifier: "toShabonContents", sender: dead_posts[indexPath.row]["id"])
         }
     }
     // Segueでの画面遷移時に呼び出される.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // コメント一覧への遷移の場合.
-        if segue.identifier == "toDetailSegue" {
+        if segue.identifier == "toShabonContents" {
             // 選択された投稿データをコメントViewControllerへ渡す.
             if let id = sender as? Int {
-                let vc = segue.destination as! MyShabonDetailViewController
+                let vc = segue.destination as! ShabonContentsViewController
                 vc.id = String(id)
             }
         }
