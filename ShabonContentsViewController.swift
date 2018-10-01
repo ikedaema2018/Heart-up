@@ -20,7 +20,6 @@ class ShabonContentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         contentsTable.register(UINib(nibName: "ShabonContentsTableViewCell", bundle: nil), forCellReuseIdentifier: "ShabonContentsCell")
         contentsTable.delegate = self
         contentsTable.dataSource = self
@@ -107,8 +106,6 @@ extension ShabonContentsViewController {
                 }
                 // 画面を再描画する.
                 self.contentsTable.reloadData()
-                print(self.locates)
-                print("-----print(self.locates)-----------------------")
             }
             
             //もしシャボン玉を投稿した人が自分だったら+ボタンを表示しない
