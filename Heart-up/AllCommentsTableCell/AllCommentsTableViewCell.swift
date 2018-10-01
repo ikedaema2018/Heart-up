@@ -56,7 +56,7 @@ class AllCommentsTableViewCell: UITableViewCell {
                 if let user_image = user["profile_image"] as? String {
                     if user_image != nil {
                         let image_path = user_image
-                        let url = "http://localhost:3000/profile_image/" + image_path
+                        let url = "http://s3-ap-northeast-1.amazonaws.com/heartup/images/" + image_path
                         self.shabonOwnerAvater.downloadedFrom(link: url)
                     }
                 }

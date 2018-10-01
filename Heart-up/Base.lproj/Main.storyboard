@@ -190,12 +190,11 @@
                     <navigationItem key="navigationItem" title="MyShabon" id="udw-mv-ynE"/>
                     <connections>
                         <outlet property="myShabonTable" destination="MWU-qH-I2C" id="cvH-e6-uYZ"/>
-                        <segue destination="9Ng-XU-Eez" kind="push" identifier="myShabonDetailSegue" id="v7M-zm-1PM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qsm-AQ-XEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3505" y="1962"/>
+            <point key="canvasLocation" x="9670" y="42"/>
         </scene>
         <!--My Shabon Detail View Controller-->
         <scene sceneID="8j9-6K-Bsa">
@@ -229,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtW-W0-JhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3718" y="1182"/>
+            <point key="canvasLocation" x="3583" y="1814"/>
         </scene>
         <!--my shabon-->
         <scene sceneID="RFb-cL-BfW">

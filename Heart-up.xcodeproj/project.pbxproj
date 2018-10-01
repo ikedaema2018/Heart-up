@@ -180,6 +180,8 @@
 		C81E84FF21436A4C006EDA5C /* Trash */ = {
 			isa = PBXGroup;
 			children = (
+				C81E850021437F3C006EDA5C /* MyShabonTableViewCell */,
+				C894CFBC213CE787007957E2 /* MyShabonViewController.swift */,
 				C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */,
 				C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */,
 				C8168D692136AC01007084A1 /* detailShabonViewController.swift */,
@@ -233,7 +235,6 @@
 				C81E84FF21436A4C006EDA5C /* Trash */,
 				C8EB10CB212FD0D500B61D34 /* Models */,
 				C81C73F321609A8700D4C2E1 /* MyShabonList */,
-				C81E850021437F3C006EDA5C /* MyShabonTableViewCell */,
 				C81E8505214382F4006EDA5C /* AllCommentsTableCell */,
 				C81BA8BC2150B4410094AC00 /* MyShabonCollectionViewCell */,
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
@@ -248,7 +249,6 @@
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
 				C81BA8BF21514A250094AC00 /* CollectionViewClass */,
 				C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */,
-				C894CFBC213CE787007957E2 /* MyShabonViewController.swift */,
 				C86E32D4212C3B98005A3D92 /* Assets.xcassets */,
 				C81E850821445E4C006EDA5C /* ProfileImageViewController.swift */,
 				C86E32D6212C3B98005A3D92 /* LaunchScreen.storyboard */,
