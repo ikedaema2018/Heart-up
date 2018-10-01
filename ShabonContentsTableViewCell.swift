@@ -15,6 +15,7 @@ class ShabonContentsTableViewCell: UITableViewCell {
     @IBOutlet weak var nayamiView: UIView!
     @IBOutlet weak var nayamiLabel: UILabel!
     
+    var shabonColor: String?
     var comment: JSON? {
         didSet {
             userProfile.clipsToBounds = true
@@ -29,9 +30,22 @@ class ShabonContentsTableViewCell: UITableViewCell {
             }else{
                 self.userProfile.image = UIImage(named: "myPage")
             }
-            let color = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 0.3256902825)
+            
+            if let shabonColor = shabonColor {
+                var color: UIColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 0.1816941353)
+                switch shabonColor {
+                case "青":
+                    color = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 0.1816941353)
+                case "赤":
+                    color = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 0.1825770548)
+                case "黄":
+                    color = #colorLiteral(red: 0.9994240403, green: 0.9855536819, blue: 0, alpha: 0.1777076199)
+                default:
+                    print("シャボンカラーがないよ！")
+                }
+                nayamiView.backgroundColor = color
+            }
             nayamiLabel.text = comment["nayami_comment"].string
-            nayamiView.backgroundColor = color
             nayamiView.layer.cornerRadius = 20
             nayamiView.layer.borderWidth = 0.5
             nayamiView.layer.borderColor = UIColor.black.cgColor

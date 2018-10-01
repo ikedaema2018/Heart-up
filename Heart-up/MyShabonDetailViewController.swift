@@ -188,6 +188,8 @@ extension MyShabonDetailViewController: UICollectionViewDelegateFlowLayout {
                 default:
                     print("headerのlocatesにcolorがないよ！")
                 }
+                print("---------------------------------------")
+                
                 //headerテキストへpushする
                 header.titleLabel.text = "\(tmp["user"]["user_name"].string!)さんの悩み:\n" + tmp["nayami"].string!
             }

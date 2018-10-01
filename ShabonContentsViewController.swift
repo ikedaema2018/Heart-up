@@ -13,6 +13,7 @@ import CoreLocation
 class ShabonContentsViewController: UIViewController {
     var id: String?
     var locates: JSON?
+    var color: String?
     //逆ジオロケのため
     var place = ""
     
@@ -50,6 +51,9 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentsTable.dequeueReusableCell(withIdentifier: "ShabonContentsCell", for: indexPath) as! ShabonContentsTableViewCell
         if let locates = locates {
+            if let color = color {
+                cell.shabonColor = color
+            }
             cell.comment = locates["nayami_comments"][indexPath.row]
         }
         return cell
@@ -76,14 +80,14 @@ extension ShabonContentsViewController {
             
             self.locates = locate
             // 画面全体に色を設定
-            if self.locates!["color"].string == "赤" {
-                self.view.backgroundColor = UIColor.red
-            } else if self.locates!["color"].string == "青" {
-                self.view.backgroundColor = UIColor.blue
-            } else if self.locates!["color"].string == "黄" {
-                self.view.backgroundColor = UIColor.yellow
-            }
-            
+//            if self.locates!["color"].string == "赤" {
+//                self.view.backgroundColor = UIColor.red
+//            } else if self.locates!["color"].string == "青" {
+//                self.view.backgroundColor = UIColor.blue
+//            } else if self.locates!["color"].string == "黄" {
+//                self.view.backgroundColor = UIColor.yellow
+//            }
+            self.color = self.locates!["color"].string
             
             guard let longitude = locate!["keido"].double, let latitude = locate!["ido"].double else {
                 return

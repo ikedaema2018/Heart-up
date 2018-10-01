@@ -42,8 +42,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="rNy-YI-eZf" id="MzV-Ei-Wzt"/>
-                        <segue destination="9Ng-XU-Eez" kind="push" identifier="detailViewControllerSegue" id="HIM-L7-JbM"/>
                         <segue destination="NEz-75-Qtu" kind="presentation" identifier="toSelectUserSegue" id="Ubo-jr-8fC"/>
+                        <segue destination="JOa-xY-I4q" kind="push" identifier="showToContents" id="Uby-AE-S2X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3X-zF-2Q7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -834,7 +834,7 @@
         <image name="shabon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="E37-BI-QzO"/>
-        <segue reference="cO4-bI-Zld"/>
+        <segue reference="Ubo-jr-8fC"/>
+        <segue reference="Uby-AE-S2X"/>
     </inferredMetricsTieBreakers>
 </document>
