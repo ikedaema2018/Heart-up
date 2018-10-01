@@ -74,7 +74,6 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        print("--------------cccccc----------")
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "MyShabonListReusableView", for: indexPath) as? MyShabonListReusableView else {
             fatalError("Could not find proper header")
         }

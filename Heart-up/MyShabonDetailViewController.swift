@@ -315,6 +315,7 @@ extension MyShabonDetailViewController
             }
             var shabonUser = String(self.locates!["user_id"].int!)
 //   これをif文の中に入れることを忘れずに         userId != shabonUser &&
+            
             if  self.locates!["nayami_comments"].count < 9 {
                 let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MyShabonDetailViewController.onTapAddComment))
                 self.navigationItem.setRightBarButton(navItem, animated: true)
