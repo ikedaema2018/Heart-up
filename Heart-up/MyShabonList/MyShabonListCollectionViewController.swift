@@ -63,10 +63,8 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            print(live_posts.count)
             return live_posts.count
         } else if section == 1 {
-            print(dead_posts.count)
             return dead_posts.count
         } else {
             return 0

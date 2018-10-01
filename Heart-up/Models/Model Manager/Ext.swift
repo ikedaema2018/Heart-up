@@ -29,9 +29,6 @@ extension UIViewController {
             return
         }
         
-        print("------message----------")
-        print(message["locate_info"]["keido"])
-        
         guard let longitude = message["locate_info"]["keido"].double, let latitude = message["locate_info"]["ido"].double else {
             return
         }
