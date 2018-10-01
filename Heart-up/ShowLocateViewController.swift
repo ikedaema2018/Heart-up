@@ -102,7 +102,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                         color = color?.resize(image: color!, width: zoomSize + nayamiCount)
                         anno.image = color
                     } else if color_s == "青" {
-                        var color = UIImage(named: "blee")
+                        var color = UIImage(named: "blue")
                         color = color?.resize(image: color!, width: zoomSize + nayamiCount)
                         anno.image = color
                     } else if color_s == "赤" {

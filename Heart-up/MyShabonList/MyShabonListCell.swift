@@ -12,8 +12,7 @@ class MyShabonListCell: UICollectionViewCell {
 
     @IBOutlet weak var shabonTitle: UILabel!
     @IBOutlet weak var newNayami: UIImageView!
-    @IBOutlet weak var myShabonCount: UIImageView!
-    
+    @IBOutlet weak var nayamiCount: UIImageView!
     @IBOutlet weak var shabonBackGround: UIView!
     
     func setupCell(comment: [String: Any]) {
@@ -38,10 +37,6 @@ class MyShabonListCell: UICollectionViewCell {
         }
         
         let nayami_comment = comment["nayami_comments"] as! [[String: Any]]
-        for value in nayami_comment {
-            print(value["yonda_flag"])
-        }
-        
         //まだ見てないコメントがある時にnew_flag
         let bool = comment["life_flag"] as! Bool
         if bool == false {
@@ -51,6 +46,8 @@ class MyShabonListCell: UICollectionViewCell {
             }else{
                 newNayami.image = nil
             }
+            //悩みコメントの数のイメージを設定
+            nayamiCount.image = UIImage(named: "number" + String(nayami_comment.count))
         }else{
             let yonda = comment["splash_yonda_check"] as! [String: Any]
             let yonda_flag = yonda["yonda_flag"] as! Bool
@@ -60,8 +57,6 @@ class MyShabonListCell: UICollectionViewCell {
                 newNayami.image = nil
             }
         }
-        //悩みコメントの数のイメージを設定
-        myShabonCount.image = UIImage(named: "number" + String(nayami_comment.count))
     }
     
     
