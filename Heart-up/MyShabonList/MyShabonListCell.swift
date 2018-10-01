@@ -49,6 +49,7 @@ class MyShabonListCell: UICollectionViewCell {
             //悩みコメントの数のイメージを設定
             nayamiCount.image = UIImage(named: "number" + String(nayami_comment.count))
         }else{
+            nayamiCount.image = nil
             let yonda = comment["splash_yonda_check"] as! [String: Any]
             let yonda_flag = yonda["yonda_flag"] as! Bool
             if !yonda_flag {
