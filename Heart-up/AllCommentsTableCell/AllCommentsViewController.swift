@@ -127,7 +127,6 @@ extension AllCommentsViewController {
             
             locates.forEach { locate in
                 if let locateInfo = locate["locate_info"] as! [String: Any]? {
-                    print(locateInfo)
                     if locateInfo["life_flag"] as! Int == 1 {
                         self.dead_posts.append(locate)
                     } else {

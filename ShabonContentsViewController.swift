@@ -14,6 +14,9 @@ class ShabonContentsViewController: UIViewController {
     var id: String?
     var locates: JSON?
     var color: String?
+    
+    
+    
     //逆ジオロケのため
     var place = ""
     
@@ -40,10 +43,21 @@ class ShabonContentsViewController: UIViewController {
 }
 
 extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    // セクション数を返却する.
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let locates = locates {
-            return locates["nayami_comments"].count
-        }else{
+            if section == 0 {
+                return locates["nayami_comments"].count
+            } else {
+                return 0
+            }
+        } else {
             return 0
         }
     }
@@ -51,78 +65,94 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentsTable.dequeueReusableCell(withIdentifier: "ShabonContentsCell", for: indexPath) as! ShabonContentsTableViewCell
         if let locates = locates {
-            if let color = color {
-                cell.shabonColor = color
+            if indexPath.section == 0 {
+                if let color = color {
+                    cell.shabonColor = color
+                }
+                cell.comment = locates["nayami_comments"][indexPath.row]
             }
-            cell.comment = locates["nayami_comments"][indexPath.row]
         }
         return cell
     }
     //Mark: ヘッダーの大きさを設定する
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
-        
-        return 100
+        if section == 0 {
+            return 80
+        }else{
+            return 20
+        }
     }
     
     //Mark: ヘッダーに設定するViewを設定する
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         
-        
         //ヘッダーにするビューを生成
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80)
-        
-        
-        //ヘッダーに追加するラベルを生成
-        let locateLabel = UILabel()
-        locateLabel.frame =  CGRect(x: 0, y: 60, width: self.view.frame.size.width, height: 20)
-        let nayamiLabel = UILabel()
-        nayamiLabel.numberOfLines = 3
-        
-        nayamiLabel.frame = CGRect(x: 0, y: 0, width : self.view.frame.size.width, height: 60)
-        
-        var locateColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        var nayamiColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        if let locates = locates {
-            self.title = "\(locates["user"]["user_name"].string!)さんのシャボン玉"
-            locateLabel.text = "\(place)を移動中"
-            nayamiLabel.text = "\(locates["nayami"].string!)"
+        if section == 0 {
+            view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80)
+            //ヘッダーに追加するラベルを生成
+            let locateLabel = UILabel()
+            locateLabel.frame =  CGRect(x: 0, y: 60, width: self.view.frame.size.width, height: 20)
+            let nayamiLabel = UILabel()
+            nayamiLabel.numberOfLines = 3
             
-            let color = locates["color"].string!
-            switch color {
-            case "青":
-                locateColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 0.5000267551)
-                nayamiColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 0.6962489298)
-            case "赤":
-                locateColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.1757009846)
-                nayamiColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.5597174658)
-            case "黄":
-                locateColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 0.6073416096)
-                nayamiColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1)
-            default:
-                print("カラーがないよ！")
+            nayamiLabel.frame = CGRect(x: 0, y: 0, width : self.view.frame.size.width, height: 60)
+            
+            var locateColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            var nayamiColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+            if let locates = locates {
+                self.title = "\(locates["user"]["user_name"].string!)さんのシャボン玉"
+                locateLabel.text = "\(place)を移動中"
+                nayamiLabel.text = "\(locates["nayami"].string!)"
+                
+                let color = locates["color"].string!
+                switch color {
+                case "青":
+                    locateColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 0.5000267551)
+                    nayamiColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 0.6962489298)
+                case "赤":
+                    locateColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.1757009846)
+                    nayamiColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.5597174658)
+                case "黄":
+                    locateColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 0.6073416096)
+                    nayamiColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1)
+                default:
+                    print("カラーがないよ！")
+                }
             }
+            
+            locateLabel.textColor = UIColor.white
+            nayamiLabel.textColor = UIColor.white
+            nayamiLabel.textAlignment = NSTextAlignment.center
+            nayamiLabel.backgroundColor = nayamiColor
+            locateLabel.backgroundColor = locateColor
+            nayamiLabel.layer.cornerRadius = 5
+            view.addSubview(locateLabel)
+            view.addSubview(nayamiLabel)
+        }else{
+            view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 20)
+            let color = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 0.4746361301)
+            let destinationColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+            view.backgroundColor = color
+            let destinationLabel = UILabel()
+            destinationLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 20)
+            destinationLabel.text = "このシャボン玉は何km移動してここまできました"
+            destinationLabel.textColor = destinationColor
+            view.addSubview(destinationLabel)
         }
-        
-        locateLabel.textColor = UIColor.white
-        nayamiLabel.textColor = UIColor.white
-        nayamiLabel.textAlignment = NSTextAlignment.center
-        nayamiLabel.backgroundColor = nayamiColor
-        locateLabel.backgroundColor = locateColor
-        nayamiLabel.layer.cornerRadius = 5
-        view.addSubview(locateLabel)
-        view.addSubview(nayamiLabel)
-        
         return view
     }
+    
     //行がタップされた時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //選択状態を非表示にする
         contentsTable.deselectRow(at: indexPath, animated: true)
         if let locates = locates {
-            let id = locates["nayami_comments"][indexPath.row]["user_id"].int
-            // コメント一覧へ遷移する.
-            self.performSegue(withIdentifier: "contentsToUser", sender: id)
+            if indexPath.section == 0 {
+                let id = locates["nayami_comments"][indexPath.row]["user_id"].int
+                // コメント一覧へ遷移する.
+                self.performSegue(withIdentifier: "contentsToUser", sender: id)
+            }
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

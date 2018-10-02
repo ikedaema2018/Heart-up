@@ -54,6 +54,8 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
     */
 
     // MARK: UICollectionViewDataSource
+    
+    
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return sectionTitle.count
@@ -79,7 +81,6 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
             header.sectionHeader.text = sectionTitle[indexPath.section] as? String
             return header
         }
-        
         return UICollectionReusableView()
     }
     
