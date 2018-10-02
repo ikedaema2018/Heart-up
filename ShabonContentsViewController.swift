@@ -121,7 +121,7 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
         //選択状態を非表示にする
         contentsTable.deselectRow(at: indexPath, animated: true)
         if let locates = locates {
-            let id = locates["user_id"].int
+            let id = locates["nayami_comments"][indexPath.row]["user_id"].int
             // コメント一覧へ遷移する.
             self.performSegue(withIdentifier: "contentsToUser", sender: id)
         }
