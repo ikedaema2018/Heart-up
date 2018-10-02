@@ -137,7 +137,11 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             view.backgroundColor = color
             let destinationLabel = UILabel()
             destinationLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 20)
-            destinationLabel.text = "このシャボン玉は\(fPlace)からここまできました"
+            //first_locateがある時
+            if let distance = kyori {
+                print("謎ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー")
+                destinationLabel.text = "このシャボン玉は\(String(format: "%.1f", distance)) kmかけてここまできました"
+            }
             destinationLabel.textColor = destinationColor
             destinationLabel.font = UIFont(name: "Arial", size: 11)
             view.addSubview(destinationLabel)
@@ -230,7 +234,7 @@ extension ShabonContentsViewController {
 //                    let fLocation = CLLocation(latitude: fLatitude, longitude: fLongitude)
 //                    geocoder.reverseGeocodeLocation(fLocation) { (placemarks, error) in
 //                        if let placemarks = placemarks {
-//
+
 //                            if let pm = placemarks.first {
 //                                //placeを初期化
 //                                self.fPlace = ""
@@ -238,8 +242,8 @@ extension ShabonContentsViewController {
 //                                self.fPlace += pm.locality ?? ""
 //                                self.fPlace += pm.subLocality ?? ""
 //                            }
-//                            // 画面を再描画する.
-//                            self.contentsTable.reloadData()
+                            // 画面を再描画する.
+                            self.contentsTable.reloadData()
 //                        }
 //                    }
                 }else{
