@@ -208,6 +208,9 @@ extension ShowLocateViewController {
             //かなり無茶苦茶な処理だけど地図の倍率が変わった時に使うため
             self.locates = locates
             
+            print("--------locates----------")
+            print(self.locates)
+            
             //ここで１時間前までにアップデートしたユーザーを引っ張ってくる処理を書く
             UserLocate.currentUser {error, users in
                 

@@ -139,7 +139,6 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             destinationLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 20)
             //first_locateがある時
             if let distance = kyori {
-                print("謎ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー")
                 destinationLabel.text = "このシャボン玉は\(String(format: "%.1f", distance)) kmかけてここまできました"
             }
             destinationLabel.textColor = destinationColor
@@ -203,8 +202,6 @@ extension ShabonContentsViewController {
             guard let longitude = locate!["keido"].double, let latitude = locate!["ido"].double else {
                 return
             }
-            
-            
             
             //リバースジオロケートで緯度経度
             let geocoder = CLGeocoder()
