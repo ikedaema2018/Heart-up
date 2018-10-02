@@ -19,6 +19,7 @@ class ShabonContentsViewController: UIViewController {
     
     //逆ジオロケのため
     var place = ""
+    var fPlace = ""
     
     @IBOutlet weak var contentsTable: UITableView!
     
@@ -95,7 +96,6 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             locateLabel.frame =  CGRect(x: 0, y: 60, width: self.view.frame.size.width, height: 20)
             let nayamiLabel = UILabel()
             nayamiLabel.numberOfLines = 3
-            
             nayamiLabel.frame = CGRect(x: 0, y: 0, width : self.view.frame.size.width, height: 60)
             
             var locateColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -136,7 +136,7 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             view.backgroundColor = color
             let destinationLabel = UILabel()
             destinationLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 20)
-            destinationLabel.text = "このシャボン玉は何km移動してここまできました"
+            destinationLabel.text = "このシャボン玉は\(fPlace)からここまできました"
             destinationLabel.textColor = destinationColor
             view.addSubview(destinationLabel)
         }
@@ -198,6 +198,8 @@ extension ShabonContentsViewController {
                 return
             }
             
+            
+            
             //リバースジオロケートで緯度経度
             let geocoder = CLGeocoder()
             let location = CLLocation(latitude: latitude, longitude: longitude)
@@ -213,9 +215,37 @@ extension ShabonContentsViewController {
                         self.place += pm.subLocality ?? ""
                     }
                 }
-                // 画面を再描画する.
-                self.contentsTable.reloadData()
+                //もし["first_locates"]がnilじゃなかったら距離を取得
+                if let firstLocate = self.locates?["first_locates"]{
+
+                print("-----firstLocate-----")
+                print(firstLocate == nil)
+                
+                    guard let fLatitude = firstLocate["ido"].double, let fLongitude = firstLocate["keido"].double else {
+                        return
+                    }
+                    let fLocation = CLLocation(latitude: fLatitude, longitude: fLongitude)
+                    geocoder.reverseGeocodeLocation(fLocation) { (placemarks, error) in
+                        if let placemarks = placemarks {
+                            
+                            if let pm = placemarks.first {
+                                //placeを初期化
+                                self.fPlace = ""
+                                self.fPlace += pm.administrativeArea ?? ""
+                                self.fPlace += pm.locality ?? ""
+                                self.fPlace += pm.subLocality ?? ""
+                            }
+                            // 画面を再描画する.
+                            self.contentsTable.reloadData()
+                        }
+                    }
+                }else{
+                    // 画面を再描画する.
+                    self.contentsTable.reloadData()
+                }
             }
+            
+            
             
             //もしシャボン玉を投稿した人が自分だったら+ボタンを表示しない
             guard let userId = UserDefaults.standard.string(forKey: "user_id") else {
@@ -233,6 +263,7 @@ extension ShabonContentsViewController {
             }
         })
     }
+    
     //ナビバーの＋ボタンがクリックされた
     @objc func onTapAddComment() {
         // アラートの作成.
