@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
 class Distance: NSObject {
     
@@ -26,5 +28,20 @@ class Distance: NSObject {
         let averageLon = (currentLo - targetLo) / 2
         let distance = equatorRadius * 2 * asin(sqrt(pow(sin(averageLat), 2) + cos(currentLa) * cos(targetLa) * pow(sin(averageLon), 2)))
         return distance / 1000
+    }
+    
+    class func setUpJapan(map: MKMapView){
+        // 中心点の緯度経度.
+        let myLat: CLLocationDegrees = 38.0
+        let myLon: CLLocationDegrees = 138.0
+        let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLat, myLon) as CLLocationCoordinate2D
+        
+        // 縮尺.
+        let myLatDist : CLLocationDistance = 2000000
+        let myLonDist : CLLocationDistance = 2000000
+        // Regionを作成.
+        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, myLatDist, myLonDist);
+        // MapViewに反映.
+        map.setRegion(myRegion, animated: true)
     }
 }

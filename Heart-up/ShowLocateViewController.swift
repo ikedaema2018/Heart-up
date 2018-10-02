@@ -50,6 +50,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         // tracking user location
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
         mapView.showsUserLocation = true
+        //画面をロードした時に日本列島にカーソルが合わさるように
+        Distance.setUpJapan(map: mapView)
         
         // Do any additional setup after loading the view.
         
@@ -172,8 +174,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         // Do any additional setup after loading the view.
         print("--------viewWillAppear--------")
         fetchData()
-        //画面をロードするたびに現在地をセンターに
-        mapView.setCenter(mapView.userLocation.coordinate, animated: true)
+//        //画面をロードするたびに現在地をセンターに
+//        mapView.setCenter(mapView.userLocation.coordinate, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
