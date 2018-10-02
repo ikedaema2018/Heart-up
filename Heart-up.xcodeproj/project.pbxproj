@@ -60,6 +60,7 @@
 		C8AA5BAB2162096C00523842 /* ShabonContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BAA2162096C00523842 /* ShabonContentsViewController.swift */; };
 		C8AA5BAE21620C9C00523842 /* ShabonContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BAC21620C9C00523842 /* ShabonContentsTableViewCell.swift */; };
 		C8AA5BAF21620C9C00523842 /* ShabonContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8AA5BAD21620C9C00523842 /* ShabonContentsTableViewCell.xib */; };
+		C8AA5BB1216378F700523842 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BB0216378F700523842 /* Distance.swift */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
 		C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */; };
@@ -123,6 +124,7 @@
 		C8AA5BAA2162096C00523842 /* ShabonContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonContentsViewController.swift; sourceTree = "<group>"; };
 		C8AA5BAC21620C9C00523842 /* ShabonContentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonContentsTableViewCell.swift; sourceTree = "<group>"; };
 		C8AA5BAD21620C9C00523842 /* ShabonContentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShabonContentsTableViewCell.xib; sourceTree = "<group>"; };
+		C8AA5BB0216378F700523842 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
 		C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowLocateViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/ShowLocateViewController.swift"; sourceTree = "<absolute>"; };
@@ -320,6 +322,7 @@
 			children = (
 				C8EB10D0212FD12100B61D34 /* LocateInfo.swift */,
 				C894CFC0213F496D007957E2 /* Annotation.swift */,
+				C8AA5BB0216378F700523842 /* Distance.swift */,
 			);
 			path = "Model Object";
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				C894CFC1213F496D007957E2 /* Annotation.swift in Sources */,
 				C87CBF052155E79A007D6F0C /* PushToken.swift in Sources */,
 				C81E850721439144006EDA5C /* AllCommentsCollectionViewController.swift in Sources */,
+				C8AA5BB1216378F700523842 /* Distance.swift in Sources */,
 				C81C73F2216099E500D4C2E1 /* MyShabonListCollectionViewController.swift in Sources */,
 				C81C73F62160AF0400D4C2E1 /* MyShabonListCell.swift in Sources */,
 				C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */,

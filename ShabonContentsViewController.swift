@@ -20,6 +20,7 @@ class ShabonContentsViewController: UIViewController {
     //逆ジオロケのため
     var place = ""
     var fPlace = ""
+    var kyori: Double?
     
     @IBOutlet weak var contentsTable: UITableView!
     
@@ -138,6 +139,7 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             destinationLabel.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 20)
             destinationLabel.text = "このシャボン玉は\(fPlace)からここまできました"
             destinationLabel.textColor = destinationColor
+            destinationLabel.font = UIFont(name: "Arial", size: 11)
             view.addSubview(destinationLabel)
         }
         return view
@@ -222,21 +224,24 @@ extension ShabonContentsViewController {
                     guard let fLatitude = firstLocate[0]["ido"].double, let fLongitude = firstLocate[0]["keido"].double else {
                         return
                     }
-                    let fLocation = CLLocation(latitude: fLatitude, longitude: fLongitude)
-                    geocoder.reverseGeocodeLocation(fLocation) { (placemarks, error) in
-                        if let placemarks = placemarks {
-                            
-                            if let pm = placemarks.first {
-                                //placeを初期化
-                                self.fPlace = ""
-                                self.fPlace += pm.administrativeArea ?? ""
-                                self.fPlace += pm.locality ?? ""
-                                self.fPlace += pm.subLocality ?? ""
-                            }
-                            // 画面を再描画する.
-                            self.contentsTable.reloadData()
-                        }
-                    }
+                    
+                    self.kyori = Distance.distance(current: (la: latitude, lo: longitude), target: (la: fLatitude, lo: fLongitude))
+                    //firstLocationを求める処理
+//                    let fLocation = CLLocation(latitude: fLatitude, longitude: fLongitude)
+//                    geocoder.reverseGeocodeLocation(fLocation) { (placemarks, error) in
+//                        if let placemarks = placemarks {
+//
+//                            if let pm = placemarks.first {
+//                                //placeを初期化
+//                                self.fPlace = ""
+//                                self.fPlace += pm.administrativeArea ?? ""
+//                                self.fPlace += pm.locality ?? ""
+//                                self.fPlace += pm.subLocality ?? ""
+//                            }
+//                            // 画面を再描画する.
+//                            self.contentsTable.reloadData()
+//                        }
+//                    }
                 }else{
                     // 画面を再描画する.
                     self.contentsTable.reloadData()
