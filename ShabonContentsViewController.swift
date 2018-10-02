@@ -216,12 +216,10 @@ extension ShabonContentsViewController {
                     }
                 }
                 //もし["first_locates"]がnilじゃなかったら距離を取得
-                if let firstLocate = self.locates?["first_locates"]{
+                let firstLocate = self.locates!["first_locates"]
 
-                print("-----firstLocate-----")
-                print(firstLocate == nil)
-                
-                    guard let fLatitude = firstLocate["ido"].double, let fLongitude = firstLocate["keido"].double else {
+                if !firstLocate.isEmpty {
+                    guard let fLatitude = firstLocate[0]["ido"].double, let fLongitude = firstLocate[0]["keido"].double else {
                         return
                     }
                     let fLocation = CLLocation(latitude: fLatitude, longitude: fLongitude)
