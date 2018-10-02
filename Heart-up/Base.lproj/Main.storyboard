@@ -222,13 +222,10 @@
                         </cells>
                     </collectionView>
                     <navigationItem key="navigationItem" id="EgO-MW-Fkd"/>
-                    <connections>
-                        <segue destination="NEz-75-Qtu" kind="presentation" identifier="toUserInfoSegue" id="E37-BI-QzO"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HtW-W0-JhW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3593" y="1126"/>
+            <point key="canvasLocation" x="10386" y="42"/>
         </scene>
         <!--my shabon-->
         <scene sceneID="RFb-cL-BfW">
@@ -292,11 +289,12 @@
                     <navigationItem key="navigationItem" id="fft-dA-KWv"/>
                     <connections>
                         <outlet property="contentsTable" destination="rnz-y3-WV7" id="nP3-dQ-tlO"/>
+                        <segue destination="NEz-75-Qtu" kind="presentation" identifier="contentsToUser" id="zVW-er-emc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qF-c7-6Tt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3496.8000000000002" y="1993.8530734632686"/>
+            <point key="canvasLocation" x="3534" y="1235"/>
         </scene>
         <!--User Info View Controller-->
         <scene sceneID="9Dn-29-8ex">
@@ -392,7 +390,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="4393" y="2309"/>
+            <point key="canvasLocation" x="3534" y="2100"/>
         </scene>
         <!--コメント履歴-->
         <scene sceneID="L1a-aZ-6mv">
@@ -414,12 +412,12 @@
                     <navigationItem key="navigationItem" title="コメント履歴" id="TB7-yC-SjZ"/>
                     <connections>
                         <outlet property="allCommentShabonTable" destination="ZRw-DB-aBr" id="JxA-Yx-bKv"/>
-                        <segue destination="9Ng-XU-Eez" kind="push" identifier="allCommentDetailSegue" id="cO4-bI-Zld"/>
+                        <segue destination="JOa-xY-I4q" kind="push" identifier="commentToContents" id="ypq-AQ-sHG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXU-ge-Us0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4658" y="1737"/>
+            <point key="canvasLocation" x="4361" y="1766"/>
         </scene>
         <!--All Comments Collection View Controller-->
         <scene sceneID="5Yl-Be-Pyq">
@@ -805,7 +803,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OjT-h2-nSy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4657" y="984"/>
+            <point key="canvasLocation" x="4361" y="956"/>
         </scene>
         <!--MyPage-->
         <scene sceneID="FYe-cr-suu">
@@ -834,7 +832,7 @@
         <image name="shabon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ubo-jr-8fC"/>
-        <segue reference="Uby-AE-S2X"/>
+        <segue reference="zVW-er-emc"/>
+        <segue reference="ypq-AQ-sHG"/>
     </inferredMetricsTieBreakers>
 </document>

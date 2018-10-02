@@ -88,16 +88,16 @@ extension AllCommentsViewController: UITableViewDelegate, UITableViewDataSource 
             locate_info_id = post["locate_info_id"]
         } else { locate_info_id = 0 }
         // コメント一覧へ遷移する.
-        self.performSegue(withIdentifier: "allCommentDetailSegue", sender: locate_info_id)
+        self.performSegue(withIdentifier: "commentToContents", sender: locate_info_id)
     }
     
     // Segueでの画面遷移時に呼び出される.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // コメント一覧への遷移の場合.
-        if segue.identifier == "allCommentDetailSegue" {
+        if segue.identifier == "commentToContents" {
             // 選択された投稿データをコメントViewControllerへ渡す.
             if let id = sender as? Int {
-                let vc = segue.destination as! MyShabonDetailViewController
+                let vc = segue.destination as! ShabonContentsViewController
                 vc.id = String(id)
             }
         }

@@ -58,6 +58,82 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
         }
         return cell
     }
+    //Mark: ヘッダーの大きさを設定する
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
+        
+        return 100
+    }
+    
+    //Mark: ヘッダーに設定するViewを設定する
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
+        
+        
+        
+        //ヘッダーにするビューを生成
+        let view = UIView()
+        view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100)
+        
+        
+        //ヘッダーに追加するラベルを生成
+        let locateLabel = UILabel()
+        locateLabel.frame =  CGRect(x: 0, y: 80, width: self.view.frame.size.width, height: 20)
+        let nayamiLabel = UILabel()
+        nayamiLabel.numberOfLines = 3
+        
+        nayamiLabel.frame = CGRect(x: 0, y: 0, width : self.view.frame.size.width, height: 80)
+        
+        var locateColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        var nayamiColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        if let locates = locates {
+            self.title = "\(locates["user"]["user_name"].string!)さんのシャボン玉"
+            locateLabel.text = "\(place)を移動中"
+            nayamiLabel.text = "\(locates["nayami"].string!)"
+            
+            let color = locates["color"].string!
+            switch color {
+            case "青":
+                locateColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 0.5000267551)
+                nayamiColor = #colorLiteral(red: 0.01680417731, green: 0.1983509958, blue: 1, alpha: 0.6962489298)
+            case "赤":
+                locateColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.1757009846)
+                nayamiColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.5597174658)
+            case "黄":
+                locateColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 0.6073416096)
+                nayamiColor = #colorLiteral(red: 1, green: 0.8323456645, blue: 0.4732058644, alpha: 1)
+            default:
+                print("カラーがないよ！")
+            }
+        }
+        
+        view.backgroundColor = locateColor
+        locateLabel.textColor = UIColor.white
+        nayamiLabel.textColor = UIColor.white
+        nayamiLabel.textAlignment = NSTextAlignment.center
+        nayamiLabel.backgroundColor = nayamiColor
+        nayamiLabel.layer.cornerRadius = 5
+        view.addSubview(locateLabel)
+        view.addSubview(nayamiLabel)
+        
+        return view
+    }
+    //行がタップされた時
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //選択状態を非表示にする
+        contentsTable.deselectRow(at: indexPath, animated: true)
+        if let locates = locates {
+            let id = locates["user_id"].int
+            // コメント一覧へ遷移する.
+            self.performSegue(withIdentifier: "contentsToUser", sender: id)
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "contentsToUser" {
+            if let id = sender as? Int {
+                let vc = segue.destination as! UserInfoViewController
+                vc.userId = String(id)
+            }
+        }
+    }
 }
 
 extension ShabonContentsViewController {
