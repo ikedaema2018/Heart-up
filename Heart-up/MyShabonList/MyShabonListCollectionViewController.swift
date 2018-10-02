@@ -56,7 +56,6 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print(sectionTitle.count)
         return sectionTitle.count
     }
     
@@ -72,10 +71,10 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
         guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "MyShabonListReusableView", for: indexPath) as? MyShabonListReusableView else {
             fatalError("Could not find proper header")
         }
-        
         if kind == UICollectionElementKindSectionHeader {
             header.sectionHeader.text = sectionTitle[indexPath.section] as? String
             return header

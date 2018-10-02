@@ -186,6 +186,7 @@
 		C81E84FF21436A4C006EDA5C /* Trash */ = {
 			isa = PBXGroup;
 			children = (
+				C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */,
 				C81E850021437F3C006EDA5C /* MyShabonTableViewCell */,
 				C894CFBC213CE787007957E2 /* MyShabonViewController.swift */,
 				C81E850621439144006EDA5C /* AllCommentsCollectionViewController.swift */,
@@ -255,7 +256,6 @@
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
 				C81BA8BF21514A250094AC00 /* CollectionViewClass */,
-				C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */,
 				C86E32D4212C3B98005A3D92 /* Assets.xcassets */,
 				C81E850821445E4C006EDA5C /* ProfileImageViewController.swift */,
 				C86E32D6212C3B98005A3D92 /* LaunchScreen.storyboard */,

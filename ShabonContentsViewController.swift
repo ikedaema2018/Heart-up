@@ -68,19 +68,18 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?{
         
         
-        
         //ヘッダーにするビューを生成
         let view = UIView()
-        view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100)
+        view.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 80)
         
         
         //ヘッダーに追加するラベルを生成
         let locateLabel = UILabel()
-        locateLabel.frame =  CGRect(x: 0, y: 80, width: self.view.frame.size.width, height: 20)
+        locateLabel.frame =  CGRect(x: 0, y: 60, width: self.view.frame.size.width, height: 20)
         let nayamiLabel = UILabel()
         nayamiLabel.numberOfLines = 3
         
-        nayamiLabel.frame = CGRect(x: 0, y: 0, width : self.view.frame.size.width, height: 80)
+        nayamiLabel.frame = CGRect(x: 0, y: 0, width : self.view.frame.size.width, height: 60)
         
         var locateColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         var nayamiColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -105,11 +104,11 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             }
         }
         
-        view.backgroundColor = locateColor
         locateLabel.textColor = UIColor.white
         nayamiLabel.textColor = UIColor.white
         nayamiLabel.textAlignment = NSTextAlignment.center
         nayamiLabel.backgroundColor = nayamiColor
+        locateLabel.backgroundColor = locateColor
         nayamiLabel.layer.cornerRadius = 5
         view.addSubview(locateLabel)
         view.addSubview(nayamiLabel)
