@@ -21,7 +21,7 @@ class ProfileImage: NSObject {
         
         // URLを作成.
 //        let url = "http://localhost:3000/profile_images?auth_token=" + auth_token
-        let url = "https://aqueous-temple-50173.herokuapp.com/profile_images?auth_token=" + auth_token
+        let url = "https://vast-brook-81265.herokuapp.com/profile_images?auth_token=" + auth_token
         
         // リクエストヘッダーを作成.
         // ここでは multipart/form-data 形式でAPIを実行する.

@@ -19,7 +19,7 @@ class PushToken: NSObject {
             return
         }
         //let url = "http://localhost:3000/push_infos?auth_token=" + auth_token
-        let url = "https://aqueous-temple-50173.herokuapp.com/push_infos?auth_token=" + auth_token
+        let url = "https://vast-brook-81265.herokuapp.com/push_infos?auth_token=" + auth_token
         let headers :HTTPHeaders = [ "Content-type": "application/json" ]
         let params: [String: Any] = [
             "push_infos": [

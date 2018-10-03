@@ -18,7 +18,7 @@ class ShabonAlert: NSObject {
             }
             return
         }
-                let url = "https://aqueous-temple-50173.herokuapp.com/shabon_alerts/show?auth_token=" + auth_token
+                let url = "https://vast-brook-81265.herokuapp.com/shabon_alerts/show?auth_token=" + auth_token
 //        let url = "http://localhost:3000/shabon_alerts/show?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
@@ -56,7 +56,7 @@ class ShabonAlert: NSObject {
 //            return
 //        }
         
-                let url = "https://aqueous-temple-50173.herokuapp.com/shabon_alerts/" + String(id) + "?auth_token=" + auth_token
+                let url = "https://vast-brook-81265.herokuapp.com/shabon_alerts/" + String(id) + "?auth_token=" + auth_token
 //        let url = "http://localhost:3000/shabon_alerts/" + String(id) + "?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
@@ -77,7 +77,7 @@ class ShabonAlert: NSObject {
             }
             return
         }
-                        let url = "https://aqueous-temple-50173.herokuapp.com/closer_alerts?auth_token=" + auth_token
+                        let url = "https://vast-brook-81265.herokuapp.com/closer_alerts?auth_token=" + auth_token
 //        let url = "http://localhost:3000/closer_alerts?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
@@ -108,7 +108,7 @@ class ShabonAlert: NSObject {
             return
         }
 
-                        let url = "https://aqueous-temple-50173.herokuapp.com/closer_alerts/" + String(id) + "?auth_token=" + auth_token
+                        let url = "https://vast-brook-81265.herokuapp.com/closer_alerts/" + String(id) + "?auth_token=" + auth_token
 //        let url = "http://localhost:3000/closer_alerts/" + String(id) + "?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in

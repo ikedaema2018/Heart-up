@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		40F403D5A84A2B112A3E275B /* Pods_Heart_up.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 824C26F179797FA7E617789D /* Pods_Heart_up.framework */; };
+		C81329D1216469E600B2027E /* ShabonContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329CE216469E600B2027E /* ShabonContentsViewController.swift */; };
+		C81329D2216469E600B2027E /* ShabonContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329CF216469E600B2027E /* ShabonContentsTableViewCell.swift */; };
+		C81329D3216469E600B2027E /* ShabonContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */; };
 		C8168D1621318122007084A1 /* MapModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D1521318122007084A1 /* MapModule.swift */; };
 		C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D692136AC01007084A1 /* detailShabonViewController.swift */; };
 		C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8168D6B2137BBB5007084A1 /* Login.storyboard */; };
@@ -57,9 +60,6 @@
 		C894CFD321415677007957E2 /* MyShabonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */; };
 		C894CFD621420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */; };
 		C894CFD721420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */; };
-		C8AA5BAB2162096C00523842 /* ShabonContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BAA2162096C00523842 /* ShabonContentsViewController.swift */; };
-		C8AA5BAE21620C9C00523842 /* ShabonContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BAC21620C9C00523842 /* ShabonContentsTableViewCell.swift */; };
-		C8AA5BAF21620C9C00523842 /* ShabonContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8AA5BAD21620C9C00523842 /* ShabonContentsTableViewCell.xib */; };
 		C8AA5BB1216378F700523842 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BB0216378F700523842 /* Distance.swift */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
@@ -69,6 +69,9 @@
 /* Begin PBXFileReference section */
 		824C26F179797FA7E617789D /* Pods_Heart_up.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Heart_up.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B82C928BC37825E7E92F0E89 /* Pods-Heart-up.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Heart-up.release.xcconfig"; path = "Pods/Target Support Files/Pods-Heart-up/Pods-Heart-up.release.xcconfig"; sourceTree = "<group>"; };
+		C81329CE216469E600B2027E /* ShabonContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShabonContentsViewController.swift; sourceTree = "<group>"; };
+		C81329CF216469E600B2027E /* ShabonContentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShabonContentsTableViewCell.swift; sourceTree = "<group>"; };
+		C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShabonContentsTableViewCell.xib; sourceTree = "<group>"; };
 		C8168D1521318122007084A1 /* MapModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModule.swift; sourceTree = "<group>"; };
 		C8168D692136AC01007084A1 /* detailShabonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = detailShabonViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/detailShabonViewController.swift"; sourceTree = "<absolute>"; };
 		C8168D6B2137BBB5007084A1 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -121,9 +124,6 @@
 		C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonDetailViewController.swift; sourceTree = "<group>"; };
 		C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonDetailCollectionViewCell.xib; sourceTree = "<group>"; };
-		C8AA5BAA2162096C00523842 /* ShabonContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonContentsViewController.swift; sourceTree = "<group>"; };
-		C8AA5BAC21620C9C00523842 /* ShabonContentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonContentsTableViewCell.swift; sourceTree = "<group>"; };
-		C8AA5BAD21620C9C00523842 /* ShabonContentsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShabonContentsTableViewCell.xib; sourceTree = "<group>"; };
 		C8AA5BB0216378F700523842 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
@@ -153,6 +153,16 @@
 				B82C928BC37825E7E92F0E89 /* Pods-Heart-up.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C81329CD216469E600B2027E /* ShabonContents */ = {
+			isa = PBXGroup;
+			children = (
+				C81329CE216469E600B2027E /* ShabonContentsViewController.swift */,
+				C81329CF216469E600B2027E /* ShabonContentsTableViewCell.swift */,
+				C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */,
+			);
+			path = ShabonContents;
 			sourceTree = "<group>";
 		};
 		C81BA8BC2150B4410094AC00 /* MyShabonCollectionViewCell */ = {
@@ -248,7 +258,7 @@
 				C81E8505214382F4006EDA5C /* AllCommentsTableCell */,
 				C81BA8BC2150B4410094AC00 /* MyShabonCollectionViewCell */,
 				C86E32CD212C3B97005A3D92 /* AppDelegate.swift */,
-				C8AA5BA92162093400523842 /* ShabonContents */,
+				C81329CD216469E600B2027E /* ShabonContents */,
 				C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */,
 				C86FE3622147A2DD00526196 /* ExplosionShabonDetailViewController.swift */,
 				C8168D772138EA78007084A1 /* UserResisterViewController.swift */,
@@ -277,17 +287,6 @@
 				824C26F179797FA7E617789D /* Pods_Heart_up.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C8AA5BA92162093400523842 /* ShabonContents */ = {
-			isa = PBXGroup;
-			children = (
-				C8AA5BAA2162096C00523842 /* ShabonContentsViewController.swift */,
-				C8AA5BAC21620C9C00523842 /* ShabonContentsTableViewCell.swift */,
-				C8AA5BAD21620C9C00523842 /* ShabonContentsTableViewCell.xib */,
-			);
-			name = ShabonContents;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		C8EB10CB212FD0D500B61D34 /* Models */ = {
@@ -398,7 +397,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8AA5BAF21620C9C00523842 /* ShabonContentsTableViewCell.xib in Resources */,
+				C81329D3216469E600B2027E /* ShabonContentsTableViewCell.xib in Resources */,
 				C81C73F72160AF0400D4C2E1 /* MyShabonListCell.xib in Resources */,
 				C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */,
 				C81E850421438026006EDA5C /* AllCommentsTableViewCell.xib in Resources */,
@@ -478,7 +477,6 @@
 				C81C73F2216099E500D4C2E1 /* MyShabonListCollectionViewController.swift in Sources */,
 				C81C73F62160AF0400D4C2E1 /* MyShabonListCell.swift in Sources */,
 				C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */,
-				C8AA5BAB2162096C00523842 /* ShabonContentsViewController.swift in Sources */,
 				C8168D70213813C4007084A1 /* Api.swift in Sources */,
 				C8168D1621318122007084A1 /* MapModule.swift in Sources */,
 				C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */,
@@ -502,10 +500,11 @@
 				C894CFD321415677007957E2 /* MyShabonDetailViewController.swift in Sources */,
 				C894CFBF213CF4ED007957E2 /* AllCommentsViewController.swift in Sources */,
 				C894CFB9213CE6DE007957E2 /* MyPageViewController.swift in Sources */,
-				C8AA5BAE21620C9C00523842 /* ShabonContentsTableViewCell.swift in Sources */,
 				C82CC491214D75E200F40AE7 /* CloserDetailCollectionViewController.swift in Sources */,
+				C81329D1216469E600B2027E /* ShabonContentsViewController.swift in Sources */,
 				C81E850F21464A63006EDA5C /* ShabonAlert.swift in Sources */,
 				C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */,
+				C81329D2216469E600B2027E /* ShabonContentsTableViewCell.swift in Sources */,
 				C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */,
 				C8168D72213836EE007084A1 /* Ext.swift in Sources */,
 				C8168D7A21395F56007084A1 /* ShabonPostViewController.swift in Sources */,

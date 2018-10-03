@@ -45,7 +45,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
 //        userDefaults.removeObject(forKey: "user_id")
-//        
+//
         mapView.delegate = self
         // tracking user location
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
@@ -211,7 +211,6 @@ extension ShowLocateViewController {
             self.locates = locates
             
             print("--------locates----------")
-            print(self.locates)
             
             //ここで１時間前までにアップデートしたユーザーを引っ張ってくる処理を書く
             UserLocate.currentUser {error, users in
