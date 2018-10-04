@@ -310,6 +310,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="fft-dA-KWv"/>
                     <connections>
+                        <outlet property="commentInput" destination="wGL-Iu-Uwh" id="wSF-5R-x9W"/>
                         <outlet property="contentsTable" destination="rnz-y3-WV7" id="nP3-dQ-tlO"/>
                         <segue destination="NEz-75-Qtu" kind="presentation" identifier="contentsToUser" id="zVW-er-emc"/>
                     </connections>
