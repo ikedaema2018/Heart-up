@@ -54,8 +54,7 @@ class MyPageViewController: UIViewController {
         
         selfIntroduceView.layer.borderWidth = 1.0
 //        selfIntroduceView.isEditable = false
-    
-        fetchData()
+
         
         // Do any additional setup after loading the view.
     }
@@ -83,7 +82,12 @@ class MyPageViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillHideNotification(_:)), name: .UIKeyboardWillHide, object: nil)
         fetchData()
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        removeObserver()
+    }
 }
 
 extension MyPageViewController {
@@ -137,7 +141,6 @@ extension MyPageViewController: UITextViewDelegate {
     
     // キーボードが現れた時に、画面全体をずらす。
     @objc private func handleKeyboardWillShowNotification(_ notification: Notification) {
-        print("-----dadw--------------------------")
         let userInfo = notification.userInfo //この中にキーボードの情報がある
         let keyboardSize = (userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let keyboardY = self.view.frame.size.height - keyboardSize.height //画面全体の高さ - キーボードの高さ = キーボードが被らない高さ
@@ -158,11 +161,8 @@ extension MyPageViewController: UITextViewDelegate {
 }
 
 extension MyPageViewController {
-    
-    
     // Notificationを削除
     func removeObserver() {
-        
         let notification = NotificationCenter.default
         notification.removeObserver(self)
     }
