@@ -72,7 +72,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Heart-up/ShowLocateViewController.swift"
-            timestampString = "560253399.572512"
+            timestampString = "560312625.901234"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "187"
@@ -287,6 +287,54 @@
             endingLineNumber = "172"
             landmarkName = "unknown"
             landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Heart-up/ShabonContents/ShabonContentsViewController.swift"
+            timestampString = "560312625.901674"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
+            landmarkName = "onTapAddComment()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Heart_up.ShabonContentsViewController.onTapAddComment() -&gt; ()"
+                  moduleName = "Heart-up"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maedakei/Library/Autosave%20Information/Heart-up/Heart-up/ShabonContents/ShabonContentsViewController.swift"
+                  timestampString = "560309144.421636"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "250"
+                  endingLineNumber = "250"
+                  offsetFromSymbolStart = "372">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (__ObjC.UIAlertAction) -&gt; () in Heart_up.ShabonContentsViewController.onTapAddComment() -&gt; ()"
+                  moduleName = "Heart-up"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/maedakei/Library/Autosave%20Information/Heart-up/Heart-up/ShabonContents/ShabonContentsViewController.swift"
+                  timestampString = "560309144.424427"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "252"
+                  endingLineNumber = "252"
+                  offsetFromSymbolStart = "49">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
