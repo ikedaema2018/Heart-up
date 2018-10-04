@@ -14,13 +14,56 @@ class ShabonContentsViewController: UIViewController {
     var id: String?
     var locates: JSON?
     var color: String?
+    var flag = false
     
     
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var commentInput: UITextField!
     
     @IBAction func postButton(_ sender: Any) {
-        print("testtest")
+        // タップされたら、入力内容を取得する.
+        guard let comment = commentInput.text else {
+            self.showAlert(message: "コメントを入力してね", hide: {})
+            return
+        }
+        
+        if commentInput.text == "" {
+            self.showAlert(message: "コメントを入力してね", hide: {})
+            return
+        }
+        
+        guard let anno_id = Int(self.id!) else {
+            return
+        }
+        
+        //ポストします
+        NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, callback: { error in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    self.showAlert(message: message, hide: {})
+                } else {
+                    self.showAlert(message: "エラーが発生しました", hide: {})
+                }
+                return
+            }
+            self.showAlert(message: "投稿しました", hide: { ()-> Void in
+                if self.locates!["nayami_comments"].count >= 9 {
+                    //アラートを出し、dismissでshowlocateに戻す
+                    // アラートの作成.
+                    let returnController = UIAlertController(title: "", message: "シャボン玉が破裂しました", preferredStyle: .alert)
+                    
+                    let returnAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                        //showLocateAlertに戻る処理
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    returnController.addAction(returnAction)
+                    self.present(returnController, animated: true, completion: nil)
+                }
+            })
+            
+            // コメントデータの再読み込み.
+            self.fetchData()
+        })
     }
     
     //逆ジオロケのため
@@ -250,8 +293,8 @@ extension ShabonContentsViewController {
             //   これをif文の中に入れることを忘れずに         userId != shabonUser &&
             
             if  self.locates!["nayami_comments"].count < 9 {
-                let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MyShabonDetailViewController.onTapAddComment))
-                self.navigationItem.setRightBarButton(navItem, animated: true)
+//                let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MyShabonDetailViewController.onTapAddComment))
+//                self.navigationItem.setRightBarButton(navItem, animated: true)
             }
         })
     }
@@ -259,71 +302,7 @@ extension ShabonContentsViewController {
     
     
     
-    //ナビバーの＋ボタンがクリックされた
-    @objc func onTapAddComment() {
-        // アラートの作成.
-        let alertController = UIAlertController(title: "", message: "コメントを入力してください。", preferredStyle: .alert)
-        
-        // 入力フィールドを追加.
-        alertController.addTextField { (textField) in
-            textField.placeholder = "コメント"
-        }
-        
-        // 「投稿する」ボタンを設置.
-        let confirmAction = UIAlertAction(title: "投稿する", style: .default) { (_) in
-            // タップされたら、入力内容を取得する.
-            guard let comment = alertController.textFields?[0].text else {
-                return
-            }
-            
-            if comment == "" {
-                self.showAlert(message: "コメントを入力してね", hide: {})
-                return
-            }
-            
-            guard let anno_id = Int(self.id!) else {
-                return
-            }
-            
-            //ポストします
-            NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, callback: { error in
-                if let error = error {
-                    if let message = error["message"] as? String {
-                        self.showAlert(message: message, hide: {})
-                    } else {
-                        self.showAlert(message: "エラーが発生しました", hide: {})
-                    }
-                    return
-                }
-                self.showAlert(message: "投稿しました", hide: { ()-> Void in
-                    if self.locates!["nayami_comments"].count >= 9 {
-                        //アラートを出し、dismissでshowlocateに戻す
-                        // アラートの作成.
-                        let returnController = UIAlertController(title: "", message: "シャボン玉が破裂しました", preferredStyle: .alert)
-                        
-                        // 「投稿する」ボタンを設置.
-                        let returnAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                            //showLocateAlertに戻る処理
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                        returnController.addAction(returnAction)
-                        self.present(returnController, animated: true, completion: nil)
-                    }
-                })
-                
-                // コメントデータの再読み込み.
-                self.fetchData()
-            })
-        }
-        alertController.addAction(confirmAction)
-        
-        // 「キャンセル」ボタンを設置.
-        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (_) in }
-        alertController.addAction(cancelAction)
-        
-        // アラートを表示する.
-        self.present(alertController, animated: true, completion: nil)
-    }
+   
 }
 
 extension ShabonContentsViewController: UITextFieldDelegate {
@@ -338,15 +317,17 @@ extension ShabonContentsViewController: UITextFieldDelegate {
         let keyboardSize = (userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let keyboardY = self.view.frame.size.height - keyboardSize.height //画面全体の高さ - キーボードの高さ = キーボードが被らない高さ
         let editingTextFieldY: CGFloat = (self.bottomView?.frame.origin.y)!
-        if editingTextFieldY > keyboardY - 60 {
+        if flag == false {
+            flag = true
             UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
-                self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextFieldY - (keyboardY - 60)), width: self.view.bounds.width, height: self.view.bounds.height)
+                self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextFieldY - (keyboardY - 80)), width: self.view.bounds.width, height: self.view.bounds.height)
             }, completion: nil)
         }
     }
     
     // キーボードが消えたときに、画面を戻す
     @objc private func handleKeyboardWillHideNotification(_ notification: Notification) {
+        flag = false
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         }, completion: nil)
@@ -359,4 +340,70 @@ extension ShabonContentsViewController {
         let notification = NotificationCenter.default
         notification.removeObserver(self)
     }
+    
+//    //ナビバーの＋ボタンがクリックされた
+//    @objc func onTapAddComment() {
+//        // アラートの作成.
+//        let alertController = UIAlertController(title: "", message: "コメントを入力してください。", preferredStyle: .alert)
+//
+//        // 入力フィールドを追加.
+//        alertController.addTextField { (textField) in
+//            textField.placeholder = "コメント"
+//        }
+//
+//        // 「投稿する」ボタンを設置.
+//        let confirmAction = UIAlertAction(title: "投稿する", style: .default) { (_) in
+//            // タップされたら、入力内容を取得する.
+//            guard let comment = alertController.textFields?[0].text else {
+//                return
+//            }
+//
+//            if comment == "" {
+//                self.showAlert(message: "コメントを入力してね", hide: {})
+//                return
+//            }
+//
+//            guard let anno_id = Int(self.id!) else {
+//                return
+//            }
+//
+//            //ポストします
+//            NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, callback: { error in
+//                if let error = error {
+//                    if let message = error["message"] as? String {
+//                        self.showAlert(message: message, hide: {})
+//                    } else {
+//                        self.showAlert(message: "エラーが発生しました", hide: {})
+//                    }
+//                    return
+//                }
+//                self.showAlert(message: "投稿しました", hide: { ()-> Void in
+//                    if self.locates!["nayami_comments"].count >= 9 {
+//                        //アラートを出し、dismissでshowlocateに戻す
+//                        // アラートの作成.
+//                        let returnController = UIAlertController(title: "", message: "シャボン玉が破裂しました", preferredStyle: .alert)
+//
+//                        // 「投稿する」ボタンを設置.
+//                        let returnAction = UIAlertAction(title: "OK", style: .default) { (_) in
+//                            //showLocateAlertに戻る処理
+//                            self.navigationController?.popViewController(animated: true)
+//                        }
+//                        returnController.addAction(returnAction)
+//                        self.present(returnController, animated: true, completion: nil)
+//                    }
+//                })
+//
+//                // コメントデータの再読み込み.
+//                self.fetchData()
+//            })
+//        }
+//        alertController.addAction(confirmAction)
+//
+//        // 「キャンセル」ボタンを設置.
+//        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (_) in }
+//        alertController.addAction(cancelAction)
+//
+//        // アラートを表示する.
+//        self.present(alertController, animated: true, completion: nil)
+//    }
 }
