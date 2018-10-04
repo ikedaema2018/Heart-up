@@ -49,8 +49,8 @@ class ShabonContentsViewController: UIViewController {
         fetchData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         removeObserver()
     }
     
@@ -338,11 +338,10 @@ extension ShabonContentsViewController: UITextFieldDelegate {
         let keyboardSize = (userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let keyboardY = self.view.frame.size.height - keyboardSize.height //画面全体の高さ - キーボードの高さ = キーボードが被らない高さ
         let editingTextFieldY: CGFloat = (self.bottomView?.frame.origin.y)!
-        if editingTextFieldY > keyboardY {
+        if editingTextFieldY > keyboardY - 60 {
             UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
-                self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - keyboardY, width: self.view.bounds.width, height: self.view.bounds.height)
+                self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextFieldY - (keyboardY - 60)), width: self.view.bounds.width, height: self.view.bounds.height)
             }, completion: nil)
-            
         }
     }
     
