@@ -11,6 +11,7 @@
 		C81329D1216469E600B2027E /* ShabonContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329CE216469E600B2027E /* ShabonContentsViewController.swift */; };
 		C81329D2216469E600B2027E /* ShabonContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329CF216469E600B2027E /* ShabonContentsTableViewCell.swift */; };
 		C81329D3216469E600B2027E /* ShabonContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */; };
+		C81329D52165B6DC00B2027E /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329D42165B6DC00B2027E /* DataUtils.swift */; };
 		C8168D1621318122007084A1 /* MapModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D1521318122007084A1 /* MapModule.swift */; };
 		C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D692136AC01007084A1 /* detailShabonViewController.swift */; };
 		C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8168D6B2137BBB5007084A1 /* Login.storyboard */; };
@@ -72,6 +73,7 @@
 		C81329CE216469E600B2027E /* ShabonContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShabonContentsViewController.swift; sourceTree = "<group>"; };
 		C81329CF216469E600B2027E /* ShabonContentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShabonContentsTableViewCell.swift; sourceTree = "<group>"; };
 		C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShabonContentsTableViewCell.xib; sourceTree = "<group>"; };
+		C81329D42165B6DC00B2027E /* DataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
 		C8168D1521318122007084A1 /* MapModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModule.swift; sourceTree = "<group>"; };
 		C8168D692136AC01007084A1 /* detailShabonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = detailShabonViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/detailShabonViewController.swift"; sourceTree = "<absolute>"; };
 		C8168D6B2137BBB5007084A1 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -322,6 +324,7 @@
 				C8EB10D0212FD12100B61D34 /* LocateInfo.swift */,
 				C894CFC0213F496D007957E2 /* Annotation.swift */,
 				C8AA5BB0216378F700523842 /* Distance.swift */,
+				C81329D42165B6DC00B2027E /* DataUtils.swift */,
 			);
 			path = "Model Object";
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				C81E850921445E4C006EDA5C /* ProfileImageViewController.swift in Sources */,
 				C894CFD321415677007957E2 /* MyShabonDetailViewController.swift in Sources */,
 				C894CFBF213CF4ED007957E2 /* AllCommentsViewController.swift in Sources */,
+				C81329D52165B6DC00B2027E /* DataUtils.swift in Sources */,
 				C894CFB9213CE6DE007957E2 /* MyPageViewController.swift in Sources */,
 				C82CC491214D75E200F40AE7 /* CloserDetailCollectionViewController.swift in Sources */,
 				C81329D1216469E600B2027E /* ShabonContentsViewController.swift in Sources */,
