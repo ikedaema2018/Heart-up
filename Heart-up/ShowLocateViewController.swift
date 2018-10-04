@@ -45,7 +45,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
 //        userDefaults.removeObject(forKey: "user_id")
-//
+
         mapView.delegate = self
         // tracking user location
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
@@ -54,7 +54,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         Distance.setUpJapan(map: mapView)
         
         // Do any additional setup after loading the view.
-        
     }
     
     override func didReceiveMemoryWarning() {
