@@ -19,6 +19,14 @@ class ShabonContentsViewController: UIViewController {
     
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var commentInput: UITextField!
+    @IBOutlet weak var submitButton: UIButton!
+    
+
+    @IBAction func stampbutton(_ sender: Any) {
+        print("dadawawdadwdwaw")
+    }
+    
+    
     
     @IBAction func postButton(_ sender: Any) {
         // タップされたら、入力内容を取得する.
@@ -60,7 +68,7 @@ class ShabonContentsViewController: UIViewController {
                     self.present(returnController, animated: true, completion: nil)
                 }
             })
-            
+            self.commentInput.text = ""
             // コメントデータの再読み込み.
             self.fetchData()
         })
@@ -406,4 +414,11 @@ extension ShabonContentsViewController {
 //        // アラートを表示する.
 //        self.present(alertController, animated: true, completion: nil)
 //    }
+}
+
+extension ShabonContentsViewController: UICollectionViewDelegate {
+    func setCollectionVIew() {
+        let collectionView = UICollectionView()
+//        collectionView.frame = CGRect(x: self.view.frame / 3, y: self.view.frame / 3, width: self.view.frame / 3, height: self.view.frame / 3)
+    }
 }

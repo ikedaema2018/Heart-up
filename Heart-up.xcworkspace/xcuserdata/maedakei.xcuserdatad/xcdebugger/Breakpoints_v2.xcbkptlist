@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Heart-up/ShowLocateViewController.swift"
-            timestampString = "560323654.848369"
+            timestampString = "560398593.504256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "viewDidAppear(_:)"
             landmarkType = "7">
             <Locations>
@@ -120,7 +120,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Heart-up/ShabonPostViewController.swift"
-            timestampString = "560335032.223248"
+            timestampString = "560398593.504553"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "84"

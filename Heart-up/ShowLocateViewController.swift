@@ -141,6 +141,10 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        userLocation.title = ""
+    }
+    
     // 表示領域が変化した後に呼ばれる
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         if zoomLevel != nil {

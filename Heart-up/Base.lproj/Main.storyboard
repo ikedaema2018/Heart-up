@@ -281,6 +281,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="576"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="8ns-1t-fFK">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                             </tableView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6B-sx-7fh">
                                 <rect key="frame" x="0.0" y="574" width="375" height="44"/>
@@ -301,6 +306,14 @@
                                             <action selector="postButton:" destination="JOa-xY-I4q" eventType="touchUpInside" id="1qO-qh-AGM"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oR7-a9-qZ1">
+                                        <rect key="frame" x="295" y="8" width="25" height="28"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="egao"/>
+                                        <connections>
+                                            <action selector="stampbutton:" destination="JOa-xY-I4q" eventType="touchUpInside" id="SV3-Bv-Ar9"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -313,6 +326,7 @@
                         <outlet property="bottomView" destination="p6B-sx-7fh" id="Tja-dq-M9f"/>
                         <outlet property="commentInput" destination="wGL-Iu-Uwh" id="wSF-5R-x9W"/>
                         <outlet property="contentsTable" destination="rnz-y3-WV7" id="nP3-dQ-tlO"/>
+                        <outlet property="submitButton" destination="WsZ-mz-68u" id="dBh-2G-aGf"/>
                         <segue destination="NEz-75-Qtu" kind="presentation" identifier="contentsToUser" id="zVW-er-emc"/>
                     </connections>
                 </viewController>
@@ -851,6 +865,7 @@
     </scenes>
     <resources>
         <image name="comment" width="30" height="30"/>
+        <image name="egao" width="256" height="256"/>
         <image name="japan" width="30" height="30"/>
         <image name="myPage" width="30" height="30"/>
         <image name="paper-plane" width="300" height="300"/>
