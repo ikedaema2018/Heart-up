@@ -46,7 +46,7 @@ class CloserDetailCollectionViewController: UIViewController {
                 return
             }
             //ポストします
-            NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, callback: { error in
+            NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, stampId: nil, callback: { error in
                 if let error = error {
                     if let message = error["message"] as? String {
                         self.showAlert(message: message, hide: {})
