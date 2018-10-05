@@ -16,15 +16,41 @@ class ShabonContentsViewController: UIViewController {
     var color: String?
     var flag = false
     
+    @IBOutlet weak var stampView: UIView!
+    
+    
     
     @IBOutlet weak var bottomView: UIView!
+    
+    
     @IBOutlet weak var commentInput: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     
 
     @IBAction func stampbutton(_ sender: Any) {
-        print("dadawawdadwdwaw")
+        stampView.isHidden = false
     }
+    
+    @IBAction func smileButton(_ sender: Any) {
+        postNayami(comment: nil, stampId: 1)
+    }
+    @IBAction func surprise(_ sender: Any) {
+        postNayami(comment: nil, stampId: 2)
+    }
+    @IBAction func tired(_ sender: Any) {
+        postNayami(comment: nil, stampId: 3)
+    }
+    @IBAction func sad(_ sender: Any) {
+        postNayami(comment: nil, stampId: 4)
+    }
+    
+    
+    
+    @IBAction func closeButton(_ sender: Any) {
+        stampView.isHidden = true
+    }
+    
+    
     
     
     
@@ -40,38 +66,7 @@ class ShabonContentsViewController: UIViewController {
             return
         }
         
-        guard let anno_id = Int(self.id!) else {
-            return
-        }
-        
-        //ポストします
-        NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, callback: { error in
-            if let error = error {
-                if let message = error["message"] as? String {
-                    self.showAlert(message: message, hide: {})
-                } else {
-                    self.showAlert(message: "エラーが発生しました", hide: {})
-                }
-                return
-            }
-            self.showAlert(message: "投稿しました", hide: { ()-> Void in
-                if self.locates!["nayami_comments"].count >= 9 {
-                    //アラートを出し、dismissでshowlocateに戻す
-                    // アラートの作成.
-                    let returnController = UIAlertController(title: "", message: "シャボン玉が破裂しました", preferredStyle: .alert)
-                    
-                    let returnAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                        //showLocateAlertに戻る処理
-                        self.navigationController?.popViewController(animated: true)
-                    }
-                    returnController.addAction(returnAction)
-                    self.present(returnController, animated: true, completion: nil)
-                }
-            })
-            self.commentInput.text = ""
-            // コメントデータの再読み込み.
-            self.fetchData()
-        })
+        postNayami(comment: comment, stampId: nil)
     }
     
     //逆ジオロケのため
@@ -83,6 +78,8 @@ class ShabonContentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        stampView.isHidden = true
         contentsTable.register(UINib(nibName: "ShabonContentsTableViewCell", bundle: nil), forCellReuseIdentifier: "ShabonContentsCell")
         contentsTable.delegate = self
         contentsTable.dataSource = self
@@ -416,9 +413,42 @@ extension ShabonContentsViewController {
 //    }
 }
 
-extension ShabonContentsViewController: UICollectionViewDelegate {
+extension ShabonContentsViewController {
     func setCollectionVIew() {
-        let collectionView = UICollectionView()
-//        collectionView.frame = CGRect(x: self.view.frame / 3, y: self.view.frame / 3, width: self.view.frame / 3, height: self.view.frame / 3)
+
+    }
+    func postNayami(comment: String?, stampId: Int?){
+        guard let anno_id = Int(self.id!) else {
+            return
+        }
+        
+        //ポストします
+        NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, stampId: stampId, callback: { error in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    self.showAlert(message: message, hide: {})
+                } else {
+                    self.showAlert(message: "エラーが発生しました", hide: {})
+                }
+                return
+            }
+            self.showAlert(message: "投稿しました", hide: { ()-> Void in
+                if self.locates!["nayami_comments"].count >= 9 {
+                    //アラートを出し、dismissでshowlocateに戻す
+                    // アラートの作成.
+                    let returnController = UIAlertController(title: "", message: "シャボン玉が破裂しました", preferredStyle: .alert)
+                    
+                    let returnAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                        //showLocateAlertに戻る処理
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                    returnController.addAction(returnAction)
+                    self.present(returnController, animated: true, completion: nil)
+                }
+            })
+            self.commentInput.text = ""
+            // コメントデータの再読み込み.
+            self.fetchData()
+        })
     }
 }

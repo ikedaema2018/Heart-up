@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class NayamiComment: NSObject {
-    class func nayamiCommentPost(locate_info_id: Int, comment: String, callback: @escaping ([String: Any]?) -> Void) {
+    class func nayamiCommentPost(locate_info_id: Int, comment: String?, stampId: Int?, callback: @escaping ([String: Any]?) -> Void) {
         guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                 appDelegate.showLoginStoryboard()
@@ -20,12 +20,29 @@ class NayamiComment: NSObject {
         }
                 let url = "https://vast-brook-81265.herokuapp.com/nayami_comments?auth_token=" + auth_token
 //        let url = "http://localhost:3000/nayami_comments?auth_token=" + auth_token
-         let params = [
-            "nayami_comment": [
-                "locate_info_id": locate_info_id,
-                "nayami_comment": comment
+        
+        //numberかstringで分岐
+        let params: [String : [String : Any]]
+        
+        if let comment = comment {
+            params = [
+                "nayami_comment": [
+                    "locate_info_id": locate_info_id,
+                    "nayami_comment": comment
+                ]
             ]
-        ]
+        } else if let stampId = stampId {
+            params = [
+                "nayami_comment": [
+                    "locate_info_id": locate_info_id,
+                    "stamp_id": stampId
+                ]
+            ]
+        } else {
+            print("ここここで何らかのエラー文を出力してください")
+            return
+        }
+        
         
         Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
             switch response.result {

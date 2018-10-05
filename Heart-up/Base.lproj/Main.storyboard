@@ -287,6 +287,53 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N3m-WE-uVf">
+                                <rect key="frame" x="67" y="183" width="240" height="302"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNf-TW-Dh1">
+                                        <rect key="frame" x="8" y="8" width="117" height="105"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="egao"/>
+                                        <connections>
+                                            <action selector="smileButton:" destination="JOa-xY-I4q" eventType="touchUpInside" id="r3H-b6-JdR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0e5-LZ-PEO">
+                                        <rect key="frame" x="133" y="8" width="99" height="105"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="bittkuri"/>
+                                        <connections>
+                                            <action selector="surprise:" destination="JOa-xY-I4q" eventType="touchUpInside" id="zs3-dk-39M"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bA1-pz-AJa">
+                                        <rect key="frame" x="8" y="121" width="105" height="105"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="gurottuki-"/>
+                                        <connections>
+                                            <action selector="tired:" destination="JOa-xY-I4q" eventType="touchUpInside" id="bg7-wb-FLI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQ4-bJ-wkb">
+                                        <rect key="frame" x="121" y="121" width="111" height="105"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="kanaii"/>
+                                        <connections>
+                                            <action selector="sad:" destination="JOa-xY-I4q" eventType="touchUpInside" id="KTo-ke-Ukx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJd-f3-c2I">
+                                        <rect key="frame" x="8" y="254" width="218" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="閉じる"/>
+                                        <connections>
+                                            <action selector="closeButton:" destination="JOa-xY-I4q" eventType="touchUpInside" id="6d5-MW-Yqn"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p6B-sx-7fh">
                                 <rect key="frame" x="0.0" y="574" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -326,6 +373,7 @@
                         <outlet property="bottomView" destination="p6B-sx-7fh" id="Tja-dq-M9f"/>
                         <outlet property="commentInput" destination="wGL-Iu-Uwh" id="wSF-5R-x9W"/>
                         <outlet property="contentsTable" destination="rnz-y3-WV7" id="nP3-dQ-tlO"/>
+                        <outlet property="stampView" destination="N3m-WE-uVf" id="XJl-no-6ss"/>
                         <outlet property="submitButton" destination="WsZ-mz-68u" id="dBh-2G-aGf"/>
                         <segue destination="NEz-75-Qtu" kind="presentation" identifier="contentsToUser" id="zVW-er-emc"/>
                     </connections>
@@ -864,9 +912,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bittkuri" width="256" height="256"/>
         <image name="comment" width="30" height="30"/>
         <image name="egao" width="256" height="256"/>
+        <image name="gurottuki-" width="256" height="256"/>
         <image name="japan" width="30" height="30"/>
+        <image name="kanaii" width="256" height="256"/>
         <image name="myPage" width="30" height="30"/>
         <image name="paper-plane" width="300" height="300"/>
         <image name="shabon" width="30" height="30"/>
