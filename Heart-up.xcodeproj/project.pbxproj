@@ -12,6 +12,7 @@
 		C81329D2216469E600B2027E /* ShabonContentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329CF216469E600B2027E /* ShabonContentsTableViewCell.swift */; };
 		C81329D3216469E600B2027E /* ShabonContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */; };
 		C81329D52165B6DC00B2027E /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329D42165B6DC00B2027E /* DataUtils.swift */; };
+		C81329F52168816200B2027E /* FirstMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329F42168816100B2027E /* FirstMovieViewController.swift */; };
 		C8168D1621318122007084A1 /* MapModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D1521318122007084A1 /* MapModule.swift */; };
 		C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D692136AC01007084A1 /* detailShabonViewController.swift */; };
 		C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8168D6B2137BBB5007084A1 /* Login.storyboard */; };
@@ -74,6 +75,7 @@
 		C81329CF216469E600B2027E /* ShabonContentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShabonContentsTableViewCell.swift; sourceTree = "<group>"; };
 		C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShabonContentsTableViewCell.xib; sourceTree = "<group>"; };
 		C81329D42165B6DC00B2027E /* DataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
+		C81329F42168816100B2027E /* FirstMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMovieViewController.swift; sourceTree = "<group>"; };
 		C8168D1521318122007084A1 /* MapModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModule.swift; sourceTree = "<group>"; };
 		C8168D692136AC01007084A1 /* detailShabonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = detailShabonViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/detailShabonViewController.swift"; sourceTree = "<absolute>"; };
 		C8168D6B2137BBB5007084A1 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
 				C81BA8BF21514A250094AC00 /* CollectionViewClass */,
 				C86E32D4212C3B98005A3D92 /* Assets.xcassets */,
+				C81329F42168816100B2027E /* FirstMovieViewController.swift */,
 				C81E850821445E4C006EDA5C /* ProfileImageViewController.swift */,
 				C86E32D6212C3B98005A3D92 /* LaunchScreen.storyboard */,
 				C8168D6D2137C99B007084A1 /* LoginViewController.swift */,
@@ -478,6 +481,7 @@
 				C81E850721439144006EDA5C /* AllCommentsCollectionViewController.swift in Sources */,
 				C8AA5BB1216378F700523842 /* Distance.swift in Sources */,
 				C81C73F2216099E500D4C2E1 /* MyShabonListCollectionViewController.swift in Sources */,
+				C81329F52168816200B2027E /* FirstMovieViewController.swift in Sources */,
 				C81C73F62160AF0400D4C2E1 /* MyShabonListCell.swift in Sources */,
 				C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */,
 				C8168D70213813C4007084A1 /* Api.swift in Sources */,

@@ -15,6 +15,9 @@ class ShabonContentsTableViewCell: UITableViewCell {
     @IBOutlet weak var nayamiView: UIView!
     @IBOutlet weak var nayamiLabel: UILabel!
     @IBOutlet weak var toukou_day: UILabel!
+    @IBOutlet weak var stampView: UIImageView!
+    
+    
     
     var shabonColor: String?
     var comment: JSON? {
@@ -44,7 +47,7 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 default:
                     print("シャボンカラーがないよ！")
                 }
-                nayamiView.backgroundColor = color
+                nayamiLabel.backgroundColor = color
             }
             
             //文字列をDate型にformatするコピペ
@@ -58,11 +61,30 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 toukou_day.font = UIFont.systemFont(ofSize: 11)
             }
             
-            nayamiLabel.text = comment["nayami_comment"].string
-            nayamiView.layer.cornerRadius = 20
-            nayamiView.layer.borderWidth = 0.5
-            nayamiView.layer.borderColor = UIColor.black.cgColor
-            nayamiView.layer.cornerRadius = 5.0
+            if comment["nayami_comment"].string != nil {
+                stampView.isHidden = true
+                nayamiLabel.isHidden = false
+                nayamiLabel.text = comment["nayami_comment"].string
+                //            nayamiView.layer.cornerRadius = 20
+                nayamiLabel.layer.borderWidth = 0.5
+                nayamiLabel.layer.borderColor = UIColor.black.cgColor
+                nayamiLabel.layer.cornerRadius = 5.0
+            }
+            if let stampId = comment["stamp_id"].int {
+                nayamiLabel.isHidden = true
+                stampView.isHidden = false
+                if stampId == 1 {
+                    stampView.image = UIImage(named: "egao")
+                } else if stampId == 2 {
+                    stampView.image = UIImage(named: "bittkuri")
+                } else if stampId == 3 {
+                    stampView.image = UIImage(named: "gurottuki-")
+                } else if stampId == 4 {
+                    stampView.image = UIImage(named: "kanaii")
+                }
+            }
+            
+
         }
     }
     

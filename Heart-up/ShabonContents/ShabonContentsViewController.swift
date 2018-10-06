@@ -33,26 +33,24 @@ class ShabonContentsViewController: UIViewController {
     
     @IBAction func smileButton(_ sender: Any) {
         postNayami(comment: nil, stampId: 1)
+        stampView.isHidden = true
     }
     @IBAction func surprise(_ sender: Any) {
         postNayami(comment: nil, stampId: 2)
+        stampView.isHidden = true
     }
     @IBAction func tired(_ sender: Any) {
         postNayami(comment: nil, stampId: 3)
+        stampView.isHidden = true
     }
     @IBAction func sad(_ sender: Any) {
         postNayami(comment: nil, stampId: 4)
+        stampView.isHidden = true
     }
-    
-    
     
     @IBAction func closeButton(_ sender: Any) {
         stampView.isHidden = true
     }
-    
-    
-    
-    
     
     @IBAction func postButton(_ sender: Any) {
         // タップされたら、入力内容を取得する.
