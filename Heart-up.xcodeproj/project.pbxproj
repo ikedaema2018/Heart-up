@@ -13,7 +13,8 @@
 		C81329D3216469E600B2027E /* ShabonContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */; };
 		C81329D52165B6DC00B2027E /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329D42165B6DC00B2027E /* DataUtils.swift */; };
 		C81329F52168816200B2027E /* FirstMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329F42168816100B2027E /* FirstMovieViewController.swift */; };
-		C81329F921688BDA00B2027E /* shabonView.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C81329F821688BD900B2027E /* shabonView.mp4 */; };
+		C81329FB2168B31300B2027E /* AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329FA2168B31300B2027E /* AVPlayerView.swift */; };
+		C81329FE2168FD9900B2027E /* shabonView3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C81329FD2168FD8F00B2027E /* shabonView3.mp4 */; };
 		C8168D1621318122007084A1 /* MapModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D1521318122007084A1 /* MapModule.swift */; };
 		C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D692136AC01007084A1 /* detailShabonViewController.swift */; };
 		C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8168D6B2137BBB5007084A1 /* Login.storyboard */; };
@@ -77,7 +78,8 @@
 		C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShabonContentsTableViewCell.xib; sourceTree = "<group>"; };
 		C81329D42165B6DC00B2027E /* DataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
 		C81329F42168816100B2027E /* FirstMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMovieViewController.swift; sourceTree = "<group>"; };
-		C81329F821688BD900B2027E /* shabonView.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = shabonView.mp4; sourceTree = "<group>"; };
+		C81329FA2168B31300B2027E /* AVPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AVPlayerView.swift; path = "Heart-up/Models/AVPlayerView.swift"; sourceTree = "<group>"; };
+		C81329FD2168FD8F00B2027E /* shabonView3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = shabonView3.mp4; sourceTree = SOURCE_ROOT; };
 		C8168D1521318122007084A1 /* MapModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModule.swift; sourceTree = "<group>"; };
 		C8168D692136AC01007084A1 /* detailShabonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = detailShabonViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/detailShabonViewController.swift"; sourceTree = "<absolute>"; };
 		C8168D6B2137BBB5007084A1 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -239,7 +241,7 @@
 		C86E32C1212C3B97005A3D92 = {
 			isa = PBXGroup;
 			children = (
-				C81329F821688BD900B2027E /* shabonView.mp4 */,
+				C81329FA2168B31300B2027E /* AVPlayerView.swift */,
 				C86E32CC212C3B97005A3D92 /* Heart-up */,
 				C86E32CB212C3B97005A3D92 /* Products */,
 				C86E32ED212D1B67005A3D92 /* Frameworks */,
@@ -274,6 +276,7 @@
 				C84DE6452155468800406A64 /* GoogleService-Info.plist */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
+				C81329FD2168FD8F00B2027E /* shabonView3.mp4 */,
 				C81BA8BF21514A250094AC00 /* CollectionViewClass */,
 				C86E32D4212C3B98005A3D92 /* Assets.xcassets */,
 				C81329F42168816100B2027E /* FirstMovieViewController.swift */,
@@ -406,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C81329FE2168FD9900B2027E /* shabonView3.mp4 in Resources */,
 				C81329D3216469E600B2027E /* ShabonContentsTableViewCell.xib in Resources */,
 				C81C73F72160AF0400D4C2E1 /* MyShabonListCell.xib in Resources */,
 				C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */,
@@ -418,7 +422,6 @@
 				C894CFD721420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib in Resources */,
 				C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */,
 				C81BA8BB2150B3B80094AC00 /* MyShabonCollectionViewCell.xib in Resources */,
-				C81329F921688BDA00B2027E /* shabonView.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -478,6 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C81329FB2168B31300B2027E /* AVPlayerView.swift in Sources */,
 				C8168D782138EA78007084A1 /* UserResisterViewController.swift in Sources */,
 				C81E850B2144B32F006EDA5C /* ProfileImage.swift in Sources */,
 				C894CFC1213F496D007957E2 /* Annotation.swift in Sources */,

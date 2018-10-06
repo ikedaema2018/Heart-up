@@ -675,6 +675,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="hwS-S5-CE6"/>
                     </view>
+                    <connections>
+                        <segue destination="Zen-qk-s39" kind="show" identifier="showLocateSegue" id="nHP-0g-vjP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofP-qp-phI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
