@@ -14,7 +14,7 @@ class FirstMovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Bundle Resourcesからsample.mp4を読み込んで再生
-        let path = Bundle.main.path(forResource: "sample", ofType: "mp4")!
+        let path = Bundle.main.path(forResource: "shabonView", ofType: "mp4")!
         let player = AVPlayer(url: URL(fileURLWithPath: path))
         player.play()
         
