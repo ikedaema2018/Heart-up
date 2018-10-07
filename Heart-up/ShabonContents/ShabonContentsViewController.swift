@@ -123,11 +123,14 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentsTable.dequeueReusableCell(withIdentifier: "ShabonContentsCell", for: indexPath) as! ShabonContentsTableViewCell
-        cell.replyOutret.addTarget(self, action: #selector(self.replyViewDisplay), for: .touchDown)
         if let locates = locates {
+            
             if let color = color {
                 cell.shabonColor = color
             }
+            //replyButtonを認識するための
+            cell.replyOutret.tag = locates["nayami_comments"][locates["nayami_comments"].count - 1 - indexPath.row]["id"].int!
+            cell.replyOutret.addTarget(self, action: #selector(self.replyViewDisplay), for: .touchDown)
             cell.comment = locates["nayami_comments"][locates["nayami_comments"].count - 1 - indexPath.row]
         }
         return cell
@@ -447,10 +450,69 @@ extension ShabonContentsViewController {
         })
     }
     
-    @objc func replyViewDisplay(){
-        let TestView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 250, height: 250))
-        let bgColor = UIColor.white
-        TestView.backgroundColor = bgColor
-        self.view.addSubview(TestView)
+    @objc func replyViewDisplay(sender:UIButton){
+        print(sender.tag)
+        // アラートの作成.
+        //        let alertController = UIAlertController(title: "", message: "コメントを入力してください。", preferredStyle: .alert)
+        //
+        //        // 入力フィールドを追加.
+        //        alertController.addTextField { (textField) in
+        //            textField.placeholder = "コメント"
+        //        }
+        //
+        //        // 「投稿する」ボタンを設置.
+        //        let confirmAction = UIAlertAction(title: "投稿する", style: .default) { (_) in
+        //            // タップされたら、入力内容を取得する.
+        //            guard let comment = alertController.textFields?[0].text else {
+        //                return
+        //            }
+        //
+        //            if comment == "" {
+        //                self.showAlert(message: "コメントを入力してね", hide: {})
+        //                return
+        //            }
+        //
+        //            guard let anno_id = Int(self.id!) else {
+        //                return
+        //            }
+        //
+        //            //ポストします
+        //            NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, callback: { error in
+        //                if let error = error {
+        //                    if let message = error["message"] as? String {
+        //                        self.showAlert(message: message, hide: {})
+        //                    } else {
+        //                        self.showAlert(message: "エラーが発生しました", hide: {})
+        //                    }
+        //                    return
+        //                }
+        //                self.showAlert(message: "投稿しました", hide: { ()-> Void in
+        //                    if self.locates!["nayami_comments"].count >= 9 {
+        //                        //アラートを出し、dismissでshowlocateに戻す
+        //                        // アラートの作成.
+        //                        let returnController = UIAlertController(title: "", message: "シャボン玉が破裂しました", preferredStyle: .alert)
+        //
+        //                        // 「投稿する」ボタンを設置.
+        //                        let returnAction = UIAlertAction(title: "OK", style: .default) { (_) in
+        //                            //showLocateAlertに戻る処理
+        //                            self.navigationController?.popViewController(animated: true)
+        //                        }
+        //                        returnController.addAction(returnAction)
+        //                        self.present(returnController, animated: true, completion: nil)
+        //                    }
+        //                })
+        //
+        //                // コメントデータの再読み込み.
+        //                self.fetchData()
+        //            })
+        //        }
+        //        alertController.addAction(confirmAction)
+        //
+        //        // 「キャンセル」ボタンを設置.
+        //        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (_) in }
+        //        alertController.addAction(cancelAction)
+        //
+        //        // アラートを表示する.
+        //        self.present(alertController, animated: true, completion: nil)
     }
 }
