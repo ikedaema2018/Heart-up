@@ -16,6 +16,8 @@ class ShabonContentsViewController: UIViewController {
     var color: String?
     var flag = false
     
+
+    
     @IBOutlet weak var stampView: UIView!
     
     @IBOutlet weak var bottomView: UIView!
@@ -73,7 +75,6 @@ class ShabonContentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         stampView.isHidden = true
         contentsTable.register(UINib(nibName: "ShabonContentsTableViewCell", bundle: nil), forCellReuseIdentifier: "ShabonContentsCell")
         contentsTable.delegate = self
@@ -447,6 +448,9 @@ extension ShabonContentsViewController {
     }
     
     @objc func replyViewDisplay(){
-        print("dwdaw")
+        let TestView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: 250, height: 250))
+        let bgColor = UIColor.white
+        TestView.backgroundColor = bgColor
+        self.view.addSubview(TestView)
     }
 }
