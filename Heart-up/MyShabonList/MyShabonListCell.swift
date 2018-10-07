@@ -75,12 +75,8 @@ class MyShabonListCell: UICollectionViewCell {
         // Initialization code
     }
     
-    /*
-     
-     乱数を生成するメソッド.
-     
-     */
     
+     //乱数を生成するメソッド.
     func getRandomNumber(Min _Min : Float, Max _Max : Float)->Float {
         return ( Float(arc4random_uniform(UINT32_MAX)) / Float(UINT32_MAX) ) * (_Max - _Min) + _Min
     }

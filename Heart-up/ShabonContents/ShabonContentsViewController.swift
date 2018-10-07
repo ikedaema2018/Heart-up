@@ -18,8 +18,6 @@ class ShabonContentsViewController: UIViewController {
     
     @IBOutlet weak var stampView: UIView!
     
-    
-    
     @IBOutlet weak var bottomView: UIView!
     
     
@@ -63,7 +61,6 @@ class ShabonContentsViewController: UIViewController {
             self.showAlert(message: "コメントを入力してね", hide: {})
             return
         }
-        
         postNayami(comment: comment, stampId: nil)
     }
     
@@ -125,6 +122,7 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = contentsTable.dequeueReusableCell(withIdentifier: "ShabonContentsCell", for: indexPath) as! ShabonContentsTableViewCell
+        cell.replyOutret.addTarget(self, action: #selector(self.replyViewDisplay), for: .touchDown)
         if let locates = locates {
             if let color = color {
                 cell.shabonColor = color
@@ -412,9 +410,7 @@ extension ShabonContentsViewController {
 }
 
 extension ShabonContentsViewController {
-    func setCollectionVIew() {
-
-    }
+    
     func postNayami(comment: String?, stampId: Int?){
         guard let anno_id = Int(self.id!) else {
             return
@@ -448,5 +444,9 @@ extension ShabonContentsViewController {
             // コメントデータの再読み込み.
             self.fetchData()
         })
+    }
+    
+    @objc func replyViewDisplay(){
+        print("dwdaw")
     }
 }

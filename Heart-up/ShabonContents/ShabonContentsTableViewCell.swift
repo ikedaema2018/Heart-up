@@ -16,12 +16,13 @@ class ShabonContentsTableViewCell: UITableViewCell {
     @IBOutlet weak var nayamiLabel: UILabel!
     @IBOutlet weak var toukou_day: UILabel!
     @IBOutlet weak var stampView: UIImageView!
-    
-    
+    @IBOutlet weak var replyOutret: UIButton!
+
     
     var shabonColor: String?
     var comment: JSON? {
         didSet {
+            replyOutret.layer.cornerRadius = 13
             userProfile.clipsToBounds = true
             guard let comment = comment else {
                 return
