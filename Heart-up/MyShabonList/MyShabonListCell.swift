@@ -16,6 +16,9 @@ class MyShabonListCell: UICollectionViewCell {
     @IBOutlet weak var shabonBackGround: UIView!
     
     func setupCell(comment: [String: Any]) {
+        //アニメーション表示のためheddenに
+        self.alpha = 0.0
+        
         shabonTitle.text = comment["nayami"] as! String
         shabonTitle.adjustsFontSizeToFitWidth = true
         shabonBackGround.layer.cornerRadius = self.frame.width / 2
@@ -58,12 +61,28 @@ class MyShabonListCell: UICollectionViewCell {
                 newNayami.image = nil
             }
         }
+        
+        //シャボン玉が現れるまでをランダムで
+        let random = getRandomNumber(Min: 0, Max: 0.3)
+        UIView.animate(withDuration: 0.2, delay: TimeInterval(random), animations: {
+            self.alpha = 1.0
+        }, completion: nil)
     }
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    /*
+     
+     乱数を生成するメソッド.
+     
+     */
+    
+    func getRandomNumber(Min _Min : Float, Max _Max : Float)->Float {
+        return ( Float(arc4random_uniform(UINT32_MAX)) / Float(UINT32_MAX) ) * (_Max - _Min) + _Min
     }
 
 }

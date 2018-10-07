@@ -16,6 +16,7 @@ class MyShabonCollectionViewCell: UICollectionViewCell {
     
     
     func setupCell(comment: JSON?, color: String) {
+        
         guard let user_id = UserDefaults.standard.string(forKey: "user_id") else {
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                 appDelegate.showLoginStoryboard()

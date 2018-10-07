@@ -83,8 +83,6 @@ class ShabonContentsTableViewCell: UITableViewCell {
                     stampView.image = UIImage(named: "kanaii")
                 }
             }
-            
-
         }
     }
     
