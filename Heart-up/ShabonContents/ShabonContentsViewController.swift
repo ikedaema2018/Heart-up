@@ -71,6 +71,7 @@ class ShabonContentsViewController: UIViewController {
         super.viewDidLoad()
         stampView.isHidden = true
         contentsTable.register(UINib(nibName: "ShabonContentsTableViewCell", bundle: nil), forCellReuseIdentifier: "ShabonContentsCell")
+        contentsTable.register(UINib(nibName: "replyCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "replyCommentTableViewCell")
         contentsTable.delegate = self
         contentsTable.dataSource = self
         commentInput.delegate = self
@@ -126,7 +127,7 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
         //もしreplyコメントなら
         if nayamiAndReply[indexPath.row]["reply_comment"] != nil {
             //返信なら
-            let cell = contentsTable.dequeueReusableCell(withIdentifier: "ShabonContentsCell", for: indexPath) as! ShabonContentsTableViewCell
+            let cell = contentsTable.dequeueReusableCell(withIdentifier: "replyCommentTableViewCell", for: indexPath) as! replyCommentTableViewCell
             if let color = color {
                 cell.shabonColor = color
             }
@@ -221,7 +222,6 @@ extension ShabonContentsViewController {
     
     
     func fetchData(){
-        print("-----o-ooo-oiojiojijijijijijijijijijijijijijijij")
         guard let shabonId = id else {
             return
         }
