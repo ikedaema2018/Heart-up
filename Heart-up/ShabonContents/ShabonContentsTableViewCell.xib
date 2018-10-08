@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,13 +20,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="367" height="99.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wek-dV-XRV">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wek-dV-XRV">
                         <rect key="frame" x="0.0" y="24" width="50" height="50"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="Bto-Ng-Xza"/>
+                            <constraint firstAttribute="height" constant="50" id="u2h-Sx-2zG"/>
+                        </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bvq-F7-ZiH">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bvq-F7-ZiH">
                         <rect key="frame" x="58" y="10" width="302" height="78"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2fK-AO-BOb">
                                 <rect key="frame" x="97" y="8" width="210" height="62"/>
@@ -66,16 +69,30 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roE-f7-SPw">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roE-f7-SPw">
                         <rect key="frame" x="328" y="73" width="32" height="26"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="32" id="EdW-34-F5v"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <state key="normal" title="返信">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="bvq-F7-ZiH" firstAttribute="leading" secondItem="wek-dV-XRV" secondAttribute="trailing" constant="8" id="3UF-8Y-0n8"/>
+                    <constraint firstItem="roE-f7-SPw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="62" id="MFY-iA-jJw"/>
+                    <constraint firstItem="wek-dV-XRV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="gYW-jT-OiD"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="bvq-F7-ZiH" secondAttribute="trailing" constant="-9" id="gwv-Be-08Z"/>
+                    <constraint firstItem="bvq-F7-ZiH" firstAttribute="trailing" secondItem="roE-f7-SPw" secondAttribute="trailing" id="hbZ-sl-Nft"/>
+                    <constraint firstAttribute="bottom" secondItem="wek-dV-XRV" secondAttribute="bottom" constant="25.5" id="lm9-Q7-7nl"/>
+                    <constraint firstItem="bvq-F7-ZiH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="oNx-OP-tJ6"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="roE-f7-SPw" secondAttribute="bottom" constant="-10" id="oPv-Qv-aMb"/>
+                    <constraint firstItem="wek-dV-XRV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pDL-bW-L81"/>
+                    <constraint firstItem="bvq-F7-ZiH" firstAttribute="centerY" secondItem="wek-dV-XRV" secondAttribute="centerY" id="z67-wi-v4g"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>

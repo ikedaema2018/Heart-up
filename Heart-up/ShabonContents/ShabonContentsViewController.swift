@@ -75,6 +75,9 @@ class ShabonContentsViewController: UIViewController {
         contentsTable.delegate = self
         contentsTable.dataSource = self
         commentInput.delegate = self
+        
+        contentsTable.rowHeight = UITableViewAutomaticDimension
+//        contentsTable.estimatedRowHeight = 44.0
         // Do any additional setup after loading the view.
     }
     
