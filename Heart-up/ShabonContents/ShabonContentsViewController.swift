@@ -16,7 +16,12 @@ class ShabonContentsViewController: UIViewController {
     var color: String?
     var flag = false
     
-
+    //返信機能実装のための変数
+    //nayami_commentをセルにした時に1づつ追加
+    var nayamiIncrement = 0
+    //replyを回す数
+    var replyCount = 0
+    
     
     @IBOutlet weak var stampView: UIView!
     
@@ -31,7 +36,7 @@ class ShabonContentsViewController: UIViewController {
         stampView.isHidden = false
     }
     
-    @IBAction func smileButton(_ sender: Any) {
+    @IBAction func awaButton(_ sender: Any) {
         postNayami(comment: nil, stampId: 1)
         stampView.isHidden = true
     }
@@ -43,7 +48,7 @@ class ShabonContentsViewController: UIViewController {
         postNayami(comment: nil, stampId: 3)
         stampView.isHidden = true
     }
-    @IBAction func sad(_ sender: Any) {
+    @IBAction func ase(_ sender: Any) {
         postNayami(comment: nil, stampId: 4)
         stampView.isHidden = true
     }
@@ -115,6 +120,12 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let locates = locates {
+            var replyAll = 0
+            //全てのnayami_commentsに含まれるreplyの総数
+            for nayamiComment in locates["nayami_comments"] {
+                replyAll += nayamiComment.1["reply_comments"].count
+            }
+            print(replyAll)
             return locates["nayami_comments"].count
         } else {
             return 0
@@ -129,9 +140,10 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
                 cell.shabonColor = color
             }
             //replyButtonを認識するための
-            cell.replyOutret.tag = locates["nayami_comments"][locates["nayami_comments"].count - 1 - indexPath.row]["id"].int!
+            let reverseNayami = locates["nayami_comments"].reversed()
+            cell.replyOutret.tag = reverseNayami[indexPath.row].1["id"].int!
             cell.replyOutret.addTarget(self, action: #selector(self.replyViewDisplay), for: .touchDown)
-            cell.comment = locates["nayami_comments"][locates["nayami_comments"].count - 1 - indexPath.row]
+            cell.comment = reverseNayami[indexPath.row].1
         }
         return cell
     }
@@ -451,68 +463,47 @@ extension ShabonContentsViewController {
     }
     
     @objc func replyViewDisplay(sender:UIButton){
-        print(sender.tag)
         // アラートの作成.
-        //        let alertController = UIAlertController(title: "", message: "コメントを入力してください。", preferredStyle: .alert)
-        //
-        //        // 入力フィールドを追加.
-        //        alertController.addTextField { (textField) in
-        //            textField.placeholder = "コメント"
-        //        }
-        //
-        //        // 「投稿する」ボタンを設置.
-        //        let confirmAction = UIAlertAction(title: "投稿する", style: .default) { (_) in
-        //            // タップされたら、入力内容を取得する.
-        //            guard let comment = alertController.textFields?[0].text else {
-        //                return
-        //            }
-        //
-        //            if comment == "" {
-        //                self.showAlert(message: "コメントを入力してね", hide: {})
-        //                return
-        //            }
-        //
-        //            guard let anno_id = Int(self.id!) else {
-        //                return
-        //            }
-        //
-        //            //ポストします
-        //            NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, callback: { error in
-        //                if let error = error {
-        //                    if let message = error["message"] as? String {
-        //                        self.showAlert(message: message, hide: {})
-        //                    } else {
-        //                        self.showAlert(message: "エラーが発生しました", hide: {})
-        //                    }
-        //                    return
-        //                }
-        //                self.showAlert(message: "投稿しました", hide: { ()-> Void in
-        //                    if self.locates!["nayami_comments"].count >= 9 {
-        //                        //アラートを出し、dismissでshowlocateに戻す
-        //                        // アラートの作成.
-        //                        let returnController = UIAlertController(title: "", message: "シャボン玉が破裂しました", preferredStyle: .alert)
-        //
-        //                        // 「投稿する」ボタンを設置.
-        //                        let returnAction = UIAlertAction(title: "OK", style: .default) { (_) in
-        //                            //showLocateAlertに戻る処理
-        //                            self.navigationController?.popViewController(animated: true)
-        //                        }
-        //                        returnController.addAction(returnAction)
-        //                        self.present(returnController, animated: true, completion: nil)
-        //                    }
-        //                })
-        //
-        //                // コメントデータの再読み込み.
-        //                self.fetchData()
-        //            })
-        //        }
-        //        alertController.addAction(confirmAction)
-        //
-        //        // 「キャンセル」ボタンを設置.
-        //        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (_) in }
-        //        alertController.addAction(cancelAction)
-        //
-        //        // アラートを表示する.
-        //        self.present(alertController, animated: true, completion: nil)
+                let alertController = UIAlertController(title: "", message: "コメントを入力してください。", preferredStyle: .alert)
+                // 入力フィールドを追加.
+                alertController.addTextField { (textField) in
+                    textField.placeholder = "コメント"
+                }
+                // 「投稿する」ボタンを設置.
+                let confirmAction = UIAlertAction(title: "投稿する", style: .default) { (_) in
+                    // タップされたら、入力内容を取得する.
+                    guard let comment = alertController.textFields?[0].text else {
+                        return
+                    }
+        
+                    if comment == "" {
+                        self.showAlert(message: "コメントを入力してね", hide: {})
+                        return
+                    }
+        
+                    //ポストします
+                    ReplyComment.replyCommentPost(nayami_comment_id: sender.tag, comment: comment, callback: { error in
+                        if let error = error {
+                            if let message = error["message"] as? String {
+                                self.showAlert(message: message, hide: {})
+                            } else {
+                                self.showAlert(message: "エラーが発生しました", hide: {})
+                            }
+                            return
+                        }
+                        self.showAlert(message: "返信しました", hide: { ()-> Void in
+                        })
+                        // コメントデータの再読み込み.
+                        self.fetchData()
+                    })
+                }
+                alertController.addAction(confirmAction)
+        
+                // 「キャンセル」ボタンを設置.
+                let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (_) in }
+                alertController.addAction(cancelAction)
+        
+                // アラートを表示する.
+                self.present(alertController, animated: true, completion: nil)
     }
 }

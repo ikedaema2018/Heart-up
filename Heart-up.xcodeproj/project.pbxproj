@@ -15,7 +15,6 @@
 		C81329F52168816200B2027E /* FirstMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329F42168816100B2027E /* FirstMovieViewController.swift */; };
 		C81329FE2168FD9900B2027E /* shabonView3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C81329FD2168FD8F00B2027E /* shabonView3.mp4 */; };
 		C8132A002169AAFD00B2027E /* AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329FF2169AAFD00B2027E /* AVPlayerView.swift */; };
-		C8132A022169AFFA00B2027E /* FadeClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8132A012169AFFA00B2027E /* FadeClass.swift */; };
 		C8168D1621318122007084A1 /* MapModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D1521318122007084A1 /* MapModule.swift */; };
 		C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D692136AC01007084A1 /* detailShabonViewController.swift */; };
 		C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8168D6B2137BBB5007084A1 /* Login.storyboard */; };
@@ -65,6 +64,7 @@
 		C894CFD321415677007957E2 /* MyShabonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */; };
 		C894CFD621420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */; };
 		C894CFD721420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */; };
+		C8A8F440216A465F00382BEE /* ReplyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F43F216A465F00382BEE /* ReplyComment.swift */; };
 		C8AA5BB1216378F700523842 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BB0216378F700523842 /* Distance.swift */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
@@ -81,7 +81,6 @@
 		C81329F42168816100B2027E /* FirstMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMovieViewController.swift; sourceTree = "<group>"; };
 		C81329FD2168FD8F00B2027E /* shabonView3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = shabonView3.mp4; sourceTree = SOURCE_ROOT; };
 		C81329FF2169AAFD00B2027E /* AVPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVPlayerView.swift; sourceTree = "<group>"; };
-		C8132A012169AFFA00B2027E /* FadeClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeClass.swift; sourceTree = "<group>"; };
 		C8168D1521318122007084A1 /* MapModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModule.swift; sourceTree = "<group>"; };
 		C8168D692136AC01007084A1 /* detailShabonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = detailShabonViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/detailShabonViewController.swift"; sourceTree = "<absolute>"; };
 		C8168D6B2137BBB5007084A1 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -134,6 +133,7 @@
 		C894CFD221415677007957E2 /* MyShabonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonDetailViewController.swift; sourceTree = "<group>"; };
 		C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		C8A8F43F216A465F00382BEE /* ReplyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyComment.swift; sourceTree = "<group>"; };
 		C8AA5BB0216378F700523842 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
@@ -271,7 +271,6 @@
 				C81329CD216469E600B2027E /* ShabonContents */,
 				C81BA8C02151E0A40094AC00 /* UserInfoViewController.swift */,
 				C81329FF2169AAFD00B2027E /* AVPlayerView.swift */,
-				C8132A012169AFFA00B2027E /* FadeClass.swift */,
 				C86FE3622147A2DD00526196 /* ExplosionShabonDetailViewController.swift */,
 				C8168D772138EA78007084A1 /* UserResisterViewController.swift */,
 				C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */,
@@ -326,6 +325,7 @@
 				C86FE366214A311F00526196 /* UserLocate.swift */,
 				C8168D1521318122007084A1 /* MapModule.swift */,
 				C87CBF042155E79A007D6F0C /* PushToken.swift */,
+				C8A8F43F216A465F00382BEE /* ReplyComment.swift */,
 			);
 			path = "Model Manager";
 			sourceTree = "<group>";
@@ -491,7 +491,7 @@
 				C81E850B2144B32F006EDA5C /* ProfileImage.swift in Sources */,
 				C894CFC1213F496D007957E2 /* Annotation.swift in Sources */,
 				C87CBF052155E79A007D6F0C /* PushToken.swift in Sources */,
-				C8132A022169AFFA00B2027E /* FadeClass.swift in Sources */,
+				C8A8F440216A465F00382BEE /* ReplyComment.swift in Sources */,
 				C81E850721439144006EDA5C /* AllCommentsCollectionViewController.swift in Sources */,
 				C8AA5BB1216378F700523842 /* Distance.swift in Sources */,
 				C81C73F2216099E500D4C2E1 /* MyShabonListCollectionViewController.swift in Sources */,

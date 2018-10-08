@@ -75,13 +75,13 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 nayamiLabel.isHidden = true
                 stampView.isHidden = false
                 if stampId == 1 {
-                    stampView.image = UIImage(named: "egao")
+                    stampView.image = UIImage(named: "awa")
                 } else if stampId == 2 {
                     stampView.image = UIImage(named: "bittkuri")
                 } else if stampId == 3 {
                     stampView.image = UIImage(named: "gurottuki-")
                 } else if stampId == 4 {
-                    stampView.image = UIImage(named: "kanaii")
+                    stampView.image = UIImage(named: "ase")
                 }
             }
         }

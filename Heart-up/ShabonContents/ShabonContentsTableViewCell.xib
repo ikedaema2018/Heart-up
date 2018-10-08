@@ -68,7 +68,7 @@
                 <outlet property="toukou_day" destination="3Zl-YM-2mV" id="ciw-dy-WtH"/>
                 <outlet property="userProfile" destination="wek-dV-XRV" id="BrZ-tU-A0i"/>
             </connections>
-            <point key="canvasLocation" x="426.5" y="160"/>
+            <point key="canvasLocation" x="372" y="154"/>
         </tableViewCell>
     </objects>
 </document>

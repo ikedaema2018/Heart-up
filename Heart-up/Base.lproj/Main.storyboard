@@ -294,9 +294,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNf-TW-Dh1">
                                         <rect key="frame" x="8" y="8" width="117" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="egao"/>
+                                        <state key="normal" title="Button" image="awa"/>
                                         <connections>
-                                            <action selector="smileButton:" destination="JOa-xY-I4q" eventType="touchUpInside" id="r3H-b6-JdR"/>
+                                            <action selector="awaButton:" destination="JOa-xY-I4q" eventType="touchUpInside" id="SPb-4z-yTE"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0e5-LZ-PEO">
@@ -318,9 +318,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQ4-bJ-wkb">
                                         <rect key="frame" x="121" y="121" width="111" height="105"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="kanaii"/>
+                                        <state key="normal" title="Button" image="ase"/>
                                         <connections>
-                                            <action selector="sad:" destination="JOa-xY-I4q" eventType="touchUpInside" id="KTo-ke-Ukx"/>
+                                            <action selector="ase:" destination="JOa-xY-I4q" eventType="touchUpInside" id="OrV-gi-WSM"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJd-f3-c2I">
@@ -356,7 +356,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oR7-a9-qZ1">
                                         <rect key="frame" x="295" y="8" width="25" height="28"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="egao"/>
+                                        <state key="normal" title="Button" image="bero"/>
                                         <connections>
                                             <action selector="stampbutton:" destination="JOa-xY-I4q" eventType="touchUpInside" id="SV3-Bv-Ar9"/>
                                         </connections>
@@ -930,12 +930,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ase" width="256" height="256"/>
+        <image name="awa" width="256" height="256"/>
+        <image name="bero" width="256" height="256"/>
         <image name="bittkuri" width="256" height="256"/>
         <image name="comment" width="30" height="30"/>
-        <image name="egao" width="256" height="256"/>
         <image name="gurottuki-" width="256" height="256"/>
         <image name="japan" width="30" height="30"/>
-        <image name="kanaii" width="256" height="256"/>
         <image name="myPage" width="30" height="30"/>
         <image name="paper-plane" width="300" height="300"/>
         <image name="shabon" width="30" height="30"/>
