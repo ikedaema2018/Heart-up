@@ -70,7 +70,6 @@ class ShabonContentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         stampView.isHidden = true
-        contentsTable.register(UINib(nibName: "replyCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "replyCommentTableViewCell")
         contentsTable.register(UINib(nibName: "ShabonContentsTableViewCell", bundle: nil), forCellReuseIdentifier: "ShabonContentsCell")
         contentsTable.delegate = self
         contentsTable.dataSource = self
@@ -127,13 +126,18 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
         //もしreplyコメントなら
         if nayamiAndReply[indexPath.row]["reply_comment"] != nil {
             //返信なら
-            let cell = contentsTable.dequeueReusableCell(withIdentifier: "replyCommentTableViewCell", for: indexPath) as! replyCommentTableViewCell
-            return cell
-        }else{
             let cell = contentsTable.dequeueReusableCell(withIdentifier: "ShabonContentsCell", for: indexPath) as! ShabonContentsTableViewCell
-                if let color = color {
-                    cell.shabonColor = color
-                }
+            if let color = color {
+                cell.shabonColor = color
+            }
+            cell.reply = nayamiAndReply[indexPath.row]
+            return cell
+        }else
+        {
+            let cell = contentsTable.dequeueReusableCell(withIdentifier: "ShabonContentsCell", for: indexPath) as! ShabonContentsTableViewCell
+            if let color = color {
+                cell.shabonColor = color
+            }
             //replyButtonを認識するための
             cell.replyOutret.tag = nayamiAndReply[indexPath.row]["id"].int!
             cell.replyOutret.addTarget(self, action: #selector(self.replyViewDisplay), for: .touchDown)
@@ -196,13 +200,11 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     
     //行がタップされた時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        //選択状態を非表示にする
-//        contentsTable.deselectRow(at: indexPath, animated: true)
-//        if let locates = locates {
-//            let id = locates["nayami_comments"][locates["nayami_comments"].count - 1 - indexPath.row]["user_id"].int
-//            // コメント一覧へ遷移する.
-//            self.performSegue(withIdentifier: "contentsToUser", sender: id)
-//        }
+        //選択状態を非表示にする
+        contentsTable.deselectRow(at: indexPath, animated: true)
+        let id = nayamiAndReply[indexPath.row]["user_id"].int
+        // コメント一覧へ遷移する.
+        self.performSegue(withIdentifier: "contentsToUser", sender: id)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -219,6 +221,7 @@ extension ShabonContentsViewController {
     
     
     func fetchData(){
+        print("-----o-ooo-oiojiojijijijijijijijijijijijijijijij")
         guard let shabonId = id else {
             return
         }
@@ -236,6 +239,7 @@ extension ShabonContentsViewController {
             }
             
             self.locates = locate
+            self.nayamiAndReply = []
             //locateを回してnayami_commentsとreplyを足した配列を作る
             for i in 0..<locate!["nayami_comments"].count {
                 self.nayamiAndReply.append(locate!["nayami_comments"][locate!["nayami_comments"].count - i - 1])
@@ -274,7 +278,7 @@ extension ShabonContentsViewController {
                     return
                 }
                 self.kyori = Distance.distance(current: (la: latitude, lo: longitude), target: (la: fLatitude, lo: fLongitude))
-                        // 画面を再描画する.
+                        // 再読み込み
                         self.contentsTable.reloadData()
                 }
             
