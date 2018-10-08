@@ -65,6 +65,8 @@
 		C894CFD621420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */; };
 		C894CFD721420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */; };
 		C8A8F440216A465F00382BEE /* ReplyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F43F216A465F00382BEE /* ReplyComment.swift */; };
+		C8A8F443216B3E7000382BEE /* replyCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F441216B3E7000382BEE /* replyCommentTableViewCell.swift */; };
+		C8A8F444216B3E7000382BEE /* replyCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8A8F442216B3E7000382BEE /* replyCommentTableViewCell.xib */; };
 		C8AA5BB1216378F700523842 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BB0216378F700523842 /* Distance.swift */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
@@ -134,6 +136,8 @@
 		C894CFD421420E0B007957E2 /* MyShabonDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyShabonDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		C894CFD521420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyShabonDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		C8A8F43F216A465F00382BEE /* ReplyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyComment.swift; sourceTree = "<group>"; };
+		C8A8F441216B3E7000382BEE /* replyCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = replyCommentTableViewCell.swift; sourceTree = "<group>"; };
+		C8A8F442216B3E7000382BEE /* replyCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = replyCommentTableViewCell.xib; sourceTree = "<group>"; };
 		C8AA5BB0216378F700523842 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				C81329CE216469E600B2027E /* ShabonContentsViewController.swift */,
 				C81329CF216469E600B2027E /* ShabonContentsTableViewCell.swift */,
 				C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */,
+				C8A8F441216B3E7000382BEE /* replyCommentTableViewCell.swift */,
+				C8A8F442216B3E7000382BEE /* replyCommentTableViewCell.xib */,
 			);
 			path = ShabonContents;
 			sourceTree = "<group>";
@@ -418,6 +424,7 @@
 				C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */,
 				C81E850421438026006EDA5C /* AllCommentsTableViewCell.xib in Resources */,
 				C84DE6462155468900406A64 /* GoogleService-Info.plist in Resources */,
+				C8A8F444216B3E7000382BEE /* replyCommentTableViewCell.xib in Resources */,
 				C86E32D8212C3B98005A3D92 /* LaunchScreen.storyboard in Resources */,
 				C894CFCE2140D32B007957E2 /* MyShabonTableViewCell.xib in Resources */,
 				C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */,
@@ -506,6 +513,7 @@
 				C86E32CE212C3B97005A3D92 /* AppDelegate.swift in Sources */,
 				C86FE367214A311F00526196 /* UserLocate.swift in Sources */,
 				C81BA8BE215149C70094AC00 /* CollectionViewFooter.swift in Sources */,
+				C8A8F443216B3E7000382BEE /* replyCommentTableViewCell.swift in Sources */,
 				C81C73EE215F572B00D4C2E1 /* MKMapView+ZoomLevel.swift in Sources */,
 				C8168D762138DF05007084A1 /* UserRegister.swift in Sources */,
 				C894CFBD213CE787007957E2 /* MyShabonViewController.swift in Sources */,

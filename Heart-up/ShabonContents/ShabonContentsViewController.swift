@@ -13,21 +13,12 @@ import CoreLocation
 class ShabonContentsViewController: UIViewController {
     var id: String?
     var locates: JSON?
+    var nayamiAndReply: [JSON] = []
     var color: String?
     var flag = false
     
-    //返信機能実装のための変数
-    //nayami_commentをセルにした時に1づつ追加
-    var nayamiIncrement = 0
-    //replyを回す数
-    var replyCount = 0
-    
-    
     @IBOutlet weak var stampView: UIView!
-    
     @IBOutlet weak var bottomView: UIView!
-    
-    
     @IBOutlet weak var commentInput: UITextField!
     @IBOutlet weak var submitButton: UIButton!
     
@@ -35,7 +26,6 @@ class ShabonContentsViewController: UIViewController {
     @IBAction func stampbutton(_ sender: Any) {
         stampView.isHidden = false
     }
-    
     @IBAction func awaButton(_ sender: Any) {
         postNayami(comment: nil, stampId: 1)
         stampView.isHidden = true
@@ -52,7 +42,6 @@ class ShabonContentsViewController: UIViewController {
         postNayami(comment: nil, stampId: 4)
         stampView.isHidden = true
     }
-    
     @IBAction func closeButton(_ sender: Any) {
         stampView.isHidden = true
     }
@@ -81,6 +70,7 @@ class ShabonContentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         stampView.isHidden = true
+        contentsTable.register(UINib(nibName: "replyCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "replyCommentTableViewCell")
         contentsTable.register(UINib(nibName: "ShabonContentsTableViewCell", bundle: nil), forCellReuseIdentifier: "ShabonContentsCell")
         contentsTable.delegate = self
         contentsTable.dataSource = self
@@ -95,6 +85,8 @@ class ShabonContentsViewController: UIViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillShowNotification(_:)), name: .UIKeyboardWillShow, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillHideNotification(_:)), name: .UIKeyboardWillHide, object: nil)
+        
+
         fetchData()
     }
     
@@ -125,27 +117,29 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             for nayamiComment in locates["nayami_comments"] {
                 replyAll += nayamiComment.1["reply_comments"].count
             }
-            print(replyAll)
-            return locates["nayami_comments"].count
+            return locates["nayami_comments"].count + replyAll
         } else {
             return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = contentsTable.dequeueReusableCell(withIdentifier: "ShabonContentsCell", for: indexPath) as! ShabonContentsTableViewCell
-        if let locates = locates {
-            
-            if let color = color {
-                cell.shabonColor = color
-            }
+        //もしreplyコメントなら
+        if nayamiAndReply[indexPath.row]["reply_comment"] != nil {
+            //返信なら
+            let cell = contentsTable.dequeueReusableCell(withIdentifier: "replyCommentTableViewCell", for: indexPath) as! replyCommentTableViewCell
+            return cell
+        }else{
+            let cell = contentsTable.dequeueReusableCell(withIdentifier: "ShabonContentsCell", for: indexPath) as! ShabonContentsTableViewCell
+                if let color = color {
+                    cell.shabonColor = color
+                }
             //replyButtonを認識するための
-            let reverseNayami = locates["nayami_comments"].reversed()
-            cell.replyOutret.tag = reverseNayami[indexPath.row].1["id"].int!
+            cell.replyOutret.tag = nayamiAndReply[indexPath.row]["id"].int!
             cell.replyOutret.addTarget(self, action: #selector(self.replyViewDisplay), for: .touchDown)
-            cell.comment = reverseNayami[indexPath.row].1
+            cell.comment = nayamiAndReply[indexPath.row]
+            return cell
         }
-        return cell
     }
     //Mark: ヘッダーの大きさを設定する
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
@@ -202,14 +196,15 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     
     //行がタップされた時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //選択状態を非表示にする
-        contentsTable.deselectRow(at: indexPath, animated: true)
-        if let locates = locates {
-            let id = locates["nayami_comments"][locates["nayami_comments"].count - 1 - indexPath.row]["user_id"].int
-            // コメント一覧へ遷移する.
-            self.performSegue(withIdentifier: "contentsToUser", sender: id)
-        }
+//        //選択状態を非表示にする
+//        contentsTable.deselectRow(at: indexPath, animated: true)
+//        if let locates = locates {
+//            let id = locates["nayami_comments"][locates["nayami_comments"].count - 1 - indexPath.row]["user_id"].int
+//            // コメント一覧へ遷移する.
+//            self.performSegue(withIdentifier: "contentsToUser", sender: id)
+//        }
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "contentsToUser" {
             if let id = sender as? Int {
@@ -241,14 +236,16 @@ extension ShabonContentsViewController {
             }
             
             self.locates = locate
-            // 画面全体に色を設定
-//            if self.locates!["color"].string == "赤" {
-//                self.view.backgroundColor = UIColor.red
-//            } else if self.locates!["color"].string == "青" {
-//                self.view.backgroundColor = UIColor.blue
-//            } else if self.locates!["color"].string == "黄" {
-//                self.view.backgroundColor = UIColor.yellow
-//            }
+            //locateを回してnayami_commentsとreplyを足した配列を作る
+            for i in 0..<locate!["nayami_comments"].count {
+                self.nayamiAndReply.append(locate!["nayami_comments"][locate!["nayami_comments"].count - i - 1])
+                if !locate!["nayami_comments"][locate!["nayami_comments"].count - i - 1]["reply_comments"].isEmpty {
+                    for reply in locate!["nayami_comments"][locate!["nayami_comments"].count - i - 1]["reply_comments"] {
+                        self.nayamiAndReply.append(reply.1)
+                    }
+                }
+            }
+
             self.color = self.locates!["color"].string
             
             guard let longitude = locate!["keido"].double, let latitude = locate!["ido"].double else {
@@ -273,28 +270,12 @@ extension ShabonContentsViewController {
                 //もし["first_locates"]がnilじゃなかったら距離を取得
                 let firstLocate = self.locates!["first_locate"]
 
-                
                 guard let fLatitude = firstLocate["ido"].double, let fLongitude = firstLocate["keido"].double else {
                     return
                 }
-                
                 self.kyori = Distance.distance(current: (la: latitude, lo: longitude), target: (la: fLatitude, lo: fLongitude))
-                //firstLocationを求める処理
-//                    let fLocation = CLLocation(latitude: fLatitude, longitude: fLongitude)
-//                    geocoder.reverseGeocodeLocation(fLocation) { (placemarks, error) in
-//                        if let placemarks = placemarks {
-
-//                            if let pm = placemarks.first {
-//                                //placeを初期化
-//                                self.fPlace = ""
-//                                self.fPlace += pm.administrativeArea ?? ""
-//                                self.fPlace += pm.locality ?? ""
-//                                self.fPlace += pm.subLocality ?? ""
-//                            }
                         // 画面を再描画する.
                         self.contentsTable.reloadData()
-//                        }
-//                    }
                 }
             
             
@@ -310,8 +291,8 @@ extension ShabonContentsViewController {
             //   これをif文の中に入れることを忘れずに         userId != shabonUser &&
             
             if  self.locates!["nayami_comments"].count < 9 {
-//                let navItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MyShabonDetailViewController.onTapAddComment))
-//                self.navigationItem.setRightBarButton(navItem, animated: true)
+                //チャットを消す
+                
             }
         })
     }
@@ -357,72 +338,6 @@ extension ShabonContentsViewController {
         let notification = NotificationCenter.default
         notification.removeObserver(self)
     }
-    
-//    //ナビバーの＋ボタンがクリックされた
-//    @objc func onTapAddComment() {
-//        // アラートの作成.
-//        let alertController = UIAlertController(title: "", message: "コメントを入力してください。", preferredStyle: .alert)
-//
-//        // 入力フィールドを追加.
-//        alertController.addTextField { (textField) in
-//            textField.placeholder = "コメント"
-//        }
-//
-//        // 「投稿する」ボタンを設置.
-//        let confirmAction = UIAlertAction(title: "投稿する", style: .default) { (_) in
-//            // タップされたら、入力内容を取得する.
-//            guard let comment = alertController.textFields?[0].text else {
-//                return
-//            }
-//
-//            if comment == "" {
-//                self.showAlert(message: "コメントを入力してね", hide: {})
-//                return
-//            }
-//
-//            guard let anno_id = Int(self.id!) else {
-//                return
-//            }
-//
-//            //ポストします
-//            NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, callback: { error in
-//                if let error = error {
-//                    if let message = error["message"] as? String {
-//                        self.showAlert(message: message, hide: {})
-//                    } else {
-//                        self.showAlert(message: "エラーが発生しました", hide: {})
-//                    }
-//                    return
-//                }
-//                self.showAlert(message: "投稿しました", hide: { ()-> Void in
-//                    if self.locates!["nayami_comments"].count >= 9 {
-//                        //アラートを出し、dismissでshowlocateに戻す
-//                        // アラートの作成.
-//                        let returnController = UIAlertController(title: "", message: "シャボン玉が破裂しました", preferredStyle: .alert)
-//
-//                        // 「投稿する」ボタンを設置.
-//                        let returnAction = UIAlertAction(title: "OK", style: .default) { (_) in
-//                            //showLocateAlertに戻る処理
-//                            self.navigationController?.popViewController(animated: true)
-//                        }
-//                        returnController.addAction(returnAction)
-//                        self.present(returnController, animated: true, completion: nil)
-//                    }
-//                })
-//
-//                // コメントデータの再読み込み.
-//                self.fetchData()
-//            })
-//        }
-//        alertController.addAction(confirmAction)
-//
-//        // 「キャンセル」ボタンを設置.
-//        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel) { (_) in }
-//        alertController.addAction(cancelAction)
-//
-//        // アラートを表示する.
-//        self.present(alertController, animated: true, completion: nil)
-//    }
 }
 
 extension ShabonContentsViewController {
