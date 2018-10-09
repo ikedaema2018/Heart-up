@@ -67,6 +67,8 @@
 		C8A8F440216A465F00382BEE /* ReplyComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F43F216A465F00382BEE /* ReplyComment.swift */; };
 		C8A8F443216B3E7000382BEE /* replyCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F441216B3E7000382BEE /* replyCommentTableViewCell.swift */; };
 		C8A8F444216B3E7000382BEE /* replyCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8A8F442216B3E7000382BEE /* replyCommentTableViewCell.xib */; };
+		C8A8F446216C4D9100382BEE /* NayamiCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F445216C4D9100382BEE /* NayamiCommentModel.swift */; };
+		C8A8F448216C636800382BEE /* LocateInfoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F447216C636800382BEE /* LocateInfoDetail.swift */; };
 		C8AA5BB1216378F700523842 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BB0216378F700523842 /* Distance.swift */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
@@ -138,6 +140,8 @@
 		C8A8F43F216A465F00382BEE /* ReplyComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyComment.swift; sourceTree = "<group>"; };
 		C8A8F441216B3E7000382BEE /* replyCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = replyCommentTableViewCell.swift; sourceTree = "<group>"; };
 		C8A8F442216B3E7000382BEE /* replyCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = replyCommentTableViewCell.xib; sourceTree = "<group>"; };
+		C8A8F445216C4D9100382BEE /* NayamiCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NayamiCommentModel.swift; sourceTree = "<group>"; };
+		C8A8F447216C636800382BEE /* LocateInfoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfoDetail.swift; sourceTree = "<group>"; };
 		C8AA5BB0216378F700523842 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
@@ -332,6 +336,8 @@
 				C8168D1521318122007084A1 /* MapModule.swift */,
 				C87CBF042155E79A007D6F0C /* PushToken.swift */,
 				C8A8F43F216A465F00382BEE /* ReplyComment.swift */,
+				C8A8F445216C4D9100382BEE /* NayamiCommentModel.swift */,
+				C8A8F447216C636800382BEE /* LocateInfoDetail.swift */,
 			);
 			path = "Model Manager";
 			sourceTree = "<group>";
@@ -517,6 +523,7 @@
 				C81C73EE215F572B00D4C2E1 /* MKMapView+ZoomLevel.swift in Sources */,
 				C8168D762138DF05007084A1 /* UserRegister.swift in Sources */,
 				C894CFBD213CE787007957E2 /* MyShabonViewController.swift in Sources */,
+				C8A8F448216C636800382BEE /* LocateInfoDetail.swift in Sources */,
 				C86FE3652148B94100526196 /* collectionViewHeader.swift in Sources */,
 				C8168D6E2137C99B007084A1 /* LoginViewController.swift in Sources */,
 				C81BA8C12151E0A40094AC00 /* UserInfoViewController.swift in Sources */,
@@ -539,6 +546,7 @@
 				C8168D72213836EE007084A1 /* Ext.swift in Sources */,
 				C8168D7A21395F56007084A1 /* ShabonPostViewController.swift in Sources */,
 				C81BA8B7214F9B200094AC00 /* selectUserViewController.swift in Sources */,
+				C8A8F446216C4D9100382BEE /* NayamiCommentModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

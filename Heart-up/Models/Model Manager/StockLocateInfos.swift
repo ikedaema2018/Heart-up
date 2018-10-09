@@ -114,6 +114,14 @@ class StockLocateInfos: NSObject {
             }
             
             let object = response.result.value
+//            print("--------------------responceData-------------------------")
+//            print(response.result.value)
+//            let result = try? JSONDecoder().decode(LocateInfoDetail.self, from: response.data!)
+//            print("--------locate_info_detail--------------------")
+//            print(result)
+            
+            print("as [String: Any]---------------------------------------")
+            print(object as? [String: Any] )
             
             let obj = JSON(object)
             callback(nil, obj)

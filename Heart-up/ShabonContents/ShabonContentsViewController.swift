@@ -243,9 +243,16 @@ extension ShabonContentsViewController {
             
             self.locates = locate
             self.nayamiAndReply = []
-            print("----------------nayami_comments-------------------------")
-            print(locate!["nayami_comments"])
-            let nayamiIdSort = locate!["nayami_comments"]
+//            print("----------------nayami_comments-------------------------")
+//            let nayamies = locate!["nayami_comments"]
+//            let nayamiIdSort = locate!["nayami_comments"].sort { $1["id"].int < $0["id"].int }
+//            print("----------------end--------------------------------------")
+//            do {
+//                let nayamiComments = try! JSONDecoder().decode([NayamiCommentModel].self, from: nayamies)
+//            print(nayamiComments)
+//            } catch {
+//                print(error.localizedDescription)
+//            }
             //locateを回してnayami_commentsとreplyを足した配列を作る
             for i in 0..<locate!["nayami_comments"].count {
                 self.nayamiAndReply.append(locate!["nayami_comments"][locate!["nayami_comments"].count - i - 1])
