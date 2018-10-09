@@ -120,8 +120,8 @@ class StockLocateInfos: NSObject {
 //            print("--------locate_info_detail--------------------")
 //            print(result)
             
-            print("as [String: Any]---------------------------------------")
-            print(object as? [String: Any] )
+//            print("as [String: Any]---------------------------------------")
+//            let object = object as? [String: Any] )
             
             let obj = JSON(object)
             callback(nil, obj)

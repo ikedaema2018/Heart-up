@@ -243,21 +243,14 @@ extension ShabonContentsViewController {
             
             self.locates = locate
             self.nayamiAndReply = []
-//            print("----------------nayami_comments-------------------------")
-//            let nayamies = locate!["nayami_comments"]
-//            let nayamiIdSort = locate!["nayami_comments"].sort { $1["id"].int < $0["id"].int }
-//            print("----------------end--------------------------------------")
-//            do {
-//                let nayamiComments = try! JSONDecoder().decode([NayamiCommentModel].self, from: nayamies)
-//            print(nayamiComments)
-//            } catch {
-//                print(error.localizedDescription)
-//            }
+            let nayamiIdSort = locate!["nayami_comments"].sorted { $1.1["id"].int! < $0.1["id"].int! }
+            print(nayamiIdSort)
+            
             //locateを回してnayami_commentsとreplyを足した配列を作る
-            for i in 0..<locate!["nayami_comments"].count {
-                self.nayamiAndReply.append(locate!["nayami_comments"][locate!["nayami_comments"].count - i - 1])
-                if !locate!["nayami_comments"][locate!["nayami_comments"].count - i - 1]["reply_comments"].isEmpty {
-                    for reply in locate!["nayami_comments"][locate!["nayami_comments"].count - i - 1]["reply_comments"] {
+            for i in 0..<nayamiIdSort.count {
+                self.nayamiAndReply.append(nayamiIdSort[i].1)
+                if !nayamiIdSort[i].1["reply_comments"].isEmpty {
+                    for reply in nayamiIdSort[i].1["reply_comments"] {
                         self.nayamiAndReply.append(reply.1)
                     }
                 }
