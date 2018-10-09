@@ -18,7 +18,6 @@ class replyCommentTableViewCell: UITableViewCell {
     var reply: JSON? {
         didSet {
             guard let reply = reply else { return }
-            print(reply)
             commentLabel.text = reply["reply_comment"].string
             let user_image = reply["user"]["profile_image"].string
             if user_image != nil {
