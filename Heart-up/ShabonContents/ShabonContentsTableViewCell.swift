@@ -20,13 +20,36 @@ class ShabonContentsTableViewCell: UITableViewCell {
     @IBOutlet weak var replyView: UIView!
     @IBOutlet weak var replyLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var iineButton: UIButton!
     
+    var reactionView: UIView!
     
     var shabonColor: String?
     var comment: JSON? {
         didSet {
             //iineボタンを押したら表示させる
-            let reactionView = UIView()
+            reactionView = UIView.init(frame: CGRect.init(x : self.iineButton.frame.origin.x + 55, y: self.iineButton.frame.origin.y - 20, width: 60, height: 30))
+            reactionView.backgroundColor = UIColor.white
+            reactionView.layer.borderWidth = 2
+            reactionView.layer.cornerRadius = 3
+            self.addSubview(reactionView)
+            
+            let iineImage = UIButton()
+            iineImage.frame = CGRect(x: 3, y: 3, width: 15, height: 25)
+            iineImage.setBackgroundImage(UIImage(named: "heart"), for: .normal)
+            reactionView.addSubview(iineImage)
+            
+            let sadImage = UIButton()
+            sadImage.frame = CGRect(x: 21, y: 3, width: 15, height: 25)
+            sadImage.setBackgroundImage(UIImage(named: "sad"), for: .normal)
+            reactionView.addSubview(sadImage)
+            
+            let angryImage = UIButton()
+            angryImage.frame = CGRect(x: 39, y: 3, width: 15, height: 25)
+            angryImage.setBackgroundImage(UIImage(named: "angry"), for: .normal)
+            reactionView.addSubview(angryImage)
+            reactionView.isHidden = true
+            
             
             
             replyView.isHidden = true
@@ -131,6 +154,11 @@ class ShabonContentsTableViewCell: UITableViewCell {
             }
         }
     }
+    
+    @IBAction func iineShow(_ sender: Any) {
+        reactionView.isHidden = false
+    }
+    
     
     
     override func awakeFromNib() {
