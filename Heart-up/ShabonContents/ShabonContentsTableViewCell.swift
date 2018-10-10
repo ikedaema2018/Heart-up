@@ -25,6 +25,10 @@ class ShabonContentsTableViewCell: UITableViewCell {
     var shabonColor: String?
     var comment: JSON? {
         didSet {
+            //iineボタンを押したら表示させる
+            let reactionView = UIView()
+            
+            
             replyView.isHidden = true
             userProfile.isHidden = false
             nayamiView.isHidden = false
