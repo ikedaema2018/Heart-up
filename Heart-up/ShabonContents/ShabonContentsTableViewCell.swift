@@ -24,8 +24,8 @@ class ShabonContentsTableViewCell: UITableViewCell {
     
     
     var iineImage: MyButton!
-    var sadImage: UIButton!
-    var angryImage: UIButton!
+    var sadImage: MyButton!
+    var angryImage: MyButton!
     
     var reactionView: UIView!
     
@@ -42,16 +42,21 @@ class ShabonContentsTableViewCell: UITableViewCell {
             
             iineImage = MyButton(frame: CGRect(x: 3, y: 3, width: 15, height: 25))
             iineImage.setBackgroundImage(UIImage(named: "heart"), for: .normal)
-            iineImage.data = 2
-            
+            iineImage.nayamiOrReply = 1
+            iineImage.reactionId = 1
+            iineImage.addTarget(self, action: #selector(self.iinePost), for: .touchDown)
             reactionView.addSubview(iineImage)
             
-            sadImage = UIButton(frame: CGRect(x: 21, y: 3, width: 15, height: 25))
+            sadImage = MyButton(frame: CGRect(x: 21, y: 3, width: 15, height: 25))
             sadImage.setBackgroundImage(UIImage(named: "sad"), for: .normal)
+            sadImage.nayamiOrReply = 1
+            sadImage.reactionId = 2
             reactionView.addSubview(sadImage)
             
-            angryImage = UIButton(frame: CGRect(x: 39, y: 3, width: 15, height: 25))
+            angryImage = MyButton(frame: CGRect(x: 39, y: 3, width: 15, height: 25))
             angryImage.setBackgroundImage(UIImage(named: "angry"), for: .normal)
+            angryImage.nayamiOrReply = 1
+            angryImage.reactionId = 3
             reactionView.addSubview(angryImage)
             reactionView.isHidden = true
             
@@ -110,6 +115,7 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 nayamiLabel.layer.borderColor = UIColor.black.cgColor
                 nayamiLabel.layer.cornerRadius = 5.0
             }
+            
             if let stampId = comment["stamp_id"].int {
                 nayamiLabel.isHidden = true
                 stampView.isHidden = false
@@ -163,7 +169,6 @@ class ShabonContentsTableViewCell: UITableViewCell {
     @IBAction func iineShow(_ sender: Any) {
         if reactionView.isHidden == true {
             reactionView.isHidden = false
-            iineButton.setTitle("CLOSE", for: .normal)
         } else {
             reactionView.isHidden = true
             iineButton.setTitle("いいね！", for: .normal)
@@ -183,4 +188,26 @@ class ShabonContentsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @objc func iinePost(sender: MyButton){
+        //ここでクリックしたイメージをアニメーションさせる
+        reactionView.isHidden = true
+        iineButton.setTitle("いいね！", for: .normal)
+        
+        Reaction.reactionPost(commentId: sender.tag, nayamiOrReply: sender.nayamiOrReply, reactionId: sender.reactionId, callback: { error in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    ShabonContentsViewController().showAlert(message: message, hide: {})
+                } else {
+                    ShabonContentsViewController().showAlert(message: "エラーが発生しました", hide: {})
+                }
+                return
+            }
+            //アラートはなしで,アニメでmessengerのような表示にしたい
+
+            // コメントデータの再読み込み.
+            //fetchDataのせいでdequeueのあれでできなくなってる
+            ShabonContentsViewController().fetchData()
+        })
+        
+    }
 }

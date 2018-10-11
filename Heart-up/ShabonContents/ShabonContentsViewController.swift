@@ -134,6 +134,8 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             if let color = color {
                 cell.shabonColor = color
             }
+            print("なぜ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！")
+            print(cell.iineImage)
             cell.reply = nayamiAndReply[indexPath.row]
             return cell
         }else
@@ -148,9 +150,6 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             cell.comment = nayamiAndReply[indexPath.row]
             //いいね!ボタンにタグを紐づけるための
             cell.iineImage.tag = nayamiAndReply[indexPath.row]["id"].int!
-            cell.iineImage.addTarget(self, action: #selector(self.iinePost), for: .touchDown)
-            cell.sadImage.addTarget(self, action: #selector(self.sadPost), for: .touchDown)
-            cell.angryImage.addTarget(self, action: #selector(self.angryPost), for: .touchDown)
             return cell
         }
     }
@@ -437,29 +436,4 @@ extension ShabonContentsViewController {
                 self.present(alertController, animated: true, completion: nil)
     }
     
-    @objc func iinePost(sender: MyButton){
-        print(sender.data!)
-        Reaction.reactionPost(nayamiCommentId: sender.tag, replyCommentId: nil, reactionId: 1, callback: { error in
-            if let error = error {
-                if let message = error["message"] as? String {
-                    self.showAlert(message: message, hide: {})
-                } else {
-                    self.showAlert(message: "エラーが発生しました", hide: {})
-                }
-                return
-            }
-            //アラートはなしで,アニメでmessengerのような表示にしたい
-            
-            // コメントデータの再読み込み.
-            self.fetchData()
-        })
-    }
-    
-    @objc func sadPost(){
-        print("悲しい！！！！！！！！！！！！！！！！！！！！！！！！！！")
-    }
-    
-    @objc func angryPost(){
-        print("怒り！！！！！！！！！！！！！！！！！！！！！！！！！！")
-    }
 }

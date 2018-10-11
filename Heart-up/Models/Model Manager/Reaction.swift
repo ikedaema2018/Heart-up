@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 
 class Reaction {
-    class func reactionPost(nayamiCommentId: Int?, replyCommentId: Int?, reactionId: Int?, callback: @escaping ([String: Any]?) -> Void) {
+    class func reactionPost(commentId: Int?, nayamiOrReply: Int?, reactionId: Int?, callback: @escaping ([String: Any]?) -> Void) {
         guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
             if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                 appDelegate.showLoginStoryboard()
@@ -20,21 +20,26 @@ class Reaction {
         }
         let url = "https://vast-brook-81265.herokuapp.com/reactions?auth_token=" + auth_token
         
+        guard let commentId = commentId, let nayamiOrReply = nayamiOrReply, let reactionId = reactionId else {
+            //エラー処理
+            return
+        }
+        
         //numberかstringで分岐
         let params: [String : [String : Any]]
         
-        if let nayamiCommentId = nayamiCommentId {
+        if nayamiOrReply == 1 {
             params = [
                 "reaction": [
-                    "nayami_comment_id": nayamiCommentId,
-                    "reaction_id": reactionId as Any
+                    "nayami_comment_id": commentId,
+                    "reaction_id": reactionId
                 ]
             ]
-        } else if let replyCommentId = replyCommentId {
+        } else if nayamiOrReply == 2 {
             params = [
                 "reaction": [
-                    "reply_comment_id": replyCommentId,
-                    "reaction_id": reactionId as Any
+                    "reply_comment_id": commentId,
+                    "reaction_id": reactionId
                 ]
             ]
         } else {

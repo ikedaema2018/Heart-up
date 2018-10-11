@@ -36,6 +36,15 @@
                             <constraint firstAttribute="height" constant="38" id="bZ7-TQ-cvY"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeh-LA-JTV">
+                        <rect key="frame" x="294" y="34" width="67" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <state key="normal" title="いいね"/>
+                        <connections>
+                            <action selector="iineShow:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Ala-Cl-vLe"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="xYp-Kd-iri" secondAttribute="bottom" constant="5.5" id="BIt-fQ-HXG"/>
@@ -51,9 +60,10 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="commentLabel" destination="xYp-Kd-iri" id="Ocn-ld-aa9"/>
+                <outlet property="iineButton" destination="eeh-LA-JTV" id="k9E-2g-8yZ"/>
                 <outlet property="userProfile" destination="GEj-Hz-LV8" id="O9E-i3-cdk"/>
             </connections>
-            <point key="canvasLocation" x="114" y="66"/>
+            <point key="canvasLocation" x="113.5" y="66"/>
         </tableViewCell>
     </objects>
 </document>
