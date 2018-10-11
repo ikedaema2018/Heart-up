@@ -15,17 +15,46 @@ class replyCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var iineButton: UIButton!
     
+    
     var iineImage: MyButton!
     var sadImage: MyButton!
     var angryImage: MyButton!
     
     var reactionView: UIView!
     
+    //アニメーション中に二重送信させないための処理
+    var pushFlag = false
+    
     
     var shabonColor: String?
     var reply: JSON? {
         didSet {
             guard let reply = reply else { return }
+            
+            var reaction: [String: Int] = ["iine": 0, "sad": 0, "angry": 0]
+            
+            if !reply["reactions"].isEmpty {
+                for value in reply["reactions"] {
+                    let reactionId = value.1["reaction_id"].int!
+                    if reactionId == 1 {
+
+                        reaction["iine"] = reaction["iine"]! + 1
+                    } else if reactionId == 2 {
+                        reaction["sad"] = reaction["sad"]! + 1
+                    } else if reactionId == 3 {
+                        reaction["angry"] = reaction["angry"]! + 1
+                    }
+                }
+                //もしいいねの数が1以上ならリアクションを表示
+                if reaction["iine"]! > 0 {
+                    let iineReaction = UIImageView(image: UIImage(named: "heart"))
+                    iineReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.height / 10, width: 15, height: 25)
+                    self.addSubview(iineReaction)
+                }
+            }
+            
+            
+            
             commentLabel.text = reply["reply_comment"].string
             let user_image = reply["user"]["profile_image"].string
             //iineボタンを押したら表示させる
@@ -105,9 +134,24 @@ class replyCommentTableViewCell: UITableViewCell {
     
     
     @objc func iinePost(sender: MyButton){
+        if pushFlag == true {
+            return
+        }
+        pushFlag = true
         //ここでクリックしたイメージをアニメーションさせる
-        reactionView.isHidden = true
-        iineButton.setTitle("いいね！", for: .normal)
+        UIView.transition(with: sender, duration: 1.0, options: [.transitionCrossDissolve, .autoreverse], animations: {
+            sender.isHidden = true
+        }) { _ in
+            self.iinePost2(sender: sender)
+            self.pushFlag = false
+        }
+    }
+    
+    //上の処理の部分
+    private func iinePost2(sender: MyButton){
+        sender.isHidden = false
+        self.reactionView.isHidden = true
+        self.iineButton.setTitle("いいね！", for: .normal)
         
         Reaction.reactionPost(commentId: sender.tag, nayamiOrReply: sender.nayamiOrReply, reactionId: sender.reactionId, callback: { error in
             if let error = error {
@@ -124,7 +168,6 @@ class replyCommentTableViewCell: UITableViewCell {
             //fetchDataのせいでdequeueのあれでできなくなってる
             ShabonContentsViewController().fetchData()
         })
-        
     }
     
 }

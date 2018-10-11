@@ -247,7 +247,6 @@ extension ShabonContentsViewController {
             self.locates = locate
             self.nayamiAndReply = []
             let nayamiIdSort = locate!["nayami_comments"].sorted { $1.1["id"].int! < $0.1["id"].int! }
-            print(nayamiIdSort)
             
             //locateを回してnayami_commentsとreplyを足した配列を作る
             for i in 0..<nayamiIdSort.count {

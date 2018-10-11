@@ -71,6 +71,26 @@ class ShabonContentsTableViewCell: UITableViewCell {
             guard let comment = comment else {
                 return
             }
+        
+            var reaction: [String: Int] = ["iine": 0, "sad": 0, "angry": 0]
+            
+            if !comment["reactions"].isEmpty {
+                for value in comment["reactions"] {
+                    let reactionId = value.1["reaction_id"].int!
+                    if reactionId == 1 {
+                        reaction["iine"] = reaction["iine"]! + 1
+                    } else if reactionId == 2 {
+                        reaction["sad"] = reaction["sad"]! + 1
+                    } else if reactionId == 3 {
+                        reaction["angry"] = reaction["angry"]! + 1
+                    }
+                }
+                //もしいいねの数が1以上ならリアクションを表示
+                if reaction["iine"]! > 0 {
+                    
+                }
+            }
+            
             let user_image = comment["user"]["profile_image"].string
             if user_image != nil {
                 let image_path = user_image
