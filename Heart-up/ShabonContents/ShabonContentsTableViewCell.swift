@@ -22,6 +22,11 @@ class ShabonContentsTableViewCell: UITableViewCell {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var iineButton: UIButton!
     
+    
+    var iineImage: MyButton!
+    var sadImage: UIButton!
+    var angryImage: UIButton!
+    
     var reactionView: UIView!
     
     var shabonColor: String?
@@ -34,18 +39,18 @@ class ShabonContentsTableViewCell: UITableViewCell {
             reactionView.layer.cornerRadius = 3
             self.addSubview(reactionView)
             
-            let iineImage = UIButton()
-            iineImage.frame = CGRect(x: 3, y: 3, width: 15, height: 25)
+            
+            iineImage = MyButton(frame: CGRect(x: 3, y: 3, width: 15, height: 25))
             iineImage.setBackgroundImage(UIImage(named: "heart"), for: .normal)
+            iineImage.data = 2
+            
             reactionView.addSubview(iineImage)
             
-            let sadImage = UIButton()
-            sadImage.frame = CGRect(x: 21, y: 3, width: 15, height: 25)
+            sadImage = UIButton(frame: CGRect(x: 21, y: 3, width: 15, height: 25))
             sadImage.setBackgroundImage(UIImage(named: "sad"), for: .normal)
             reactionView.addSubview(sadImage)
             
-            let angryImage = UIButton()
-            angryImage.frame = CGRect(x: 39, y: 3, width: 15, height: 25)
+            angryImage = UIButton(frame: CGRect(x: 39, y: 3, width: 15, height: 25))
             angryImage.setBackgroundImage(UIImage(named: "angry"), for: .normal)
             reactionView.addSubview(angryImage)
             reactionView.isHidden = true
@@ -156,7 +161,13 @@ class ShabonContentsTableViewCell: UITableViewCell {
     }
     
     @IBAction func iineShow(_ sender: Any) {
-        reactionView.isHidden = false
+        if reactionView.isHidden == true {
+            reactionView.isHidden = false
+            iineButton.setTitle("CLOSE", for: .normal)
+        } else {
+            reactionView.isHidden = true
+            iineButton.setTitle("いいね！", for: .normal)
+        }
     }
     
     

@@ -69,6 +69,8 @@
 		C8A8F444216B3E7000382BEE /* replyCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C8A8F442216B3E7000382BEE /* replyCommentTableViewCell.xib */; };
 		C8A8F446216C4D9100382BEE /* NayamiCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F445216C4D9100382BEE /* NayamiCommentModel.swift */; };
 		C8A8F448216C636800382BEE /* LocateInfoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F447216C636800382BEE /* LocateInfoDetail.swift */; };
+		C8A8F44C216EE39400382BEE /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F44B216EE39400382BEE /* Reaction.swift */; };
+		C8A8F44E216F0A0700382BEE /* iineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F44D216F0A0700382BEE /* iineButton.swift */; };
 		C8AA5BB1216378F700523842 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BB0216378F700523842 /* Distance.swift */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
@@ -142,6 +144,8 @@
 		C8A8F442216B3E7000382BEE /* replyCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = replyCommentTableViewCell.xib; sourceTree = "<group>"; };
 		C8A8F445216C4D9100382BEE /* NayamiCommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NayamiCommentModel.swift; sourceTree = "<group>"; };
 		C8A8F447216C636800382BEE /* LocateInfoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfoDetail.swift; sourceTree = "<group>"; };
+		C8A8F44B216EE39400382BEE /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
+		C8A8F44D216F0A0700382BEE /* iineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iineButton.swift; sourceTree = "<group>"; };
 		C8AA5BB0216378F700523842 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
@@ -338,6 +342,8 @@
 				C8A8F43F216A465F00382BEE /* ReplyComment.swift */,
 				C8A8F445216C4D9100382BEE /* NayamiCommentModel.swift */,
 				C8A8F447216C636800382BEE /* LocateInfoDetail.swift */,
+				C8A8F44B216EE39400382BEE /* Reaction.swift */,
+				C8A8F44D216F0A0700382BEE /* iineButton.swift */,
 			);
 			path = "Model Manager";
 			sourceTree = "<group>";
@@ -508,6 +514,7 @@
 				C81E850721439144006EDA5C /* AllCommentsCollectionViewController.swift in Sources */,
 				C8AA5BB1216378F700523842 /* Distance.swift in Sources */,
 				C81C73F2216099E500D4C2E1 /* MyShabonListCollectionViewController.swift in Sources */,
+				C8A8F44C216EE39400382BEE /* Reaction.swift in Sources */,
 				C81329F52168816200B2027E /* FirstMovieViewController.swift in Sources */,
 				C81C73F62160AF0400D4C2E1 /* MyShabonListCell.swift in Sources */,
 				C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */,
@@ -542,6 +549,7 @@
 				C81E850F21464A63006EDA5C /* ShabonAlert.swift in Sources */,
 				C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */,
 				C81329D2216469E600B2027E /* ShabonContentsTableViewCell.swift in Sources */,
+				C8A8F44E216F0A0700382BEE /* iineButton.swift in Sources */,
 				C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */,
 				C8168D72213836EE007084A1 /* Ext.swift in Sources */,
 				C8168D7A21395F56007084A1 /* ShabonPostViewController.swift in Sources */,
