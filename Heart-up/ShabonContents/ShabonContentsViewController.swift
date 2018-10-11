@@ -134,9 +134,8 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             if let color = color {
                 cell.shabonColor = color
             }
-            print("なぜ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！")
-            print(cell.iineImage)
             cell.reply = nayamiAndReply[indexPath.row]
+            cell.iineImage.tag = nayamiAndReply[indexPath.row]["id"].int!
             return cell
         }else
         {
