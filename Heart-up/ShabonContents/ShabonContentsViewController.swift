@@ -222,6 +222,8 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             }
         }
     }
+    
+    
 }
 
 extension ShabonContentsViewController {
@@ -246,7 +248,7 @@ extension ShabonContentsViewController {
             
             self.locates = locate
             self.nayamiAndReply = []
-            let nayamiIdSort = locate!["nayami_comments"].sorted { $1.1["id"].int! < $0.1["id"].int! }
+            let nayamiIdSort = locate!["nayami_comments"].sorted { $0.1["id"].int! < $1.1["id"].int! }
             
             //locateを回してnayami_commentsとreplyを足した配列を作る
             for i in 0..<nayamiIdSort.count {
@@ -257,6 +259,7 @@ extension ShabonContentsViewController {
                     }
                 }
             }
+            
 
             self.color = self.locates!["color"].string
             
@@ -290,8 +293,6 @@ extension ShabonContentsViewController {
                         self.contentsTable.reloadData()
                 }
             
-            
-            
             //もしシャボン玉を投稿した人が自分だったら+ボタンを表示しない
             guard let userId = UserDefaults.standard.string(forKey: "user_id") else {
                 if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -308,11 +309,6 @@ extension ShabonContentsViewController {
             }
         })
     }
-    
-    
-    
-    
-   
 }
 
 extension ShabonContentsViewController: UITextFieldDelegate {

@@ -45,22 +45,6 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 return
             }
             
-            //ReactionImageの空を先に定義
-            iineReaction = UIImageView()
-            iineReaction.image = nil
-            iineReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
-            self.addSubview(iineReaction)
-            
-            sadReaction = UIImageView()
-            sadReaction.image = nil
-            sadReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
-            self.addSubview(sadReaction)
-            
-            angryReaction = UIImageView()
-            angryReaction.image = nil
-            angryReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 34, width: 15, height: 15)
-            self.addSubview(angryReaction)
-            
             //iineボタンを押したら表示させる
             reactionView = UIView.init(frame: CGRect.init(x : self.iineButton.frame.origin.x + 55, y: self.iineButton.frame.origin.y - 20, width: 60, height: 30))
             reactionView.backgroundColor = UIColor.white
@@ -106,16 +90,6 @@ class ShabonContentsTableViewCell: UITableViewCell {
             var reaction: [String: Int] = ["iine": 0, "sad": 0, "angry": 0]
             
             if !comment["reactions"].isEmpty {
-                for value in comment["reactions"] {
-                    let reactionId = value.1["reaction_id"].int!
-                    if reactionId == 1 {
-                        reaction["iine"] = reaction["iine"]! + 1
-                    } else if reactionId == 2 {
-                        reaction["sad"] = reaction["sad"]! + 1
-                    } else if reactionId == 3 {
-                        reaction["angry"] = reaction["angry"]! + 1
-                    }
-                }
                 //もしいいねの数が1以上ならリアクションを表示
                 for value in comment["reactions"] {
                     let reactionId = value.1["reaction_id"].int!
@@ -129,26 +103,14 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 }
 
                 //もしいいねの数が1以上ならリアクションを表示
+                print("------ihuihhiu^------------------------")
+                print(reaction)
                 
                 for (key, value) in reaction {
                     key == "iine" && value > 0 ? iineDisplay() : ()
                     key == "sad" && value > 0 ? sadDisplay() : ()
                     key == "angry" && value > 0 ? angryDisplay() : ()
                 }
-                
-//                if reaction["iine"]! > 0 {
-//                    let iineReaction = UIImageView(image: UIImage(named: "heart"))
-//                    iineReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 2, width: 15, height: 15)
-//                    self.addSubview(iineReaction)
-//                } else if reaction["sad"]! > 0 {
-//                    let sadReaction = UIImageView(image: UIImage(named: "sad"))
-//                    sadReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
-//                    self.addSubview(sadReaction)
-//                } else if reaction["angry"]! > 0 {
-//                    let angryReaction = UIImageView(image: UIImage(named: "angry"))
-//                    angryReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 34, width: 15, height: 15)
-//                    self.addSubview(angryReaction)
-//                }
             }
             
             let user_image = comment["user"]["profile_image"].string
@@ -304,15 +266,31 @@ class ShabonContentsTableViewCell: UITableViewCell {
         })
     }
     
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        iineReaction.image = nil
+//        sadReaction.image = nil
+//        angryReaction.image = nil
+//    }
+    
     private func iineDisplay(){
+        iineReaction = UIImageView()
         iineReaction.image = UIImage(named: "heart")
+        iineReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
+        self.addSubview(iineReaction)
     }
     
     private func sadDisplay(){
+        sadReaction = UIImageView()
         sadReaction.image = UIImage(named: "sad")
+        sadReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
+        self.addSubview(sadReaction)
     }
     
     private func angryDisplay(){
+        angryReaction = UIImageView()
         angryReaction.image = UIImage(named: "angry")
+        angryReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 34, width: 15, height: 15)
+        self.addSubview(angryReaction)
     }
 }
