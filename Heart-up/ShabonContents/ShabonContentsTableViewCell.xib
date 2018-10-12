@@ -75,29 +75,24 @@
                                     <action selector="iineShow:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IdK-iC-ZSI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roE-f7-SPw">
+                                <rect key="frame" x="271" y="52" width="32" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="返信">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roE-f7-SPw">
-                        <rect key="frame" x="328" y="73" width="32" height="26"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="32" id="EdW-34-F5v"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <state key="normal" title="返信">
-                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </state>
-                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="bvq-F7-ZiH" firstAttribute="leading" secondItem="wek-dV-XRV" secondAttribute="trailing" constant="8" id="3UF-8Y-0n8"/>
-                    <constraint firstItem="roE-f7-SPw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="62" id="MFY-iA-jJw"/>
                     <constraint firstItem="wek-dV-XRV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="24" id="gYW-jT-OiD"/>
                     <constraint firstAttribute="trailingMargin" secondItem="bvq-F7-ZiH" secondAttribute="trailing" constant="-9" id="gwv-Be-08Z"/>
-                    <constraint firstItem="bvq-F7-ZiH" firstAttribute="trailing" secondItem="roE-f7-SPw" secondAttribute="trailing" id="hbZ-sl-Nft"/>
                     <constraint firstAttribute="bottom" secondItem="wek-dV-XRV" secondAttribute="bottom" constant="25.5" id="lm9-Q7-7nl"/>
                     <constraint firstItem="bvq-F7-ZiH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="oNx-OP-tJ6"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="roE-f7-SPw" secondAttribute="bottom" constant="-10" id="oPv-Qv-aMb"/>
                     <constraint firstItem="wek-dV-XRV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="pDL-bW-L81"/>
                     <constraint firstItem="bvq-F7-ZiH" firstAttribute="centerY" secondItem="wek-dV-XRV" secondAttribute="centerY" id="z67-wi-v4g"/>
                 </constraints>

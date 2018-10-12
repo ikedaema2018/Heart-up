@@ -135,7 +135,6 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
                 cell.shabonColor = color
             }
             cell.reply = nayamiAndReply[indexPath.row]
-            cell.iineImage.tag = nayamiAndReply[indexPath.row]["id"].int!
             return cell
         }else
         {
@@ -148,7 +147,8 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             cell.replyOutret.addTarget(self, action: #selector(self.replyViewDisplay), for: .touchDown)
             cell.comment = nayamiAndReply[indexPath.row]
             //いいね!ボタンにタグを紐づけるための
-            cell.iineImage.tag = nayamiAndReply[indexPath.row]["id"].int!
+            
+            print(cell.iineImage.tag)
             return cell
         }
     }

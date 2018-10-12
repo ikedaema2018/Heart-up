@@ -37,7 +37,6 @@ class replyCommentTableViewCell: UITableViewCell {
                 for value in reply["reactions"] {
                     let reactionId = value.1["reaction_id"].int!
                     if reactionId == 1 {
-
                         reaction["iine"] = reaction["iine"]! + 1
                     } else if reactionId == 2 {
                         reaction["sad"] = reaction["sad"]! + 1
@@ -48,8 +47,16 @@ class replyCommentTableViewCell: UITableViewCell {
                 //もしいいねの数が1以上ならリアクションを表示
                 if reaction["iine"]! > 0 {
                     let iineReaction = UIImageView(image: UIImage(named: "heart"))
-                    iineReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.height / 10, width: 15, height: 25)
+                    iineReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y, width: 15, height: 15)
                     self.addSubview(iineReaction)
+                } else if reaction["sad"]! > 0 {
+                    let sadReaction = UIImageView(image: UIImage(named: "sad"))
+                    sadReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
+                    self.addSubview(sadReaction)
+                } else if reaction["angry"]! > 0 {
+                    let angryReaction = UIImageView(image: UIImage(named: "angry"))
+                    angryReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 34, width: 15, height: 15)
+                    self.addSubview(angryReaction)
                 }
             }
             
@@ -69,6 +76,7 @@ class replyCommentTableViewCell: UITableViewCell {
             iineImage.setBackgroundImage(UIImage(named: "heart"), for: .normal)
             iineImage.nayamiOrReply = 2
             iineImage.reactionId = 1
+            iineImage.tag = reply["id"].int!
             iineImage.addTarget(self, action: #selector(self.iinePost), for: .touchDown)
             reactionView.addSubview(iineImage)
             
@@ -76,6 +84,7 @@ class replyCommentTableViewCell: UITableViewCell {
             sadImage.setBackgroundImage(UIImage(named: "sad"), for: .normal)
             sadImage.nayamiOrReply = 2
             sadImage.reactionId = 2
+            sadImage.tag = reply["id"].int!
             sadImage.addTarget(self, action: #selector(self.iinePost), for: .touchDown)
             reactionView.addSubview(sadImage)
             
@@ -83,6 +92,8 @@ class replyCommentTableViewCell: UITableViewCell {
             angryImage.setBackgroundImage(UIImage(named: "angry"), for: .normal)
             angryImage.nayamiOrReply = 2
             angryImage.reactionId = 3
+            angryImage.tag = reply["id"].int!
+            
             angryImage.addTarget(self, action: #selector(self.iinePost), for: .touchDown)
             reactionView.addSubview(angryImage)
             reactionView.isHidden = true
@@ -162,7 +173,6 @@ class replyCommentTableViewCell: UITableViewCell {
                 }
                 return
             }
-            //アラートはなしで,アニメでmessengerのような表示にしたい
             
             // コメントデータの再読み込み.
             //fetchDataのせいでdequeueのあれでできなくなってる

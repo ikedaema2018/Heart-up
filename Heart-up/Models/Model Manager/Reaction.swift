@@ -18,13 +18,13 @@ class Reaction {
             }
             return
         }
-        let url = "https://vast-brook-81265.herokuapp.com/reactions?auth_token=" + auth_token
         
+        let url = "https://vast-brook-81265.herokuapp.com/reactions?auth_token=" + auth_token
         guard let commentId = commentId, let nayamiOrReply = nayamiOrReply, let reactionId = reactionId else {
             //エラー処理
             return
         }
-        
+
         //numberかstringで分岐
         let params: [String : [String : Any]]
         
