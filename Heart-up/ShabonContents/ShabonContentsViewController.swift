@@ -139,6 +139,7 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
         }else
         {
             let cell = contentsTable.dequeueReusableCell(withIdentifier: "ShabonContentsCell", for: indexPath) as! ShabonContentsTableViewCell
+
             if let color = color {
                 cell.shabonColor = color
             }
@@ -146,9 +147,10 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             cell.replyOutret.tag = nayamiAndReply[indexPath.row]["id"].int!
             cell.replyOutret.addTarget(self, action: #selector(self.replyViewDisplay), for: .touchDown)
             cell.comment = nayamiAndReply[indexPath.row]
-            //いいね!ボタンにタグを紐づけるための
+            cell.row = indexPath.row
+            cell.locateId = id
+            cell.contentsTable = contentsTable
             
-            print(cell.iineImage.tag)
             return cell
         }
     }
@@ -428,6 +430,41 @@ extension ShabonContentsViewController {
         
                 // アラートを表示する.
                 self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func iineFetch(row: Int, id: String, contentsTable: UITableView){
+    
+        print("2222222222222222222222222222222222222222222222222222")
+
+        StockLocateInfos.getDetailLocation(id: id, callback: {error, locate in
+            
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが発生しました")
+                } else {
+                    print("不明なエラーが発生しました")
+                }
+                return
+            }
+            
+            self.locates = locate
+            self.nayamiAndReply = []
+            let nayamiIdSort = locate!["nayami_comments"].sorted { $0.1["id"].int! < $1.1["id"].int! }
+            
+            //locateを回してnayami_commentsとreplyを足した配列を作る
+            for i in 0..<nayamiIdSort.count {
+                self.nayamiAndReply.append(nayamiIdSort[i].1)
+                if !nayamiIdSort[i].1["reply_comments"].isEmpty {
+                    for reply in nayamiIdSort[i].1["reply_comments"] {
+                        self.nayamiAndReply.append(reply.1)
+                    }
+                }
+            }
+            // 対象行だけ更新
+            print("tokuteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+            contentsTable.reloadData()
+        })
     }
     
 }

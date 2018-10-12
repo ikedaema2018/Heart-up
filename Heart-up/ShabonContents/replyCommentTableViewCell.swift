@@ -45,19 +45,19 @@ class replyCommentTableViewCell: UITableViewCell {
                     }
                 }
                 //もしいいねの数が1以上ならリアクションを表示
-                if reaction["iine"]! > 0 {
-                    let iineReaction = UIImageView(image: UIImage(named: "heart"))
-                    iineReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y, width: 15, height: 15)
-                    self.addSubview(iineReaction)
-                } else if reaction["sad"]! > 0 {
-                    let sadReaction = UIImageView(image: UIImage(named: "sad"))
-                    sadReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
-                    self.addSubview(sadReaction)
-                } else if reaction["angry"]! > 0 {
-                    let angryReaction = UIImageView(image: UIImage(named: "angry"))
-                    angryReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 34, width: 15, height: 15)
-                    self.addSubview(angryReaction)
-                }
+//                if reaction["iine"]! > 0 {
+//                    let iineReaction = UIImageView(image: UIImage(named: "heart"))
+//                    iineReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y, width: 15, height: 15)
+//                    self.addSubview(iineReaction)
+//                } else if reaction["sad"]! > 0 {
+//                    let sadReaction = UIImageView(image: UIImage(named: "sad"))
+//                    sadReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
+//                    self.addSubview(sadReaction)
+//                } else if reaction["angry"]! > 0 {
+//                    let angryReaction = UIImageView(image: UIImage(named: "angry"))
+//                    angryReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 34, width: 15, height: 15)
+//                    self.addSubview(angryReaction)
+//                }
             }
             
             

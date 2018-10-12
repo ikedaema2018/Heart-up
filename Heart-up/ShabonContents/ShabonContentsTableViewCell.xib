@@ -59,13 +59,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zl-YM-2mV">
-                                <rect key="frame" x="10" y="54" width="132" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F5F-kZ-gqK">
                                 <rect key="frame" x="150" y="52" width="50" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -83,9 +76,28 @@
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5MJ-05-UGA">
+                                <rect key="frame" x="110" y="62" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wi3-o5-8En">
+                                <rect key="frame" x="140" y="62" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ry1-Yd-Vcp">
+                                <rect key="frame" x="80" y="62" width="22" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Zl-YM-2mV">
+                        <rect key="frame" x="80" y="0.0" width="132" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="bvq-F7-ZiH" firstAttribute="leading" secondItem="wek-dV-XRV" secondAttribute="trailing" constant="8" id="3UF-8Y-0n8"/>
@@ -99,18 +111,21 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="angryReaction" destination="wi3-o5-8En" id="irs-G1-SgP"/>
                 <outlet property="iineButton" destination="F5F-kZ-gqK" id="hOW-Ms-yC5"/>
+                <outlet property="iineReaction" destination="ry1-Yd-Vcp" id="e1y-qe-bfI"/>
                 <outlet property="nayamiLabel" destination="dkO-r8-2pF" id="G8A-2K-xUC"/>
                 <outlet property="nayamiView" destination="87R-R7-h2r" id="VdZ-sg-QDb"/>
                 <outlet property="replyLabel" destination="2fK-AO-BOb" id="lOR-45-qHq"/>
                 <outlet property="replyOutret" destination="roE-f7-SPw" id="UhR-E4-o6o"/>
                 <outlet property="replyView" destination="bvq-F7-ZiH" id="JUG-YB-uYv"/>
+                <outlet property="sadReaction" destination="5MJ-05-UGA" id="7KE-sZ-GFO"/>
                 <outlet property="stampView" destination="E6i-Bv-C8A" id="4Lm-Yu-c1B"/>
                 <outlet property="toukou_day" destination="3Zl-YM-2mV" id="ciw-dy-WtH"/>
                 <outlet property="userImage" destination="u5p-Uf-p2w" id="1GE-Tr-EXw"/>
                 <outlet property="userProfile" destination="wek-dV-XRV" id="BrZ-tU-A0i"/>
             </connections>
-            <point key="canvasLocation" x="11" y="-3"/>
+            <point key="canvasLocation" x="-201.5" y="-10"/>
         </tableViewCell>
     </objects>
 </document>

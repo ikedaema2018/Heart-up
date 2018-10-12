@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 // これだけ必要
 class MyButton : UIButton{
+    var row: Int?
     var nayamiOrReply: Int?
     var reactionId: Int?
     override init(frame: CGRect) {
