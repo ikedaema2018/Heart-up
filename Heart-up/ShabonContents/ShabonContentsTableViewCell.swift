@@ -29,6 +29,12 @@ class ShabonContentsTableViewCell: UITableViewCell {
     var reactionView: UIView!
     var shabonColor: String?
     
+    //リアクション画像の表示のところを先に定義
+    var iineReaction: UIImageView!
+    var sadReaction: UIImageView!
+    var angryReaction: UIImageView!
+    
+    
     //アニメーション中に二重送信させないための処理
     var pushFlag = false
     
@@ -38,6 +44,22 @@ class ShabonContentsTableViewCell: UITableViewCell {
             guard let comment = comment else {
                 return
             }
+            
+            //ReactionImageの空を先に定義
+            iineReaction = UIImageView()
+            iineReaction.image = nil
+            iineReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
+            self.addSubview(iineReaction)
+            
+            sadReaction = UIImageView()
+            sadReaction.image = nil
+            sadReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
+            self.addSubview(sadReaction)
+            
+            angryReaction = UIImageView()
+            angryReaction.image = nil
+            angryReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 34, width: 15, height: 15)
+            self.addSubview(angryReaction)
             
             //iineボタンを押したら表示させる
             reactionView = UIView.init(frame: CGRect.init(x : self.iineButton.frame.origin.x + 55, y: self.iineButton.frame.origin.y - 20, width: 60, height: 30))
@@ -283,23 +305,14 @@ class ShabonContentsTableViewCell: UITableViewCell {
     }
     
     private func iineDisplay(){
-        print("iine")
-        let iineReaction = UIImageView(image: UIImage(named: "heart"))
-                            iineReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 17, width: 15, height: 15)
-        self.addSubview(iineReaction)
+        iineReaction.image = UIImage(named: "heart")
     }
     
     private func sadDisplay(){
-        print("sad")
-        let sadReaction = UIImageView(image: UIImage(named: "sad"))
-                            sadReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 32, width: 15, height: 15)
-                            self.addSubview(sadReaction)
+        sadReaction.image = UIImage(named: "sad")
     }
     
     private func angryDisplay(){
-        print("angry")
-        let angryReaction = UIImageView(image: UIImage(named: "angry"))
-                            angryReaction.frame = CGRect(x: self.frame.width - 20, y: self.frame.origin.y + 47, width: 15, height: 15)
-                            self.addSubview(angryReaction)
+        angryReaction.image = UIImage(named: "angry")
     }
 }
