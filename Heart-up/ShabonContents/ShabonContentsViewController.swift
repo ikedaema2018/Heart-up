@@ -226,8 +226,6 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             }
         } else if segue.identifier == "tohappyGraduationSegue" {
             let vc = segue.destination as! HappyGraduationViewController
-            print("異動前ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー")
-            print(locates)
             vc.locates = locates
         }
     }
