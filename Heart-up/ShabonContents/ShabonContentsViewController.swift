@@ -135,6 +135,9 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
                 cell.shabonColor = color
             }
             cell.reply = nayamiAndReply[indexPath.row]
+            let tapGesture = UserTapGestureRecognizer(target: self, action: #selector(self.tapUserImage(sender:)))
+            tapGesture.userId = nayamiAndReply[indexPath.row]["user_id"].int!
+            cell.userProfile.addGestureRecognizer(tapGesture)
             return cell
         }else
         {
@@ -202,6 +205,7 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
         nayamiLabel.backgroundColor = nayamiColor
         locateLabel.backgroundColor = locateColor
         nayamiLabel.layer.cornerRadius = 5
+        nayamiLabel.layer.masksToBounds = true
         view.addSubview(locateLabel)
         view.addSubview(nayamiLabel)
         return view
@@ -210,10 +214,10 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     //行がタップされた時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //選択状態を非表示にする
-        contentsTable.deselectRow(at: indexPath, animated: true)
-        let id = nayamiAndReply[indexPath.row]["user_id"].int
-        // コメント一覧へ遷移する.
-        self.performSegue(withIdentifier: "contentsToUser", sender: id)
+//        contentsTable.deselectRow(at: indexPath, animated: true)
+//        let id = nayamiAndReply[indexPath.row]["user_id"].int
+//        // コメント一覧へ遷移する.
+//        self.performSegue(withIdentifier: "contentsToUser", sender: id)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -262,7 +266,6 @@ extension ShabonContentsViewController {
                 }
             }
             
-
             self.color = self.locates!["color"].string
             
             guard let longitude = locate!["keido"].double, let latitude = locate!["ido"].double else {
@@ -433,11 +436,9 @@ extension ShabonContentsViewController {
     }
     
     func iineFetch(row: Int, id: String, contentsTable: UITableView){
-    
-//        print("2222222222222222222222222222222222222222222222222222")
-//
+        
 //        StockLocateInfos.getDetailLocation(id: id, callback: {error, locate in
-//            
+//
 //            if let error = error {
 //                if let message = error["message"] as? String {
 //                    print(message)
@@ -447,11 +448,11 @@ extension ShabonContentsViewController {
 //                }
 //                return
 //            }
-//            
+//
 //            self.locates = locate
 //            self.nayamiAndReply = []
 //            let nayamiIdSort = locate!["nayami_comments"].sorted { $0.1["id"].int! < $1.1["id"].int! }
-//            
+//
 //            //locateを回してnayami_commentsとreplyを足した配列を作る
 //            for i in 0..<nayamiIdSort.count {
 //                self.nayamiAndReply.append(nayamiIdSort[i].1)
@@ -465,6 +466,11 @@ extension ShabonContentsViewController {
 //            print("tokuteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
 //            contentsTable.reloadData()
 //        })
+    }
+    
+    @objc private func tapUserImage(sender: UserTapGestureRecognizer){
+        print("dwadawdawdadawdawdawdaddawdwadawdadaw")
+        print(sender.userId)
     }
     
 }
