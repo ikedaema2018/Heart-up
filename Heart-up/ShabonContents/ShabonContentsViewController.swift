@@ -215,9 +215,6 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //選択状態を非表示にする
 //        contentsTable.deselectRow(at: indexPath, animated: true)
-//        let id = nayamiAndReply[indexPath.row]["user_id"].int
-//        // コメント一覧へ遷移する.
-//        self.performSegue(withIdentifier: "contentsToUser", sender: id)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -306,8 +303,7 @@ extension ShabonContentsViewController {
                 return
             }
             var shabonUser = String(self.locates!["user_id"].int!)
-            //   これをif文の中に入れることを忘れずに         userId != shabonUser &&
-            
+            //   これをif文の中に入れることを忘れずに         userId != shabonUser &
             if  self.locates!["nayami_comments"].count < 9 {
                 //チャットを消す
                 
@@ -469,8 +465,8 @@ extension ShabonContentsViewController {
     }
     
     @objc private func tapUserImage(sender: UserTapGestureRecognizer){
-        print("dwadawdawdadawdawdawdaddawdwadawdadaw")
-        print(sender.userId)
+        // コメント一覧へ遷移する.
+                self.performSegue(withIdentifier: "contentsToUser", sender: sender.userId!)
     }
     
 }

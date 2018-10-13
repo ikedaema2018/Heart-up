@@ -153,6 +153,24 @@ class ShabonContentsTableViewCell: UITableViewCell {
             formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZZZ'"
             if let date = formatter.date(from: comment["created_at"].string!) {
                 formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy年MM月dd日(EEE） HH時mm分", options: 0, locale: Locale(identifier: "ja_JP"))
+                
+                //ここで何時間前とか何日前とかを認識する処理を書く
+
+                let span = -date.timeIntervalSinceNow
+                
+                
+                if span/60/60/24 > 1 {
+                    print(String(format: "%.0f", span/60/60/24))
+                } else if span/60/60 > 1 {
+                    print(String(format: "%.0f", span/60/60))
+                } else if span/60 > 1 {
+                    print(String(format: "%.0f", span/60))
+                } else {
+                    print(String(format: "%.0f", span))
+                }
+                
+                
+                
                 let dateStr = formatter.string(from: date).description
                 toukou_day.text = dateStr
                 toukou_day.font = UIFont.systemFont(ofSize: 11)
