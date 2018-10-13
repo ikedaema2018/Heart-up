@@ -160,19 +160,19 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 
                 
                 if span/60/60/24 > 1 {
-                    print(String(format: "%.0f", span/60/60/24))
+                    toukou_day.text = "\(String(format: "%.0f", span/60/60/24))日前"
                 } else if span/60/60 > 1 {
-                    print(String(format: "%.0f", span/60/60))
+                    toukou_day.text = "\(String(format: "%.0f", span/60/60))時間前"
                 } else if span/60 > 1 {
-                    print(String(format: "%.0f", span/60))
+                    toukou_day.text = "\(String(format: "%.0f", span/60))分前"
                 } else {
-                    print(String(format: "%.0f", span))
+                    toukou_day.text = "\(String(format: "%.0f", span))秒前"
                 }
                 
                 
-                
-                let dateStr = formatter.string(from: date).description
-                toukou_day.text = dateStr
+//                date型の日付を時刻のString型に変換
+//                let dateStr = formatter.string(from: date).description
+//                toukou_day.text = dateStr
                 toukou_day.font = UIFont.systemFont(ofSize: 11)
             }
             
