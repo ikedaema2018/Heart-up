@@ -72,6 +72,7 @@
 		C8A8F44C216EE39400382BEE /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F44B216EE39400382BEE /* Reaction.swift */; };
 		C8A8F44E216F0A0700382BEE /* iineButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F44D216F0A0700382BEE /* iineButton.swift */; };
 		C8A8F4502171AB6100382BEE /* UserTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F44F2171AB6100382BEE /* UserTapGestureRecognizer.swift */; };
+		C8A8F4522171E44500382BEE /* HappyGraduationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F4512171E44500382BEE /* HappyGraduationViewController.swift */; };
 		C8AA5BB1216378F700523842 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BB0216378F700523842 /* Distance.swift */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
@@ -148,6 +149,7 @@
 		C8A8F44B216EE39400382BEE /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
 		C8A8F44D216F0A0700382BEE /* iineButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iineButton.swift; sourceTree = "<group>"; };
 		C8A8F44F2171AB6100382BEE /* UserTapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTapGestureRecognizer.swift; sourceTree = "<group>"; };
+		C8A8F4512171E44500382BEE /* HappyGraduationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyGraduationViewController.swift; sourceTree = "<group>"; };
 		C8AA5BB0216378F700523842 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */,
 				C8A8F441216B3E7000382BEE /* replyCommentTableViewCell.swift */,
 				C8A8F442216B3E7000382BEE /* replyCommentTableViewCell.xib */,
+				C8A8F4512171E44500382BEE /* HappyGraduationViewController.swift */,
 			);
 			path = ShabonContents;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				C8A8F448216C636800382BEE /* LocateInfoDetail.swift in Sources */,
 				C86FE3652148B94100526196 /* collectionViewHeader.swift in Sources */,
 				C8168D6E2137C99B007084A1 /* LoginViewController.swift in Sources */,
+				C8A8F4522171E44500382BEE /* HappyGraduationViewController.swift in Sources */,
 				C81BA8C12151E0A40094AC00 /* UserInfoViewController.swift in Sources */,
 				C8168D7E213BA079007084A1 /* NayamiComment.swift in Sources */,
 				C81E850321438026006EDA5C /* AllCommentsTableViewCell.swift in Sources */,

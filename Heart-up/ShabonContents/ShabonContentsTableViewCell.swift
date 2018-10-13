@@ -259,16 +259,15 @@ class ShabonContentsTableViewCell: UITableViewCell {
     }
     
     @objc func iinePost(sender: MyButton){
+        if pushFlag == true {
+            return
+        }
+        pushFlag = true
         //ここでクリックしたイメージをアニメーションさせる
         let reactionId = sender.reactionId!
         reactionId == 1 ? iineReaction.image = UIImage(named: "heart") : ()
         reactionId == 2 ? sadReaction.image = UIImage(named: "sad") : ()
         reactionId == 3 ? angryReaction.image = UIImage(named: "angry") : ()
-        
-        if pushFlag == true {
-            return
-        }
-        pushFlag = true
         //ここでクリックしたイメージをアニメーションさせる
         UIView.transition(with: sender, duration: 1.0, options: [.transitionCrossDissolve, .autoreverse], animations: {
             sender.isHidden = true
@@ -292,9 +291,6 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 }
                 return
             }
-            // コメントデータの再読み込み.
-            //fetchDataのせいでdequeueのあれでできなくなってる
-            ShabonContentsViewController().iineFetch(row: row, id: self.locateId!, contentsTable: self.contentsTable!)
         })
     }
     

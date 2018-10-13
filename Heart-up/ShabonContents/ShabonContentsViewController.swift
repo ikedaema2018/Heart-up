@@ -16,6 +16,7 @@ class ShabonContentsViewController: UIViewController {
     var nayamiAndReply: [JSON] = []
     var color: String?
     var flag = false
+    var happyGraduationFlag = false
     
     @IBOutlet weak var stampView: UIView!
     @IBOutlet weak var bottomView: UIView!
@@ -223,10 +224,13 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
                 let vc = segue.destination as! UserInfoViewController
                 vc.userId = String(id)
             }
+        } else if segue.identifier == "tohappyGraduationSegue" {
+            let vc = segue.destination as! HappyGraduationViewController
+            print("異動前ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー")
+            print(locates)
+            vc.locates = locates
         }
     }
-    
-    
 }
 
 extension ShabonContentsViewController {
@@ -293,6 +297,11 @@ extension ShabonContentsViewController {
                 self.kyori = Distance.distance(current: (la: latitude, lo: longitude), target: (la: fLatitude, lo: fLongitude))
                         // 再読み込み
                         self.contentsTable.reloadData()
+                
+                //もしアラートから来ていたらhappyGraduationへ飛ばす
+                if self.happyGraduationFlag == true {
+                    self.performSegue(withIdentifier: "tohappyGraduationSegue", sender: nil)
+                }
                 }
             
             //もしシャボン玉を投稿した人が自分だったら+ボタンを表示しない
@@ -429,39 +438,6 @@ extension ShabonContentsViewController {
         
                 // アラートを表示する.
                 self.present(alertController, animated: true, completion: nil)
-    }
-    
-    func iineFetch(row: Int, id: String, contentsTable: UITableView){
-        
-//        StockLocateInfos.getDetailLocation(id: id, callback: {error, locate in
-//
-//            if let error = error {
-//                if let message = error["message"] as? String {
-//                    print(message)
-//                    print("不明なエラーが発生しました")
-//                } else {
-//                    print("不明なエラーが発生しました")
-//                }
-//                return
-//            }
-//
-//            self.locates = locate
-//            self.nayamiAndReply = []
-//            let nayamiIdSort = locate!["nayami_comments"].sorted { $0.1["id"].int! < $1.1["id"].int! }
-//
-//            //locateを回してnayami_commentsとreplyを足した配列を作る
-//            for i in 0..<nayamiIdSort.count {
-//                self.nayamiAndReply.append(nayamiIdSort[i].1)
-//                if !nayamiIdSort[i].1["reply_comments"].isEmpty {
-//                    for reply in nayamiIdSort[i].1["reply_comments"] {
-//                        self.nayamiAndReply.append(reply.1)
-//                    }
-//                }
-//            }
-//            // 対象行だけ更新
-//            print("tokuteeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
-//            contentsTable.reloadData()
-//        })
     }
     
     @objc private func tapUserImage(sender: UserTapGestureRecognizer){
