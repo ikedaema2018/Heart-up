@@ -155,7 +155,6 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 formatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy年MM月dd日(EEE） HH時mm分", options: 0, locale: Locale(identifier: "ja_JP"))
                 
                 //ここで何時間前とか何日前とかを認識する処理を書く
-
                 let span = -date.timeIntervalSinceNow
                 
                 
