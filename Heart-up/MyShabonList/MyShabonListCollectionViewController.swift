@@ -132,7 +132,7 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
                 let vc = segue.destination as! ShabonContentsViewController
                 vc.id = String(id)
                 //テストのためにとりあえず
-                vc.happyGraduationFlag = true
+                vc.happyGraduationFlag = false
             }
         }
     }

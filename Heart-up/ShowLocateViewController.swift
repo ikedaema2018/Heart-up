@@ -126,17 +126,19 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         
         if view.annotation is CustomAnnotation {
             if let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] {
-                let locate_id = locateId as! Int
-                //遷移
-                performSegue(withIdentifier: "showToContents", sender: String(locate_id))
+//                let locate_id = locateId as! Int
+                //遷移のためのハッシュ
+                let sender: [String: Any] = ["locateId": locateId, "finishFlag" : false]
+                performSegue(withIdentifier: "showToContents", sender: sender)
             }
         }
         
         if view.annotation is UserAnnotation {
             if let userId = (view.annotation as! UserAnnotation).userId["userId"] {
                 let userId = userId as! Int
+                let sender = ["userId": userId]
                 //遷移
-                performSegue(withIdentifier: "toSelectUserSegue", sender: String(userId))
+                performSegue(withIdentifier: "toSelectUserSegue", sender: sender)
             }
         }
     }
@@ -157,17 +159,19 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     //ページ遷移で数値を
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let id = sender as? String else {
+        guard let sender = sender as? [String: Any] else {
             return
         }
         
         if segue.identifier == "showToContents" {
             if let vc = segue.destination as? ShabonContentsViewController {
-                vc.id = id
+                print(sender)
+                vc.id = String((sender["locateId"] as? Int)!)
+                vc.happyGraduationFlag = (sender["finishFlag"] as? Bool)!
             }
         }else if segue.identifier == "toSelectUserSegue" {
             if let vc = segue.destination as? UserInfoViewController {
-                vc.userId = id
+                vc.userId = String(sender["userId"] as! Int)
             }    
         }
     }
@@ -212,8 +216,6 @@ extension ShowLocateViewController {
             
             //かなり無茶苦茶な処理だけど地図の倍率が変わった時に使うため
             self.locates = locates
-            
-            print("--------locates----------")
             
             //ここで１時間前までにアップデートしたユーザーを引っ張ってくる処理を書く
             UserLocate.currentUser {error, users in
@@ -302,7 +304,6 @@ extension ShowLocateViewController: CLLocationManagerDelegate {
         
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
-        print("-------------locationManager--------------")
         
         //自分の緯度、経度をupdate
         user_locate_update(ido: latitude!, keido: longitude!)
@@ -335,8 +336,9 @@ extension ShowLocateViewController {
                 let tmp_alert = alert![0]
                 self.shabon_Alert(message: tmp_alert, callback: { locateId in
                     if let locateId = locateId {
-                        //遷移
-                    self.performSegue(withIdentifier: "showToContents", sender: locateId)
+                        //遷移のためのハッシュ
+                        let sender: [String: Any] = [ "locateId": locateId, "finishFlag" : true]
+                    self.performSegue(withIdentifier: "showToContents", sender: sender)
                     }else{
                         self.viewDidAppear(true)
                     }
@@ -359,8 +361,10 @@ extension ShowLocateViewController {
                 let tmp_alert = alert![0]
                 self.closeAlert(message: tmp_alert, callback: { locateId in
                     if let locateId = locateId {
+                        //遷移のためのハッシュ
+                        let sender: [String: Any] = [ "locateId": locateId, "finishFlag" : false]
                         //遷移
-                        self.performSegue(withIdentifier: "showToContents", sender: locateId)
+                        self.performSegue(withIdentifier: "showToContents", sender: sender)
                     }else{
                         self.viewDidAppear(true)
                     }
