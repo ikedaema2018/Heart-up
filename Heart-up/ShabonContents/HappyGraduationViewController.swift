@@ -20,6 +20,14 @@ class HappyGraduationViewController: UIViewController {
     @IBOutlet weak var moveLocate: UILabel!
     @IBOutlet weak var breakTime: UILabel!
     @IBOutlet weak var nayamiDetail: UILabel!
+    @IBOutlet weak var totalReaction: UILabel!
+    @IBOutlet weak var iineKaisuu: UILabel!
+    @IBOutlet weak var angryKaisuu: UILabel!
+    @IBOutlet weak var sadKaisuu: UILabel!
+    @IBOutlet weak var bubbles: UIImageView!
+    @IBOutlet weak var titleImage: UIImageView!
+    @IBOutlet weak var detailBorder: UIView!
+    
     
     
     
@@ -53,10 +61,26 @@ class HappyGraduationViewController: UIViewController {
         
         //悩みのタイトル
         nayamiDetail.text = locates!["nayami"].string
-        nayamiDetail.layer.borderWidth = 1
+        nayamiDetail.sizeToFit()
+//        nayamiDetail.layer.borderWidth = 1
         
         //破裂した場所と移動した距離、破裂するまでの時間
         getLocate()
+        
+        //あなた悩みは解決しました
+        bubbles.image = UIImage(named: "bubbles")
+        bubbles.contentMode = UIViewContentMode.scaleAspectFit
+        
+        //ボーダー
+        //上線のCALayerを作成
+        let topBorder = CALayer()
+        topBorder.frame = CGRect(x: 0, y: 0, width: detailBorder.frame.width, height: 1.0)
+        topBorder.backgroundColor = UIColor.lightGray.cgColor
+        //作成したViewに上線を追加
+        detailBorder.backgroundColor = UIColor.lightGray
+        
+        //悩みのタイトル
+        titleImage.image = UIImage(named: "title")
 
         //リアクションを大量に出す
         reactionParty(locates)
@@ -98,18 +122,25 @@ extension HappyGraduationViewController {
             }
         }
         //reactionsを(key,value)で回してその分imageViewを作成
+        var totalReactions = 0
         for (key, value) in reactions {
+            //        リアクションの総数を表示
+            totalReactions += value
             switch key {
             case "iine":
+                iineKaisuu.text = "\(String(value))回"
                 reactionDisplay(count: value, reactionId: 1)
             case "sad":
                 reactionDisplay(count: value, reactionId: 2)
+                sadKaisuu.text = "\(String(value))回"
             case "angry":
                 reactionDisplay(count: value, reactionId: 3)
+                angryKaisuu.text = "\(String(value))回"
             default:
                 ()
             }
         }
+        totalReaction.text = "\(totalReactions)回"
     }
     
     //いいね、悲しい、怒る,それぞれの画像表示のメソッド

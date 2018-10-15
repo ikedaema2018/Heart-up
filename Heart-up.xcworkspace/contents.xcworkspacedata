@@ -3,6 +3,10 @@
    version = "1.0">
    <Group
       location = "container:"
+      name = "Model++">
+   </Group>
+   <Group
+      location = "container:"
       name = "ShabonContents">
    </Group>
    <FileRef
