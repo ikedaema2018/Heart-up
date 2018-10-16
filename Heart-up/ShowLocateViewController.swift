@@ -165,7 +165,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         
         if segue.identifier == "showToContents" {
             if let vc = segue.destination as? ShabonContentsViewController {
-                print(sender)
                 vc.id = String((sender["locateId"] as? Int)!)
                 vc.happyGraduationFlag = (sender["finishFlag"] as? Bool)!
             }
@@ -362,7 +361,7 @@ extension ShowLocateViewController {
                 self.closeAlert(message: tmp_alert, callback: { locateId in
                     if let locateId = locateId {
                         //遷移のためのハッシュ
-                        let sender: [String: Any] = [ "locateId": locateId, "finishFlag" : false]
+                        let sender: [String: Any] = [ "locateId": Int(locateId), "finishFlag" : false]
                         //遷移
                         self.performSegue(withIdentifier: "showToContents", sender: sender)
                     }else{

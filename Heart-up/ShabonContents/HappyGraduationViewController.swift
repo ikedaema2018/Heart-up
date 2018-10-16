@@ -9,11 +9,13 @@
 import UIKit
 import SwiftyJSON
 import CoreLocation
+import AVFoundation
 
 class HappyGraduationViewController: UIViewController {
     var locates: JSON?
     var place: String = ""
     var kyori: Double?
+    var player: AVAudioPlayer?
     
     @IBOutlet weak var happyGraduation: UIImageView!
     @IBOutlet weak var breakLocate: UILabel!
@@ -28,6 +30,7 @@ class HappyGraduationViewController: UIViewController {
     @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var detailBorder: UIView!
     @IBOutlet weak var detailBackground: UIView!
+    @IBOutlet weak var returnButton: UIButton!
     
     
     
@@ -85,10 +88,39 @@ class HappyGraduationViewController: UIViewController {
         
         //悩みのタイトル
         titleImage.image = UIImage(named: "title")
+        
+        //戻るボタン
+        returnButton.setImage(UIImage(named: "return2"), for: .normal)
 
         //リアクションを大量に出す
         reactionParty(locates)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        for i in 1...8 {
+            let fireFlowerImage = UIImageView()
+            self.view.addSubview(fireFlowerImage)
+            self.view.sendSubview(toBack: fireFlowerImage)
+            //Timerで3秒に一回花火が咲く
+            Timer.scheduledTimer(withTimeInterval: (TimeInterval(3 + i)), repeats: true) { (_ ) in
+                self.fireFlowerStart(fireFlowerImage)
+            }
+        }
+        //音を鳴らす
+                let soundNum = Int(arc4random_uniform(2))
+                let soundTitle: [String] = ["christmasnomachi", "rokuninnorappafuki", "sunadokeiseiun"]
+                playSound(soundTitle[soundNum])
+        
+        //戻るを点滅
+        var lightFlag = false
+        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: true) { (_) in
+            if lightFlag { self.returnButton.setImage(nil, for: .normal)}
+            else { self.returnButton.setImage(UIImage( named: "return2"), for: .normal) }
+            lightFlag = !lightFlag
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,16 +128,10 @@ class HappyGraduationViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func returnContents(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-    */
+    
 
 }
 
@@ -208,4 +234,34 @@ extension HappyGraduationViewController {
             
         }
     }
+    //花を咲かせる
+    @objc private func fireFlowerStart(_ fireFlowerImage: UIImageView){
+        //fireFlowerの中心を定義
+        let imgX = CGFloat(arc4random_uniform((UInt32(self.view.frame.width))))
+        let imgY = CGFloat(arc4random_uniform((UInt32(self.view.frame.height))))
+        let imageSize = CGFloat(arc4random_uniform(UInt32(100)) + 100)
+        let fireFlowerNumber = arc4random_uniform(7)
+        let fireImage = UIImage(named: "fireFlower" + String(fireFlowerNumber))
+        
+        fireFlowerImage.frame = CGRect(x: 0, y: 0, width: imageSize, height: imageSize)
+        fireFlowerImage.center = CGPoint(x: imgX, y: imgY)
+        fireFlowerImage.image = fireImage
+        
+        //音を鳴らす
+//        let soundNum = Int(arc4random_uniform(2))
+//        let soundTitle: [String] = ["bomb", "short_bomb"]
+//        playSound(soundTitle[soundNum])
+    }
+}
+
+extension HappyGraduationViewController {
+    
+    
+    private func playSound(_ sound: String) {
+        if let sound = NSDataAsset(name: sound) {
+            player = try? AVAudioPlayer(data: sound.data)
+            player?.play() // → これで音が鳴る
+        }
+    }
+    
 }
