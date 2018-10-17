@@ -135,6 +135,7 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             if let color = color {
                 cell.shabonColor = color
             }
+            cell.lifeFlag = locates!["life_flag"].bool!
             cell.reply = nayamiAndReply[indexPath.row]
             cell.row = indexPath.row
             let tapGesture = UserTapGestureRecognizer(target: self, action: #selector(self.tapUserImage(sender:)))

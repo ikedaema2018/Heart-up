@@ -23,6 +23,7 @@ class replyCommentTableViewCell: UITableViewCell {
     var angryImage: MyButton!
     var reactionView: UIView!
     var row: Int?
+    var lifeFlag: Bool?
     
     //アニメーション中に二重送信させないための処理
     var pushFlag = false
@@ -35,6 +36,10 @@ class replyCommentTableViewCell: UITableViewCell {
             userProfile.isUserInteractionEnabled = true
             
             guard let reply = reply else { return }
+            
+            //もし弾けたシャボン玉だったらいいねを消す
+            iineButton.isHidden = false
+            if lifeFlag! { iineButton.isHidden = true }
             
             //もし自分のcommentだったらいいね!ボタンをつけない
             guard let userId = UserDefaults.standard.string(forKey: "user_id") else {

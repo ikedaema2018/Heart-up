@@ -164,7 +164,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         
         if segue.identifier == "showToContents" {
             if let vc = segue.destination as? ShabonContentsViewController {
-                vc.id = String((sender["locateId"] as? Int)!)
+                vc.id = sender["locateId"] as! String
                 vc.happyGraduationFlag = (sender["finishFlag"] as? Bool)!
             }
         }else if segue.identifier == "toSelectUserSegue" {
