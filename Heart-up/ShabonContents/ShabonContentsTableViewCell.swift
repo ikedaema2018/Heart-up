@@ -116,7 +116,6 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 for value in comment["reactions"] {
                     //もし自分がリアクションを投稿していたらいいね!ボタンを非表示
                     if Int(userId) == value.1["user_id"].int {
-                        print("dadawdwadwadawdawdawdawdawdawd")
                         iineButton.isHidden = true
                     }
                     
@@ -257,6 +256,7 @@ class ShabonContentsTableViewCell: UITableViewCell {
             self.iinePost2(sender: sender, row: self.row!)
             self.pushFlag = false
             sender.isHidden = false
+            self.iineButton.isHidden = true
         }
     }
     
