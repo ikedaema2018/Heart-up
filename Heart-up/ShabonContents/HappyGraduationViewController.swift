@@ -150,7 +150,19 @@ extension HappyGraduationViewController {
                     reaction.1["reaction_id"].int! == 3 ? reactions["angry"]! += 1 : ()
                 }
             }
+            if !nayamiComment.1["reply_comments"].isEmpty {
+                for reply in nayamiComment.1["reply_comments"] {
+                    if !reply.1["reactions"].isEmpty {
+                        for reaction in reply.1["reactions"] {
+                            reaction.1["reaction_id"].int! == 1 ? reactions["iine"]! += 1 : ()
+                            reaction.1["reaction_id"].int! == 2 ? reactions["sad"]! += 1 : ()
+                            reaction.1["reaction_id"].int! == 3 ? reactions["angry"]! += 1 : ()
+                        }
+                    }
+                }
+            }
         }
+
         //reactionsを(key,value)で回してその分imageViewを作成
         var totalReactions = 0
         for (key, value) in reactions {
