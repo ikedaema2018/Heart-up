@@ -116,7 +116,7 @@ class HappyGraduationViewController: UIViewController {
         
         //戻るを点滅
         var lightFlag = false
-        Timer.scheduledTimer(withTimeInterval: 0.8, repeats: true) { (_) in
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (_) in
             if lightFlag { self.returnButton.setImage(nil, for: .normal)}
             else { self.returnButton.setImage(UIImage( named: "return2"), for: .normal) }
             lightFlag = !lightFlag

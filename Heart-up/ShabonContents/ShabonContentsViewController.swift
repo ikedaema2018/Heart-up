@@ -321,6 +321,14 @@ extension ShabonContentsViewController {
                 }
                 return
             }
+            
+            let lifeFlag = self.locates!["life_flag"].bool
+            
+            if lifeFlag! {
+                let navBar = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(ShabonContentsViewController.happyOn))
+                self.navigationItem.setRightBarButton(navBar, animated: true)
+            }
+            
             var shabonUser = String(self.locates!["user_id"].int!)
             //   これをif文の中に入れることを忘れずに         userId != shabonUser &
             if  self.locates!["nayami_comments"].count < 9 {
@@ -453,6 +461,10 @@ extension ShabonContentsViewController {
     @objc private func tapUserImage(sender: UserTapGestureRecognizer){
         // コメント一覧へ遷移する.
                 self.performSegue(withIdentifier: "contentsToUser", sender: sender.userId!)
+    }
+    
+    @objc private func happyOn(){
+        self.performSegue(withIdentifier: "tohappyGraduationSegue", sender: nil)
     }
     
 }

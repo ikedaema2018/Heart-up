@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "container:"
-      name = "Model++">
-   </Group>
-   <Group
-      location = "container:"
-      name = "ShabonContents">
-   </Group>
    <FileRef
       location = "group:../../../Desktop/GoogleService-Info.plist">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/CloserDetailCollectionViewController.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/AllCommentsTableCell/ExplosionShabonDetailViewController.swift">
    </FileRef>
    <FileRef
       location = "group:Heart-up.xcodeproj">
