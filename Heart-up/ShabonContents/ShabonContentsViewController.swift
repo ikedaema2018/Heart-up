@@ -460,7 +460,7 @@ extension ShabonContentsViewController {
     
     @objc private func tapUserImage(sender: UserTapGestureRecognizer){
         // コメント一覧へ遷移する.
-                self.performSegue(withIdentifier: "contentsToUser", sender: sender.userId!)
+        self.performSegue(withIdentifier: "contentsToUser", sender: sender.userId!)
     }
     
     @objc private func happyOn(){

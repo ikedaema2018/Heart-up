@@ -207,6 +207,10 @@ extension HappyGraduationViewController {
             default:
                 ()
             }
+            // reactionImageのactionを指定
+            reactionImage.isUserInteractionEnabled = true
+            
+            
             self.view.addSubview(reactionImage)
             self.view.sendSubview(toBack: reactionImage)
         }

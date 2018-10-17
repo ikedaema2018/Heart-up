@@ -42,6 +42,7 @@
 		C81E850921445E4C006EDA5C /* ProfileImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850821445E4C006EDA5C /* ProfileImageViewController.swift */; };
 		C81E850B2144B32F006EDA5C /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850A2144B32F006EDA5C /* ProfileImage.swift */; };
 		C81E850F21464A63006EDA5C /* ShabonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850E21464A63006EDA5C /* ShabonAlert.swift */; };
+		C81FE3DC21779D530089768F /* AnimateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81FE3DB21779D530089768F /* AnimateModel.swift */; };
 		C82CC491214D75E200F40AE7 /* CloserDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */; };
 		C84DE643215505EF00406A64 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84DE642215505EF00406A64 /* NetworkExtension.framework */; };
 		C84DE6462155468900406A64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C84DE6452155468800406A64 /* GoogleService-Info.plist */; };
@@ -118,6 +119,7 @@
 		C81E850821445E4C006EDA5C /* ProfileImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageViewController.swift; sourceTree = "<group>"; };
 		C81E850A2144B32F006EDA5C /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		C81E850E21464A63006EDA5C /* ShabonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonAlert.swift; sourceTree = "<group>"; };
+		C81FE3DB21779D530089768F /* AnimateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateModel.swift; sourceTree = "<group>"; };
 		C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloserDetailCollectionViewController.swift; sourceTree = "<group>"; };
 		C84DE642215505EF00406A64 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		C84DE644215505EF00406A64 /* Heart-up.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Heart-up.entitlements"; sourceTree = "<group>"; };
@@ -263,6 +265,14 @@
 			path = AllCommentsTableCell;
 			sourceTree = "<group>";
 		};
+		C81FE3DA21779D530089768F /* Animate Model */ = {
+			isa = PBXGroup;
+			children = (
+				C81FE3DB21779D530089768F /* AnimateModel.swift */,
+			);
+			path = "Animate Model";
+			sourceTree = "<group>";
+		};
 		C861B55D21747B1600F5BCC4 /* Model Font */ = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +354,7 @@
 		C8EB10CB212FD0D500B61D34 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C81FE3DA21779D530089768F /* Animate Model */,
 				C861B561217488EC00F5BCC4 /* Model++ */,
 				C861B55D21747B1600F5BCC4 /* Model Font */,
 				C8EB10CC212FD0D500B61D34 /* Model Manager */,
@@ -545,6 +556,7 @@
 				C81C73F2216099E500D4C2E1 /* MyShabonListCollectionViewController.swift in Sources */,
 				C8A8F44C216EE39400382BEE /* Reaction.swift in Sources */,
 				C81329F52168816200B2027E /* FirstMovieViewController.swift in Sources */,
+				C81FE3DC21779D530089768F /* AnimateModel.swift in Sources */,
 				C8A8F4502171AB6100382BEE /* UserTapGestureRecognizer.swift in Sources */,
 				C81C73F62160AF0400D4C2E1 /* MyShabonListCell.swift in Sources */,
 				C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */,
