@@ -46,8 +46,13 @@ class ShabonContentsTableViewCell: UITableViewCell {
     
     var comment: JSON? {
         didSet {
-            print("------------------------")
-            print(lifeFlag)
+            
+            //もしlifeFlagがtrueならいいね!ボタンと返信ボタンをつけない
+            if lifeFlag {
+                print("arererererererererererreerererererererer")
+                iineButton.isHidden = true
+                replyOutret.isHidden = true
+            }
             //imageViewをタップできるように
 //            userProfile.isUserInteractionEnabled = true
             //もし自分のcommentだったらいいね!ボタンをつけない
@@ -111,7 +116,7 @@ class ShabonContentsTableViewCell: UITableViewCell {
             replyView.isHidden = true
             userProfile.isHidden = false
             nayamiView.isHidden = false
-            replyOutret.isHidden = false
+//            replyOutret.isHidden = false
             replyOutret.layer.cornerRadius = 13
             userProfile.clipsToBounds = true
         
