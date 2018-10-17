@@ -43,7 +43,7 @@ class ShabonContentsTableViewCell: UITableViewCell {
     var comment: JSON? {
         didSet {
             //imageViewをタップできるように
-            userProfile.isUserInteractionEnabled = true
+//            userProfile.isUserInteractionEnabled = true
             //もし自分のcommentだったらいいね!ボタンをつけない
             guard let userId = UserDefaults.standard.string(forKey: "user_id") else {
                 if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -53,9 +53,9 @@ class ShabonContentsTableViewCell: UITableViewCell {
             }
             //なぜか前の方をstringにすることができない
             //自分のコメントにいいねができないように
-            if comment!["user_id"].int == Int(userId) {
-                iineButton.isHidden = true
-            }
+//            if comment!["user_id"].int == Int(userId) {
+//                iineButton.isHidden = true
+//            }
             
             guard let comment = comment else {
                 return
@@ -114,6 +114,12 @@ class ShabonContentsTableViewCell: UITableViewCell {
             if !comment["reactions"].isEmpty {
                 //もしいいねの数が1以上ならリアクションを表示
                 for value in comment["reactions"] {
+                    //もし自分がリアクションを投稿していたらいいね!ボタンを非表示
+                    if Int(userId) == value.1["user_id"].int {
+                        print("dadawdwadwadawdawdawdawdawdawd")
+                        iineButton.isHidden = true
+                    }
+                    
                     let reactionId = value.1["reaction_id"].int!
                     if reactionId == 1 {
                         reaction["iine"] = reaction["iine"]! + 1
@@ -125,7 +131,6 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 }
 
                 //もしいいねの数が1以上ならリアクションを表示
-                
                 for (key, value) in reaction {
                     key == "iine" && value > 0 ? iineDisplay() : ()
                     key == "sad" && value > 0 ? sadDisplay() : ()
@@ -211,39 +216,7 @@ class ShabonContentsTableViewCell: UITableViewCell {
         }
     }
     
-//    var reply: JSON? {
-//        didSet {
-//            userProfile.isHidden = true
-//            nayamiView.isHidden = true
-//            replyOutret.isHidden = true
-//            replyView.isHidden = false
-//
-//            guard let reply = reply else { return }
-//            replyLabel.text = reply["reply_comment"].string
-//            let user_image = reply["user"]["profile_image"].string
-//            if user_image != nil {
-//                let image_path = user_image
-//                let url = "http://s3-ap-northeast-1.amazonaws.com/heartup/images/" + image_path!
-//                self.userImage.downloadedFrom(link: url)
-//            }else{
-//                self.userImage.image = UIImage(named: "myPage")
-//            }
-//            if let shabonColor = shabonColor {
-//                var color: UIColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 0.1816941353)
-//                switch shabonColor {
-//                case "青":
-//                    color = #colorLiteral(red: 0.004859850742, green: 0.09608627111, blue: 0.5749928951, alpha: 0.1478756421)
-//                case "赤":
-//                    color = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 0.1504708904)
-//                case "黄":
-//                    color = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 0.154885488)
-//                default:
-//                    print("シャボンカラーがないよ！")
-//                }
-//                replyLabel.backgroundColor = color
-//            }
-//        }
-//    }
+
     
     @IBAction func iineShow(_ sender: Any) {
         if reactionView.isHidden == true {

@@ -40,7 +40,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         locationManager!.distanceFilter = 1000
         
         
-        //UserDefaltsを初期化したい時
+//        UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard
 //        userDefaults.removeObject(forKey: "auth_token")
 //        userDefaults.removeObject(forKey: "user_id")
