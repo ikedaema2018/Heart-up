@@ -147,6 +147,8 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             if let color = color {
                 cell.shabonColor = color
             }
+            //もしシャボン玉が既に弾けているならいいね!ボタンと返信ボタンを消す
+            cell.lifeFlag = locates!["life_flag"].bool!
             //replyButtonを認識するための
             cell.replyOutret.tag = nayamiAndReply[indexPath.row]["id"].int!
             cell.replyOutret.addTarget(self, action: #selector(self.replyViewDisplay), for: .touchDown)
@@ -234,7 +236,6 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
 }
 
 extension ShabonContentsViewController {
-    
     
     func fetchData(){
         guard let shabonId = id else {

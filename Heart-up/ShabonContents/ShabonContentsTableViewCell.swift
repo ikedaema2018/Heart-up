@@ -30,7 +30,11 @@ class ShabonContentsTableViewCell: UITableViewCell {
     var shabonColor: String?
     var row: Int?
     var contentsTable: UITableView?
+    //このシャボン玉の持ち主
     var ownerUserId: Int?
+    //このシャボン玉が弾けてるか否か
+    var lifeFlag = false
+    
     //アニメーション中に二重送信させないための処理
     var pushFlag = false
     
@@ -42,6 +46,8 @@ class ShabonContentsTableViewCell: UITableViewCell {
     
     var comment: JSON? {
         didSet {
+            print("------------------------")
+            print(lifeFlag)
             //imageViewをタップできるように
 //            userProfile.isUserInteractionEnabled = true
             //もし自分のcommentだったらいいね!ボタンをつけない
