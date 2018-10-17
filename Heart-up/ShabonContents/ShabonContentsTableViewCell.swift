@@ -42,6 +42,8 @@ class ShabonContentsTableViewCell: UITableViewCell {
     
     var comment: JSON? {
         didSet {
+            //imageViewをタップできるように
+            userProfile.isUserInteractionEnabled = true
             //もし自分のcommentだったらいいね!ボタンをつけない
             guard let userId = UserDefaults.standard.string(forKey: "user_id") else {
                 if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -50,6 +52,7 @@ class ShabonContentsTableViewCell: UITableViewCell {
                 return
             }
             //なぜか前の方をstringにすることができない
+            //自分のコメントにいいねができないように
             if comment!["user_id"].int == Int(userId) {
                 iineButton.isHidden = true
             }

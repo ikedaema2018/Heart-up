@@ -154,7 +154,9 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
             cell.row = indexPath.row
             cell.locateId = id
             cell.contentsTable = contentsTable
-            
+            let tapGesture = UserTapGestureRecognizer(target: self, action: #selector(self.tapUserImage(sender:)))
+            tapGesture.userId = nayamiAndReply[indexPath.row]["user_id"].int!
+            cell.userProfile.addGestureRecognizer(tapGesture)
             return cell
         }
     }
