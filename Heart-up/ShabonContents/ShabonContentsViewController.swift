@@ -78,6 +78,7 @@ class ShabonContentsViewController: UIViewController {
         commentInput.delegate = self
         
         contentsTable.rowHeight = UITableViewAutomaticDimension
+        
 //        contentsTable.estimatedRowHeight = 44.0
         // Do any additional setup after loading the view.
     }
@@ -90,7 +91,6 @@ class ShabonContentsViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillShowNotification(_:)), name: .UIKeyboardWillShow, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillHideNotification(_:)), name: .UIKeyboardWillHide, object: nil)
         
-
         fetchData()
     }
     
@@ -252,6 +252,12 @@ extension ShabonContentsViewController {
             }
             
             self.locates = locate
+            
+            //もし弾けたシャボン玉だったらの場合わけ
+            if locate!["life_flag"].bool == true {
+                self.bottomView.isHidden = true
+            }
+            
             self.nayamiAndReply = []
             let nayamiIdSort = locate!["nayami_comments"].sorted { $0.1["id"].int! < $1.1["id"].int! }
             
@@ -295,6 +301,7 @@ extension ShabonContentsViewController {
                 self.kyori = Distance.distance(current: (la: latitude, lo: longitude), target: (la: fLatitude, lo: fLongitude))
                         // 再読み込み
                         self.contentsTable.reloadData()
+                
                 
                 //もしアラートから来ていたらhappyGraduationへ飛ばす
                 if self.happyGraduationFlag == true {

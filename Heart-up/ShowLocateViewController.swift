@@ -39,7 +39,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager!.distanceFilter = 1000
         
-        print("--------viewDidLoad--------")
         
         //UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard

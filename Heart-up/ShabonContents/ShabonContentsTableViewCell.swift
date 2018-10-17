@@ -30,22 +30,29 @@ class ShabonContentsTableViewCell: UITableViewCell {
     var shabonColor: String?
     var row: Int?
     var contentsTable: UITableView?
+    var ownerUserId: Int?
+    //アニメーション中に二重送信させないための処理
+    var pushFlag = false
     
     //リアクション画像の表示のところを先に定義
     
-//    var iineReaction: UIImageView!
-//    var sadReaction: UIImageView!
-//    var angryReaction: UIImageView!
     @IBOutlet weak var iineReaction: UIImageView!
     @IBOutlet weak var sadReaction: UIImageView!
     @IBOutlet weak var angryReaction: UIImageView!
     
-
-    //アニメーション中に二重送信させないための処理
-    var pushFlag = false
-    
     var comment: JSON? {
         didSet {
+            //もし自分のcommentだったらいいね!ボタンをつけない
+            guard let userId = UserDefaults.standard.string(forKey: "user_id") else {
+                if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appDelegate.showLoginStoryboard()
+                }
+                return
+            }
+            //なぜか前の方をstringにすることができない
+            if comment!["user_id"].int == Int(userId) {
+                iineButton.isHidden = true
+            }
             
             guard let comment = comment else {
                 return
