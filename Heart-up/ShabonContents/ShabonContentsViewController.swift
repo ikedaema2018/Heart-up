@@ -136,6 +136,7 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
                 cell.shabonColor = color
             }
             cell.reply = nayamiAndReply[indexPath.row]
+            cell.row = indexPath.row
             let tapGesture = UserTapGestureRecognizer(target: self, action: #selector(self.tapUserImage(sender:)))
             tapGesture.userId = nayamiAndReply[indexPath.row]["user_id"].int!
             cell.userProfile.addGestureRecognizer(tapGesture)

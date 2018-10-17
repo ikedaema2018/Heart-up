@@ -36,6 +36,27 @@
                             <constraint firstAttribute="height" constant="38" id="bZ7-TQ-cvY"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HLq-hT-QzJ">
+                        <rect key="frame" x="217" y="41" width="18" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="utt-Wa-Bso">
+                        <rect key="frame" x="243" y="41" width="18" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQn-iO-OSU">
+                        <rect key="frame" x="269" y="41" width="18" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rbc-Ce-Bmi">
+                        <rect key="frame" x="311" y="38" width="56" height="23"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="いいね"/>
+                        <connections>
+                            <action selector="iineButtonClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Wkr-nG-ypZ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="xYp-Kd-iri" secondAttribute="bottom" constant="5.5" id="BIt-fQ-HXG"/>
@@ -50,7 +71,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="angryReaction" destination="eQn-iO-OSU" id="cDP-xg-bTK"/>
                 <outlet property="commentLabel" destination="xYp-Kd-iri" id="Ocn-ld-aa9"/>
+                <outlet property="iineButton" destination="Rbc-Ce-Bmi" id="oMO-ER-ZIX"/>
+                <outlet property="iineReaction" destination="HLq-hT-QzJ" id="6Zm-qL-HuI"/>
+                <outlet property="sadReaction" destination="utt-Wa-Bso" id="7br-MS-hVU"/>
                 <outlet property="userProfile" destination="GEj-Hz-LV8" id="O9E-i3-cdk"/>
             </connections>
             <point key="canvasLocation" x="113.5" y="66"/>

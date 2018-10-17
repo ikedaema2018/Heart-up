@@ -49,7 +49,6 @@ class ShabonContentsTableViewCell: UITableViewCell {
             
             //もしlifeFlagがtrueならいいね!ボタンと返信ボタンをつけない
             if lifeFlag {
-                print("arererererererererererreerererererererer")
                 iineButton.isHidden = true
                 replyOutret.isHidden = true
             }
