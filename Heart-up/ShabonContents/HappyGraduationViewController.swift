@@ -16,6 +16,7 @@ class HappyGraduationViewController: UIViewController {
     var place: String = ""
     var kyori: Double?
     var player: AVAudioPlayer?
+    var koukaon: AVAudioPlayer?
     
     @IBOutlet weak var happyGraduation: UIImageView!
     @IBOutlet weak var breakLocate: UILabel!
@@ -110,9 +111,9 @@ class HappyGraduationViewController: UIViewController {
             }
         }
         //音を鳴らす
-                let soundNum = Int(arc4random_uniform(2))
-                let soundTitle: [String] = ["christmasnomachi", "rokuninnorappafuki", "sunadokeiseiun"]
-                playSound(soundTitle[soundNum])
+        let soundNum = Int(arc4random_uniform(2))
+        let soundTitle: [String] = ["christmasnomachi", "rokuninnorappafuki", "sunadokeiseiun"]
+        playSound(soundTitle[soundNum])
         
         //戻るを点滅
         var lightFlag = false
@@ -216,12 +217,16 @@ extension HappyGraduationViewController {
             reactionImage.isUserInteractionEnabled = true
             
             //自分のリアクションイメージをtap可能にするために、UITapGestureを拡張してプロパティにUIImageViewを追加するべきなのではないか？
-            let touchAction = UserTapGestureRecognizer(target: self, action: #selector(AnimateModel.tateyure(sender:)))
+            let touchAction = UserTapGestureRecognizer(target: self, action: #selector(self.reactionAction(sender:)))
             touchAction.reactionView = reactionImage
+            
             reactionImage.addGestureRecognizer(touchAction)
             
             self.view.addSubview(reactionImage)
             self.view.sendSubview(toBack: reactionImage)
+            //背景と被ってもいいようにするため
+            self.view.sendSubview(toBack: self.detailBackground)
+//            self.view.sendSubview(toBack: self.happyGraduation)
         }
     }
     
@@ -271,11 +276,6 @@ extension HappyGraduationViewController {
         fireFlowerImage.frame = CGRect(x: 0, y: 0, width: imageSize, height: imageSize)
         fireFlowerImage.center = CGPoint(x: imgX, y: imgY)
         fireFlowerImage.image = fireImage
-        
-        //音を鳴らす
-//        let soundNum = Int(arc4random_uniform(2))
-//        let soundTitle: [String] = ["bomb", "short_bomb"]
-//        playSound(soundTitle[soundNum])
     }
 }
 
@@ -289,12 +289,16 @@ extension HappyGraduationViewController {
         }
     }
     
-    @objc private func tateyure(sender: UserTapGestureRecognizer){
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
-            sender.reactionView!.center.y += 100.0
-        }) { _ in
-            sender.reactionView!.center.y -= 100.0
+    private func playKoukaon(_ sound: String) {
+        if let sound = NSDataAsset(name: sound) {
+            koukaon = try? AVAudioPlayer(data: sound.data)
+            koukaon?.play() // → これで音が鳴る
         }
+    }
+    
+    @objc private func reactionAction(sender: UserTapGestureRecognizer){
+        AnimateModel.tateyure(reactionView: sender.reactionView!)
+        playKoukaon("girl_voice1")
     }
     
     // 音楽コントローラ AVAudioPlayerを定義(変数定義、定義実施、クリア）

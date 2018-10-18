@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import AVFoundation
 
 class UserTapGestureRecognizer: UITapGestureRecognizer {
     var userId: Int?
     var reactionView: UIImageView?
+    var happyAudio: AVAudioPlayer?
 }
