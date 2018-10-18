@@ -133,12 +133,9 @@ class HappyGraduationViewController: UIViewController {
 //        アプリを消す時に音楽を停止する
         player?.stop()
         //停止後、AudioPlayerをクリア、再定義
-//        audioPlayerDif()
-        
+        audioPlayerDif()
         dismiss(animated: true, completion: nil)
     }
-    
-
 }
 
 extension HappyGraduationViewController {
@@ -298,7 +295,11 @@ extension HappyGraduationViewController {
     
     @objc private func reactionAction(sender: UserTapGestureRecognizer){
         AnimateModel.tateyure(reactionView: sender.reactionView!)
-        playKoukaon("girl_voice1")
+        //ランダムで声を決める
+        let random = arc4random_uniform(5)
+        let koukaon = ["girl_voice1", "game_princess-damage1", "unknown_animal3", "cat_like2b", "surprising_girl", "game_princess-guard1"]
+        
+        playKoukaon(koukaon[Int(random)])
     }
     
     // 音楽コントローラ AVAudioPlayerを定義(変数定義、定義実施、クリア）
