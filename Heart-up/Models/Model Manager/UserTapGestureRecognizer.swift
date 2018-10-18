@@ -10,4 +10,5 @@ import UIKit
 
 class UserTapGestureRecognizer: UITapGestureRecognizer {
     var userId: Int?
+    var reactionView: UIImageView?
 }

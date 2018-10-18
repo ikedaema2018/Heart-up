@@ -210,6 +210,10 @@ extension HappyGraduationViewController {
             // reactionImageのactionを指定
             reactionImage.isUserInteractionEnabled = true
             
+            //自分のリアクションイメージをtap可能にするために、UITapGestureを拡張してプロパティにUIImageViewを追加するべきなのではないか？
+            let touchAction = UserTapGestureRecognizer(target: self, action: #selector(tateyure(sender:)))
+            touchAction.reactionView = reactionImage
+            reactionImage.addGestureRecognizer(touchAction)
             
             self.view.addSubview(reactionImage)
             self.view.sendSubview(toBack: reactionImage)
@@ -278,6 +282,14 @@ extension HappyGraduationViewController {
             player = try? AVAudioPlayer(data: sound.data)
             player?.play() // → これで音が鳴る
         }
+    }
+    
+    @objc private func tateyure(sender: UserTapGestureRecognizer){
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
+                    sender.reactionView!.center.y += 100.0
+                }) { _ in
+                    sender.reactionView!.center.y -= 100.0
+                }
     }
     
 }
