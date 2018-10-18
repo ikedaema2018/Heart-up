@@ -294,11 +294,10 @@ extension HappyGraduationViewController {
     }
     
     @objc private func reactionAction(sender: UserTapGestureRecognizer){
-        AnimateModel.tateyure(reactionView: sender.reactionView!)
+        AnimateModel.reactionAction(reactionView: sender.reactionView!)
         //ランダムで声を決める
         let random = arc4random_uniform(5)
         let koukaon = ["girl_voice1", "game_princess-damage1", "unknown_animal3", "cat_like2b", "surprising_girl", "game_princess-guard1"]
-        
         playKoukaon(koukaon[Int(random)])
     }
     
