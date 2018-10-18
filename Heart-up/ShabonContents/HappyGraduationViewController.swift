@@ -84,7 +84,7 @@ class HappyGraduationViewController: UIViewController {
         //作成したViewに上線を追加
         detailBorder.backgroundColor = UIColor.lightGray
         //detailにバックグランド
-        let color = #colorLiteral(red: 0.4500938654, green: 0.9813225865, blue: 0.4743030667, alpha: 0.2431774401)
+        let color = #colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 0.2515785531)
         detailBackground.backgroundColor = color
         
         //悩みのタイトル
