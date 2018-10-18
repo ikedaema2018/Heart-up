@@ -129,6 +129,11 @@ class HappyGraduationViewController: UIViewController {
     }
     
     @IBAction func returnContents(_ sender: Any) {
+//        アプリを消す時に音楽を停止する
+        player?.stop()
+        //停止後、AudioPlayerをクリア、再定義
+//        audioPlayerDif()
+        
         dismiss(animated: true, completion: nil)
     }
     
@@ -211,7 +216,7 @@ extension HappyGraduationViewController {
             reactionImage.isUserInteractionEnabled = true
             
             //自分のリアクションイメージをtap可能にするために、UITapGestureを拡張してプロパティにUIImageViewを追加するべきなのではないか？
-            let touchAction = UserTapGestureRecognizer(target: self, action: #selector(tateyure(sender:)))
+            let touchAction = UserTapGestureRecognizer(target: self, action: #selector(AnimateModel.tateyure(sender:)))
             touchAction.reactionView = reactionImage
             reactionImage.addGestureRecognizer(touchAction)
             
@@ -285,11 +290,23 @@ extension HappyGraduationViewController {
     }
     
     @objc private func tateyure(sender: UserTapGestureRecognizer){
-                UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
-                    sender.reactionView!.center.y += 100.0
-                }) { _ in
-                    sender.reactionView!.center.y -= 100.0
-                }
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveEaseIn, .autoreverse], animations: {
+            sender.reactionView!.center.y += 100.0
+        }) { _ in
+            sender.reactionView!.center.y -= 100.0
+        }
     }
     
+    // 音楽コントローラ AVAudioPlayerを定義(変数定義、定義実施、クリア）
+    private func audioPlayerDif(){
+        // 音声ファイルのパスを定義 ファイル名, 拡張子を定義
+        let audioPath = Bundle.main.path(forResource: "rpb", ofType: "mp3")!
+        //ファイルが存在しない、拡張子が誤っている、などのエラーを防止するために実行テスト(try)する。
+        do{
+            //tryで、ファイルが問題なければ player変数にaudioPathを定義
+            try player = AVAudioPlayer(contentsOf: NSURL(fileURLWithPath: audioPath) as URL)
+        }catch{
+            //エラー処理
+        }
+    }
 }
