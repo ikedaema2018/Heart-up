@@ -18,31 +18,23 @@ class HappyGraduationViewController: UIViewController {
     var player: AVAudioPlayer?
     var koukaon: AVAudioPlayer?
     
-    @IBOutlet weak var happyGraduation: UIImageView!
     @IBOutlet weak var breakLocate: UILabel!
     @IBOutlet weak var moveLocate: UILabel!
     @IBOutlet weak var breakTime: UILabel!
     @IBOutlet weak var nayamiDetail: UILabel!
     @IBOutlet weak var totalReaction: UILabel!
-    @IBOutlet weak var iineKaisuu: UILabel!
-    @IBOutlet weak var angryKaisuu: UILabel!
-    @IBOutlet weak var sadKaisuu: UILabel!
     @IBOutlet weak var bubbles: UIImageView!
     @IBOutlet weak var titleImage: UIImageView!
     @IBOutlet weak var detailBorder: UIView!
     @IBOutlet weak var detailBackground: UIView!
     @IBOutlet weak var returnButton: UIButton!
-    
-    
-    
+    @IBOutlet weak var ownerMessage: UIImageView!
+    @IBOutlet weak var hitokoto: UIImageView!
+    @IBOutlet weak var hitokotoAvater: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //卒業おめでとうの画像
-        happyGraduation.image = UIImage(named: "happy_graduation")
-        happyGraduation.contentMode = UIViewContentMode.scaleAspectFit
         
         //破裂するまでの時間を表示
         let createDay = locates!["created_at"].string!
@@ -89,13 +81,17 @@ class HappyGraduationViewController: UIViewController {
         
         //悩みのタイトル
         titleImage.image = UIImage(named: "title")
-        
+        //飛ばした人のメッセージ
+        ownerMessage.image = UIImage(named: "ownerMessage")
+        //とりあえずボーダーを隠す
+        detailBorder.isHidden = true
+        //hitokotoImage
+        hitokoto.image = UIImage(named: "hitokoto")
         //戻るボタン
         returnButton.setImage(UIImage(named: "return2"), for: .normal)
 
         //リアクションを大量に出す
         reactionParty(locates)
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -130,10 +126,12 @@ class HappyGraduationViewController: UIViewController {
     }
     
     @IBAction func returnContents(_ sender: Any) {
+        print("test")
 //        アプリを消す時に音楽を停止する
         player?.stop()
+        koukaon?.stop()
         //停止後、AudioPlayerをクリア、再定義
-        audioPlayerDif()
+//        audioPlayerDif()
         dismiss(animated: true, completion: nil)
     }
 }
@@ -165,6 +163,10 @@ extension HappyGraduationViewController {
                 }
             }
         }
+        
+        //どのリアクションが多いかを調べ、一番多いリアクションはその画像を表示し一言を言わせる
+        let maxReaction = reactions.max { a, b in a.value < b.value }
+        print(maxReaction)
 
         //reactionsを(key,value)で回してその分imageViewを作成
         var totalReactions = 0
@@ -173,14 +175,11 @@ extension HappyGraduationViewController {
             totalReactions += value
             switch key {
             case "iine":
-                iineKaisuu.text = "\(String(value))回"
                 reactionDisplay(count: value, reactionId: 1)
             case "sad":
                 reactionDisplay(count: value, reactionId: 2)
-                sadKaisuu.text = "\(String(value))回"
             case "angry":
                 reactionDisplay(count: value, reactionId: 3)
-                angryKaisuu.text = "\(String(value))回"
             default:
                 ()
             }
