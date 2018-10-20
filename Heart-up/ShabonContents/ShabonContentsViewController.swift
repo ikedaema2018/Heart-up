@@ -70,6 +70,7 @@ class ShabonContentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(id)
         stampView.isHidden = true
         contentsTable.register(UINib(nibName: "ShabonContentsTableViewCell", bundle: nil), forCellReuseIdentifier: "ShabonContentsCell")
         contentsTable.register(UINib(nibName: "replyCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "replyCommentTableViewCell")

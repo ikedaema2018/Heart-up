@@ -125,7 +125,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         
         if view.annotation is CustomAnnotation {
             if let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] {
-//                let locate_id = locateId as! Int
+                 let locateId = locateId as! Int
                 //遷移のためのハッシュ
                 let sender: [String: Any] = ["locateId": locateId, "finishFlag" : false]
                 performSegue(withIdentifier: "showToContents", sender: sender)
@@ -164,7 +164,11 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         
         if segue.identifier == "showToContents" {
             if let vc = segue.destination as? ShabonContentsViewController {
-                vc.id = sender["locateId"] as! String
+                guard let locateId = sender["locateId"] as? Int else {
+                    return
+                }
+                print(locateId)
+                vc.id = String(locateId)
                 vc.happyGraduationFlag = (sender["finishFlag"] as? Bool)!
             }
         }else if segue.identifier == "toSelectUserSegue" {
