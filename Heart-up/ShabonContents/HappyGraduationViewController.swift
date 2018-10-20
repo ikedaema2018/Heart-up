@@ -31,6 +31,9 @@ class HappyGraduationViewController: UIViewController {
     @IBOutlet weak var ownerMessage: UIImageView!
     @IBOutlet weak var hitokoto: UIImageView!
     @IBOutlet weak var hitokotoAvater: UIImageView!
+    @IBOutlet weak var hitokotoAvaterBackground: UIView!
+    @IBOutlet weak var hitokotoLabel: UILabel!
+    
     
     
     override func viewDidLoad() {
@@ -87,6 +90,9 @@ class HappyGraduationViewController: UIViewController {
         detailBorder.isHidden = true
         //hitokotoImage
         hitokoto.image = UIImage(named: "hitokoto")
+        
+        //
+        
         //戻るボタン
         returnButton.setImage(UIImage(named: "return2"), for: .normal)
 
@@ -126,7 +132,6 @@ class HappyGraduationViewController: UIViewController {
     }
     
     @IBAction func returnContents(_ sender: Any) {
-        print("test")
 //        アプリを消す時に音楽を停止する
         player?.stop()
         koukaon?.stop()
@@ -164,10 +169,30 @@ extension HappyGraduationViewController {
             }
         }
         
+        //ひとことコメントになる文字列を作成
+        let hitokotoObj: [String: Any] = ["iine": ["みんな応援してるみたい。頑張って！", "ファイト！私はあなたの味方だよ！", "いっせーの、元気出していこー！"], "sad": ["あなたが悲しんでると、私も悲しい", "私はずっとあなたの味方だよ。苦しんでる時は、思い出して。", "この先どんなに辛いことがあっても、手を取り合って生きていこう。"], "angry": ["酷いことがあったんだね。それでもあなたは前に進むのでしょう？", "大丈夫さ、私たちが、ついてる", "頑張らなくてもいいから、生きていてください"]]
+        
         //どのリアクションが多いかを調べ、一番多いリアクションはその画像を表示し一言を言わせる
         let maxReaction = reactions.max { a, b in a.value < b.value }
-        print(maxReaction)
-
+        //maxリアクションのvalueを３で割った余り
+        let hitokotoKey = maxReaction!.1 % 3
+        //もし全て０だったら妖精の画像を出す
+        if maxReaction?.1 == 0 {
+            hitokotoAvater.image = UIImage(named: "strangeFairy")
+            hitokotoLabel.text = "うん、まあ適当に頑張って〜"
+        } else if maxReaction?.0 == "iine" {
+            hitokotoAvater.image = UIImage(named: "heart")
+            hitokotoLabel.text = (hitokotoObj["iine"] as! [String])[hitokotoKey]
+        } else if maxReaction?.0 == "sad" {
+            hitokotoAvater.image = UIImage(named: "sad")
+            hitokotoLabel.text = (hitokotoObj["sad"] as! [String])[hitokotoKey]
+        } else if maxReaction?.0 == "angry" {
+            hitokotoAvater.image = UIImage(named: "angry")
+            hitokotoLabel.text = (hitokotoObj["angry"] as! [String])[hitokotoKey]
+        }
+        
+        
+        
         //reactionsを(key,value)で回してその分imageViewを作成
         var totalReactions = 0
         for (key, value) in reactions {
