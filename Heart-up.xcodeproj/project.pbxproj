@@ -77,6 +77,7 @@
 		C8A8F4522171E44500382BEE /* HappyGraduationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A8F4512171E44500382BEE /* HappyGraduationViewController.swift */; };
 		C8AA5BB1216378F700523842 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AA5BB0216378F700523842 /* Distance.swift */; };
 		C8E0784021789250009B75B9 /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E0783F21789250009B75B9 /* AudioPlayer.swift */; };
+		C8E1E2E2217C563900E63D54 /* ResultMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E1E2E1217C563900E63D54 /* ResultMessage.swift */; };
 		C8EB10CF212FD10E00B61D34 /* StockLocateInfos.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */; };
 		C8EB10D1212FD12100B61D34 /* LocateInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D0212FD12100B61D34 /* LocateInfo.swift */; };
 		C8EB10D52130021E00B61D34 /* ShowLocateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */; };
@@ -157,6 +158,7 @@
 		C8A8F4512171E44500382BEE /* HappyGraduationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyGraduationViewController.swift; sourceTree = "<group>"; };
 		C8AA5BB0216378F700523842 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		C8E0783F21789250009B75B9 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		C8E1E2E1217C563900E63D54 /* ResultMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMessage.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
 		C8EB10D0212FD12100B61D34 /* LocateInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateInfo.swift; sourceTree = "<group>"; };
 		C8EB10D42130021E00B61D34 /* ShowLocateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowLocateViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/ShowLocateViewController.swift"; sourceTree = "<absolute>"; };
@@ -383,6 +385,7 @@
 				C8A8F44B216EE39400382BEE /* Reaction.swift */,
 				C8A8F44D216F0A0700382BEE /* iineButton.swift */,
 				C8A8F44F2171AB6100382BEE /* UserTapGestureRecognizer.swift */,
+				C8E1E2E1217C563900E63D54 /* ResultMessage.swift */,
 			);
 			path = "Model Manager";
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				C8A8F448216C636800382BEE /* LocateInfoDetail.swift in Sources */,
 				C86FE3652148B94100526196 /* collectionViewHeader.swift in Sources */,
 				C8168D6E2137C99B007084A1 /* LoginViewController.swift in Sources */,
+				C8E1E2E2217C563900E63D54 /* ResultMessage.swift in Sources */,
 				C8E0784021789250009B75B9 /* AudioPlayer.swift in Sources */,
 				C8A8F4522171E44500382BEE /* HappyGraduationViewController.swift in Sources */,
 				C81BA8C12151E0A40094AC00 /* UserInfoViewController.swift in Sources */,

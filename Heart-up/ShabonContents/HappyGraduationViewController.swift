@@ -180,17 +180,15 @@ class HappyGraduationViewController: UIViewController {
     @IBAction func resultSubmitAction(_ sender: Any) {
         //最初はテキストフィールドに値がちゃんとc入力されているか確認
         guard let message = resultMessage.text else {
-            errorLabel.text = "メッセージがからですよ！"
+            errorLabel.text = "メッセージが空ですよ！"
             return
         }
         if message == "" {
-            errorLabel.text = "メッセージがからですよ！"
+            errorLabel.text = "メッセージが空ですよ！"
             return
         }
+//        ResultMessage.postResultMessage
     }
-    
-    
-    
 }
 
 extension HappyGraduationViewController {
