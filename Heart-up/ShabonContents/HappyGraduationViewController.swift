@@ -25,7 +25,6 @@ class HappyGraduationViewController: UIViewController {
     @IBOutlet weak var totalReaction: UILabel!
     @IBOutlet weak var bubbles: UIImageView!
     @IBOutlet weak var titleImage: UIImageView!
-    @IBOutlet weak var detailBorder: UIView!
     @IBOutlet weak var detailBackground: UIView!
     @IBOutlet weak var returnButton: UIButton!
     @IBOutlet weak var ownerMessage: UIImageView!
@@ -34,8 +33,8 @@ class HappyGraduationViewController: UIViewController {
     @IBOutlet weak var hitokotoAvaterBackground: UIView!
     @IBOutlet weak var hitokotoLabel: UILabel!
     @IBOutlet weak var submitOutret: UIButton!
-    //シャボン玉の持ち主からの最後の一言
-    @IBOutlet weak var resultMessage: UITextField!
+    var resultMessage: UITextField!
+    
     //とりあえずエラーのラベルを用意
     let errorLabel = UILabel()
     
@@ -43,6 +42,27 @@ class HappyGraduationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //もしシャボン玉を投稿した人が自分だったらテキストフィールドを別だったらラベルを
+        guard let userId = UserDefaults.standard.string(forKey: "user_id") else {
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+            return
+        }
+        //その人がシャボン玉の投稿者だった場合、初期値を指定
+        if userId == String(locates!["user_id"].int!) {
+            //resultMessageのテキストフィールドを定義
+            //シャボン玉の持ち主からの最後の一言
+            resultMessage = UITextField()
+            resultMessage.frame = CGRect(x: 30, y: ownerMessage.frame.maxY, width: self.view.frame.width - 60, height: 60)
+            
+            resultMessage.layer.borderWidth = 1
+            let BorderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+            resultMessage.layer.borderColor = BorderColor.cgColor
+            resultMessage.layer.cornerRadius = 10
+            self.view.addSubview(resultMessage)
+        }
+        resultMessage.text = "dawdawdawdawdawdawdawdadw"
         
         errorLabel.frame = CGRect(x: self.view.frame.width / 2 - 50, y: self.ownerMessage.frame.minY, width: self.view.frame.width / 2 - 20, height: 30)
         errorLabel.font = UIFont.systemFont(ofSize: 10)
@@ -81,13 +101,7 @@ class HappyGraduationViewController: UIViewController {
         bubbles.image = UIImage(named: "bubbles")
         bubbles.contentMode = UIViewContentMode.scaleAspectFit
         
-        //ボーダー
-        //上線のCALayerを作成
-        let topBorder = CALayer()
-        topBorder.frame = CGRect(x: 0, y: 0, width: detailBorder.frame.width, height: 1.0)
-        topBorder.backgroundColor = UIColor.lightGray.cgColor
-        //作成したViewに上線を追加
-        detailBorder.backgroundColor = UIColor.lightGray
+        
         //detailにバックグランド
         let color = #colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 0.2515785531)
         detailBackground.backgroundColor = color
@@ -96,8 +110,7 @@ class HappyGraduationViewController: UIViewController {
         titleImage.image = UIImage(named: "title")
         //飛ばした人のメッセージ
         ownerMessage.image = UIImage(named: "ownerMessage")
-        //とりあえずボーダーを隠す
-        detailBorder.isHidden = true
+        
         //hitokotoImage
         hitokoto.image = UIImage(named: "hitokoto")
         
