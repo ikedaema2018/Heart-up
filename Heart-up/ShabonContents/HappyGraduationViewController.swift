@@ -187,7 +187,33 @@ class HappyGraduationViewController: UIViewController {
             errorLabel.text = "メッセージが空ですよ！"
             return
         }
-//        ResultMessage.postResultMessage
+        ResultMessage.postResultMessage(locate_info_id: locates!["id"].int!, message: message) { (error) in
+            if let error = error {
+                if let message = error["message"] as? String {
+                    print(message)
+                    print("不明なエラーが出現しました")
+                }else{
+                    print("不明なエラーが出現しました")
+                }
+                print("不明なエラーが出現しました")
+                return
+            }
+            //一瞬投稿成功メッセージを表示
+            let successLabel = UILabel()
+            successLabel.frame = CGRect(x: 30, y: 30, width: 150, height: 40)
+            successLabel.text = "あなたのメッセージを送信しました"
+            successLabel.center = self.view.center
+            successLabel.font = UIFont.systemFont(ofSize: 10)
+            successLabel.layer.borderWidth = 1
+            successLabel.layer.cornerRadius = 10
+            successLabel.backgroundColor = UIColor.white
+            self.view.addSubview(successLabel)
+            print("postごーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー")
+            
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (_) in
+                successLabel.removeFromSuperview()
+            })
+        }
     }
 }
 

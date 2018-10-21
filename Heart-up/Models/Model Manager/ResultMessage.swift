@@ -28,6 +28,7 @@ class ResultMessage: NSObject {
                 if let errorInfo = response.result.value as? [String: Any] {
                     callback(errorInfo)
                 }
+                print("なにがしかのエラー")
                 return
             }
             //成功したら
