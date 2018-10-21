@@ -36,12 +36,18 @@ class HappyGraduationViewController: UIViewController {
     @IBOutlet weak var submitOutret: UIButton!
     //シャボン玉の持ち主からの最後の一言
     @IBOutlet weak var resultMessage: UITextField!
-    
-    
+    //とりあえずエラーのラベルを用意
+    let errorLabel = UILabel()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        errorLabel.frame = CGRect(x: self.view.frame.width / 2 - 50, y: self.ownerMessage.frame.minY, width: self.view.frame.width / 2 - 20, height: 30)
+        errorLabel.font = UIFont.systemFont(ofSize: 10)
+        errorLabel.textColor = UIColor.red
+        self.view.addSubview(errorLabel)
         
         //破裂するまでの時間を表示
         let createDay = locates!["created_at"].string!
@@ -169,6 +175,22 @@ class HappyGraduationViewController: UIViewController {
 //        audioPlayerDif()
         dismiss(animated: true, completion: nil)
     }
+    
+    //結果を送信する
+    @IBAction func resultSubmitAction(_ sender: Any) {
+        //最初はテキストフィールドに値がちゃんとc入力されているか確認
+        guard let message = resultMessage.text else {
+            errorLabel.text = "メッセージがからですよ！"
+            return
+        }
+        if message == "" {
+            errorLabel.text = "メッセージがからですよ！"
+            return
+        }
+    }
+    
+    
+    
 }
 
 extension HappyGraduationViewController {
@@ -400,4 +422,6 @@ extension HappyGraduationViewController: UITextFieldDelegate {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         }, completion: nil)
     }
+    
+    
 }

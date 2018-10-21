@@ -809,6 +809,9 @@
                                         <state key="normal" title="送信">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="resultSubmitAction:" destination="zzc-Xt-KtZ" eventType="touchUpInside" id="qXR-fm-cgz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -908,6 +911,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zVW-er-emc"/>
-        <segue reference="ypq-AQ-sHG"/>
+        <segue reference="UIR-Rk-hcD"/>
     </inferredMetricsTieBreakers>
 </document>
