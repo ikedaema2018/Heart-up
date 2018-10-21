@@ -187,6 +187,10 @@ class HappyGraduationViewController: UIViewController {
             errorLabel.text = "メッセージが空ですよ！"
             return
         }
+        
+        let height = self.view.frame.height
+        let width = self.view.frame.width
+        
         ResultMessage.postResultMessage(locate_info_id: locates!["id"].int!, message: message) { (error) in
             if let error = error {
                 if let message = error["message"] as? String {
@@ -205,13 +209,20 @@ class HappyGraduationViewController: UIViewController {
             successLabel.center = self.view.center
             successLabel.font = UIFont.systemFont(ofSize: 10)
             successLabel.layer.borderWidth = 1
+            successLabel.clipsToBounds = true
             successLabel.layer.cornerRadius = 10
             successLabel.backgroundColor = UIColor.white
+            
+            let frame:CGRect = CGRect(x: 0, y: 0, width: width, height: height)
+            let fakeModalView: ModalView = ModalView(frame: frame)
+            self.view.addSubview(fakeModalView)
+            
+            
             self.view.addSubview(successLabel)
-            print("postごーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー")
             
             Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (_) in
                 successLabel.removeFromSuperview()
+                fakeModalView.removeFromSuperview()
             })
         }
     }
