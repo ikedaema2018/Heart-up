@@ -33,6 +33,10 @@ class HappyGraduationViewController: UIViewController {
     @IBOutlet weak var hitokotoAvater: UIImageView!
     @IBOutlet weak var hitokotoAvaterBackground: UIView!
     @IBOutlet weak var hitokotoLabel: UILabel!
+    @IBOutlet weak var submitOutret: UIButton!
+    //シャボン玉の持ち主からの最後の一言
+    @IBOutlet weak var resultMessage: UITextField!
+    
     
     
     
@@ -91,7 +95,11 @@ class HappyGraduationViewController: UIViewController {
         //hitokotoImage
         hitokoto.image = UIImage(named: "hitokoto")
         
-        //
+        //テキストフィールドのデリゲートを設置
+        resultMessage.delegate = self
+        
+        //送信ボタンの角を取る
+        submitOutret.layer.cornerRadius = 10
         
         //戻るボタン
         returnButton.setImage(UIImage(named: "return2"), for: .normal)
@@ -124,6 +132,28 @@ class HappyGraduationViewController: UIViewController {
             else { self.returnButton.setImage(UIImage( named: "return2"), for: .normal) }
             lightFlag = !lightFlag
         }
+    }
+    
+    //テキストフィールドをあげる処理
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // キーボードイベントの監視開始
+        // キーボードイベントの監視開始
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillShowNotification(_:)), name: .UIKeyboardWillShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillHideNotification(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // キーボードイベントの監視解除
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.UIKeyboardWillShow,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: NSNotification.Name.UIKeyboardWillHide,
+                                                  object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -336,5 +366,38 @@ extension HappyGraduationViewController {
         }catch{
             //エラー処理
         }
+    }
+}
+
+extension HappyGraduationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // Notificationを削除
+    func removeObserver() {
+        let notification = NotificationCenter.default
+        notification.removeObserver(self)
+    }
+    
+    // キーボードが現れた時に、画面全体をずらす。
+    @objc private func handleKeyboardWillShowNotification(_ notification: Notification) {
+        let userInfo = notification.userInfo //この中にキーボードの情報がある
+        let keyboardSize = (userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardY = self.view.frame.size.height - keyboardSize.height //画面全体の高さ - キーボードの高さ = キーボードが被らない高さ
+        let editingTextFieldY: CGFloat = (self.resultMessage?.frame.origin.y)!
+
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+            self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextFieldY - (keyboardY - 80)), width: self.view.bounds.width, height: self.view.bounds.height)
+        }, completion: nil)
+        
+    }
+    
+    // キーボードが消えたときに、画面を戻す
+    @objc private func handleKeyboardWillHideNotification(_ notification: Notification) {
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+            self.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
+        }, completion: nil)
     }
 }

@@ -805,7 +805,10 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qG6-OY-rwd">
                                         <rect key="frame" x="267" y="0.0" width="31" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="送信"/>
+                                        <color key="backgroundColor" red="0.1671643494" green="0.65547507739999999" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="送信">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -860,7 +863,9 @@
                         <outlet property="moveLocate" destination="lct-h9-1fQ" id="CQm-11-Sgo"/>
                         <outlet property="nayamiDetail" destination="R8r-Ri-hfx" id="PTl-A0-heq"/>
                         <outlet property="ownerMessage" destination="t6k-CY-2lc" id="5ga-ek-e4k"/>
+                        <outlet property="resultMessage" destination="gzk-XH-5Fj" id="je6-xV-JQz"/>
                         <outlet property="returnButton" destination="f7e-zS-Q39" id="UhD-Tj-XY1"/>
+                        <outlet property="submitOutret" destination="qG6-OY-rwd" id="s2S-A9-Aes"/>
                         <outlet property="titleImage" destination="fYf-Jz-pOs" id="xs6-5U-JUi"/>
                         <outlet property="totalReaction" destination="erZ-TC-ceC" id="RXa-69-9T8"/>
                     </connections>
@@ -903,6 +908,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zVW-er-emc"/>
-        <segue reference="UIR-Rk-hcD"/>
+        <segue reference="ypq-AQ-sHG"/>
     </inferredMetricsTieBreakers>
 </document>

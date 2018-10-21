@@ -175,7 +175,6 @@ extension UserResisterViewController: UIPickerViewDataSource, UIPickerViewDelega
     func pickerView(_ pickerview: UIPickerView, didSelectRow row: Int, inComponent component: Int){
         age = String(ageList[row])
     }
-
 }
 
 extension UserResisterViewController: UITextViewDelegate {
