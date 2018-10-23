@@ -34,7 +34,7 @@ class UserLocate: NSObject {
                     if let result = response.result.value as? [String: Any] {
                         callback(result)
                     } else {
-                        callback([ "message" : "サーバーエラーが発生しました" ])
+                        callback([ "message" : "電波が悪い可能性があります。再読み込みしてね！" ])
                     }
                     return
                 }
@@ -42,7 +42,7 @@ class UserLocate: NSObject {
                 
             case .failure(let error):
                 print(error)
-                callback(["message": "サーバーエラーが発生しました"])
+                callback(["message" : "電波が悪い可能性があります。再読み込みしてね！"])
             }
         }
     }

@@ -206,7 +206,7 @@ extension ShowLocateViewController {
             
             if let error = error {
                 if let message = error["message"] as? String {
-                    print(message)
+                    self.errorViewDisplay(message)
                     return
                 } else {
                     print("不明なエラーが発生しました")
@@ -224,9 +224,10 @@ extension ShowLocateViewController {
                 if let error = error {
                     if let message = error["message"] as? String {
                         print(message)
-                        print("不明なエラーが発生しました")
+                        self.errorViewDisplay(message)
                     } else {
                         print("不明なエラーが発生しました")
+                        self.errorViewDisplay("不明なエラーが発生しました")
                     }
                     return
                 }
@@ -317,8 +318,14 @@ extension ShowLocateViewController {
         UserLocate.userLocateUpdate(ido: ido, keido: keido, callback: { response in
             if let error = response {
                 let error_message = error["message"] as! String
-                self.showAlert(message: error_message, hide: {})
+                print(error_message)
+//                self.showAlert(message: error_message, hide: {})
+                //ここでエラービューを表示
+                self.errorViewDisplay(error_message)
+            } else {
+                self.errorViewDisplay("不明なエラーが発生しました。")
             }
+            
         })
     }
     func select_user_alert() {
@@ -326,10 +333,12 @@ extension ShowLocateViewController {
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
-                    print("不明なエラーが発生しました")
+                    self.errorViewDisplay(message)
                 } else {
                     print("不明なエラーが発生しました")
+                    self.errorViewDisplay("不明なエラーが発生しました。")
                 }
+                
                 return
             }
             
@@ -352,9 +361,10 @@ extension ShowLocateViewController {
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
-                    print("不明なエラーが発生しました")
+                    self.errorViewDisplay(message)
                 } else {
                     print("不明なエラーが発生しました")
+                    self.errorViewDisplay("不明なエラーが発生しました")
                 }
                 return
             }
@@ -379,9 +389,10 @@ extension ShowLocateViewController {
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
-                    print("不明なエラーが発生しました")
+                    self.errorViewDisplay(message)
                 } else {
                     print("不明なエラーが発生しました")
+                    self.errorViewDisplay("不明なエラーが発生しました")
                 }
                 return
             }
@@ -393,6 +404,15 @@ extension ShowLocateViewController {
                 }
             }
         })
+    }
+    
+    //電波が悪い時に避難用のエラービューを表示
+    func errorViewDisplay(_ message: String){
+        print("なぜ")
+        var errorView = UIView()
+        errorView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        errorView.backgroundColor = UIColor.white
+        self.view.addSubview(errorView)
     }
     
 }
