@@ -20,8 +20,10 @@ class ShabonPostViewController: UIViewController {
     @IBOutlet weak var selectedColor: UISegmentedControl!
     @IBOutlet weak var shabonImage: UIImageView!
     @IBOutlet weak var shabonText: UILabel!
-    
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var colorHelpOutret: UIButton!
+    
+    
     
     //常に更新される緯度経度を定義
     var latitude :String?
@@ -47,12 +49,20 @@ class ShabonPostViewController: UIViewController {
             print("エラー")
         }
     }
+
+    @IBAction func colorHelp(_ sender: Any) {
+        colorHelpOutret.setTitleColor(UIColor.green, for: .normal)
+    }
+    
+    @IBAction func colorHelpExit(_ sender: Any) {
+        colorHelpOutret.setTitleColor(UIColor.blue, for: .normal)
+    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        animator = UIViewPropertyAnimator(duration:1.2,curve: .easeInOut){
+        animator = UIViewPropertyAnimator(duration:1.2, curve: .easeInOut){
             self.shabonImage.center.y -= 400//これでクマの画像は下に
             self.shabonText.center.y -= 400
             self.shabonImage.alpha = 0.0

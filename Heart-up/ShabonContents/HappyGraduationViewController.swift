@@ -34,6 +34,7 @@ class HappyGraduationViewController: UIViewController {
     @IBOutlet weak var hitokotoLabel: UILabel!
     @IBOutlet weak var submitOutret: UIButton!
     var resultMessage: UITextField!
+    var resultMessage2: UILabel!
     
     //とりあえずエラーのラベルを用意
     let errorLabel = UILabel()
@@ -51,6 +52,7 @@ class HappyGraduationViewController: UIViewController {
         }
         //その人がシャボン玉の投稿者だった場合、初期値を指定
         if userId == String(locates!["user_id"].int!) {
+            submitOutret.isHidden = false
             //resultMessageのテキストフィールドを定義
             //シャボン玉の持ち主からの最後の一言
             resultMessage = UITextField()
@@ -61,8 +63,24 @@ class HappyGraduationViewController: UIViewController {
             resultMessage.layer.borderColor = BorderColor.cgColor
             resultMessage.layer.cornerRadius = 10
             self.view.addSubview(resultMessage)
+            //テキストフィールドのデリゲートを設置
+            resultMessage.delegate = self
+            if !locates!["result_messages"].isEmpty {
+                resultMessage.text = locates!["result_messages"][0]["result_message"].string!
+            }
+        }else{
+            //もしそのユーザーが投稿者ではないとき
+            submitOutret.isHidden = true
+            //シャボン玉の持ち主からの最後の一言
+            resultMessage2 = UILabel()
+            resultMessage2.frame = CGRect(x: 30, y: ownerMessage.frame.maxY, width: self.view.frame.width - 60, height: 60)
+            
+            self.view.addSubview(resultMessage2)
+            
+            if !locates!["result_messages"].isEmpty {
+                resultMessage2.text = locates!["result_messages"][0]["result_message"].string!
+            }
         }
-        resultMessage.text = "dawdawdawdawdawdawdawdadw"
         
         errorLabel.frame = CGRect(x: self.view.frame.width / 2 - 50, y: self.ownerMessage.frame.minY, width: self.view.frame.width / 2 - 20, height: 30)
         errorLabel.font = UIFont.systemFont(ofSize: 10)
@@ -113,9 +131,6 @@ class HappyGraduationViewController: UIViewController {
         
         //hitokotoImage
         hitokoto.image = UIImage(named: "hitokoto")
-        
-        //テキストフィールドのデリゲートを設置
-        resultMessage.delegate = self
         
         //送信ボタンの角を取る
         submitOutret.layer.cornerRadius = 10

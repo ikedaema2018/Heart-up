@@ -127,6 +127,18 @@
                                                 <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojv-Gg-jnG">
+                                                <rect key="frame" x="230" y="294" width="87" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                <state key="normal" title="*色選びで迷ったら">
+                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="colorHelp:" destination="LSX-1G-oj3" eventType="touchDown" id="n94-wV-cy1"/>
+                                                    <action selector="colorHelpExit:" destination="LSX-1G-oj3" eventType="touchUpInside" id="igG-ma-0K2"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -152,6 +164,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="あなたの不安は？" id="TBZ-Pq-9mx"/>
                     <connections>
+                        <outlet property="colorHelpOutret" destination="ojv-Gg-jnG" id="LlX-mj-jKM"/>
                         <outlet property="errorLabel" destination="aNP-CW-wtf" id="md5-mY-76n"/>
                         <outlet property="nayamiInput" destination="uL2-GB-PgW" id="8TE-oL-DgI"/>
                         <outlet property="scrollView" destination="DZh-7A-Y06" id="sIa-oz-xHc"/>
@@ -822,15 +835,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hq8-xe-0zx">
-                                <rect key="frame" x="16" y="338" width="62" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view alpha="0.65000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XOW-qx-8EF">
                                 <rect key="frame" x="16" y="338" width="62" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1671643494" green="0.65547507739999999" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hq8-xe-0zx">
+                                <rect key="frame" x="16" y="338" width="62" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t6k-CY-2lc">
                                 <rect key="frame" x="23" y="408" width="131" height="19"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
