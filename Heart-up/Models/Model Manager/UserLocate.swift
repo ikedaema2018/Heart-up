@@ -59,13 +59,12 @@ class UserLocate: NSObject {
             
             //電波が悪い時
             if !response.result.isSuccess {
-                print("電波が悪いよ")
                 return
             }
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
-                callback([ "message" : "サーバーでエラーが発生しました。StockLocateController"], nil)
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"], nil)
             }
             guard let object = response.result.value else {
                 return

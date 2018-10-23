@@ -24,14 +24,13 @@ class ResultMessage: NSObject {
         Alamofire.request(url, method: .post, parameters: params).responseJSON { (response) in
             //電波が悪い時
             if !response.result.isSuccess {
-                print("電波が悪いよ")
                 return
             }
             let statusCode = response.response!.statusCode
             
             if statusCode != 200 {
                 if let errorInfo = response.result.value as? [String: Any] {
-                    callback(errorInfo)
+                    callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
                 }
                 print("なにがしかのエラー")
                 return

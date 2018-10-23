@@ -32,7 +32,6 @@ class PushToken: NSObject {
             .responseJSON { response in
                 //電波が悪い時
                 if !response.result.isSuccess {
-                    print("電波が悪いよ")
                     return
                 }
                 let statusCode = response.response!.statusCode
@@ -40,7 +39,7 @@ class PushToken: NSObject {
                 //失敗
                 if statusCode != 200 {
                     if let errorInfo = response.result.value as? [String: Any] {
-                        callback(errorInfo)
+                        callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
                     }
                     return
                 }

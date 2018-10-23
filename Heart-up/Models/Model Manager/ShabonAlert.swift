@@ -22,16 +22,14 @@ class ShabonAlert: NSObject {
 //        let url = "http://localhost:3000/shabon_alerts/show?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
-            
             //電波が悪い時
             if !response.result.isSuccess {
-                print("電波が悪いよ")
                 return
             }
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
-                callback([ "message" : "サーバーでエラーが発生しました。 ShabonAlert"], nil)
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"], nil)
             }
             
             if statusCode == 201 {
@@ -67,13 +65,12 @@ class ShabonAlert: NSObject {
         Alamofire.request(url, method: .get).responseJSON {response in
             //電波が悪い時
             if !response.result.isSuccess {
-                print("電波が悪いよ")
                 return
             }
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
-                callback([ "message" : "サーバーでエラーが発生しました。"])
+                callback(["message": "電波が悪い可能性があります。再読み込みをお願いします"])
             }
             
             callback(nil)
@@ -93,14 +90,13 @@ class ShabonAlert: NSObject {
         Alamofire.request(url, method: .get).responseJSON {response in
             //電波が悪い時
             if !response.result.isSuccess {
-                print("電波が悪いよ")
                 return
             }
             let statusCode = response.response!.statusCode
             
             // 失敗した場合.
             if statusCode != 200 {
-                callback([ "message" : "サーバーでエラーが発生しました。 closeAlert"], nil)
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"], nil)
             }
             
             if statusCode == 201 {
@@ -129,13 +125,12 @@ class ShabonAlert: NSObject {
         Alamofire.request(url, method: .get).responseJSON {response in
             //電波が悪い時
             if !response.result.isSuccess {
-                print("電波が悪いよ")
                 return
             }
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
-                callback([ "message" : "サーバーでエラーが発生しました。"])
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
             }
             callback(nil)
         }

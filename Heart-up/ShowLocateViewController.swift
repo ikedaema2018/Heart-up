@@ -207,7 +207,6 @@ extension ShowLocateViewController {
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
-                    print("不明なエラーが発生しました")
                     return
                 } else {
                     print("不明なエラーが発生しました")

@@ -78,14 +78,13 @@ class NayamiComment: NSObject {
         Alamofire.request(url, method: .get).responseJSON {response in
             //電波が悪い時
             if !response.result.isSuccess {
-                print("電波が悪いよ")
                 return
             }
             let statusCode = response.response!.statusCode
             
             //失敗したとき
             if statusCode != 200 {
-                callback(["message": "サーバーでエラーが発生しました"], nil)
+                callback(["message": "電波が悪い可能性があります。再読み込みをお願いします"], nil)
             }
             
             if let object = response.result.value as? [[String: Any]] {
@@ -109,14 +108,13 @@ class NayamiComment: NSObject {
             
             //電波が悪い時
             if !response.result.isSuccess {
-                print("電波が悪いよ")
                 return
             }
             let statusCode = response.response!.statusCode
             
             //失敗したとき
             if statusCode != 200 {
-                callback(["message": "サーバーでエラーが発生しました"], nil)
+                callback(["message": "電波が悪い可能性があります。再読み込みをお願いします"], nil)
             }
             
             if let object = response.result.value as? [[String: Any]] {
@@ -139,14 +137,13 @@ class NayamiComment: NSObject {
         Alamofire.request(url, method: .get).responseJSON {response in
             //電波が悪い時
             if !response.result.isSuccess {
-                print("電波が悪いよ")
                 return
             }
             let statusCode = response.response!.statusCode
             
             //失敗したとき
             if statusCode != 200 {
-                callback(["message": "サーバーでエラーが発生しました"])
+                callback(["message": "電波が悪い可能性があります。再読み込みをお願いします"])
             }
                 callback(nil)
         }
