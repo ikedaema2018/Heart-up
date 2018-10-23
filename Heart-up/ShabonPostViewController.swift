@@ -22,7 +22,8 @@ class ShabonPostViewController: UIViewController {
     @IBOutlet weak var shabonText: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var colorHelpOutret: UIButton!
-    
+    var colorHelpView: UIView!
+    var colorHelpLabel: UILabel!
     
     
     //常に更新される緯度経度を定義
@@ -52,16 +53,36 @@ class ShabonPostViewController: UIViewController {
 
     @IBAction func colorHelp(_ sender: Any) {
         colorHelpOutret.setTitleColor(UIColor.green, for: .normal)
+        colorHelpView = UIView.init(frame: CGRect.init(x: 0, y: self.view.frame.height / 3, width: self.view.frame.width / 3, height: self.view.frame.height / 6))
+        colorHelpView.center.x = colorHelpOutret.center.x
+        colorHelpView.layer.borderWidth = 1
+        colorHelpView.backgroundColor = UIColor.white
+        
+        colorHelpOutret.setTitleColor(UIColor.green, for: .normal)
+        colorHelpLabel = UILabel()
+        colorHelpLabel.frame = CGRect(x: 20, y: colorHelpOutret.frame.minY - 40, width: self.view.frame.width / 3 - 40, height: self.view.frame.height / 7)
+        colorHelpLabel.center.x = colorHelpOutret.center.x
+        colorHelpLabel.layer.borderWidth = 1
+        colorHelpLabel.backgroundColor = UIColor.white
+        colorHelpLabel.numberOfLines = 4
+        colorHelpLabel.font = UIFont(name: "Arial", size: 10)
+        //        colorHelpLabel.sizeToFit()
+        colorHelpLabel.text = "恋愛系の悩みは赤 \n 人間関係の悩みは青 \n その他は黄色 \n を使ってね"
+//        self.view.addSubview(colorHelpView)
+        self.view.addSubView(colorHelpLabel)
+        
     }
     
+    let thinBlue = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     @IBAction func colorHelpExit(_ sender: Any) {
-        colorHelpOutret.setTitleColor(UIColor.blue, for: .normal)
+        colorHelpView.removeFromSuperview()
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        colorHelpOutret.setTitleColor(thinBlue, for: .normal)
+        
         animator = UIViewPropertyAnimator(duration:1.2, curve: .easeInOut){
             self.shabonImage.center.y -= 400//これでクマの画像は下に
             self.shabonText.center.y -= 400
