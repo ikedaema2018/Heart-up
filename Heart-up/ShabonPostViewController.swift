@@ -60,22 +60,23 @@ class ShabonPostViewController: UIViewController {
         
         colorHelpOutret.setTitleColor(UIColor.green, for: .normal)
         colorHelpLabel = UILabel()
-        colorHelpLabel.frame = CGRect(x: 20, y: colorHelpOutret.frame.minY - 40, width: self.view.frame.width / 3 - 40, height: self.view.frame.height / 7)
+        colorHelpLabel.frame = CGRect(x: 0, y: (self.view.frame.height / 3) + 10, width: self.view.frame.width / 3 - 20, height: self.view.frame.height / 7)
         colorHelpLabel.center.x = colorHelpOutret.center.x
-        colorHelpLabel.layer.borderWidth = 1
+//        colorHelpLabel.layer.borderWidth = 1
         colorHelpLabel.backgroundColor = UIColor.white
-        colorHelpLabel.numberOfLines = 4
+        colorHelpLabel.numberOfLines = 5
         colorHelpLabel.font = UIFont(name: "Arial", size: 10)
         //        colorHelpLabel.sizeToFit()
-        colorHelpLabel.text = "恋愛系の悩みは赤 \n 人間関係の悩みは青 \n その他は黄色 \n を使ってね"
-//        self.view.addSubview(colorHelpView)
-        self.view.addSubView(colorHelpLabel)
+        colorHelpLabel.text = "恋愛系の悩みは赤 \n人間関係の悩みは青 \nその他は黄色 \n \nを使ってね"
+        self.view.addSubview(colorHelpView)
+        self.view.addSubview(colorHelpLabel)
         
     }
     
     let thinBlue = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
     @IBAction func colorHelpExit(_ sender: Any) {
         colorHelpView.removeFromSuperview()
+        colorHelpLabel.removeFromSuperview()
     }
     
     override func viewDidLoad() {
