@@ -22,8 +22,13 @@ class ShabonAlert: NSObject {
 //        let url = "http://localhost:3000/shabon_alerts/show?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
-            let statusCode = response.response!.statusCode
             
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
+            let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
                 callback([ "message" : "サーバーでエラーが発生しました。 ShabonAlert"], nil)
@@ -60,6 +65,11 @@ class ShabonAlert: NSObject {
 //        let url = "http://localhost:3000/shabon_alerts/" + String(id) + "?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
@@ -81,6 +91,11 @@ class ShabonAlert: NSObject {
 //        let url = "http://localhost:3000/closer_alerts?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             
             // 失敗した場合.
@@ -112,6 +127,11 @@ class ShabonAlert: NSObject {
 //        let url = "http://localhost:3000/closer_alerts/" + String(id) + "?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {

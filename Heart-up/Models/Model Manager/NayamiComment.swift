@@ -76,7 +76,11 @@ class NayamiComment: NSObject {
         let url = "https://vast-brook-81265.herokuapp.com/nayami_comments/my_post/?auth_token=" + auth_token
 //        let url = "http://localhost:3000/nayami_comments/my_post/?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
-            
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             
             //失敗したとき
@@ -103,6 +107,11 @@ class NayamiComment: NSObject {
 //        let url = "http://localhost:3000/nayami_comments/my_shabon_nayami_find/?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
             
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             
             //失敗したとき
@@ -128,7 +137,11 @@ class NayamiComment: NSObject {
         let url = "https://vast-brook-81265.herokuapp.com/nayami_comments/fix_yonda_flag/" + id + "?auth_token=" + auth_token
 //        let url = "http://localhost:3000/nayami_comments/fix_yonda_flag/" + id + "?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
-            
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             
             //失敗したとき

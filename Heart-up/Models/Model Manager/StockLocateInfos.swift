@@ -71,11 +71,14 @@ class StockLocateInfos: NSObject {
 //          let url = "http://localhost:3000/locate_infos?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
+            
             
             let statusCode = response.response!.statusCode
-            
-            
-            
             // 失敗した場合.
             if statusCode != 200 {
                 callback([ "message" : "サーバーでエラーが発生しました。StockLocateController"], nil)
@@ -106,6 +109,11 @@ class StockLocateInfos: NSObject {
                 let url = "https://vast-brook-81265.herokuapp.com/locate_infos/" + id + "?auth_token=" + auth_token
 //        let url = "http://localhost:3000/locate_infos/" + id + "?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             
             //失敗したとき
@@ -140,6 +148,11 @@ class StockLocateInfos: NSObject {
         let url = "https://vast-brook-81265.herokuapp.com/locate_infos/my_shabon/" + id + "?auth_token=" + auth_token
         //        let url = "http://localhost:3000/locate_infos/my_shabon/" + id + "?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             
             //失敗したとき
@@ -167,6 +180,11 @@ class StockLocateInfos: NSObject {
         let url = "https://vast-brook-81265.herokuapp.com/locate_infos/find_my_shabon?auth_token=" + auth_token
 //        let url = "http://localhost:3000/locate_infos/find_my_shabon?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             
             let statusCode = response.response!.statusCode
             
@@ -203,6 +221,11 @@ class StockLocateInfos: NSObject {
                 let url = "https://vast-brook-81265.herokuapp.com/users/" + userId + "?auth_token=" + auth_token
 //        let url = "http://localhost:3000/users/" + userId + "?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             
             //失敗したとき
@@ -230,6 +253,11 @@ class StockLocateInfos: NSObject {
                         let url = "https://vast-brook-81265.herokuapp.com/users/" + userId + "?auth_token=" + auth_token
 //        let url = "http://localhost:3000/users/" + userId + "?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             
             //失敗したとき
