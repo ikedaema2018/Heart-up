@@ -27,6 +27,11 @@ class ApiManager {
         
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
+                //電波が悪い時
+                if !response.result.isSuccess {
+                    print("電波が悪いよ")
+                    return
+                }
                 let statusCode = response.response!.statusCode
                 
                 //失敗

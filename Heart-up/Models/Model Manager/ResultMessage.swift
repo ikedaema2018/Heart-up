@@ -22,6 +22,11 @@ class ResultMessage: NSObject {
             ["result_message": message, "locate_info_id": locate_info_id]
         ]
         Alamofire.request(url, method: .post, parameters: params).responseJSON { (response) in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             
             if statusCode != 200 {

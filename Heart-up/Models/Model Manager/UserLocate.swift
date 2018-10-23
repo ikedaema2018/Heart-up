@@ -57,7 +57,11 @@ class UserLocate: NSObject {
 //        let url = "http://localhost:3000/users/one_hour_ago_user?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
             
-            
+            //電波が悪い時
+            if !response.result.isSuccess {
+                print("電波が悪いよ")
+                return
+            }
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
