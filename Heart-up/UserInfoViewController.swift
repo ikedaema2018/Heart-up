@@ -20,6 +20,7 @@ class UserInfoViewController: UIViewController {
     @IBOutlet weak var gender: UILabel!
     @IBOutlet weak var selfIntroduce: UITextView!
     @IBOutlet weak var locateLabel: UILabel!
+    var errorView: UIView!
     
     
     
@@ -30,6 +31,7 @@ class UserInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("aaaaa")
         profileImage.image = UIImage(named: "myPage")
         selfIntroduce.layer.borderWidth = 1.0
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
@@ -37,6 +39,7 @@ class UserInfoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("bbbbb")
         fetchData()
     }
 
@@ -60,14 +63,16 @@ class UserInfoViewController: UIViewController {
 extension UserInfoViewController {
     func fetchData(){
         StockLocateInfos.getSelectUser(userId: userId!){ error, result in
+            print("ccccc")
             if let error = error {
+                print("ddddd")
                 if let message = error["message"] as? String {
                     print(message)
-                    print("不明なエラーが発生しました")
+                    self.errorViewDisplay(message)
                 } else {
-                    print("不明なエラーが発生しました")
+                    self.errorViewDisplay("不明なエラーが発生しました")
                 }
-                return
+                self.errorViewDisplay("インターネットに接続されていません")
             }
             
             guard let user = result else {
@@ -104,6 +109,10 @@ extension UserInfoViewController {
             let geocoder = CLGeocoder()
             let location = CLLocation(latitude: user["user_locate"]["ido"].double!, longitude: user["user_locate"]["keido"].double!)
             geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+                if let error = error {
+                    self.errorViewDisplay("インターネットに接続されていません")
+                }
+                
                 if let placemarks = placemarks {
                     if let pm = placemarks.first {
                         //placeを初期化
@@ -118,5 +127,44 @@ extension UserInfoViewController {
                 
             }
         }
+    }
+    
+    //電波が悪い時に避難用のエラービューを表示
+    func errorViewDisplay(_ message: String){
+        errorView = UIView()
+        errorView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        errorView.backgroundColor = UIColor.white
+        
+        let errorLabel = UILabel()
+        let grayColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        errorLabel.text = message
+        errorLabel.textColor = grayColor
+        errorLabel.font = UIFont(name: "Arial", size: 20)
+        errorLabel.frame = CGRect(x: 20, y: 100, width: self.view.frame.width - 40, height: 60)
+        errorLabel.numberOfLines = 3
+        
+        let reload = UIButton()
+        reload.setTitle("再読み込みする", for: .normal)
+        let thinBlue = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        reload.backgroundColor = thinBlue
+        reload.layer.cornerRadius = 10
+        
+        reload.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 50)
+        reload.center = self.view.center
+        reload.addTarget(self, action: #selector(self.reloadView), for: .touchDown)
+        
+        errorView.addSubview(errorLabel)
+        errorView.addSubview(reload)
+        self.view.addSubview(errorView)
+    }
+    
+    @objc func reloadView(){
+        super.loadView()
+        loadView()
+        self.viewDidLoad()
+        self.viewWillAppear(true)
+        self.viewWillLayoutSubviews()
+        self.viewDidLayoutSubviews()
+        self.viewDidAppear(true)
     }
 }

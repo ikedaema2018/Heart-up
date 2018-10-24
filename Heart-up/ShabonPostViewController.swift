@@ -259,8 +259,6 @@ extension ShabonPostViewController {
             if let error = error {
                 if let message = error["message"] as? String {
                     self.errorViewDisplay(message)
-                } else {
-                    self.errorViewDisplay("電波が悪い可能性があります。再読み込みしてください")
                 }
                 self.errorViewDisplay("電波が悪い可能性があります。再読み込みしてください")
             }

@@ -71,7 +71,6 @@ class StockLocateInfos: NSObject {
 //          let url = "http://localhost:3000/locate_infos?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
-            print(!response.result.isSuccess)
             //電波が悪い時
             if !response.result.isSuccess {
                 return
