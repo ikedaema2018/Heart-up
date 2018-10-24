@@ -120,16 +120,7 @@ class StockLocateInfos: NSObject {
                 callback(["message": "電波が悪い可能性があります。再読み込みをお願いします"], nil)
             }
             
-            let object = response.result.value
-//            print("--------------------responceData-------------------------")
-//            print(response.result.value)
-//            let result = try? JSONDecoder().decode(LocateInfoDetail.self, from: response.data!)
-//            print("--------locate_info_detail--------------------")
-//            print(result)
-            
-//            print("as [String: Any]---------------------------------------")
-//            let object = object as? [String: Any] )
-            
+            let object = response.result.value            
             let obj = JSON(object)
             callback(nil, obj)
         }

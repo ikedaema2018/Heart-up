@@ -28,23 +28,19 @@ class UserLocate: NSObject {
         ]
         
         Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
-            switch response.result {
-            case .success:
-                if response.response?.statusCode != 200 {
-                    if let result = response.result.value as? [String: Any] {
-                        callback(result)
-                    } else {
-                        callback([ "message" : "電波が悪い可能性があります。再読み込みしてね！" ])
-                    }
-                    return
-                }
-                callback(nil)
-                
-            case .failure(let error):
-                print(error)
-                callback(["message" : "電波が悪い可能性があります。再読み込みしてね！"])
+            //電波が悪い時
+            if !response.result.isSuccess {
+               callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
+                return
             }
+            let statusCode = response.response!.statusCode
+            // 失敗した場合.
+            if statusCode != 200 {
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
+            }
+            callback(nil)
         }
+            
     }
     class func currentUser(callback: @escaping ([String: Any]?, JSON?) -> Void){
         guard let auth_token = UserDefaults.standard.string(forKey: "auth_token") else {
@@ -59,6 +55,7 @@ class UserLocate: NSObject {
             
             //電波が悪い時
             if !response.result.isSuccess {
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"], nil)
                 return
             }
             let statusCode = response.response!.statusCode

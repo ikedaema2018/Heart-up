@@ -43,7 +43,6 @@ class AllCommentsCollectionViewController: UIViewController {
                 }
                 return
             }
-            print(locate)
             self.locates = locate
             // 画面全体に色を設定
             if self.locates!["color"].string == "赤" {
