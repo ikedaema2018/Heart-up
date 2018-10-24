@@ -71,56 +71,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Heart-up/ShowLocateViewController.swift"
-            timestampString = "562057082.677166"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
-            landmarkName = "viewDidAppear(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Heart_up.ShowLocateViewController.viewDidAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "Heart-up"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maedakei/Library/Autosave%20Information/Heart-up/Heart-up/ShowLocateViewController.swift"
-                  timestampString = "558301578.512859"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "89">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;SwiftyJSON.JSON&gt;) -&gt; () in Heart_up.ShowLocateViewController.viewDidAppear(Swift.Bool) -&gt; ()"
-                  moduleName = "Heart-up"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/maedakei/Library/Autosave%20Information/Heart-up/Heart-up/ShowLocateViewController.swift"
-                  timestampString = "558301578.51556"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "118"
-                  endingLineNumber = "118"
-                  offsetFromSymbolStart = "68">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Heart-up/ShabonPostViewController.swift"
-            timestampString = "562057082.678234"
+            timestampString = "562079068.076072"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
@@ -360,11 +312,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Heart-up/ShowLocateViewController.swift"
-            timestampString = "562057082.6788239"
+            timestampString = "562079068.076615"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "345"
+            endingLineNumber = "345"
             landmarkName = "select_user_alert()"
             landmarkType = "7">
          </BreakpointContent>
@@ -376,7 +328,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Heart-up/ShabonContents/HappyGraduationViewController.swift"
-            timestampString = "562057082.679517"
+            timestampString = "562079068.078593"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -392,7 +344,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Heart-up/ShabonContents/HappyGraduationViewController.swift"
-            timestampString = "562057082.679606"
+            timestampString = "562079068.078805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "42"

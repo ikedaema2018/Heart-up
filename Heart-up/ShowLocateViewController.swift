@@ -29,9 +29,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("self.viewDidLoad")
-        
-        if locationManager != nil { return }
+//        if locationManager != nil { return }
         locationManager = CLLocationManager()
         locationManager!.delegate = self
         
@@ -120,7 +118,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
         //クリックした時、ユーザーだったらリターン
         if view.annotation is MKUserLocation {
             return
@@ -252,6 +249,7 @@ extension ShowLocateViewController {
         }
         //一旦ピン削除
         removeAllAnnotations()
+        
         //ピンを一覧で表示
         locates.forEach { (_, locate) in
             if let ido_s = locate["ido"].double, let keido_s = locate["keido"].double, let id_i = locate["id"].int, let nayami = locate["nayami"].string, let user_id = locate["user_id"].int, let color = locate["color"].string, let user_name = locate["user"]["user_name"].string {
@@ -410,7 +408,6 @@ extension ShowLocateViewController {
     
     //電波が悪い時に避難用のエラービューを表示
     func errorViewDisplay(_ message: String){
-        print("acacacacacacacacacacacacacacacacac")
         errorView = UIView()
         errorView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         errorView.backgroundColor = UIColor.white
@@ -439,9 +436,12 @@ extension ShowLocateViewController {
     }
     
     @objc func reloadView(){
+        super.loadView()
         loadView()
         self.viewDidLoad()
         self.viewWillAppear(true)
+        self.viewWillLayoutSubviews()
+        self.viewDidLayoutSubviews()
         self.viewDidAppear(true)
     }
     

@@ -24,11 +24,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nie-lW-R67">
-                                <rect key="frame" x="-20" y="44" width="415" height="643"/>
+                                <rect key="frame" x="-16" y="48" width="391" height="570"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rNy-YI-eZf">
-                                        <rect key="frame" x="20" y="20" width="387" height="566"/>
+                                        <rect key="frame" x="8" y="24" width="383" height="546"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </mapView>
                                 </subviews>
@@ -46,7 +46,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="mapView" destination="rNy-YI-eZf" id="MzV-Ei-Wzt"/>
+                        <outlet property="mapView" destination="rNy-YI-eZf" id="7Tt-3G-qJt"/>
                         <segue destination="NEz-75-Qtu" kind="presentation" identifier="toSelectUserSegue" id="Ubo-jr-8fC"/>
                         <segue destination="JOa-xY-I4q" kind="push" identifier="showToContents" id="Uby-AE-S2X"/>
                     </connections>
@@ -907,7 +907,7 @@
         <image name="shabon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zVW-er-emc"/>
-        <segue reference="UIR-Rk-hcD"/>
+        <segue reference="Ubo-jr-8fC"/>
+        <segue reference="Uby-AE-S2X"/>
     </inferredMetricsTieBreakers>
 </document>
