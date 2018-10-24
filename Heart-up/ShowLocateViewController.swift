@@ -19,6 +19,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     var zoomLevel :Int?
     var locates: JSON?
     var users: JSON?
+    var errorView: UIView!
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager : CLLocationManager?
@@ -27,7 +28,9 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        print("self.viewDidLoad")
+        
         if locationManager != nil { return }
         locationManager = CLLocationManager()
         locationManager!.delegate = self
@@ -407,7 +410,8 @@ extension ShowLocateViewController {
     
     //電波が悪い時に避難用のエラービューを表示
     func errorViewDisplay(_ message: String){
-        var errorView = UIView()
+        print("acacacacacacacacacacacacacacacacac")
+        errorView = UIView()
         errorView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         errorView.backgroundColor = UIColor.white
         
@@ -427,10 +431,18 @@ extension ShowLocateViewController {
         
         reload.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 50)
         reload.center = self.view.center
+        reload.addTarget(self, action: #selector(self.reloadView), for: .touchDown)
         
         errorView.addSubview(errorLabel)
         errorView.addSubview(reload)
         self.view.addSubview(errorView)
+    }
+    
+    @objc func reloadView(){
+        loadView()
+        self.viewDidLoad()
+        self.viewWillAppear(true)
+        self.viewDidAppear(true)
     }
     
 }
@@ -452,7 +464,6 @@ extension UIImage {
             return scaledImage(withSize: CGSize(width: size.height * aspect, height: size.height))
         }
     }
-    
 }
     
 
