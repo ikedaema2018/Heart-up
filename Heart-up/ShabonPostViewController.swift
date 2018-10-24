@@ -24,7 +24,7 @@ class ShabonPostViewController: UIViewController {
     @IBOutlet weak var colorHelpOutret: UIButton!
     var colorHelpView: UIView!
     var colorHelpLabel: UILabel!
-    
+    var errorView: UIView!
     
     //常に更新される緯度経度を定義
     var latitude :String?
@@ -95,26 +95,7 @@ class ShabonPostViewController: UIViewController {
         upShabon.direction = .up
         view.addGestureRecognizer(upShabon)
         
-        
-        if locationManager != nil { return }
-        locationManager = CLLocationManager()
-        locationManager!.delegate = self
-        nayamiInput.placeholder = "悩みを入力してね"
-        submitButton.layer.cornerRadius = 2.0
-        locationManager!.requestWhenInUseAuthorization()
-        errorLabel.isHidden = true
-        nayamiInput.delegate = self
-        
-        shabonImage.image = UIImage(named: "redShabon")
-    
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager!.startUpdatingLocation()
-        }
-        
-        
-        locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager!.distanceFilter = 1000
-
+        getLocate()
         // Do any additional setup after loading the view.
     }
     
@@ -130,6 +111,10 @@ class ShabonPostViewController: UIViewController {
             selector: #selector(keyboardWillBeHidden(notification:)),
             name: NSNotification.Name.UIKeyboardWillHide,
             object: nil)
+        
+        if latitude == nil || longitude == nil {
+            errorViewDisplay("電波の状況が悪いです")
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -173,17 +158,6 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
         
-        
-        // update annotation
-        //        mapView.removeAnnotations(mapView.annotations)
-        //
-        //        let annotation = MKPointAnnotation()
-        //        annotation.coordinate = newLocation.coordinate
-        //        mapView.addAnnotation(annotation)
-        //        mapView.selectAnnotation(annotation, animated: true)
-        
-        // Showing annotation zooms the map automatically.
-        //        mapView.showAnnotations(mapView.annotations, animated: true)
         
     }
 }
@@ -236,6 +210,7 @@ extension ShabonPostViewController: UITextFieldDelegate {
 
 extension ShabonPostViewController {
     func postNayami(){
+        print("huhhuhhuhuh")
         //この関数が実行されたらpostFlagをtrueに変更,trueの間はこの関数は再度実行されない
         if postFlag { return }
         postFlag = true
@@ -283,11 +258,11 @@ extension ShabonPostViewController {
         StockLocateInfos.postLocate(locate: nayamiLocate) { error in
             if let error = error {
                 if let message = error["message"] as? String {
-                    self.showAlert(message: message, hide: {})
+                    self.errorViewDisplay(message)
                 } else {
-                    self.showAlert(message: "エラーが発生しました", hide: {})
+                    self.errorViewDisplay("電波が悪い可能性があります。再読み込みしてください")
                 }
-                return
+                self.errorViewDisplay("電波が悪い可能性があります。再読み込みしてください")
             }
             //シャボン玉を飛ばすアニメーション
             self.animator.startAnimation()
@@ -299,5 +274,65 @@ extension ShabonPostViewController {
                 })
             }
         }
+    }
+    
+    func getLocate(){
+        //        if locationManager != nil { return }
+        locationManager = CLLocationManager()
+        locationManager!.delegate = self
+        nayamiInput.placeholder = "悩みを入力してね"
+        submitButton.layer.cornerRadius = 2.0
+        locationManager!.requestWhenInUseAuthorization()
+        errorLabel.isHidden = true
+        nayamiInput.delegate = self
+        
+        shabonImage.image = UIImage(named: "redShabon")
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager!.startUpdatingLocation()
+        }
+        
+        
+        locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager!.distanceFilter = 1000
+    }
+    
+    //電波が悪い時に避難用のエラービューを表示
+    func errorViewDisplay(_ message: String){
+        errorView = UIView()
+        errorView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        errorView.backgroundColor = UIColor.white
+        
+        let errorLabel = UILabel()
+        let grayColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        errorLabel.text = message
+        errorLabel.textColor = grayColor
+        errorLabel.font = UIFont(name: "Arial", size: 20)
+        errorLabel.frame = CGRect(x: 20, y: 100, width: self.view.frame.width - 40, height: 60)
+        errorLabel.numberOfLines = 3
+        
+        let reload = UIButton()
+        reload.setTitle("再読み込みする", for: .normal)
+        let thinBlue = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        reload.backgroundColor = thinBlue
+        reload.layer.cornerRadius = 10
+        
+        reload.frame = CGRect(x: 0, y: 0, width: self.view.frame.width / 3, height: 50)
+        reload.center = self.view.center
+        reload.addTarget(self, action: #selector(self.reloadView), for: .touchDown)
+        
+        errorView.addSubview(errorLabel)
+        errorView.addSubview(reload)
+        self.view.addSubview(errorView)
+    }
+    
+    @objc func reloadView(){
+        super.loadView()
+        loadView()
+        self.viewDidLoad()
+        self.viewWillAppear(true)
+        self.viewWillLayoutSubviews()
+        self.viewDidLayoutSubviews()
+        self.viewDidAppear(true)
     }
 }

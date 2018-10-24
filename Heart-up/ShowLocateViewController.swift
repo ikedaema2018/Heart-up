@@ -88,11 +88,17 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                     }
                     let url = URL( string: "http://s3-ap-northeast-1.amazonaws.com/heartup/images/" + userImage)
                     let data = try? Data(contentsOf: url!)
-                    let theImage = UIImage(data: data!)
-                    let scaledImage = theImage?.resize(image: theImage!, width: zoomSize)
-                    //anno.imageにUIImageを設定する
-                    anno.image = scaledImage
-                    return anno
+                    
+                    //もしデータがnilだったらネットワークエラーを表示
+                    if data == nil {
+                        errorViewDisplay("インターネットの接続を確かめてください")
+                    }else{
+                        let theImage = UIImage(data: data!)
+                        let scaledImage = theImage?.resize(image: theImage!, width: zoomSize)
+                        //anno.imageにUIImageを設定する
+                        anno.image = scaledImage
+                        return anno
+                    }
                 }
                 if let shabon = annotation as? CustomAnnotation {
                     let nayamiCount = Double(shabon.nayamiCount)
