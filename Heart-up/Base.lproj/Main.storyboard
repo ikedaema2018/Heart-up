@@ -23,19 +23,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nie-lW-R67">
-                                <rect key="frame" x="-16" y="48" width="391" height="570"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nie-lW-R67">
+                                <rect key="frame" x="-16" y="49" width="391" height="569"/>
                                 <subviews>
-                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rNy-YI-eZf">
-                                        <rect key="frame" x="8" y="24" width="383" height="546"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rNy-YI-eZf">
+                                        <rect key="frame" x="0.0" y="0.0" width="391" height="569"/>
                                     </mapView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="rNy-YI-eZf" firstAttribute="top" secondItem="Nie-lW-R67" secondAttribute="top" id="23f-F0-pJY"/>
+                                    <constraint firstAttribute="trailing" secondItem="rNy-YI-eZf" secondAttribute="trailing" id="ADW-xA-gXI"/>
+                                    <constraint firstItem="rNy-YI-eZf" firstAttribute="leading" secondItem="Nie-lW-R67" secondAttribute="leading" id="JOU-Hd-gxE"/>
+                                    <constraint firstAttribute="bottom" secondItem="rNy-YI-eZf" secondAttribute="bottom" id="h0f-Jx-v7G"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Nie-lW-R67" firstAttribute="bottom" secondItem="qLG-PL-zpr" secondAttribute="bottom" id="LTA-9p-657"/>
+                            <constraint firstItem="Nie-lW-R67" firstAttribute="centerY" secondItem="ttM-fa-ris" secondAttribute="centerY" id="ajb-KS-ya4"/>
+                            <constraint firstAttribute="trailing" secondItem="Nie-lW-R67" secondAttribute="trailing" id="kcl-kg-bb3"/>
+                            <constraint firstItem="Nie-lW-R67" firstAttribute="leading" secondItem="ttM-fa-ris" secondAttribute="leadingMargin" constant="-32" id="rBE-MK-YO0"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qLG-PL-zpr"/>
                     </view>
                     <navigationItem key="navigationItem" title="Heart up" id="l4P-DE-O0Y">
