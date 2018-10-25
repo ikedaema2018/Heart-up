@@ -65,6 +65,14 @@ class HappyGraduationViewController: UIViewController {
             self.view.addSubview(resultMessage)
             //テキストフィールドのデリゲートを設置
             resultMessage.delegate = self
+            resultMessage.translatesAutoresizingMaskIntoConstraints = false
+            
+            // レイアウトアンカーを使用して制約を作成するための定義
+            resultMessage.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
+            resultMessage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30).isActive = true
+            resultMessage.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 30).isActive = true
+            resultMessage.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -60).isActive = true
+            
             if !locates!["result_messages"].isEmpty {
                 resultMessage.text = locates!["result_messages"][0]["result_message"].string!
             }
@@ -128,6 +136,7 @@ class HappyGraduationViewController: UIViewController {
         titleImage.image = UIImage(named: "title")
         //飛ばした人のメッセージ
         ownerMessage.image = UIImage(named: "ownerMessage")
+        ownerMessage.layer.cornerRadius = 10
         
         //hitokotoImage
         hitokoto.image = UIImage(named: "hitokoto")
@@ -154,6 +163,7 @@ class HappyGraduationViewController: UIViewController {
                 self.fireFlowerStart(fireFlowerImage)
             }
         }
+        
         //音を鳴らす
         let soundNum = Int(arc4random_uniform(2))
         let soundTitle: [String] = ["christmasnomachi", "rokuninnorappafuki", "sunadokeiseiun"]
@@ -172,7 +182,6 @@ class HappyGraduationViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // キーボードイベントの監視開始
-        // キーボードイベントの監視開始
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillShowNotification(_:)), name: .UIKeyboardWillShow, object: nil)
         notificationCenter.addObserver(self, selector: #selector(self.handleKeyboardWillHideNotification(_:)), name: .UIKeyboardWillHide, object: nil)
@@ -189,7 +198,7 @@ class HappyGraduationViewController: UIViewController {
                                                   name: NSNotification.Name.UIKeyboardWillHide,
                                                   object: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -371,7 +380,7 @@ extension HappyGraduationViewController {
         guard let longitude = self.locates!["keido"].double, let latitude = self.locates!["ido"].double else {
         return
         }
-
+        
         //リバースジオロケートで緯度経度
         let geocoder = CLGeocoder()
         let location = CLLocation(latitude: latitude, longitude: longitude)
@@ -486,5 +495,8 @@ extension HappyGraduationViewController: UITextFieldDelegate {
         }, completion: nil)
     }
     
-    
+    private func resultMessageLayout(){
+        
+        
+    }
 }
