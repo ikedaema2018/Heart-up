@@ -56,7 +56,7 @@ class HappyGraduationViewController: UIViewController {
             //resultMessageのテキストフィールドを定義
             //シャボン玉の持ち主からの最後の一言
             resultMessage = UITextField()
-            resultMessage.frame = CGRect(x: 30, y: ownerMessage.frame.maxY, width: self.view.frame.width - 60, height: 60)
+            resultMessage.frame = CGRect(x: 30, y: ownerMessage.frame.maxY, width: self.view.frame.width - 60, height: 30)
             
             resultMessage.layer.borderWidth = 1
             let BorderColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
@@ -68,11 +68,11 @@ class HappyGraduationViewController: UIViewController {
             resultMessage.translatesAutoresizingMaskIntoConstraints = false
             
             // レイアウトアンカーを使用して制約を作成するための定義
-            resultMessage.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
+            resultMessage.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60).isActive = true
             resultMessage.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30).isActive = true
             resultMessage.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 30).isActive = true
             resultMessage.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -60).isActive = true
-            
+            resultMessage.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
             if !locates!["result_messages"].isEmpty {
                 resultMessage.text = locates!["result_messages"][0]["result_message"].string!
             }
@@ -172,8 +172,8 @@ class HappyGraduationViewController: UIViewController {
         //戻るを点滅
         var lightFlag = false
         Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { (_) in
-            if lightFlag { self.returnButton.setImage(nil, for: .normal)}
-            else { self.returnButton.setImage(UIImage( named: "return2"), for: .normal) }
+            if lightFlag { self.returnButton.isHidden = true}
+            else { self.returnButton.isHidden = false }
             lightFlag = !lightFlag
         }
     }
@@ -493,10 +493,5 @@ extension HappyGraduationViewController: UITextFieldDelegate {
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         }, completion: nil)
-    }
-    
-    private func resultMessageLayout(){
-        
-        
     }
 }
