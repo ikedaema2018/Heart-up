@@ -22,7 +22,6 @@ class ResultMessage: NSObject {
             ["result_message": message, "locate_info_id": locate_info_id]
         ]
         Alamofire.request(url, method: .post, parameters: params).responseJSON { (response) in
-            
             guard let result = response.response else {
                 callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
                 return

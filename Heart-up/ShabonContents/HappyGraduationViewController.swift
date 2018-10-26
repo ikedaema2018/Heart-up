@@ -165,10 +165,10 @@ class HappyGraduationViewController: UIViewController {
 //            }
 //        }
         
-        //音を鳴らす
-        let soundNum = Int(arc4random_uniform(2))
-        let soundTitle: [String] = ["christmasnomachi", "rokuninnorappafuki", "sunadokeiseiun"]
-        playSound(soundTitle[soundNum])
+//        //音を鳴らす
+//        let soundNum = Int(arc4random_uniform(2))
+//        let soundTitle: [String] = ["christmasnomachi", "rokuninnorappafuki", "sunadokeiseiun"]
+//        playSound(soundTitle[soundNum])
         
         //戻るを点滅
         var lightFlag = false
@@ -404,12 +404,12 @@ extension HappyGraduationViewController {
 extension HappyGraduationViewController {
     
     
-    private func playSound(_ sound: String) {
-        if let sound = NSDataAsset(name: sound) {
-            player = try? AVAudioPlayer(data: sound.data)
-            player?.play() // → これで音が鳴る
-        }
-    }
+//    private func playSound(_ sound: String) {
+//        if let sound = NSDataAsset(name: sound) {
+//            player = try? AVAudioPlayer(data: sound.data)
+//            player?.play() // → これで音が鳴る
+//        }
+//    }
     
     private func playKoukaon(_ sound: String) {
         if let sound = NSDataAsset(name: sound) {
@@ -472,6 +472,7 @@ extension HappyGraduationViewController: UITextFieldDelegate {
     }
     
     private func modalDisplay(message: String){
+        
         //一瞬投稿成功メッセージを表示
         let successLabel = UILabel()
         successLabel.frame = CGRect(x: 30, y: 30, width: 150, height: 40)
