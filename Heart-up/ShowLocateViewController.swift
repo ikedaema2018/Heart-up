@@ -376,15 +376,25 @@ extension ShowLocateViewController {
             }
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
-                self.closeAlert(message: tmp_alert, callback: { locateId in
-                    if let locateId = locateId {
-                        //遷移のためのハッシュ
-                        let sender: [String: Any] = [ "locateId": Int(locateId), "finishFlag" : false]
-                        //遷移
-                        self.performSegue(withIdentifier: "showToContents", sender: sender)
-                    }else{
-                        self.viewDidAppear(true)
-                    }
+                //割れたシャボン玉のGifをだす
+                let breakShabon = UIImageView()
+                breakShabon.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+                breakShabon.image = UIImage(named: "shabonBreak")
+                breakShabon.center = self.view.center
+                self.view.addSubview(breakShabon)
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0, execute: {
+                    breakShabon.removeFromSuperview()
+                    self.closeAlert(message: tmp_alert, callback: { locateId in
+                        if let locateId = locateId {
+                            //遷移のためのハッシュ
+                            let sender: [String: Any] = [ "locateId": Int(locateId), "finishFlag" : false]
+                            //遷移
+                            self.performSegue(withIdentifier: "showToContents", sender: sender)
+                        }else{
+                            self.viewDidAppear(true)
+                        }
+                    })
                 })
             }
         })
