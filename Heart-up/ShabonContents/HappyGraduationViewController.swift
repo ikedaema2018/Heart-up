@@ -85,6 +85,15 @@ class HappyGraduationViewController: UIViewController {
             
             self.view.addSubview(resultMessage2)
             
+            resultMessage2.translatesAutoresizingMaskIntoConstraints = false
+            
+            // レイアウトアンカーを使用して制約を作成するための定義
+            resultMessage2.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -60).isActive = true
+            resultMessage2.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30).isActive = true
+            resultMessage2.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 30).isActive = true
+            resultMessage2.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -60).isActive = true
+            resultMessage2.heightAnchor.constraint(equalToConstant: 60.0).isActive = true
+            
             if !locates!["result_messages"].isEmpty {
                 resultMessage2.text = locates!["result_messages"][0]["result_message"].string!
             }
@@ -227,18 +236,16 @@ class HappyGraduationViewController: UIViewController {
         
         let height = self.view.frame.height
         let width = self.view.frame.width
-        
+    
         ResultMessage.postResultMessage(locate_info_id: locates!["id"].int!, message: message) { (error) in
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
-                    print("不明なエラーが出現しました")
                 }else{
                     print("不明なエラーが出現しました")
                 }
-                print("不明なエラーが出現しました")
-                return
             }
+            
             //一瞬投稿成功メッセージを表示
             let successLabel = UILabel()
             successLabel.frame = CGRect(x: 30, y: 30, width: 150, height: 40)
