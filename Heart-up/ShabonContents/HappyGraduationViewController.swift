@@ -84,7 +84,6 @@ class HappyGraduationViewController: UIViewController {
             resultMessage2.frame = CGRect(x: 30, y: ownerMessage.frame.maxY, width: self.view.frame.width - 60, height: 60)
             
             self.view.addSubview(resultMessage2)
-            
             resultMessage2.translatesAutoresizingMaskIntoConstraints = false
             
             // レイアウトアンカーを使用して制約を作成するための定義
@@ -127,7 +126,7 @@ class HappyGraduationViewController: UIViewController {
         //悩みのタイトル
         nayamiDetail.text = locates!["nayami"].string
         nayamiDetail.sizeToFit()
-//        nayamiDetail.layer.borderWidth = 1
+        nayamiDetail.layer.borderWidth = 1
         
         //破裂した場所と移動した距離、破裂するまでの時間
         getLocate()

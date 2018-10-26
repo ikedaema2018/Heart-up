@@ -360,7 +360,7 @@
                         <outlet property="stampView" destination="N3m-WE-uVf" id="XJl-no-6ss"/>
                         <outlet property="submitButton" destination="WsZ-mz-68u" id="dBh-2G-aGf"/>
                         <segue destination="NEz-75-Qtu" kind="presentation" identifier="contentsToUser" id="zVW-er-emc"/>
-                        <segue destination="zzc-Xt-KtZ" kind="presentation" identifier="tohappyGraduationSegue" id="Ws1-vh-ulc"/>
+                        <segue destination="zzc-Xt-KtZ" kind="modal" identifier="tohappyGraduationSegue" id="f3e-Tx-HJR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qF-c7-6Tt" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -890,7 +890,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ひとこと" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fru-Rc-DsP">
-                                        <rect key="frame" x="70" y="30" width="66" height="72"/>
+                                        <rect key="frame" x="70" y="30" width="68" height="72"/>
                                         <fontDescription key="fontDescription" name="JK-Gothic-M" family="JK Gothic M" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -961,7 +961,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fYf-Jz-pOs" firstAttribute="top" secondItem="AE7-b5-edp" secondAttribute="bottom" constant="8" id="2Ba-9k-q4t"/>
+                            <constraint firstItem="fYf-Jz-pOs" firstAttribute="top" relation="greaterThanOrEqual" secondItem="AE7-b5-edp" secondAttribute="bottom" constant="8" id="2Ba-9k-q4t"/>
                             <constraint firstItem="f7e-zS-Q39" firstAttribute="leading" secondItem="YwR-R9-1sk" secondAttribute="leading" constant="16" id="7Pd-Rb-EXH"/>
                             <constraint firstItem="YwR-R9-1sk" firstAttribute="trailing" secondItem="qG6-OY-rwd" secondAttribute="trailing" constant="16" id="GYg-4v-f7N"/>
                             <constraint firstItem="lkv-A2-V8E" firstAttribute="leading" secondItem="YwR-R9-1sk" secondAttribute="leading" constant="31" id="IKt-jE-9VA"/>
@@ -1039,6 +1039,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="zVW-er-emc"/>
-        <segue reference="ypq-AQ-sHG"/>
+        <segue reference="Uby-AE-S2X"/>
     </inferredMetricsTieBreakers>
 </document>
