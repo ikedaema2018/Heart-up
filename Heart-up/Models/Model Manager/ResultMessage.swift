@@ -22,18 +22,19 @@ class ResultMessage: NSObject {
             ["result_message": message, "locate_info_id": locate_info_id]
         ]
         Alamofire.request(url, method: .post, parameters: params).responseJSON { (response) in
+            print("1")
             //電波が悪い時
             if !response.result.isSuccess {
                 return
             }
+            print("2")
             let statusCode = response.response!.statusCode
             
             if statusCode != 200 {
                 if let errorInfo = response.result.value as? [String: Any] {
                     callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
                 }
-                print("なにがしかのエラー")
-                return
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
             }
             //成功したら
             callback(nil)

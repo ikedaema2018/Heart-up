@@ -47,6 +47,10 @@ class Reaction {
             return
         }
         Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
+            //電波が悪い時
+            if !response.result.isSuccess {
+                return
+            }
             switch response.result {
             case .success:
                 if response.response?.statusCode != 200 {

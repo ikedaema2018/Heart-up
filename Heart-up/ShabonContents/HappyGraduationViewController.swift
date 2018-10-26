@@ -162,15 +162,15 @@ class HappyGraduationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        for i in 1...8 {
-            let fireFlowerImage = UIImageView()
-            self.view.addSubview(fireFlowerImage)
-            self.view.sendSubview(toBack: fireFlowerImage)
-            //Timerで3秒に一回花火が咲く
-            Timer.scheduledTimer(withTimeInterval: (TimeInterval(3 + i)), repeats: true) { (_ ) in
-                self.fireFlowerStart(fireFlowerImage)
-            }
-        }
+//        for i in 1...8 {
+//            let fireFlowerImage = UIImageView()
+//            self.view.addSubview(fireFlowerImage)
+//            self.view.sendSubview(toBack: fireFlowerImage)
+//            //Timerで3秒に一回花火が咲く
+//            Timer.scheduledTimer(withTimeInterval: (TimeInterval(3 + i)), repeats: true) { (_ ) in
+//                self.fireFlowerStart(fireFlowerImage)
+//            }
+//        }
         
         //音を鳴らす
         let soundNum = Int(arc4random_uniform(2))
@@ -223,6 +223,7 @@ class HappyGraduationViewController: UIViewController {
     
     //結果を送信する
     @IBAction func resultSubmitAction(_ sender: Any) {
+        print("ssssadadadadadadadas")
         //最初はテキストフィールドに値がちゃんとc入力されているか確認
         guard let message = resultMessage.text else {
             errorLabel.text = "メッセージが空ですよ！"
@@ -232,6 +233,8 @@ class HappyGraduationViewController: UIViewController {
             errorLabel.text = "メッセージが空ですよ！"
             return
         }
+        
+        print("end------------------------------------")
         
         let height = self.view.frame.height
         let width = self.view.frame.width
@@ -243,6 +246,7 @@ class HappyGraduationViewController: UIViewController {
                 }else{
                     print("不明なエラーが出現しました")
                 }
+                print("error------------------------------------")
             }
             
             //一瞬投稿成功メッセージを表示
@@ -259,7 +263,6 @@ class HappyGraduationViewController: UIViewController {
             let frame:CGRect = CGRect(x: 0, y: 0, width: width, height: height)
             let fakeModalView: ModalView = ModalView(frame: frame)
             self.view.addSubview(fakeModalView)
-            
             
             self.view.addSubview(successLabel)
             
@@ -415,19 +418,19 @@ extension HappyGraduationViewController {
             
         }
     }
-    //花を咲かせる
-    @objc private func fireFlowerStart(_ fireFlowerImage: UIImageView){
-        //fireFlowerの中心を定義
-        let imgX = CGFloat(arc4random_uniform((UInt32(self.view.frame.width))))
-        let imgY = CGFloat(arc4random_uniform((UInt32(self.view.frame.height))))
-        let imageSize = CGFloat(arc4random_uniform(UInt32(100)) + 100)
-        let fireFlowerNumber = arc4random_uniform(7)
-        let fireImage = UIImage(named: "fireFlower" + String(fireFlowerNumber))
-        
-        fireFlowerImage.frame = CGRect(x: 0, y: 0, width: imageSize, height: imageSize)
-        fireFlowerImage.center = CGPoint(x: imgX, y: imgY)
-        fireFlowerImage.image = fireImage
-    }
+//    //花を咲かせる
+//    @objc private func fireFlowerStart(_ fireFlowerImage: UIImageView){
+//        //fireFlowerの中心を定義
+//        let imgX = CGFloat(arc4random_uniform((UInt32(self.view.frame.width))))
+//        let imgY = CGFloat(arc4random_uniform((UInt32(self.view.frame.height))))
+//        let imageSize = CGFloat(arc4random_uniform(UInt32(100)) + 100)
+//        let fireFlowerNumber = arc4random_uniform(7)
+//        let fireImage = UIImage(named: "fireFlower" + String(fireFlowerNumber))
+//
+//        fireFlowerImage.frame = CGRect(x: 0, y: 0, width: imageSize, height: imageSize)
+//        fireFlowerImage.center = CGPoint(x: imgX, y: imgY)
+//        fireFlowerImage.image = fireImage
+//    }
 }
 
 extension HappyGraduationViewController {
