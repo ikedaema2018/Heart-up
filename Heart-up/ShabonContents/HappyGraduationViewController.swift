@@ -36,8 +36,6 @@ class HappyGraduationViewController: UIViewController {
     var resultMessage: UITextField!
     var resultMessage2: UILabel!
     
-    //とりあえずエラーのラベルを用意
-    let errorLabel = UILabel()
     
     
     override func viewDidLoad() {
@@ -97,11 +95,6 @@ class HappyGraduationViewController: UIViewController {
                 resultMessage2.text = locates!["result_messages"][0]["result_message"].string!
             }
         }
-        
-        errorLabel.frame = CGRect(x: self.view.frame.width / 2 - 50, y: self.ownerMessage.frame.minY, width: self.view.frame.width / 2 - 20, height: 30)
-        errorLabel.font = UIFont.systemFont(ofSize: 10)
-        errorLabel.textColor = UIColor.red
-        self.view.addSubview(errorLabel)
         
         //破裂するまでの時間を表示
         let createDay = locates!["created_at"].string!
@@ -223,53 +216,28 @@ class HappyGraduationViewController: UIViewController {
     
     //結果を送信する
     @IBAction func resultSubmitAction(_ sender: Any) {
-        print("ssssadadadadadadadas")
         //最初はテキストフィールドに値がちゃんとc入力されているか確認
         guard let message = resultMessage.text else {
-            errorLabel.text = "メッセージが空ですよ！"
+            modalDisplay(message: "メッセージが空ですよ！")
             return
         }
         if message == "" {
-            errorLabel.text = "メッセージが空ですよ！"
+            modalDisplay(message: "メッセージが空ですよ！")
             return
         }
         
-        print("end------------------------------------")
-        
-        let height = self.view.frame.height
-        let width = self.view.frame.width
-    
         ResultMessage.postResultMessage(locate_info_id: locates!["id"].int!, message: message) { (error) in
             if let error = error {
-                if let message = error["message"] as? String {
-                    print(message)
+                if let errorMessage = error["message"] as? String {
+                    self.modalDisplay(message: errorMessage)
+                    print(errorMessage)
                 }else{
                     print("不明なエラーが出現しました")
+                    self.modalDisplay(message: "不明なエラーが出現しました")
                 }
-                print("error------------------------------------")
+                return
             }
-            
-            //一瞬投稿成功メッセージを表示
-            let successLabel = UILabel()
-            successLabel.frame = CGRect(x: 30, y: 30, width: 150, height: 40)
-            successLabel.text = "あなたのメッセージを送信しました"
-            successLabel.center = self.view.center
-            successLabel.font = UIFont.systemFont(ofSize: 10)
-            successLabel.layer.borderWidth = 1
-            successLabel.clipsToBounds = true
-            successLabel.layer.cornerRadius = 10
-            successLabel.backgroundColor = UIColor.white
-            
-            let frame:CGRect = CGRect(x: 0, y: 0, width: width, height: height)
-            let fakeModalView: ModalView = ModalView(frame: frame)
-            self.view.addSubview(fakeModalView)
-            
-            self.view.addSubview(successLabel)
-            
-            Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (_) in
-                successLabel.removeFromSuperview()
-                fakeModalView.removeFromSuperview()
-            })
+            self.modalDisplay(message: "あなたのメッセージを送信しました")
         }
     }
 }
@@ -494,7 +462,6 @@ extension HappyGraduationViewController: UITextFieldDelegate {
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
             self.view.frame = CGRect(x: 0, y: self.view.frame.origin.y - (editingTextFieldY - (keyboardY - 80)), width: self.view.bounds.width, height: self.view.bounds.height)
         }, completion: nil)
-        
     }
     
     // キーボードが消えたときに、画面を戻す
@@ -502,5 +469,29 @@ extension HappyGraduationViewController: UITextFieldDelegate {
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
             self.view.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
         }, completion: nil)
+    }
+    
+    private func modalDisplay(message: String){
+        //一瞬投稿成功メッセージを表示
+        let successLabel = UILabel()
+        successLabel.frame = CGRect(x: 30, y: 30, width: 150, height: 40)
+        successLabel.text = message
+        successLabel.center = self.view.center
+        successLabel.font = UIFont.systemFont(ofSize: 10)
+        successLabel.layer.borderWidth = 1
+        successLabel.clipsToBounds = true
+        successLabel.layer.cornerRadius = 10
+        successLabel.backgroundColor = UIColor.white
+        
+        let frame:CGRect = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        let fakeModalView: ModalView = ModalView(frame: frame)
+        self.view.addSubview(fakeModalView)
+        
+        self.view.addSubview(successLabel)
+        
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: { (_) in
+            successLabel.removeFromSuperview()
+            fakeModalView.removeFromSuperview()
+        })
     }
 }
