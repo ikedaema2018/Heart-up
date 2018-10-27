@@ -13,7 +13,6 @@
 		C81329D3216469E600B2027E /* ShabonContentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */; };
 		C81329D52165B6DC00B2027E /* DataUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329D42165B6DC00B2027E /* DataUtils.swift */; };
 		C81329F52168816200B2027E /* FirstMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81329F42168816100B2027E /* FirstMovieViewController.swift */; };
-		C81329FE2168FD9900B2027E /* shabonView3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C81329FD2168FD8F00B2027E /* shabonView3.mp4 */; };
 		C8168D1621318122007084A1 /* MapModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D1521318122007084A1 /* MapModule.swift */; };
 		C8168D6A2136AC01007084A1 /* detailShabonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8168D692136AC01007084A1 /* detailShabonViewController.swift */; };
 		C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8168D6B2137BBB5007084A1 /* Login.storyboard */; };
@@ -92,7 +91,6 @@
 		C81329D0216469E600B2027E /* ShabonContentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShabonContentsTableViewCell.xib; sourceTree = "<group>"; };
 		C81329D42165B6DC00B2027E /* DataUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtils.swift; sourceTree = "<group>"; };
 		C81329F42168816100B2027E /* FirstMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstMovieViewController.swift; sourceTree = "<group>"; };
-		C81329FD2168FD8F00B2027E /* shabonView3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = shabonView3.mp4; sourceTree = SOURCE_ROOT; };
 		C8168D1521318122007084A1 /* MapModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModule.swift; sourceTree = "<group>"; };
 		C8168D692136AC01007084A1 /* detailShabonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = detailShabonViewController.swift; path = "/Users/maedakei/Library/Autosave Information/Heart-up/Heart-up/detailShabonViewController.swift"; sourceTree = "<absolute>"; };
 		C8168D6B2137BBB5007084A1 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -159,6 +157,7 @@
 		C8A8F4512171E44500382BEE /* HappyGraduationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyGraduationViewController.swift; sourceTree = "<group>"; };
 		C8AA5BB0216378F700523842 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		C8E0783F21789250009B75B9 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
+		C8E128642183E5E6000354B6 /* shabonView3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = shabonView3.mp4; sourceTree = "<group>"; };
 		C8E1E2E1217C563900E63D54 /* ResultMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMessage.swift; sourceTree = "<group>"; };
 		C8E1E2E32180B27300E63D54 /* ErrorModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModule.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
@@ -331,7 +330,6 @@
 				C84DE6452155468800406A64 /* GoogleService-Info.plist */,
 				C86E32D1212C3B97005A3D92 /* Main.storyboard */,
 				C894CFB8213CE6DE007957E2 /* MyPageViewController.swift */,
-				C81329FD2168FD8F00B2027E /* shabonView3.mp4 */,
 				C81BA8BF21514A250094AC00 /* CollectionViewClass */,
 				C86E32D4212C3B98005A3D92 /* Assets.xcassets */,
 				C81329F42168816100B2027E /* FirstMovieViewController.swift */,
@@ -339,6 +337,7 @@
 				C86E32D6212C3B98005A3D92 /* LaunchScreen.storyboard */,
 				C8168D6D2137C99B007084A1 /* LoginViewController.swift */,
 				C8168D7921395F56007084A1 /* ShabonPostViewController.swift */,
+				C8E128642183E5E6000354B6 /* shabonView3.mp4 */,
 				C86E32D9212C3B98005A3D92 /* Info.plist */,
 			);
 			path = "Heart-up";
@@ -476,7 +475,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C861B55F21747CEC00F5BCC4 /* JKG-M_3.ttf in Resources */,
-				C81329FE2168FD9900B2027E /* shabonView3.mp4 in Resources */,
 				C81329D3216469E600B2027E /* ShabonContentsTableViewCell.xib in Resources */,
 				C81C73F72160AF0400D4C2E1 /* MyShabonListCell.xib in Resources */,
 				C8168D6C2137BBB5007084A1 /* Login.storyboard in Resources */,
@@ -502,7 +500,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Heart-up/Pods-Heart-up-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Heart-up/Pods-Heart-up-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AWSCore/AWSCore.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
@@ -523,7 +521,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Heart-up/Pods-Heart-up-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Heart-up/Pods-Heart-up-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		97898D70F530F9E9D98F7A08 /* [CP] Check Pods Manifest.lock */ = {
@@ -785,7 +783,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kei.MyApp.Heart-up";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = "";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
