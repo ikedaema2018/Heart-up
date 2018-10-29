@@ -353,7 +353,7 @@ extension ShowLocateViewController {
                 let tmp_alert = alert![0]
                 
                 //gifイメージを定義
-                let gifImage = UIImage(url: "shabonBreak")
+                let gifImage = UIImage.gif(url: "https://img.gifmagazine.net/gifmagazine/images/50403/original.gif")
                 let gifImageView = UIImageView()
                 gifImageView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
                 gifImageView.center = self.view.center
