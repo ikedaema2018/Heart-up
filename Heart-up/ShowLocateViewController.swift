@@ -171,11 +171,10 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         
         if segue.identifier == "showToContents" {
             if let vc = segue.destination as? ShabonContentsViewController {
-                guard let locateId = sender["locateId"] as? Int else {
+                guard let locateId = sender["locateId"] as? String else {
                     return
                 }
-                print(locateId)
-                vc.id = String(locateId)
+                vc.id = locateId
                 vc.happyGraduationFlag = (sender["finishFlag"] as? Bool)!
             }
         }else if segue.identifier == "toSelectUserSegue" {
@@ -351,16 +350,15 @@ extension ShowLocateViewController {
             
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
-                
                 //gifイメージを定義
                 let gifImage = UIImage.gif(url: "https://img.gifmagazine.net/gifmagazine/images/50403/original.gif")
                 let gifImageView = UIImageView()
-                gifImageView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+                gifImageView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height / 2)
                 gifImageView.center = self.view.center
                 gifImageView.image = gifImage
                 self.view.addSubview(gifImageView)
                 
-                Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { (_)  in
+                Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (_)  in
                     gifImageView.removeFromSuperview()
                     
                     self.shabon_Alert(message: tmp_alert, callback: { locateId in

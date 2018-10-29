@@ -70,6 +70,8 @@ class ShabonContentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(id)
+        
         stampView.isHidden = true
         contentsTable.register(UINib(nibName: "ShabonContentsTableViewCell", bundle: nil), forCellReuseIdentifier: "ShabonContentsCell")
         contentsTable.register(UINib(nibName: "replyCommentTableViewCell", bundle: nil), forCellReuseIdentifier: "replyCommentTableViewCell")
@@ -241,6 +243,7 @@ extension ShabonContentsViewController {
     
     func fetchData(){
         guard let shabonId = id else {
+            print("dawdawdawdawdawdawdawdawdawdawdawdawdawdawdaw")
             return
         }
         
@@ -279,6 +282,7 @@ extension ShabonContentsViewController {
             self.color = self.locates!["color"].string
             
             guard let longitude = locate!["keido"].double, let latitude = locate!["ido"].double else {
+                print("1")
                 return
             }
             
@@ -301,6 +305,7 @@ extension ShabonContentsViewController {
                 let firstLocate = self.locates!["first_locate"]
 
                 guard let fLatitude = firstLocate["ido"].double, let fLongitude = firstLocate["keido"].double else {
+                    print("2")
                     return
                 }
                 self.kyori = Distance.distance(current: (la: latitude, lo: longitude), target: (la: fLatitude, lo: fLongitude))
@@ -319,6 +324,7 @@ extension ShabonContentsViewController {
                 if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                     appDelegate.showLoginStoryboard()
                 }
+                print("3")
                 return
             }
             
@@ -380,6 +386,7 @@ extension ShabonContentsViewController {
     
     func postNayami(comment: String?, stampId: Int?){
         guard let anno_id = Int(self.id!) else {
+            print("3")
             return
         }
         
@@ -391,6 +398,7 @@ extension ShabonContentsViewController {
                 } else {
                     self.showAlert(message: "エラーが発生しました", hide: {})
                 }
+                print("4")
                 return
             }
             self.showAlert(message: "投稿しました", hide: { ()-> Void in
