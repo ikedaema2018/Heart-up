@@ -56,6 +56,7 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.6.1)
+  - SwiftGifOrigin (1.6.1)
   - SwiftyJSON (4.1.0)
   - ViewAnimator (2.1.2)
 
@@ -64,6 +65,7 @@ DEPENDENCIES:
   - AWSCore
   - Firebase/Core
   - Firebase/Messaging
+  - SwiftGifOrigin (~> 1.6.1)
   - SwiftyJSON
   - ViewAnimator
 
@@ -80,6 +82,7 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - Protobuf
+    - SwiftGifOrigin
     - SwiftyJSON
     - ViewAnimator
 
@@ -95,9 +98,10 @@ SPEC CHECKSUMS:
   GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
   ViewAnimator: 20df9a24a076c6ee78b77a4dbf1943808c94954e
 
-PODFILE CHECKSUM: 50d67d3ffb47c8357e8a33ecda9bb3b0669263be
+PODFILE CHECKSUM: 682f5af77a99ebff89af772853d92b56155ba108
 
 COCOAPODS: 1.6.0.beta.2

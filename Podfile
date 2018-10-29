@@ -12,4 +12,5 @@ target 'Heart-up' do
   pod 'Firebase/Messaging'
 pod "ViewAnimator"
 pod 'AWSCore'
+pod 'SwiftGifOrigin', '~> 1.6.1'
 end
