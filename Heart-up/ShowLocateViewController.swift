@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import SwiftyJSON
 import CoreLocation
+import SwiftGifOrigin
 
 
 class ShowLocateViewController: UIViewController, MKMapViewDelegate {
@@ -350,14 +351,27 @@ extension ShowLocateViewController {
             
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
-                self.shabon_Alert(message: tmp_alert, callback: { locateId in
-                    if let locateId = locateId {
-                        //遷移のためのハッシュ
-                        let sender: [String: Any] = [ "locateId": locateId, "finishFlag" : true]
-                    self.performSegue(withIdentifier: "showToContents", sender: sender)
-                    }else{
-                        self.viewDidAppear(true)
-                    }
+                
+                //gifイメージを定義
+                let gifImage = UIImage(url: "shabonBreak")
+                let gifImageView = UIImageView()
+                gifImageView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+                gifImageView.center = self.view.center
+                gifImageView.image = gifImage
+                self.view.addSubview(gifImageView)
+                
+                Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { (_)  in
+                    gifImageView.removeFromSuperview()
+                    
+                    self.shabon_Alert(message: tmp_alert, callback: { locateId in
+                        if let locateId = locateId {
+                            //遷移のためのハッシュ
+                            let sender: [String: Any] = [ "locateId": locateId, "finishFlag" : true]
+                        self.performSegue(withIdentifier: "showToContents", sender: sender)
+                        }else{
+                            self.viewDidAppear(true)
+                        }
+                    })
                 })
             }
         })
