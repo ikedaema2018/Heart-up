@@ -15,8 +15,13 @@ class UserResisterViewController: UIViewController {
     @IBOutlet weak var passwordInput: UITextField!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var agePicker: UIPickerView!
+    @IBOutlet weak var passwordConfirm: UITextField!
+    @IBOutlet weak var formView: UIView!
+
+    
+    
+    
     var age: String = ""
     
     var ageList: [Int] = []
@@ -30,7 +35,7 @@ class UserResisterViewController: UIViewController {
     
     
     @IBAction func signUp(_ sender: Any) {
-        guard let user_name = userNameInput.text, let email = emailInput.text, let password = passwordInput.text, let self_introduce = selfIntroduce.text else {
+        guard let user_name = userNameInput.text, let email = emailInput.text, let password = passwordInput.text, let self_introduce = selfIntroduce.text, let password_confirm = passwordConfirm.text else {
             errorLabel.isHidden = false
             errorLabel.text = "ユーザーネームとメールアドレスとパスワードと自己紹介は必ず入力してください"
             return
@@ -42,13 +47,19 @@ class UserResisterViewController: UIViewController {
             return
         }
         
-        if user_name.isEmpty || email.isEmpty || password.isEmpty || age.isEmpty || self_introduce.isEmpty {
+        if user_name.isEmpty || email.isEmpty || password.isEmpty || age.isEmpty || self_introduce.isEmpty || password_confirm.isEmpty {
             errorLabel.isHidden = false
             errorLabel.text = "ユーザーネームとメールアドレスとパスワードと自己紹介は必ず入力してください"
             return
         }
         
-        let user: [String: String] = ["email": email, "user_name": user_name, "password": password, "age": age, "gender": genderArray[genderSegment.selectedSegmentIndex], "self_introduce": self_introduce]
+        if password != password_confirm {
+            errorLabel.isHidden = false
+            errorLabel.text = "パスワードは同じものを２つ入力してください"
+            return
+        }
+        
+        let user: [String: String] = ["email": email, "user_name": user_name, "password": password, "age": age, "gender": genderArray[genderSegment.selectedSegmentIndex], "self_introduce": self_introduce, "password_confirmation": password_confirm]
         
         print(user)
         
@@ -56,37 +67,24 @@ class UserResisterViewController: UIViewController {
         UserRegister.postLocate(user: user, callback: { data, error in
 
             if let error = error {
-                if let message = error["message"] as! [String: [String]]? {
-                    var errorMessage: String = ""
-                    for (key, value) in message {
-                        errorMessage.append("\(key):の入力欄に\(value[0])というミスがあります！\n")
-                    }
-                    self.errorLabel.isHidden = false
-                    self.errorLabel.text! = errorMessage
-                } else {
-                    print("謎のエラー発生！")
-                    self.errorLabel.isHidden = false
-                    self.errorLabel.text = "謎のエラー発生！"
-                }
+                print(error)
+                self.errorLabel.isHidden = false
+                self.errorLabel.text! = "ユーザー登録に失敗しました"
                 return
             }
-            guard let data = data else {
-                return
-            }
+            
             print("ユーザー登録成功！")
             self.showAlert(message: "ユーザー登録成功したよ！\nログインしてね", hide: { () -> Void in
-                    self.dismiss(animated: true, completion: nil)
-                })
+                self.dismiss(animated: true, completion: nil)
+            })
         })
     }
-    
 
-    
-    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         for i in 10...100 {
             ageList += [i]
@@ -96,6 +94,7 @@ class UserResisterViewController: UIViewController {
         userNameInput.delegate = self
         emailInput.delegate = self
         passwordInput.delegate = self
+        passwordConfirm.delegate = self
         
         agePicker.delegate = self
         agePicker.dataSource = self
@@ -108,6 +107,8 @@ class UserResisterViewController: UIViewController {
         userNameInput.placeholder = "ユーザーネーム"
         emailInput.placeholder = "メールアドレス"
         passwordInput.placeholder = "パスワード"
+        
+        passwordConfirm.placeholder = "再度パスワードを入力してください"
         
         // Do any additional setup after loading the view.
     }
@@ -145,6 +146,7 @@ class UserResisterViewController: UIViewController {
 
 extension UserResisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
         return true
     }
@@ -186,6 +188,7 @@ extension UserResisterViewController: UITextViewDelegate {
             selfIntroduce.resignFirstResponder()
             return false
         }
+//        selfIntroduce.resignFirstResponder()
         return true
     }
     

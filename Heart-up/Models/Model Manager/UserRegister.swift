@@ -20,10 +20,11 @@ class UserRegister: NSObject {
             "user": [
                 "user_name": user["user_name"]!,
                 "email": user["email"]!,
-                "password_digest": user["password"]!,
+                "password": user["password"]!,
                 "age": Int(user["age"]!),
                 "gender": user["gender"]!,
-                "self_introduce": user["self_introduce"]!
+                "self_introduce": user["self_introduce"]!,
+                "password_confirm": user["password_confirm"]
             ]
         ]
         
