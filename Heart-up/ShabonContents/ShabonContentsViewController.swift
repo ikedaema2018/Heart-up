@@ -70,7 +70,6 @@ class ShabonContentsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(id)
         
         stampView.isHidden = true
         contentsTable.register(UINib(nibName: "ShabonContentsTableViewCell", bundle: nil), forCellReuseIdentifier: "ShabonContentsCell")
@@ -243,7 +242,6 @@ extension ShabonContentsViewController {
     
     func fetchData(){
         guard let shabonId = id else {
-            print("dawdawdawdawdawdawdawdawdawdawdawdawdawdawdaw")
             return
         }
         
@@ -426,6 +424,7 @@ extension ShabonContentsViewController {
                 let alertController = UIAlertController(title: "", message: "コメントを入力してください。", preferredStyle: .alert)
                 // 入力フィールドを追加.
                 alertController.addTextField { (textField) in
+                    textField.returnKeyType = .done
                     textField.placeholder = "コメント"
                 }
                 // 「投稿する」ボタンを設置.

@@ -134,7 +134,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
             if let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] {
                  let locateId = locateId as! Int
                 //遷移のためのハッシュ
-                let sender: [String: Any] = ["locateId": locateId, "finishFlag" : false]
+                let sender: [String: Any] = ["locateId": String(locateId), "finishFlag" : false]
                 performSegue(withIdentifier: "showToContents", sender: sender)
             }
         }
@@ -374,6 +374,7 @@ extension ShowLocateViewController {
             }
         })
     }
+    
     func closer_alert(){
         ShabonAlert.closeAlert(callback: { error, alert in
             if let error = error {
