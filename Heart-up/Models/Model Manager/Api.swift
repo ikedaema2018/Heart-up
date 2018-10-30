@@ -28,16 +28,19 @@ class ApiManager {
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response in
                 //電波が悪い時
-                if !response.result.isSuccess {
+                guard let res = response.response else {
+                    callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
                     return
                 }
-                let statusCode = response.response!.statusCode
+                let statusCode = res.statusCode
                 
                 //失敗
                 if statusCode != 200 {
                     if let errorInfo = response.result.value as? [String: String] {
-                        callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
+                        callback([ "message" : "パスワードが間違っているか、メールアドレスが違います"])
+                        return
                     }
+                    callback([ "message" : "パスワードが間違っているか、メールアドレスが違います"])
                     return
                 }
                 
