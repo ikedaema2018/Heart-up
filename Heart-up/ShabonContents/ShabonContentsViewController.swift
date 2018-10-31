@@ -303,7 +303,6 @@ extension ShabonContentsViewController {
                 let firstLocate = self.locates!["first_locate"]
 
                 guard let fLatitude = firstLocate["ido"].double, let fLongitude = firstLocate["keido"].double else {
-                    print("2")
                     return
                 }
                 self.kyori = Distance.distance(current: (la: latitude, lo: longitude), target: (la: fLatitude, lo: fLongitude))
@@ -322,7 +321,6 @@ extension ShabonContentsViewController {
                 if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
                     appDelegate.showLoginStoryboard()
                 }
-                print("3")
                 return
             }
             

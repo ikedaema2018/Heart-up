@@ -41,10 +41,10 @@ class MyPageViewController: UIViewController {
         })
     }
     
-    
-    
-    
-    
+    //ログアウトボタン
+    @IBAction func loguotButton(_ sender: Any) {
+        self.logoutAlert()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

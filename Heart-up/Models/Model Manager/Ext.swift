@@ -91,7 +91,6 @@ extension UIViewController {
     
     func closeAlert(message: JSON, callback: @escaping (String?) -> Void) {
         
-        print(message)
         let alert = UIAlertController(title: "", message: "\(message["locate_info"]["user"]["user_name"].string!)さんのシャボン玉が来ました！", preferredStyle: .alert)
         let showAction = UIAlertAction(title: "見に行く", style: .default) { action in
             alert.dismiss(animated: true, completion: nil)
@@ -133,6 +132,25 @@ extension UIViewController {
         }
         alert.addAction(cancelAction)
         alert.addAction(showAction)
+        self.present(alert, animated: true)
+    }
+    
+    func logoutAlert(){
+        let alert = UIAlertController(title: "", message: "ログアウトしますか？", preferredStyle: .alert)
+        
+        let logoutAction = UIAlertAction(title: "はい", style: .default) { action in
+            UserDefaults.standard.removeObject(forKey: "user_id")
+            UserDefaults.standard.removeObject(forKey: "auth_token")
+            alert.dismiss(animated: true, completion: nil)
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+        }
+        alert.addAction(logoutAction)
+        
+        let cancelAction = UIAlertAction(title: "いいえ", style: .cancel)
+        alert.addAction(cancelAction)
+        
         self.present(alert, animated: true)
     }
     
