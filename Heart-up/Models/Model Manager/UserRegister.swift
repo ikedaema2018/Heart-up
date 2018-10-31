@@ -55,7 +55,6 @@ class UserRegister: NSObject {
             }
             return
         }
-        
         let params = [
             "self_introduce": intro
         ]
@@ -63,21 +62,22 @@ class UserRegister: NSObject {
 //        let url = "http://localhost:3000/users/intro_update?auth_token=" + auth_token
         
         Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
-            switch response.result {
-            case .success:
-                if response.response?.statusCode != 200 {
-                    if let result = response.result.value as? [String: Any] {
-                        callback(nil)
-                    } else {
-                        callback([ "message" : "サーバーエラーが発生しました" ])
-                    }
+            //もしresponse.responseがnilだったら、電波のエラー画面をだす
+            if response.response == nil {
+                callback(["message": "電波が悪いか、サーバーの調子が悪い可能性があります、再読込してください"])
+                return
+            }
+            
+            let statusCode = response.response!.statusCode
+            // 失敗した場合.
+            if statusCode != 200 {
+                if statusCode == 401 {
+                    callback(["message": "ユーザー情報がおかしい"])
                     return
                 }
-                callback(nil)
-                
-            case .failure(let error):
-                print(error)
-                callback(["message": "サーバーエラーが発生しました"])
+                print("StockLocateInfosのgetLocate")
+                callback(["message": "不明なサーバーエラー"])
+                return
             }
         }
     }

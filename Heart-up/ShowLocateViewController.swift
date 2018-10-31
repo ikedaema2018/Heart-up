@@ -63,6 +63,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        print("あ")
         if annotation === mapView.userLocation {
             return nil
         } else {
@@ -101,6 +102,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
                         return anno
                     }
                 }
+                
                 if let shabon = annotation as? CustomAnnotation {
                     let nayamiCount = Double(shabon.nayamiCount)
                     
@@ -125,11 +127,11 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("う")
         //クリックした時、ユーザーだったらリターン
         if view.annotation is MKUserLocation {
             return
         }
-        
         if view.annotation is CustomAnnotation {
             if let locateId = (view.annotation as! CustomAnnotation).locateId["locateId"] {
                  let locateId = locateId as! Int
@@ -155,6 +157,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     
     // 表示領域が変化した後に呼ばれる
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print("い")
         if zoomLevel != nil {
             if mapView.currentZoomLevel != zoomLevel! {
                 setAnno(locates, users)
@@ -209,7 +212,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
 extension ShowLocateViewController {
     func fetchData(){
         StockLocateInfos.getLocate {error, locates in
-            print("1¥")
             
             if self.errorCheck(error: error) {
                 return
@@ -220,7 +222,6 @@ extension ShowLocateViewController {
             
             //ここで１時間前までにアップデートしたユーザーを引っ張ってくる処理を書く
             UserLocate.currentUser {error, users in
-                print("2¥")
                 if self.errorCheck(error: error) {
                     return
                 }
@@ -235,6 +236,7 @@ extension ShowLocateViewController {
     }
     
     func setAnno(_ locates: JSON?,_ users: JSON?){
+        print("え")
         guard let locates = locates, let users = users else {
             return
         }
@@ -245,6 +247,7 @@ extension ShowLocateViewController {
         locates.forEach { (_, locate) in
             if let ido_s = locate["ido"].double, let keido_s = locate["keido"].double, let id_i = locate["id"].int, let nayami = locate["nayami"].string, let user_id = locate["user_id"].int, let color = locate["color"].string, let user_name = locate["user"]["user_name"].string {
                 MapModule.setAnnotation(x: ido_s, y: keido_s, map: self.mapView, id: id_i, nayami: nayami, user_id: user_id, user_name: user_name, color: color, nayamiCount: locate["nayami_comments"].count)
+                print("お")
             }
         }
         
@@ -267,12 +270,11 @@ extension ShowLocateViewController {
         }
     }
     
-    
-    
     func removeAllAnnotations() {
         let annotations = mapView.annotations.filter {
             $0 !== self.mapView.userLocation
         }
+        print("special")
         mapView.removeAnnotations(annotations)
     }
 
