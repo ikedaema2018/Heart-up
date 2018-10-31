@@ -39,6 +39,8 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         locationManager!.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager!.distanceFilter = 1000
         
+        //とりあえずエラーのときのテスト的な
+        UserDefaults.standard.set("dadawawdawd", forKey: "auth_token")
         
 //        UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard
@@ -207,6 +209,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
 extension ShowLocateViewController {
     func fetchData(){
         StockLocateInfos.getLocate {error, locates in
+            print("1¥")
             
             if let error = error {
                 if let message = error["message"] as? String {
@@ -224,6 +227,7 @@ extension ShowLocateViewController {
             
             //ここで１時間前までにアップデートしたユーザーを引っ張ってくる処理を書く
             UserLocate.currentUser {error, users in
+                print("2¥")
                 
                 if let error = error {
                     if let message = error["message"] as? String {
@@ -323,6 +327,8 @@ extension ShowLocateViewController: CLLocationManagerDelegate {
 extension ShowLocateViewController {
     func user_locate_update(ido: String, keido: String) -> Void {
         UserLocate.userLocateUpdate(ido: ido, keido: keido, callback: { response in
+            print("3¥")
+            
             if let error = response {
                 let error_message = error["message"] as! String
                 print(error_message)
@@ -334,6 +340,8 @@ extension ShowLocateViewController {
     }
     func select_user_alert() {
         ShabonAlert.select_user_alert(callback: { error, alert in
+            print("3¥")
+            
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
@@ -375,6 +383,8 @@ extension ShowLocateViewController {
     
     func closer_alert(){
         ShabonAlert.closeAlert(callback: { error, alert in
+            print("4¥")
+            
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
@@ -413,6 +423,8 @@ extension ShowLocateViewController {
     
     func nayamiBadging(){
         NayamiComment.myShabonNayamiFind(callback: { error, result in
+            print("5¥")
+            
             if let error = error {
                 if let message = error["message"] as? String {
                     print(message)
