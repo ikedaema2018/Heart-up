@@ -43,7 +43,7 @@ class MyPageViewController: UIViewController {
     
     //ログアウトボタン
     @IBAction func loguotButton(_ sender: Any) {
-        self.logoutAlert()
+        logOutAlert()
     }
 
     override func viewDidLoad() {
@@ -165,5 +165,24 @@ extension MyPageViewController {
     func removeObserver() {
         let notification = NotificationCenter.default
         notification.removeObserver(self)
+    }
+    //ログアウト用
+    func logOutAlert(){
+        let alert = UIAlertController(title: "", message: "ログアウトしますか？", preferredStyle: .alert)
+        
+        let logoutAction = UIAlertAction(title: "はい", style: .default) { action in
+            UserDefaults.standard.removeObject(forKey: "user_id")
+            UserDefaults.standard.removeObject(forKey: "auth_token")
+            alert.dismiss(animated: true, completion: nil)
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.showLoginStoryboard()
+            }
+        }
+        alert.addAction(logoutAction)
+        
+        let cancelAction = UIAlertAction(title: "いいえ", style: .cancel)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true)
     }
 }

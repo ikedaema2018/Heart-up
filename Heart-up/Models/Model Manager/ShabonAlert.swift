@@ -22,17 +22,21 @@ class ShabonAlert: NSObject {
 //        let url = "http://localhost:3000/shabon_alerts/show?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
-            //電波が悪い時
-            if !response.result.isSuccess {
+            //もしresponse.responseがnilだったら、電波のエラー画面をだす
+            if response.response == nil {
+                callback(["message": "電波が悪いか、サーバーの調子が悪い可能性があります、再読込してください"], nil)
                 return
             }
+            
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
-                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"], nil)
-            }
-            
-            if statusCode == 201 {
+                if statusCode == 401 {
+                    callback(["message": "ユーザー情報がおかしい"], nil)
+                    return
+                }
+                print("StockLocateInfosのgetLocate")
+                callback(["message": "不明なサーバーエラー"], nil)
                 return
             }
             
@@ -63,14 +67,22 @@ class ShabonAlert: NSObject {
 //        let url = "http://localhost:3000/shabon_alerts/" + String(id) + "?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
-            //電波が悪い時
-            if !response.result.isSuccess {
+            //もしresponse.responseがnilだったら、電波のエラー画面をだす
+            if response.response == nil {
+                callback(["message": "電波が悪いか、サーバーの調子が悪い可能性があります、再読込してください"])
                 return
             }
+            
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
-                callback(["message": "電波が悪い可能性があります。再読み込みをお願いします"])
+                if statusCode == 401 {
+                    callback(["message": "ユーザー情報がおかしい"])
+                    return
+                }
+                print("StockLocateInfosのgetLocate")
+                callback(["message": "不明なサーバーエラー"])
+                return
             }
             
             callback(nil)
@@ -88,18 +100,21 @@ class ShabonAlert: NSObject {
 //        let url = "http://localhost:3000/closer_alerts?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
-            //電波が悪い時
-            if !response.result.isSuccess {
+            //もしresponse.responseがnilだったら、電波のエラー画面をだす
+            if response.response == nil {
+                callback(["message": "電波が悪いか、サーバーの調子が悪い可能性があります、再読込してください"], nil)
                 return
             }
-            let statusCode = response.response!.statusCode
             
+            let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
-                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"], nil)
-            }
-            
-            if statusCode == 201 {
+                if statusCode == 401 {
+                    callback(["message": "ユーザー情報がおかしい"], nil)
+                    return
+                }
+                print("StockLocateInfosのgetLocate")
+                callback(["message": "不明なエラー"], nil)
                 return
             }
             
@@ -123,14 +138,22 @@ class ShabonAlert: NSObject {
 //        let url = "http://localhost:3000/closer_alerts/" + String(id) + "?auth_token=" + auth_token
         
         Alamofire.request(url, method: .get).responseJSON {response in
-            //電波が悪い時
-            if !response.result.isSuccess {
+            //もしresponse.responseがnilだったら、電波のエラー画面をだす
+            if response.response == nil {
+                callback(["message": "電波が悪いか、サーバーの調子が悪い可能性があります、再読込してください"])
                 return
             }
+            
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
-                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
+                if statusCode == 401 {
+                    callback(["message": "ユーザー情報がおかしい"])
+                    return
+                }
+                print("StockLocateInfosのgetLocate")
+                callback(["message": "不明なサーバーエラー"])
+                return
             }
             callback(nil)
         }

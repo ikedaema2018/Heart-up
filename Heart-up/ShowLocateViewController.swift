@@ -40,7 +40,7 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
         locationManager!.distanceFilter = 1000
         
         //とりあえずエラーのときのテスト的な
-        UserDefaults.standard.set("dadawawdawd", forKey: "auth_token")
+//        UserDefaults.standard.set("dadawawdawd", forKey: "auth_token")
         
 //        UserDefaltsを初期化したい時
 //        let userDefaults = UserDefaults.standard
@@ -211,14 +211,7 @@ extension ShowLocateViewController {
         StockLocateInfos.getLocate {error, locates in
             print("1¥")
             
-            if let error = error {
-                if let message = error["message"] as? String {
-                    self.errorViewDisplay(message)
-                    return
-                } else {
-                    print("不明なエラーが発生しました")
-                    return
-                }
+            if self.errorCheck(error: error) {
                 return
             }
             
@@ -228,17 +221,7 @@ extension ShowLocateViewController {
             //ここで１時間前までにアップデートしたユーザーを引っ張ってくる処理を書く
             UserLocate.currentUser {error, users in
                 print("2¥")
-                
-                if let error = error {
-                    if let message = error["message"] as? String {
-                        print(message)
-                        print("2")
-                        self.errorViewDisplay(message)
-                    } else {
-                        print("不明なエラーが発生しました")
-                        print("3")
-                        self.errorViewDisplay("不明なエラーが発生しました")
-                    }
+                if self.errorCheck(error: error) {
                     return
                 }
                 
@@ -326,15 +309,9 @@ extension ShowLocateViewController: CLLocationManagerDelegate {
 
 extension ShowLocateViewController {
     func user_locate_update(ido: String, keido: String) -> Void {
-        UserLocate.userLocateUpdate(ido: ido, keido: keido, callback: { response in
-            print("3¥")
-            
-            if let error = response {
-                let error_message = error["message"] as! String
-                print(error_message)
-//                self.showAlert(message: error_message, hide: {})
-                //ここでエラービューを表示
-                self.errorViewDisplay(error_message)
+        UserLocate.userLocateUpdate(ido: ido, keido: keido, callback: { error in            
+            if self.errorCheck(error: error) {
+                return
             }
         })
     }
@@ -342,15 +319,7 @@ extension ShowLocateViewController {
         ShabonAlert.select_user_alert(callback: { error, alert in
             print("3¥")
             
-            if let error = error {
-                if let message = error["message"] as? String {
-                    print(message)
-                    self.errorViewDisplay(message)
-                } else {
-                    print("不明なエラーが発生しました")
-                    self.errorViewDisplay("不明なエラーが発生しました。")
-                }
-                
+            if self.errorCheck(error: error) {
                 return
             }
             
@@ -383,18 +352,10 @@ extension ShowLocateViewController {
     
     func closer_alert(){
         ShabonAlert.closeAlert(callback: { error, alert in
-            print("4¥")
-            
-            if let error = error {
-                if let message = error["message"] as? String {
-                    print(message)
-                    self.errorViewDisplay(message)
-                } else {
-                    print("不明なエラーが発生しました")
-                    self.errorViewDisplay("不明なエラーが発生しました")
-                }
+            if self.errorCheck(error: error) {
                 return
             }
+            
             if !(alert?.isEmpty)! {
                 let tmp_alert = alert![0]
                 //割れたシャボン玉のGifをだす
@@ -423,18 +384,11 @@ extension ShowLocateViewController {
     
     func nayamiBadging(){
         NayamiComment.myShabonNayamiFind(callback: { error, result in
-            print("5¥")
             
-            if let error = error {
-                if let message = error["message"] as? String {
-                    print(message)
-                    self.errorViewDisplay(message)
-                } else {
-                    print("不明なエラーが発生しました")
-                    self.errorViewDisplay("不明なエラーが発生しました")
-                }
+            if self.errorCheck(error: error) {
                 return
             }
+            
             if let yondenaiComments = result {
                 if yondenaiComments.count > 0 {
                     self.tabBarController?.tabBar.items![1].badgeValue = String(yondenaiComments.count)
@@ -472,6 +426,27 @@ extension ShowLocateViewController {
         errorView.addSubview(errorLabel)
         errorView.addSubview(reload)
         self.view.addSubview(errorView)
+    }
+    
+    func errorCheck(error: [String: Any]?) -> Bool {
+        if let error = error {
+            if let message = error["message"] as? String {
+                if message == "ユーザー情報がおかしい" {
+                    self.logoutWithError()
+                    return true
+                }else{
+                    print("電波がおかしいとき")
+                    self.errorViewDisplay(message)
+                    return true
+                }
+            } else {
+                print("不明なエラーが発生しました")
+            }
+            self.errorViewDisplay("不明なエラーが発生しました")
+            return true
+        } else {
+            return false
+        }
     }
     
     @objc func reloadView(){

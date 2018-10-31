@@ -11,6 +11,7 @@ import SwiftyJSON
 import CoreLocation
 
 extension UIViewController {
+    
     func showAlert(message: String, hide: @escaping () -> Void) {
         let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
@@ -135,10 +136,10 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
-    func logoutAlert(){
-        let alert = UIAlertController(title: "", message: "ログアウトしますか？", preferredStyle: .alert)
+    func logoutWithError(){
+        let alert = UIAlertController(title: "", message: "ユーザー情報がおかしいためログアウトします", preferredStyle: .alert)
         
-        let logoutAction = UIAlertAction(title: "はい", style: .default) { action in
+        let logoutAction = UIAlertAction(title: "OK", style: .default) { action in
             UserDefaults.standard.removeObject(forKey: "user_id")
             UserDefaults.standard.removeObject(forKey: "auth_token")
             alert.dismiss(animated: true, completion: nil)
@@ -147,10 +148,6 @@ extension UIViewController {
             }
         }
         alert.addAction(logoutAction)
-        
-        let cancelAction = UIAlertAction(title: "いいえ", style: .cancel)
-        alert.addAction(cancelAction)
-        
         self.present(alert, animated: true)
     }
     

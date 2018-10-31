@@ -28,15 +28,22 @@ class UserLocate: NSObject {
         ]
         
         Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
-            //電波が悪い時
-            if !response.result.isSuccess {
-               callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
+            //もしresponse.responseがnilだったら、電波のエラー画面をだす
+            if response.response == nil {
+                callback(["message": "電波が悪いか、サーバーの調子が悪い可能性があります、再読込してください"])
                 return
             }
+            
             let statusCode = response.response!.statusCode
             // 失敗した場合.
             if statusCode != 200 {
-                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
+                if statusCode == 401 {
+                    callback(["message": "ユーザー情報がおかしい"])
+                    return
+                }
+                print("StockLocateInfosのgetLocate")
+                callback(["message": "不明なエラー"])
+                return
             }
             callback(nil)
         }

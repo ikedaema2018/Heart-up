@@ -58,6 +58,13 @@ class ApiManager {
                 }
                 callback(nil)
         }
-        
     }
+    
+//    func logout(view: UIViewController){
+//        UserDefaults.standard.removeObject(forKey: "user_id")
+//        UserDefaults.standard.removeObject(forKey: "auth_token")
+//        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//            appDelegate.showLoginStoryboard()
+//        }
+//    }
 }
