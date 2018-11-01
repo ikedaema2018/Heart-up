@@ -15,8 +15,7 @@ class MyShabonListCollectionViewController: UICollectionViewController, UICollec
     var posts: [[String: Any]] = []
     var live_posts: [[String: Any]] = []
     var dead_posts: [[String: Any]] = []
-    
-    
+    var errorView: UIView!
     
     // Sectionのタイトル
     let sectionTitle: NSArray = [
@@ -142,13 +141,9 @@ extension MyShabonListCollectionViewController {
         collectionView?.register(UINib(nibName: "MyShabonListCell", bundle: nil), forCellWithReuseIdentifier: "MyShabonListCell")
         // 自分の投稿したシャボン玉を呼び出す処理
         StockLocateInfos.getMyShabon(callback:{ error, locates in
-            if let error = error {
-                if let message = error["message"] {
-                    print(message)
-                }
-                print("不明なエラーが発生しました")
-                return
-            }
+            
+            ErrorModule.shared.errorCheck2(error: error, viewController: self)
+            
             guard let locates = locates else {
                 print("位置情報をとってこれませんでした")
                 return

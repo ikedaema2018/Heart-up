@@ -177,7 +177,7 @@ extension ProfileImageViewController: UIImagePickerControllerDelegate {
 
 extension ProfileImageViewController {
     //電波が悪い時に避難用のエラービューを表示
-    func errorViewDisplay(_ message: String){
+    @objc func errorViewDisplay(_ message: String){
         errorView = UIView()
         errorView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
         errorView!.backgroundColor = UIColor.white
