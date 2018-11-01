@@ -10,24 +10,24 @@ import UIKit
 
 class ErrorModule: NSObject {
     static let shared = ErrorModule()
-    func errorCheck2(error: [String: Any]?, viewController: UIViewController) -> Void {
+    func errorCheck2(error: [String: Any]?, viewController: UIViewController) -> Bool {
         if let error = error {
             if let message = error["message"] as? String {
                 if message == "ユーザー情報がおかしい" {
                     viewController.logoutWithError()
-                    return
+                    return true
                 }else{
                     print("電波がおかしいとき")
                     viewController.errorViewDisplay2(message)
-                    return
+                    return true
                 }
             } else {
                 print("不明なエラーが発生しました")
             }
             viewController.errorViewDisplay2("不明なエラーが発生しました")
-            return
+            return true
         } else {
-            return
+            return false
         }
     }
 }

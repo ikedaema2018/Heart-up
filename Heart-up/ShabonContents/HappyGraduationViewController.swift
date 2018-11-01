@@ -127,7 +127,6 @@ class HappyGraduationViewController: UIViewController {
         bubbles.image = UIImage(named: "bubbles")
         bubbles.contentMode = UIViewContentMode.scaleAspectFit
         
-        
         //detailにバックグランド
         let color = #colorLiteral(red: 0.4513868093, green: 0.9930960536, blue: 1, alpha: 0.2515785531)
         detailBackground.backgroundColor = color
@@ -226,7 +225,9 @@ class HappyGraduationViewController: UIViewController {
         }
         
         ResultMessage.postResultMessage(locate_info_id: locates!["id"].int!, message: message) { (error) in
-            ErrorModule.shared.errorCheck2(error: error, viewController: self)
+            if ErrorModule.shared.errorCheck2(error: error, viewController: self) {
+                return
+            }
             self.modalDisplay(message: "あなたのメッセージを送信しました")
         }
     }
@@ -345,7 +346,7 @@ extension HappyGraduationViewController {
     private func getLocate(){
         //破裂した場所、移動した場所を出す
         guard let longitude = self.locates!["keido"].double, let latitude = self.locates!["ido"].double else {
-        return
+            return
         }
         
         //リバースジオロケートで緯度経度

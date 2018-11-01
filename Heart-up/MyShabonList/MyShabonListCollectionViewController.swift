@@ -142,7 +142,9 @@ extension MyShabonListCollectionViewController {
         // 自分の投稿したシャボン玉を呼び出す処理
         StockLocateInfos.getMyShabon(callback:{ error, locates in
             
-            ErrorModule.shared.errorCheck2(error: error, viewController: self)
+            if ErrorModule.shared.errorCheck2(error: error, viewController: self) {
+                return
+            }
             
             guard let locates = locates else {
                 print("位置情報をとってこれませんでした")
