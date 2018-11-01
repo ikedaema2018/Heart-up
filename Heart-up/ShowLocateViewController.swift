@@ -63,7 +63,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        print("あ")
         if annotation === mapView.userLocation {
             return nil
         } else {
@@ -127,7 +126,6 @@ class ShowLocateViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("う")
         //クリックした時、ユーザーだったらリターン
         if view.annotation is MKUserLocation {
             return
@@ -300,7 +298,6 @@ extension ShowLocateViewController: CLLocationManagerDelegate {
         
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
-        
         //自分の緯度、経度をupdate
         user_locate_update(ido: latitude!, keido: longitude!)
         
@@ -317,7 +314,6 @@ extension ShowLocateViewController {
     }
     func select_user_alert() {
         ShabonAlert.select_user_alert(callback: { error, alert in
-            print("3¥")
             
             if self.errorCheck(error: error) {
                 return

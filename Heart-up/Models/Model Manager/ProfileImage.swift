@@ -51,7 +51,7 @@ class ProfileImage: NSObject {
                             callback(result)
                         } else {
                             // なければエラー通知をする.
-                            callback([ "message" : "サーバーエラーが発生しました" ])
+                            callback([ "message" : "電波がおかしいか、サーバーの状態が良くない可能性があります" ])
                         }
                         return
                     }
@@ -63,7 +63,7 @@ class ProfileImage: NSObject {
             case .failure(let error):
                 // エラーを返却する.
                 print(error)
-                callback([ "message" : "サーバーエラーが発生しました" ])
+                callback([ "message" : "電波がおかしいか、サーバーの状態が良くない可能性があります" ])
             }
         }
     }
