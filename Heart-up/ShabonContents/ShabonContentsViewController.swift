@@ -244,16 +244,10 @@ extension ShabonContentsViewController {
         guard let shabonId = id else {
             return
         }
-        
+//        UserDefaults.standard.set("dadawawdawd", forKey: "auth_token")
         StockLocateInfos.getDetailLocation(id: shabonId, callback: {error, locate in
             
-            if let error = error {
-                if let message = error["message"] as? String {
-                    print(message)
-                    print("不明なエラーが発生しました")
-                } else {
-                    print("不明なエラーが発生しました")
-                }
+            if ErrorModule.shared.errorCheck2(error: error, viewController: self) {
                 return
             }
             
@@ -388,15 +382,10 @@ extension ShabonContentsViewController {
         
         //ポストします
         NayamiComment.nayamiCommentPost(locate_info_id: anno_id, comment: comment, stampId: stampId, callback: { error in
-            if let error = error {
-                if let message = error["message"] as? String {
-                    self.showAlert(message: message, hide: {})
-                } else {
-                    self.showAlert(message: "エラーが発生しました", hide: {})
-                }
-                print("4")
+            if ErrorModule.shared.errorCheck2(error: error, viewController: self) {
                 return
             }
+            
             self.showAlert(message: "投稿しました", hide: { ()-> Void in
                 if self.locates!["nayami_comments"].count >= 9 {
                     //アラートを出し、dismissでshowlocateに戻す
@@ -421,7 +410,7 @@ extension ShabonContentsViewController {
         // アラートの作成.
                 let alertController = UIAlertController(title: "", message: "コメントを入力してください。", preferredStyle: .alert)
                 // 入力フィールドを追加.
-                alertController.addTextField { (textField) in
+                alertController.addTextField { (textField)  in
                     textField.returnKeyType = .done
                     textField.placeholder = "コメント"
                 }
