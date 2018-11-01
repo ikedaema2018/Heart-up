@@ -255,11 +255,10 @@ extension ShabonPostViewController {
         StockLocateInfos.postLocate(locate: nayamiLocate) { error in
             if let error = error {
                 self.postFlag = false
-                if let message = error["message"] as? String {
-                    self.errorViewDisplay(message)
+                if ErrorModule.shared.errorCheck2(error: error, viewController: self) {
+                    return
                 }
-                self.errorViewDisplay("電波が悪い可能性があります。再読み込みしてください")
-                return
+
             }
             //シャボン玉を飛ばすアニメーション
             self.animator.startAnimation()

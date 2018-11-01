@@ -30,14 +30,12 @@ class MyPageViewController: UIViewController {
                         self.dismiss(animated: true, completion: nil)
                     })
                 } else {
-                    print("謎のエラー発生！")
                     self.showAlert(message: "自己紹介の変更ができなかったよ！", hide: { () -> Void in
                         self.dismiss(animated: true, completion: nil)
                     })
                 }
-                return
             }
-            
+            print("aaaaaaaaa")
             self.showAlert(message: "自己紹介の変更に成功したよ！", hide: { () -> Void in
                 self.dismiss(animated: true, completion: nil)
             })

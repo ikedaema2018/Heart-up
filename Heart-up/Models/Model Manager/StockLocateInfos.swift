@@ -272,21 +272,18 @@ class StockLocateInfos: NSObject {
                         let url = "https://vast-brook-81265.herokuapp.com/users/" + userId + "?auth_token=" + auth_token
 //        let url = "http://localhost:3000/users/" + userId + "?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
-            //もしresponse.responseがnilだったら、電波のエラー画面をだす
-            if response.response == nil {
-                callback(["message": "電波が悪いか、サーバーの調子が悪い可能性があります、再読込してください"], nil)
+            guard let result = response.response else {
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"], nil)
                 return
             }
-            
             let statusCode = response.response!.statusCode
-            // 失敗した場合.
+            
             if statusCode != 200 {
-                if statusCode == 401 {
-                    callback(["message": "ユーザー情報がおかしい"], nil)
+                if let errorInfo = response.result.value as? [String: Any] {
+                    callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"], nil)
                     return
                 }
-                print("StockLocateInfosのgetLocate")
-                callback(["message": "不明なサーバーエラー"], nil)
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"], nil)
                 return
             }
             

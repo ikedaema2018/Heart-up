@@ -428,12 +428,7 @@ extension ShabonContentsViewController {
         
                     //ポストします
                     ReplyComment.replyCommentPost(nayami_comment_id: sender.tag, comment: comment, callback: { error in
-                        if let error = error {
-                            if let message = error["message"] as? String {
-                                self.showAlert(message: message, hide: {})
-                            } else {
-                                self.showAlert(message: "エラーが発生しました", hide: {})
-                            }
+                        if ErrorModule.shared.errorCheck2(error: error, viewController: self) {
                             return
                         }
                         self.showAlert(message: "返信しました", hide: { ()-> Void in

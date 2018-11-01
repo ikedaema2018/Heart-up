@@ -63,16 +63,8 @@ class UserInfoViewController: UIViewController {
 extension UserInfoViewController {
     func fetchData(){
         StockLocateInfos.getSelectUser(userId: userId!){ error, result in
-            print("ccccc")
-            if let error = error {
-                print("ddddd")
-                if let message = error["message"] as? String {
-                    print(message)
-                    self.errorViewDisplay(message)
-                } else {
-                    self.errorViewDisplay("不明なエラーが発生しました")
-                }
-                self.errorViewDisplay("インターネットに接続されていません")
+            if ErrorModule.shared.errorCheck2(error: error, viewController: self) {
+                return
             }
             
             guard let user = result else {

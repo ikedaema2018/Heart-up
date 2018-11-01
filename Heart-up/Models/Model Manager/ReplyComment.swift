@@ -28,22 +28,22 @@ class ReplyComment: NSObject {
         
         
         Alamofire.request(url, method: .post, parameters: params).responseJSON { response in
-            switch response.result {
-            case .success:
-                if response.response?.statusCode != 200 {
-                    if let result = response.result.value as? [String: Any] {
-                        callback(result)
-                    } else {
-                        callback([ "message" : "サーバーエラーが発生しました" ])
-                    }
+            guard let result = response.response else {
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
+                return
+            }
+            let statusCode = response.response!.statusCode
+            
+            if statusCode != 200 {
+                if let errorInfo = response.result.value as? [String: Any] {
+                    callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
                     return
                 }
-                callback(nil)
-                
-            case .failure(let error):
-                print(error)
-                callback(["message": "サーバーエラーが発生しました"])
+                callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
+                return
             }
+            //成功したら
+            callback(nil)
         }
     }
 }
