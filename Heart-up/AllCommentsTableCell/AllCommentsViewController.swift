@@ -25,7 +25,6 @@ class AllCommentsViewController: UIViewController {
         super.viewDidLoad()
         
         allCommentShabonTable.register(UINib(nibName: "AllCommentsTableViewCell", bundle: nil), forCellReuseIdentifier: "AllCommentCustomCell")
-        
         allCommentShabonTable.dataSource = self
         allCommentShabonTable.delegate = self
         // Do any additional setup after loading the view.
@@ -108,13 +107,7 @@ extension AllCommentsViewController {
     func fetchData(){
         // 自分の投稿したシャボン玉を呼び出す処理
         NayamiComment.getPostShabon(callback:{ error, locates in
-            if let error = error {
-                if let message = error["message"] {
-                    print(message)
-                }
-                print("不明なエラーが発生しました")
-                return
-            }
+            ErrorModule.shared.errorCheck2(error: error, viewController: self)
             
             guard let locates = locates else {
                 print("位置情報をとってこれませんでした")

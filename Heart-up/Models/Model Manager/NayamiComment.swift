@@ -76,15 +76,22 @@ class NayamiComment: NSObject {
         let url = "https://vast-brook-81265.herokuapp.com/nayami_comments/my_post/?auth_token=" + auth_token
 //        let url = "http://localhost:3000/nayami_comments/my_post/?auth_token=" + auth_token
         Alamofire.request(url, method: .get).responseJSON {response in
-            //電波が悪い時
-            if !response.result.isSuccess {
+            //もしresponse.responseがnilだったら、電波のエラー画面をだす
+            if response.response == nil {
+                callback(["message": "電波が悪いか、サーバーの調子が悪い可能性があります、再読込してください"], nil)
                 return
             }
-            let statusCode = response.response!.statusCode
             
-            //失敗したとき
+            let statusCode = response.response!.statusCode
+            // 失敗した場合.
             if statusCode != 200 {
-                callback(["message": "電波が悪い可能性があります。再読み込みをお願いします"], nil)
+                if statusCode == 401 {
+                    callback(["message": "ユーザー情報がおかしい"], nil)
+                    return
+                }
+                print("StockLocateInfosのgetLocate")
+                callback(["message": "不明なサーバーエラー"], nil)
+                return
             }
             
             if let object = response.result.value as? [[String: Any]] {
