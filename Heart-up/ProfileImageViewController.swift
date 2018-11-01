@@ -43,6 +43,7 @@ class ProfileImageViewController: UIViewController {
         picker.delegate = self
         self.present(picker, animated: true)
     }
+    
     @IBAction func onTapPost(_ sender: Any) {
         // 入力チェック.
         if imageSelected == false {
@@ -54,7 +55,6 @@ class ProfileImageViewController: UIViewController {
         
         // APIで投稿.
         ProfileImage.postImage(image: profileImageView.image!) { [weak self] error in
-            
             // 進捗表示を終了.
             self?.hideProgress()
             
@@ -73,8 +73,6 @@ class ProfileImageViewController: UIViewController {
                 }
                 self?.errorViewDisplay("不明なエラーが発生しました")
                 return
-            } else {
-                return
             }
             
             // 投稿完了を通知.
@@ -83,8 +81,6 @@ class ProfileImageViewController: UIViewController {
             // タイムラインを表示.
             self?.navigationController?.tabBarController?.selectedIndex = 0
         }
-        
-        
     }
     
     

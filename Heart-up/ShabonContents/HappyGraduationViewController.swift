@@ -226,16 +226,7 @@ class HappyGraduationViewController: UIViewController {
         }
         
         ResultMessage.postResultMessage(locate_info_id: locates!["id"].int!, message: message) { (error) in
-            if let error = error {
-                if let errorMessage = error["message"] as? String {
-                    self.modalDisplay(message: errorMessage)
-                    print(errorMessage)
-                }else{
-                    print("不明なエラーが出現しました")
-                    self.modalDisplay(message: "不明なエラーが出現しました")
-                }
-                return
-            }
+            ErrorModule.shared.errorCheck2(error: error, viewController: self)
             self.modalDisplay(message: "あなたのメッセージを送信しました")
         }
     }

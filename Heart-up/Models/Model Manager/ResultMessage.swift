@@ -31,8 +31,10 @@ class ResultMessage: NSObject {
             if statusCode != 200 {
                 if let errorInfo = response.result.value as? [String: Any] {
                     callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
+                    return
                 }
                 callback([ "message" : "電波が悪い可能性があります。再読み込みをお願いします"])
+                return
             }
             //成功したら
             callback(nil)
