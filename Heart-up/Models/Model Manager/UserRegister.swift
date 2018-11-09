@@ -79,7 +79,8 @@ class UserRegister: NSObject {
                 callback(["message": "不明なサーバーエラー"])
                 return
             }
-            callback(nil)
+            callback(nil
+            )
         }
     }
     

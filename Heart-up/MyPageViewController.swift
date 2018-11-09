@@ -35,7 +35,6 @@ class MyPageViewController: UIViewController {
                     })
                 }
             }
-            print("aaaaaaaaa")
             self.showAlert(message: "自己紹介の変更に成功したよ！", hide: { () -> Void in
                 self.dismiss(animated: true, completion: nil)
             })

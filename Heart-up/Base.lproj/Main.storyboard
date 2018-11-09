@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Zen-qk-s39">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bAz-dD-v0x">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -246,7 +246,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3L-xS-vhN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2621.5999999999999" y="1813.9430284857572"/>
+            <point key="canvasLocation" x="2468" y="1738"/>
         </scene>
         <!--Shabon Contents View Controller-->
         <scene sceneID="Vyr-xM-XWL">
@@ -476,7 +476,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3534" y="2100"/>
+            <point key="canvasLocation" x="3153" y="2104"/>
         </scene>
         <!--コメント履歴-->
         <scene sceneID="L1a-aZ-6mv">
@@ -508,7 +508,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VXU-ge-Us0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4361" y="1766"/>
+            <point key="canvasLocation" x="4820" y="1738"/>
         </scene>
         <!--map-->
         <scene sceneID="MBt-TA-m4x">
@@ -1017,7 +1017,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yu2-zw-iyR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5348" y="1476.6116941529237"/>
+            <point key="canvasLocation" x="5492" y="1346"/>
         </scene>
         <!--MyPage-->
         <scene sceneID="FYe-cr-suu">

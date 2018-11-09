@@ -42,6 +42,8 @@
 		C81E850F21464A63006EDA5C /* ShabonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81E850E21464A63006EDA5C /* ShabonAlert.swift */; };
 		C81FE3DC21779D530089768F /* AnimateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81FE3DB21779D530089768F /* AnimateModel.swift */; };
 		C82CC491214D75E200F40AE7 /* CloserDetailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */; };
+		C8301FDF21955EE3004BDAF3 /* commentsEnlargementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8301FDE21955EE3004BDAF3 /* commentsEnlargementViewController.swift */; };
+		C83A24B221900D7D0045F77B /* shabonView3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C83A24B121900D3B0045F77B /* shabonView3.mp4 */; };
 		C84DE643215505EF00406A64 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84DE642215505EF00406A64 /* NetworkExtension.framework */; };
 		C84DE6462155468900406A64 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C84DE6452155468800406A64 /* GoogleService-Info.plist */; };
 		C861B55F21747CEC00F5BCC4 /* JKG-M_3.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C861B55E21747B6B00F5BCC4 /* JKG-M_3.ttf */; };
@@ -120,6 +122,8 @@
 		C81E850E21464A63006EDA5C /* ShabonAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShabonAlert.swift; sourceTree = "<group>"; };
 		C81FE3DB21779D530089768F /* AnimateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimateModel.swift; sourceTree = "<group>"; };
 		C82CC490214D75E200F40AE7 /* CloserDetailCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloserDetailCollectionViewController.swift; sourceTree = "<group>"; };
+		C8301FDE21955EE3004BDAF3 /* commentsEnlargementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentsEnlargementViewController.swift; sourceTree = "<group>"; };
+		C83A24B121900D3B0045F77B /* shabonView3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = shabonView3.mp4; sourceTree = "<group>"; };
 		C84DE642215505EF00406A64 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		C84DE644215505EF00406A64 /* Heart-up.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Heart-up.entitlements"; sourceTree = "<group>"; };
 		C84DE6452155468800406A64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -157,7 +161,6 @@
 		C8A8F4512171E44500382BEE /* HappyGraduationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyGraduationViewController.swift; sourceTree = "<group>"; };
 		C8AA5BB0216378F700523842 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		C8E0783F21789250009B75B9 /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
-		C8E128642183E5E6000354B6 /* shabonView3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = shabonView3.mp4; sourceTree = "<group>"; };
 		C8E1E2E1217C563900E63D54 /* ResultMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMessage.swift; sourceTree = "<group>"; };
 		C8E1E2E32180B27300E63D54 /* ErrorModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorModule.swift; sourceTree = "<group>"; };
 		C8EB10CE212FD10E00B61D34 /* StockLocateInfos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockLocateInfos.swift; sourceTree = "<group>"; };
@@ -337,8 +340,9 @@
 				C86E32D6212C3B98005A3D92 /* LaunchScreen.storyboard */,
 				C8168D6D2137C99B007084A1 /* LoginViewController.swift */,
 				C8168D7921395F56007084A1 /* ShabonPostViewController.swift */,
-				C8E128642183E5E6000354B6 /* shabonView3.mp4 */,
+				C83A24B121900D3B0045F77B /* shabonView3.mp4 */,
 				C86E32D9212C3B98005A3D92 /* Info.plist */,
+				C8301FDE21955EE3004BDAF3 /* commentsEnlargementViewController.swift */,
 			);
 			path = "Heart-up";
 			sourceTree = "<group>";
@@ -486,6 +490,7 @@
 				C86E32D5212C3B98005A3D92 /* Assets.xcassets in Resources */,
 				C81C73FD21613C8200D4C2E1 /* MyShabonListReusableView.xib in Resources */,
 				C894CFD721420E0B007957E2 /* MyShabonDetailCollectionViewCell.xib in Resources */,
+				C83A24B221900D7D0045F77B /* shabonView3.mp4 in Resources */,
 				C86E32D3212C3B97005A3D92 /* Main.storyboard in Resources */,
 				C81BA8BB2150B3B80094AC00 /* MyShabonCollectionViewCell.xib in Resources */,
 			);
@@ -565,6 +570,7 @@
 				C8A8F4502171AB6100382BEE /* UserTapGestureRecognizer.swift in Sources */,
 				C8E1E2E42180B27300E63D54 /* ErrorModule.swift in Sources */,
 				C81C73F62160AF0400D4C2E1 /* MyShabonListCell.swift in Sources */,
+				C8301FDF21955EE3004BDAF3 /* commentsEnlargementViewController.swift in Sources */,
 				C894CFCD2140D32B007957E2 /* MyShabonTableViewCell.swift in Sources */,
 				C8168D70213813C4007084A1 /* Api.swift in Sources */,
 				C8168D1621318122007084A1 /* MapModule.swift in Sources */,

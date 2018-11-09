@@ -221,8 +221,18 @@ extension ShabonContentsViewController: UITableViewDelegate, UITableViewDataSour
     
     //行がタップされた時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //選択状態を非表示にする
-//        contentsTable.deselectRow(at: indexPath, animated: true)
+        let commentsEnlargementvc = commentsEnlargementViewController()
+        
+        if nayamiAndReply[indexPath.row]["reply_comment"] != nil {
+            commentsEnlargementvc.labelText = nayamiAndReply[indexPath.row]["reply_comment"].string!
+        } else {
+            commentsEnlargementvc.labelText = nayamiAndReply[indexPath.row]["nayami_comment"].string!
+        }
+        
+        // 背景が真っ黒にならなくなる
+        commentsEnlargementvc.modalPresentationStyle = .overCurrentContext
+        
+        self.present(commentsEnlargementvc, animated: false, completion:  nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -274,7 +284,6 @@ extension ShabonContentsViewController {
             self.color = self.locates!["color"].string
             
             guard let longitude = locate!["keido"].double, let latitude = locate!["ido"].double else {
-                print("1")
                 return
             }
             
@@ -376,7 +385,6 @@ extension ShabonContentsViewController {
     
     func postNayami(comment: String?, stampId: Int?){
         guard let anno_id = Int(self.id!) else {
-            print("3")
             return
         }
         

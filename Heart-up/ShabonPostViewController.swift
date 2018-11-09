@@ -153,8 +153,6 @@ extension ShabonPostViewController: CLLocationManagerDelegate {
             = CLLocationCoordinate2DMake(newLocation.coordinate.latitude, newLocation.coordinate.longitude)
         latitude = "".appendingFormat("%.4f", location.latitude)
         longitude = "".appendingFormat("%.4f", location.longitude)
-        
-        
     }
 }
 

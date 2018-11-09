@@ -366,7 +366,7 @@ extension ShowLocateViewController {
                     self.closeAlert(message: tmp_alert, callback: { locateId in
                         if let locateId = locateId {
                             //遷移のためのハッシュ
-                            let sender: [String: Any] = [ "locateId": Int(locateId), "finishFlag" : false]
+                            let sender: [String: Any] = [ "locateId": locateId, "finishFlag" : false]
                             //遷移
                             self.performSegue(withIdentifier: "showToContents", sender: sender)
                         }else{
