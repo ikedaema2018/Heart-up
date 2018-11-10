@@ -26,18 +26,12 @@ class MyPageViewController: UIViewController {
                         self.logoutWithError()
                         return
                     }
-                    self.showAlert(message: "自己紹介の変更ができなかったよ！", hide: { () -> Void in
-                        self.dismiss(animated: true, completion: nil)
-                    })
+                    self.showAlert(message: "自己紹介の変更ができなかったよ！", hide: { () -> Void in })
                 } else {
-                    self.showAlert(message: "自己紹介の変更ができなかったよ！", hide: { () -> Void in
-                        self.dismiss(animated: true, completion: nil)
-                    })
+                    self.showAlert(message: "自己紹介の変更ができなかったよ！", hide: { () -> Void in })
                 }
             }
-            self.showAlert(message: "自己紹介の変更に成功したよ！", hide: { () -> Void in
-                self.dismiss(animated: true, completion: nil)
-            })
+            self.showAlert(message: "自己紹介の変更に成功したよ！", hide: { () -> Void in })
         })
     }
     
@@ -64,17 +58,6 @@ class MyPageViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

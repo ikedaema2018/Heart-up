@@ -20,6 +20,11 @@ class commentsEnlargementViewController: UIViewController {
         var commentView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width - 50, height: self.view.frame.width - 50))
         commentView.backgroundColor = UIColor.white
         commentView.center = CGPoint(x: self.view.frame.width / 2, y: self.view.frame.height / 2)
+        commentView.layer.borderWidth = 10
+        let borderColor = #colorLiteral(red: 0.7540688515, green: 0.7540867925, blue: 0.7540771365, alpha: 0.5)
+        commentView.layer.borderColor = borderColor.cgColor
+        commentView.layer.cornerRadius = 10
+        commentView.layer.masksToBounds = true
 
         var commentLabel = UILabel(frame: CGRect( x: 0, y: 0, width: commentView.frame.width - 50, height: commentView.frame.width - 50))
         commentLabel.text = labelText

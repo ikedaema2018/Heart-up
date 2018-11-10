@@ -31,7 +31,6 @@ class UserInfoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("aaaaa")
         profileImage.image = UIImage(named: "myPage")
         selfIntroduce.layer.borderWidth = 1.0
         view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
