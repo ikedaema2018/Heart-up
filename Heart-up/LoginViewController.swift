@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        errorLabel.isHidden = true
         loginEmailInput.delegate = self
         loginPasswordInput.delegate = self
         self.showAlert(message: "ログインしてね！", hide: {})
@@ -50,11 +51,10 @@ class LoginViewController: UIViewController {
         errorLabel.isHidden = true
         
         ApiManager.shared.login(loginEmail: loginEmail, loginPassword: loginPassword) { errorInfo in
-            
             //エラー表示
-            if errorInfo != nil {
+            if let errorInfo = errorInfo {
                 self.errorLabel.isHidden = false
-                self.errorLabel.text = "ログイン失敗"
+                self.errorLabel.text = errorInfo["message"]
                 return
             }
             

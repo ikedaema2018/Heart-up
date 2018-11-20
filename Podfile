@@ -8,4 +8,9 @@ target 'Heart-up' do
   # Pods for Heart-up
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
+pod "ViewAnimator"
+pod 'AWSCore'
+pod 'SwiftGifOrigin', '~> 1.6.1'
 end
